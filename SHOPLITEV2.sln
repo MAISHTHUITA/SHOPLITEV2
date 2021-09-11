@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SHOPLITEV2", "TESTAPP\SHOPLITEV2.csproj", "{F657B6D2-50BD-4C59-A0B7-7011C839DBB3}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SHOPLITESETUP", "SHOPLITESETUP\SHOPLITESETUP.vdproj", "{D9CF1534-535E-4572-844D-AD088AA34B65}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F657B6D2-50BD-4C59-A0B7-7011C839DBB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F657B6D2-50BD-4C59-A0B7-7011C839DBB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F657B6D2-50BD-4C59-A0B7-7011C839DBB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F657B6D2-50BD-4C59-A0B7-7011C839DBB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9CF1534-535E-4572-844D-AD088AA34B65}.Debug|Any CPU.ActiveCfg = Debug
+		{D9CF1534-535E-4572-844D-AD088AA34B65}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8C631EE9-5F29-4180-B7DE-BB41E91EBC67}
+	EndGlobalSection
+EndGlobal

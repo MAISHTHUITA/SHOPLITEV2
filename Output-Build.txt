@@ -1,0 +1,20 @@
+﻿Build started...
+1>------ Build started: Project: SHOPLITEV2, Configuration: Debug Any CPU ------
+1>C:\Users\thuitas\source\repos\TESTAPP\TESTAPP\Models\User.cs(209,30,209,33): warning CS0168: The variable 'exe' is declared but never used
+1>C:\Users\thuitas\source\repos\TESTAPP\TESTAPP\Models\User.cs(234,30,234,33): warning CS0168: The variable 'exe' is declared but never used
+1>C:\Users\thuitas\source\repos\TESTAPP\TESTAPP\Models\User.cs(271,30,271,33): warning CS0168: The variable 'exe' is declared but never used
+1>C:\Users\thuitas\source\repos\TESTAPP\TESTAPP\Models\Transactions.cs(93,30,93,33): warning CS0168: The variable 'exe' is declared but never used
+1>C:\Users\thuitas\source\repos\TESTAPP\TESTAPP\Models\Product.cs(412,34,412,37): warning CS0168: The variable 'exe' is declared but never used
+1>C:\Users\thuitas\source\repos\TESTAPP\TESTAPP\Models\Product.cs(431,34,431,37): warning CS0168: The variable 'exe' is declared but never used
+1>C:\Users\thuitas\source\repos\TESTAPP\TESTAPP\Models\Product.cs(464,34,464,37): warning CS0168: The variable 'exe' is declared but never used
+1>C:\Users\thuitas\source\repos\TESTAPP\TESTAPP\Models\Product.cs(489,34,489,37): warning CS0168: The variable 'exe' is declared but never used
+1>C:\Users\thuitas\source\repos\TESTAPP\TESTAPP\Models\Product.cs(528,34,528,37): warning CS0168: The variable 'exe' is declared but never used
+1>C:\Users\thuitas\source\repos\TESTAPP\TESTAPP\Models\Product.cs(186,34,186,37): warning CS0168: The variable 'EXE' is declared but never used
+1>C:\Users\thuitas\source\repos\TESTAPP\TESTAPP\Models\Price.cs(78,38,78,41): warning CS0168: The variable 'exe' is declared but never used
+1>C:\Users\thuitas\source\repos\TESTAPP\TESTAPP\Models\Price.cs(128,38,128,41): warning CS0168: The variable 'exe' is declared but never used
+1>C:\Users\thuitas\source\repos\TESTAPP\TESTAPP\Models\Department.cs(54,42,54,45): warning CS0168: The variable 'exe' is declared but never used
+1>C:\Users\thuitas\source\repos\TESTAPP\TESTAPP\Models\Company.cs(70,30,70,33): warning CS0168: The variable 'exe' is declared but never used
+1>  SHOPLITEV2 -> C:\Users\thuitas\source\repos\TESTAPP\TESTAPP\bin\Debug\SHOPLITEV2.exe
+2>------ Skipped Build: Project: SHOPLITESETUP, Configuration: Debug ------
+2>Project not selected to build for this solution configuration 
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 1 skipped ==========
