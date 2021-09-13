@@ -123,9 +123,10 @@ namespace SHOPLITE.Models
                     SqlDataReader rdr = cmd.ExecuteReader();
                     if (rdr.HasRows)
                     {
-                        Reason reason = new Reason();
+                        
                         while (rdr.Read())
                         {
+                            Reason reason = new Reason();
                             if (rdr["ReasonCode"] != DBNull.Value)
                             {
                                 reason.ReasonCode = rdr["ReasonCode"].ToString();

@@ -141,6 +141,12 @@
     <Compile Include="MainForm.designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModalForms\frmBackUpDb.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModalForms\frmBackUpDb.Designer.cs">
+      <DependentUpon>frmBackUpDb.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModalForms\frmChangeCp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -340,6 +346,7 @@
     <Compile Include="Models\DbCon.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\EncryptKey.cs" />
+    <Compile Include="Models\PosModel.cs" />
     <Compile Include="Models\Price.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Reasons.cs" />
@@ -491,6 +498,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModalForms\frmBackUpDb.resx">
+      <DependentUpon>frmBackUpDb.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModalForms\frmChangeCp.resx">
       <DependentUpon>frmChangeCp.cs</DependentUpon>

@@ -34,6 +34,7 @@ namespace SHOPLITE
             this.btnGroups = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.pnlmain = new System.Windows.Forms.Panel();
+            this.btnBackUpDB = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -41,6 +42,7 @@ namespace SHOPLITE
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(3)))), ((int)(((byte)(109)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.btnBackUpDB);
             this.panel1.Controls.Add(this.btnReason);
             this.panel1.Controls.Add(this.btnGroups);
             this.panel1.Controls.Add(this.button1);
@@ -104,6 +106,21 @@ namespace SHOPLITE
             this.pnlmain.Size = new System.Drawing.Size(412, 316);
             this.pnlmain.TabIndex = 1;
             // 
+            // btnBackUpDB
+            // 
+            this.btnBackUpDB.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnBackUpDB.FlatAppearance.BorderSize = 3;
+            this.btnBackUpDB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBackUpDB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBackUpDB.ForeColor = System.Drawing.Color.White;
+            this.btnBackUpDB.Location = new System.Drawing.Point(280, 10);
+            this.btnBackUpDB.Name = "btnBackUpDB";
+            this.btnBackUpDB.Size = new System.Drawing.Size(83, 35);
+            this.btnBackUpDB.TabIndex = 0;
+            this.btnBackUpDB.Text = "Back-Up";
+            this.btnBackUpDB.UseVisualStyleBackColor = true;
+            this.btnBackUpDB.Click += new System.EventHandler(this.btnBackUpDB_Click);
+            // 
             // frmManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -126,5 +143,6 @@ namespace SHOPLITE
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnReason;
         private System.Windows.Forms.Button btnGroups;
+        private System.Windows.Forms.Button btnBackUpDB;
     }
 }

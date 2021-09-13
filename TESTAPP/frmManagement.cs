@@ -47,5 +47,14 @@ namespace SHOPLITE
             form.BringToFront();
             form.Show();
         }
+
+        private void btnBackUpDB_Click(object sender, EventArgs e)
+        {
+            Form form = frmBackUpDb.Instance;
+            form.TopLevel = false;
+            pnlmain.Controls.Add(form);
+            form.BringToFront();
+            form.Show();
+        }
     }
 }
