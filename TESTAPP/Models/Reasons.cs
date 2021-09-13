@@ -123,7 +123,7 @@ namespace SHOPLITE.Models
                     SqlDataReader rdr = cmd.ExecuteReader();
                     if (rdr.HasRows)
                     {
-                        
+
                         while (rdr.Read())
                         {
                             Reason reason = new Reason();

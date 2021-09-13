@@ -69,7 +69,7 @@ namespace SHOPLITE.ModalForms
             }
             ProductRepository repository = new ProductRepository();
             SupplierRepository supplierRepository = new SupplierRepository();
-           
+
             Product product = repository.GetProduct(prodCdTextBox.Text);
             if (product == null)
             {
@@ -77,7 +77,7 @@ namespace SHOPLITE.ModalForms
                 return;
             }
             Supplier supplier = new Supplier();
-            supplier=supplierRepository.GetSupplier(product.SuppCd);
+            supplier = supplierRepository.GetSupplier(product.SuppCd);
             prodCdTextBox.Text = product.ProdCd;
             prodNmTextBox.Text = product.ProdNm;
             UnitTextBox.Text = product.UnitCd;

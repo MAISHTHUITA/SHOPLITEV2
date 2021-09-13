@@ -195,6 +195,12 @@
     <Compile Include="ModalForms\frmEditUnit.Designer.cs">
       <DependentUpon>frmEditUnit.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModalForms\frmPosPayment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModalForms\frmPosPayment.Designer.cs">
+      <DependentUpon>frmPosPayment.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModalForms\frmProductMaster.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -525,6 +531,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModalForms\frmEditUnit.resx">
       <DependentUpon>frmEditUnit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModalForms\frmPosPayment.resx">
+      <DependentUpon>frmPosPayment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModalForms\frmProductMaster.resx">
       <DependentUpon>frmProductMaster.cs</DependentUpon>

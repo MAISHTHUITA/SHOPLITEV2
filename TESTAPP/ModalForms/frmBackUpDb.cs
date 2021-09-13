@@ -1,15 +1,7 @@
 ﻿using SHOPLITE.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SHOPLITE.ModalForms
@@ -57,7 +49,7 @@ namespace SHOPLITE.ModalForms
                     btnStart.Enabled = false;
                     using (SqlConnection con = new SqlConnection(DbCon.connection))
                     {
-                        SqlCommand cmd = new SqlCommand($"BACKUP DATABASE [ShopLiteDb] TO  DISK = N'{txtPath.Text + "\\Shoplitedb-"+DateTime.Now.ToString("dd-MM-yyyy-HH-mm-ss")+".bak"}' WITH NOFORMAT, NOINIT,  NAME = N'ShopLiteDb-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 10", con);
+                        SqlCommand cmd = new SqlCommand($"BACKUP DATABASE [ShopLiteDb] TO  DISK = N'{txtPath.Text + "\\Shoplitedb-" + DateTime.Now.ToString("dd-MM-yyyy-HH-mm-ss") + ".bak"}' WITH NOFORMAT, NOINIT,  NAME = N'ShopLiteDb-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 10", con);
                         if (con.State == ConnectionState.Closed)
                         {
                             con.Open();
@@ -73,10 +65,10 @@ namespace SHOPLITE.ModalForms
                 catch (Exception exe)
                 {
                     Logger.Loggermethod(exe);
-                    MessageBox.Show("Error "+exe.Message,"Error occurred",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    MessageBox.Show("Error " + exe.Message, "Error occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     btnStart.Enabled = true;
                 }
-               
+
             }
         }
 

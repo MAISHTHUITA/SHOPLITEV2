@@ -171,7 +171,34 @@ namespace SHOPLITE
         //END OF DAY 11/09/2021
         private void BtnSave_Click(object sender, EventArgs e)
         {
-
+            PosRepository repository = new PosRepository();
+            PosMaster posMaster = new PosMaster();
+            List<PosDetail> posDetails = new List<PosDetail>();
+            posMaster.MachineName = Environment.MachineName;
+            posMaster.PaymentMethod = "Cash";
+            posMaster.TotalAmount = (decimal)10.01;
+            posMaster.VatAmount = (decimal)6.32;
+            posMaster.Username = Properties.Settings.Default.USERNAME;
+            posMaster.CmpnyCd = Properties.Settings.Default.COMPANYNAME;
+            posMaster.BrnchCd = Properties.Settings.Default.BRANCHNAME;
+            posMaster.Discount = 0;
+            posMaster.DiscountNarration = "no discount";
+            posMaster.CashGiven = 1000;
+            foreach (DataGridViewRow row in GvReceipt.Rows)
+            {
+                PosDetail pos = new PosDetail();
+                pos.ProdCd = row.Cells[0].Value.ToString();
+                pos.ProdNm = row.Cells[1].Value.ToString();
+                pos.UnitCd = row.Cells[2].Value.ToString();
+                pos.Quantity = Convert.ToDecimal(row.Cells[3].Value);
+                pos.Sp = Convert.ToDecimal(row.Cells[4].Value);
+                pos.VatCd = row.Cells[5].Value.ToString();
+                pos.LineAmount= Convert.ToDecimal(row.Cells[6].Value);
+                pos.LineVat =pos.LineAmount- Convert.ToDecimal(row.Cells[7].Value);
+                posDetails.Add(pos);
+            }
+            int values=0;
+            bool y = repository.SavePos(posMaster, posDetails, out values);
         }
         private void btnCancelReceipt_Click(object sender, EventArgs e)
         {
