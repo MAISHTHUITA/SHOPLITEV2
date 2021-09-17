@@ -1,4 +1,5 @@
-﻿using SHOPLITE.Models;
+﻿using SHOPLITE.ModalForms;
+using SHOPLITE.Models;
 using SHOPLITE.SearchFoms;
 using System;
 using System.Collections.Generic;
@@ -171,13 +172,14 @@ namespace SHOPLITE
         //END OF DAY 11/09/2021
         private void BtnSave_Click(object sender, EventArgs e)
         {
+            int values = 0;
+
             PosRepository repository = new PosRepository();
             PosMaster posMaster = new PosMaster();
             List<PosDetail> posDetails = new List<PosDetail>();
             posMaster.MachineName = Environment.MachineName;
-            posMaster.PaymentMethod = "Cash";
-            posMaster.TotalAmount = (decimal)10.01;
-            posMaster.VatAmount = (decimal)6.32;
+            posMaster.TotalAmount = Convert.ToDecimal(lbltotalamount.Text);
+            posMaster.VatAmount = Convert.ToDecimal(lblvantamount.Text); ;
             posMaster.Username = Properties.Settings.Default.USERNAME;
             posMaster.CmpnyCd = Properties.Settings.Default.COMPANYNAME;
             posMaster.BrnchCd = Properties.Settings.Default.BRANCHNAME;
@@ -193,16 +195,44 @@ namespace SHOPLITE
                 pos.Quantity = Convert.ToDecimal(row.Cells[3].Value);
                 pos.Sp = Convert.ToDecimal(row.Cells[4].Value);
                 pos.VatCd = row.Cells[5].Value.ToString();
-                pos.LineAmount= Convert.ToDecimal(row.Cells[6].Value);
-                pos.LineVat =pos.LineAmount- Convert.ToDecimal(row.Cells[7].Value);
+                pos.LineAmount = Convert.ToDecimal(row.Cells[6].Value);
+                pos.LineVat = pos.LineAmount - Convert.ToDecimal(row.Cells[7].Value);
                 posDetails.Add(pos);
             }
-            int values=0;
-            bool y = repository.SavePos(posMaster, posDetails, out values);
+            bool saveresult = false;
+            using (frmPosPayment paymentform = new frmPosPayment(posMaster.TotalAmount))
+            {
+                paymentform.ShowDialog();
+                if (paymentform.result == DialogResult.OK)
+                {
+                    posMaster.CashGiven = paymentform.CashGiven;
+                    posMaster.PaymentMethod = paymentform.PaymentMethod;
+                    posMaster.PaymentNarration = paymentform.PaymentNarration;
+                    saveresult = repository.SavePos(posMaster, posDetails, out values);
+                }
+
+
+            }
+
+            if (saveresult)
+            {
+                MessageBox.Show($"Receipt Saved! \n Receipt No.{values.ToString()}", "Transaction Successful");
+                MessageBox.Show("Print", "Print");
+                PrintClass printClass = new PrintClass();
+                ///dummy value
+                bool tobbe=true;
+                printClass.PrintReceipt(values, "ORIGINAL", out tobbe);
+                GvReceipt.Rows.Clear();
+                lblNetamount.Text = lbltotalamount.Text = lblvantamount.Text = "0.00";
+                TxtProdCd.Focus();
+            }
+
+
         }
         private void btnCancelReceipt_Click(object sender, EventArgs e)
         {
-
+            PrintClass print = new PrintClass();
+           // print.PrintReceipt();
         }
         #endregion
 
