@@ -70,5 +70,9 @@ namespace SHOPLITE
             txtPassword.Text = encrypt.Decryptor(password);
         }
 
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

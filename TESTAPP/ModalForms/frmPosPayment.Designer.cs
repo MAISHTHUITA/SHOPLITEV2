@@ -151,7 +151,6 @@ namespace SHOPLITE.ModalForms
             this.txtNarration.Name = "txtNarration";
             this.txtNarration.Size = new System.Drawing.Size(259, 27);
             this.txtNarration.TabIndex = 3;
-            this.txtNarration.TextChanged += new System.EventHandler(this.txtGiven_TextChanged);
             // 
             // frmPosPayment
             // 

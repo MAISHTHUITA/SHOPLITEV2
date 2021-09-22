@@ -65,12 +65,21 @@ namespace SHOPLITE.ModalForms
                     return;
                 }
                 else
+                {
                     _PaymentNarration = txtNarration.Text;
+                    _dialogResult = DialogResult.OK;
+                    _Cashgiven = 0;
+                    _PaymentMethod = cbPaymentMethod.Text;
+                    this.Close();
+                }
             }
-            _dialogResult = DialogResult.OK;
-            _Cashgiven = Convert.ToDecimal(txtGiven.Text);
-            _PaymentMethod = cbPaymentMethod.Text;
-            this.Close();
+            else
+            {
+                _dialogResult = DialogResult.OK;
+                _Cashgiven = Convert.ToDecimal(txtGiven.Text);
+                _PaymentMethod = cbPaymentMethod.Text;
+                this.Close();
+            }
         }
 
         private void cbPaymentMethod_SelectedIndexChanged(object sender, EventArgs e)
@@ -80,6 +89,7 @@ namespace SHOPLITE.ModalForms
                 lblnarration.Visible = txtNarration.Visible = true;
                 btnDone.Enabled = true;
                 txtGiven.Enabled = txtChange.Enabled = false;
+                txtGiven.Text = txtChange.Text = "";
             }
             else if (cbPaymentMethod.SelectedItem.ToString() == "CASH")
             {

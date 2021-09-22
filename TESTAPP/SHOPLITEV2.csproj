@@ -219,6 +219,12 @@
     <Compile Include="ModalForms\frmSupplierMaster.Designer.cs">
       <DependentUpon>frmSupplierMaster.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModalForms\frmTillManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModalForms\frmTillManagement.Designer.cs">
+      <DependentUpon>frmTillManagement.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModalForms\frmUnitMaster.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -365,6 +371,7 @@
     <Compile Include="Models\Reasons.cs" />
     <Compile Include="Models\Reports.cs" />
     <Compile Include="Models\Supplier.cs" />
+    <Compile Include="Models\TillManager.cs" />
     <Compile Include="Models\Transactions.cs" />
     <Compile Include="Models\Unit.cs" />
     <Compile Include="Models\User.cs" />
@@ -547,6 +554,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModalForms\frmSupplierMaster.resx">
       <DependentUpon>frmSupplierMaster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModalForms\frmTillManagement.resx">
+      <DependentUpon>frmTillManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModalForms\frmUnitMaster.resx">
       <DependentUpon>frmUnitMaster.cs</DependentUpon>
