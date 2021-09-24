@@ -136,7 +136,7 @@ namespace SHOPLITE.Models
             }
             catch (Exception exe)
             {
-
+                Logger.Loggermethod(exe);
                 return null;
             }
             return grnMaster;
@@ -218,7 +218,7 @@ namespace SHOPLITE.Models
             }
             catch (Exception exe)
             {
-
+                Logger.Loggermethod(exe);
                 return null;
             }
             return invoice;
@@ -337,7 +337,7 @@ namespace SHOPLITE.Models
             }
             catch (Exception exe)
             {
-
+                Logger.Loggermethod(exe);
                 return null;
             }
             return invoice;

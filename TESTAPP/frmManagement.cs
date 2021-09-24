@@ -56,5 +56,13 @@ namespace SHOPLITE
             form.BringToFront();
             form.Show();
         }
+        private void btnTill_Click(object sender, EventArgs e)
+        {
+            Form form = frmTillManagement.Instance;
+            form.TopLevel = false;
+            pnlmain.Controls.Add(form);
+            form.BringToFront();
+            form.Show();
+        }
     }
 }

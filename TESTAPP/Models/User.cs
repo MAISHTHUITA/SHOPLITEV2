@@ -69,8 +69,10 @@ namespace SHOPLITE.Models
             {
                 using (SqlConnection con = new SqlConnection(DbCon.connection))
                 {
-                    SqlCommand cmd = new SqlCommand("UpdateUserGroup", con);
-                    cmd.CommandType = CommandType.StoredProcedure;
+                    SqlCommand cmd = new SqlCommand("UpdateUserGroup", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
                     cmd.Parameters.AddWithValue("@GroupCode", userGroup.GroupCode.ToUpper());
                     cmd.Parameters.AddWithValue("@GroupName", userGroup.GroupName.ToUpper());
                     cmd.Parameters.AddWithValue("@canaddstock", userGroup.CANADDSTOCK);
@@ -156,16 +158,18 @@ namespace SHOPLITE.Models
                     {
                         while (sql.Read())
                         {
-                            UserGroup userGroup = new UserGroup();
-                            userGroup.GroupCode = sql["GroupCode"].ToString();
-                            userGroup.GroupName = sql["GroupName"].ToString();
-                            userGroup.CANADDSTOCK = (bool)sql["CANADDSTOCK"];
-                            userGroup.CANVIEWSTOCK = (bool)sql["CANVIEWSTOCK"];
-                            userGroup.CANISSUESTOCK = (bool)sql["CANISSUESTOCK"];
-                            userGroup.CANMANAGEUSERS = (bool)sql["CANMANAGEUSERS"];
-                            userGroup.CANCHANGECP = (bool)sql["CANCHANGECP"];
-                            userGroup.CANCHANGESP = (bool)sql["CANCHANGESP"];
-                            userGroup.CANADJUSTSTOCK = (bool)sql["CANADJUSTSTOCK"];
+                            UserGroup userGroup = new UserGroup
+                            {
+                                GroupCode = sql["GroupCode"].ToString(),
+                                GroupName = sql["GroupName"].ToString(),
+                                CANADDSTOCK = (bool)sql["CANADDSTOCK"],
+                                CANVIEWSTOCK = (bool)sql["CANVIEWSTOCK"],
+                                CANISSUESTOCK = (bool)sql["CANISSUESTOCK"],
+                                CANMANAGEUSERS = (bool)sql["CANMANAGEUSERS"],
+                                CANCHANGECP = (bool)sql["CANCHANGECP"],
+                                CANCHANGESP = (bool)sql["CANCHANGESP"],
+                                CANADJUSTSTOCK = (bool)sql["CANADJUSTSTOCK"]
+                            };
                             userGroups.Add(userGroup);
                         }
                         return userGroups;
@@ -204,7 +208,7 @@ namespace SHOPLITE.Models
             }
             catch (Exception exe)
             {
-
+                Logger.Loggermethod(exe);
                 return false;
             }
 
@@ -216,8 +220,10 @@ namespace SHOPLITE.Models
                 using (SqlConnection con = new SqlConnection(DbCon.connection))
                 {
 
-                    SqlCommand cmd = new SqlCommand("SpUpdateUser", con);
-                    cmd.CommandType = CommandType.StoredProcedure;
+                    SqlCommand cmd = new SqlCommand("SpUpdateUser", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
                     cmd.Parameters.AddWithValue("@Uname", user.UserName.ToUpper());
                     cmd.Parameters.AddWithValue("@Fname", user.FullName.ToUpper());
                     cmd.Parameters.AddWithValue("@Pwd", GetPwd(user.Password));
@@ -229,7 +235,7 @@ namespace SHOPLITE.Models
             }
             catch (Exception exe)
             {
-
+                Logger.Loggermethod(exe);
                 return false;
             }
 
@@ -266,7 +272,7 @@ namespace SHOPLITE.Models
             }
             catch (Exception exe)
             {
-
+                Logger.Loggermethod(exe);
                 return false;
             }
         }
@@ -278,8 +284,10 @@ namespace SHOPLITE.Models
                 using (SqlConnection con = new SqlConnection(DbCon.connection))
                 {
                     string query = "Select * from TblUserGroups ug join tblusers u on u.groupcode=ug.groupcode  where username = @username";
-                    SqlCommand cmd = new SqlCommand(query, con);
-                    cmd.CommandType = CommandType.Text;
+                    SqlCommand cmd = new SqlCommand(query, con)
+                    {
+                        CommandType = CommandType.Text
+                    };
                     cmd.Parameters.AddWithValue("@username", username);
                     if (con.State == ConnectionState.Closed)
                     {

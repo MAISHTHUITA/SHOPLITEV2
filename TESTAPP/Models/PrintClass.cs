@@ -30,31 +30,32 @@ namespace SHOPLITE.Models
             }
             catch (Exception exe)
             {
+                Logger.Loggermethod(exe);
                 response = false;
             }
-            
+
         }
 
         private void Doc_PrintPage(object sender, PrintPageEventArgs ev)
         {
-            float yPos = 0;
-            float leftMargin =5;
+            float leftMargin = 5;
             float topMargin = 5;
-            float qtymargin =200;
-            float spmargin = 220;
+            float qtymargin = 200;
             float descmargin = 50;
-            yPos = topMargin;
-            
-            pen = new Pen(Brushes.Black, 1);
-            pen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+            float yPos = topMargin;
+
+            pen = new Pen(Brushes.Black, 1)
+            {
+                DashStyle = System.Drawing.Drawing2D.DashStyle.Dash
+            };
             Font headerfont = new Font("Arial Narrow", 7, FontStyle.Bold);
-            List<PosDetail> posDetails = new List<PosDetail>();
+            _ = new List<PosDetail>();
             PosRepository repository = new PosRepository();
-            PosMaster pos = repository.GetReceipt(_receiptno, out posDetails);
-            if (pos==null)
+            PosMaster pos = repository.GetReceipt(_receiptno, out List<PosDetail> posDetails);
+            if (pos == null)
             {
                 _response = false;
-                ev.Cancel=true;
+                ev.Cancel = true;
                 return;
             }
             //header region
@@ -63,20 +64,20 @@ namespace SHOPLITE.Models
             ev.Graphics.DrawString(pos.BrnchCd.ToUpper(), headerfont, Brushes.Black, 75, yPos, new StringFormat());
             yPos = yPos + headerfont.GetHeight(ev.Graphics);
             //header barcode
-            BarcodeWriter writer = new BarcodeWriter() { Format=BarcodeFormat.CODE_128, Options=new ZXing.Common.EncodingOptions { Height =50,Width=120 ,Margin=0} };
+            BarcodeWriter writer = new BarcodeWriter() { Format = BarcodeFormat.CODE_128, Options = new ZXing.Common.EncodingOptions { Height = 50, Width = 120, Margin = 0 } };
             barcode = writer.Write(pos.PosNumber.ToString());
             Rectangle rectangle = new Rectangle(45, 35, barcode.Width, barcode.Height);
-            ev.Graphics.DrawImage(barcode, rectangle); 
-            yPos = 2+barcode.Height;
+            ev.Graphics.DrawImage(barcode, rectangle);
+            yPos = 2 + barcode.Height;
             yPos = yPos + printfont.GetHeight(ev.Graphics);
             yPos = yPos + printfont.GetHeight(ev.Graphics);
             yPos = yPos + printfont.GetHeight(ev.Graphics);
-            
+
             ev.Graphics.DrawString("DATE: " + pos.ReceiptDate, printfont, Brushes.Black, leftMargin, yPos, new StringFormat());
             yPos = yPos + printfont.GetHeight(ev.Graphics);
             //receipt details headers
             ev.Graphics.DrawLine(pen, 0, yPos, 240, yPos);
-            ev.Graphics.DrawString(Trancute("CODE",9), headerfont, Brushes.Black, leftMargin, yPos, new StringFormat());
+            ev.Graphics.DrawString(Trancute("CODE", 9), headerfont, Brushes.Black, leftMargin, yPos, new StringFormat());
             ev.Graphics.DrawString(Trancute("DESCRIPTION", 35), headerfont, Brushes.Black, descmargin, yPos, new StringFormat());
             ev.Graphics.DrawString(Trancute("Qty", 5), headerfont, Brushes.Black, qtymargin, yPos, new StringFormat());
             float line2 = yPos + printfont.GetHeight(ev.Graphics);
@@ -88,21 +89,21 @@ namespace SHOPLITE.Models
             foreach (PosDetail detail in posDetails)
             {
                 yPos = yPos + printfont.GetHeight(ev.Graphics);
-                ev.Graphics.DrawString(Trancute( detail.ProdCd,9), printfont, Brushes.Black, leftMargin, yPos, new StringFormat());
+                ev.Graphics.DrawString(Trancute(detail.ProdCd, 9), printfont, Brushes.Black, leftMargin, yPos, new StringFormat());
                 ev.Graphics.DrawString(Trancute(detail.ProdNm + " (" + detail.UnitCd + ")", 35), printfont, Brushes.Black, descmargin, yPos, new StringFormat());
                 ev.Graphics.DrawString(Trancute(detail.Quantity.ToString("0.00"), 5), printfont, Brushes.Black, qtymargin, yPos, new StringFormat());
                 //ev.Graphics.DrawString("*" + detail.Sp.ToString("0.00"), printfont, Brushes.Black, spmargin, yPos, new StringFormat());
                 yPos = yPos + printfont.GetHeight(ev.Graphics);
-                ev.Graphics.DrawString(detail.Quantity.ToString("0.00") +" * " + detail.Sp.ToString("0.00")+ "   " + detail.LineAmount + " " +detail.VatCd , printfont, Brushes.Black, leftMargin, yPos, new StringFormat());
+                ev.Graphics.DrawString(detail.Quantity.ToString("0.00") + " * " + detail.Sp.ToString("0.00") + "   " + detail.LineAmount + " " + detail.VatCd, printfont, Brushes.Black, leftMargin, yPos, new StringFormat());
             }
 
             //receipt summaries
             yPos = yPos + printfont.GetHeight(ev.Graphics);
-            ev.Graphics.DrawLine(pen, 0, yPos, 240, yPos+1);
+            ev.Graphics.DrawLine(pen, 0, yPos, 240, yPos + 1);
             ev.Graphics.DrawString("RENDERED        Kshs." + pos.CashGiven.ToString("0.00"), printfont, Brushes.Black, leftMargin, yPos, new StringFormat());
-            yPos = yPos + printfont.GetHeight(ev.Graphics)+1;
+            yPos = yPos + printfont.GetHeight(ev.Graphics) + 1;
             ev.Graphics.DrawString("TOTAL              Kshs." + pos.TotalAmount.ToString("0.00"), printfont, Brushes.Black, leftMargin, yPos, new StringFormat());
-            yPos = yPos + printfont.GetHeight(ev.Graphics)+1;
+            yPos = yPos + printfont.GetHeight(ev.Graphics) + 1;
 
             //check wheather the the transaction was cash or other payments. if other payment change will be zero.
             //declare change
@@ -113,16 +114,16 @@ namespace SHOPLITE.Models
             }
             else
                 change = pos.CashGiven - pos.TotalAmount;
-            ev.Graphics.DrawString("CHANGE          Kshs." +change.ToString("0.00"), printfont, Brushes.Black, leftMargin, yPos, new StringFormat());
-            yPos = yPos + printfont.GetHeight(ev.Graphics)+1;
+            ev.Graphics.DrawString("CHANGE          Kshs." + change.ToString("0.00"), printfont, Brushes.Black, leftMargin, yPos, new StringFormat());
+            yPos = yPos + printfont.GetHeight(ev.Graphics) + 1;
             ev.Graphics.DrawLine(pen, 0, yPos, 240, yPos);
             ev.Graphics.DrawString("Narration       " + pos.PaymentNarration, printfont, Brushes.Black, leftMargin, yPos, new StringFormat());
             yPos = yPos + printfont.GetHeight(ev.Graphics);
             ev.Graphics.DrawString("Served By       " + pos.Username, printfont, Brushes.Black, leftMargin, yPos, new StringFormat());
             yPos = yPos + printfont.GetHeight(ev.Graphics);
             ev.Graphics.DrawLine(pen, 0, yPos, 240, yPos);
-            printfont =new Font("Arial Narrow", 7);
-            yPos=yPos+ printfont.GetHeight(ev.Graphics);
+            printfont = new Font("Arial Narrow", 7);
+            yPos = yPos + printfont.GetHeight(ev.Graphics);
             ev.Graphics.DrawString("**Thank you For Shopping with us!!!!**", printfont, Brushes.Black, leftMargin, yPos, new StringFormat());
         }
         private string Trancute(string stringtotrancuate, int length)
@@ -137,6 +138,6 @@ namespace SHOPLITE.Models
                 return trancuated;
             }
         }
-        
+
     }
 }

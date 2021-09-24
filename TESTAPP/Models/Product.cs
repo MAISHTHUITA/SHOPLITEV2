@@ -92,8 +92,10 @@ namespace SHOPLITE.Models
 
             using (SqlConnection con = new SqlConnection(DbCon.connection))
             {
-                SqlCommand cmd = new SqlCommand("SpStockCard", con);
-                cmd.CommandType = CommandType.StoredProcedure;
+                SqlCommand cmd = new SqlCommand("SpStockCard", con)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
                 cmd.Parameters.AddWithValue("@fromProd", fromprod);
                 cmd.Parameters.AddWithValue("@toProd", toprod);
                 cmd.Parameters.AddWithValue("@fromdt", fromdt.Date);
@@ -378,18 +380,20 @@ namespace SHOPLITE.Models
                     }
                     while (rdr.Read())
                     {
-                        Product product = new Product();
-                        product.ProdCd = rdr["ProdCd"].ToString();
-                        product.ProdNm = rdr["ProdNm"].ToString();
-                        product.UnitCd = rdr["UnitCd"].ToString();
-                        product.DeptCd = rdr["DeptCd"].ToString();
-                        product.SuppCd = rdr["SuppCd"].ToString();
-                        product.VatCd = rdr["VatCd"].ToString();
-                        product.QtyAvble = Convert.ToDecimal(rdr["QtyAvble"].ToString());
-                        product.QtyOnOrder = Convert.ToDecimal(rdr["QtyOnOrder"].ToString());
-                        product.Cp = Convert.ToDecimal(rdr["Cp"].ToString());
-                        product.Sp = Convert.ToDecimal(rdr["Sp"].ToString());
-                        product.IsActive = Convert.ToBoolean(rdr["IsActive"].ToString());
+                        Product product = new Product
+                        {
+                            ProdCd = rdr["ProdCd"].ToString(),
+                            ProdNm = rdr["ProdNm"].ToString(),
+                            UnitCd = rdr["UnitCd"].ToString(),
+                            DeptCd = rdr["DeptCd"].ToString(),
+                            SuppCd = rdr["SuppCd"].ToString(),
+                            VatCd = rdr["VatCd"].ToString(),
+                            QtyAvble = Convert.ToDecimal(rdr["QtyAvble"].ToString()),
+                            QtyOnOrder = Convert.ToDecimal(rdr["QtyOnOrder"].ToString()),
+                            Cp = Convert.ToDecimal(rdr["Cp"].ToString()),
+                            Sp = Convert.ToDecimal(rdr["Sp"].ToString()),
+                            IsActive = Convert.ToBoolean(rdr["IsActive"].ToString())
+                        };
                         products.Add(product);
 
                     }
@@ -420,6 +424,7 @@ namespace SHOPLITE.Models
                 }
                 catch (Exception exe)
                 {
+                    Logger.Loggermethod(exe);
                     return false;
                 }
             }
@@ -439,6 +444,7 @@ namespace SHOPLITE.Models
                 }
                 catch (Exception exe)
                 {
+                    Logger.Loggermethod(exe);
                     return false;
                 }
             }
@@ -472,6 +478,7 @@ namespace SHOPLITE.Models
                 }
                 catch (Exception exe)
                 {
+                    Logger.Loggermethod(exe);
                     return null;
                 }
             }
@@ -497,6 +504,7 @@ namespace SHOPLITE.Models
                 }
                 catch (Exception exe)
                 {
+                    Logger.Loggermethod(exe);
                     return false;
                 }
             }
@@ -519,10 +527,12 @@ namespace SHOPLITE.Models
                     {
                         while (rdr.Read())
                         {
-                            ScanCode scan = new ScanCode();
-                            scan.ScanCd = rdr["Scancode"].ToString();
-                            scan.ProdCd = rdr["Prodcd"].ToString();
-                            scan.Unitcd = rdr["Unitcd"].ToString();
+                            ScanCode scan = new ScanCode
+                            {
+                                ScanCd = rdr["Scancode"].ToString(),
+                                ProdCd = rdr["Prodcd"].ToString(),
+                                Unitcd = rdr["Unitcd"].ToString()
+                            };
                             scans.Add(scan);
                         }
 
@@ -536,6 +546,7 @@ namespace SHOPLITE.Models
                 }
                 catch (Exception exe)
                 {
+                    Logger.Loggermethod(exe);
                     return null;
                 }
 

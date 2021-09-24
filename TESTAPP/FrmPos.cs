@@ -220,7 +220,7 @@ namespace SHOPLITE
                 MessageBox.Show("Print", "Print");
                 PrintClass printClass = new PrintClass();
                 ///dummy value
-                bool tobbe=true;
+                bool tobbe = true;
                 printClass.PrintReceipt(values, "ORIGINAL", out tobbe);
                 GvReceipt.Rows.Clear();
                 lblNetamount.Text = lbltotalamount.Text = lblvantamount.Text = "0.00";
@@ -232,7 +232,7 @@ namespace SHOPLITE
         private void btnCancelReceipt_Click(object sender, EventArgs e)
         {
             PrintClass print = new PrintClass();
-           // print.PrintReceipt();
+            // print.PrintReceipt();
         }
         #endregion
 

@@ -33,15 +33,15 @@ namespace SHOPLITE.ModalForms
             this.label6 = new System.Windows.Forms.Label();
             this.lblClose = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.btnNew = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
+            this.txtTillcode = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.Btn = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnNew = new System.Windows.Forms.Button();
+            this.cbIsActive = new System.Windows.Forms.CheckBox();
+            this.txtMachineName = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -79,85 +79,32 @@ namespace SHOPLITE.ModalForms
             this.lblClose.Size = new System.Drawing.Size(69, 17);
             this.lblClose.TabIndex = 0;
             this.lblClose.Text = "[CLOSE]";
+            this.lblClose.Click += new System.EventHandler(this.lblClose_Click);
             // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.txtTillcode);
             this.panel1.Controls.Add(this.btnCancel);
             this.panel1.Controls.Add(this.Btn);
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Controls.Add(this.btnNew);
-            this.panel1.Controls.Add(this.checkBox1);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.cbIsActive);
+            this.panel1.Controls.Add(this.txtMachineName);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.textBox2);
             this.panel1.Location = new System.Drawing.Point(15, 76);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(343, 173);
             this.panel1.TabIndex = 10;
             // 
-            // label1
+            // txtTillcode
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(35, 39);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(33, 14);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "TILL";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 74);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 14);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "MACHINE";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(91, 71);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(194, 22);
-            this.textBox1.TabIndex = 1;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(205, 41);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(79, 18);
-            this.checkBox1.TabIndex = 3;
-            this.checkBox1.Text = "Is Active";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(91, 39);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(108, 22);
-            this.textBox2.TabIndex = 4;
-            // 
-            // btnNew
-            // 
-            this.btnNew.Location = new System.Drawing.Point(23, 119);
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(68, 31);
-            this.btnNew.TabIndex = 5;
-            this.btnNew.Text = "NEW";
-            this.btnNew.UseVisualStyleBackColor = true;
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(97, 119);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(68, 31);
-            this.btnSave.TabIndex = 5;
-            this.btnSave.Text = "SAVE";
-            this.btnSave.UseVisualStyleBackColor = true;
+            this.txtTillcode.Location = new System.Drawing.Point(91, 43);
+            this.txtTillcode.Name = "txtTillcode";
+            this.txtTillcode.Size = new System.Drawing.Size(100, 22);
+            this.txtTillcode.TabIndex = 6;
+            this.txtTillcode.Leave += new System.EventHandler(this.txtTillcode_Leave);
             // 
             // btnCancel
             // 
@@ -177,6 +124,62 @@ namespace SHOPLITE.ModalForms
             this.Btn.Text = "TBI";
             this.Btn.UseVisualStyleBackColor = true;
             // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(97, 119);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(68, 31);
+            this.btnSave.TabIndex = 5;
+            this.btnSave.Text = "SAVE";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnNew
+            // 
+            this.btnNew.Location = new System.Drawing.Point(23, 119);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(68, 31);
+            this.btnNew.TabIndex = 5;
+            this.btnNew.Text = "NEW";
+            this.btnNew.UseVisualStyleBackColor = true;
+            // 
+            // cbIsActive
+            // 
+            this.cbIsActive.AutoSize = true;
+            this.cbIsActive.Checked = true;
+            this.cbIsActive.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbIsActive.Location = new System.Drawing.Point(205, 45);
+            this.cbIsActive.Name = "cbIsActive";
+            this.cbIsActive.Size = new System.Drawing.Size(79, 18);
+            this.cbIsActive.TabIndex = 3;
+            this.cbIsActive.Text = "Is Active";
+            this.cbIsActive.UseVisualStyleBackColor = true;
+            // 
+            // txtMachineName
+            // 
+            this.txtMachineName.Location = new System.Drawing.Point(91, 71);
+            this.txtMachineName.Name = "txtMachineName";
+            this.txtMachineName.Size = new System.Drawing.Size(194, 22);
+            this.txtMachineName.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 75);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 14);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "MACHINE";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(35, 47);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(33, 14);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "TILL";
+            // 
             // frmTillManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 14F);
@@ -191,6 +194,7 @@ namespace SHOPLITE.ModalForms
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.frmTillManagement_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -207,12 +211,12 @@ namespace SHOPLITE.ModalForms
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.CheckBox cbIsActive;
+        private System.Windows.Forms.TextBox txtMachineName;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button Btn;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnNew;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtTillcode;
     }
 }

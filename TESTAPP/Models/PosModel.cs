@@ -104,7 +104,7 @@ namespace SHOPLITE.Models
                 return false;
             }
         }
-        public  PosMaster GetReceipt(int posnumber, out List<PosDetail> details)
+        public PosMaster GetReceipt(int posnumber, out List<PosDetail> details)
         {
             List<PosDetail> receiptDetails = new List<PosDetail>();
             PosMaster receipt = new PosMaster();
@@ -115,7 +115,7 @@ namespace SHOPLITE.Models
                     SqlCommand command = new SqlCommand("GetPos", con);
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@ReceiptNo", posnumber);
-                    if (con.State==ConnectionState.Closed)
+                    if (con.State == ConnectionState.Closed)
                     {
                         con.Open();
                     }

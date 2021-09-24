@@ -30,11 +30,12 @@ namespace SHOPLITE
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnBackUpDB = new System.Windows.Forms.Button();
             this.btnReason = new System.Windows.Forms.Button();
             this.btnGroups = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.pnlmain = new System.Windows.Forms.Panel();
-            this.btnBackUpDB = new System.Windows.Forms.Button();
+            this.btnTill = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,6 +43,7 @@ namespace SHOPLITE
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(3)))), ((int)(((byte)(109)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.btnTill);
             this.panel1.Controls.Add(this.btnBackUpDB);
             this.panel1.Controls.Add(this.btnReason);
             this.panel1.Controls.Add(this.btnGroups);
@@ -52,6 +54,21 @@ namespace SHOPLITE
             this.panel1.Size = new System.Drawing.Size(828, 61);
             this.panel1.TabIndex = 0;
             // 
+            // btnBackUpDB
+            // 
+            this.btnBackUpDB.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnBackUpDB.FlatAppearance.BorderSize = 3;
+            this.btnBackUpDB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBackUpDB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBackUpDB.ForeColor = System.Drawing.Color.White;
+            this.btnBackUpDB.Location = new System.Drawing.Point(254, 10);
+            this.btnBackUpDB.Name = "btnBackUpDB";
+            this.btnBackUpDB.Size = new System.Drawing.Size(76, 35);
+            this.btnBackUpDB.TabIndex = 0;
+            this.btnBackUpDB.Text = "Back-Up";
+            this.btnBackUpDB.UseVisualStyleBackColor = true;
+            this.btnBackUpDB.Click += new System.EventHandler(this.btnBackUpDB_Click);
+            // 
             // btnReason
             // 
             this.btnReason.FlatAppearance.BorderColor = System.Drawing.Color.White;
@@ -59,9 +76,9 @@ namespace SHOPLITE
             this.btnReason.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReason.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReason.ForeColor = System.Drawing.Color.White;
-            this.btnReason.Location = new System.Drawing.Point(191, 10);
+            this.btnReason.Location = new System.Drawing.Point(172, 10);
             this.btnReason.Name = "btnReason";
-            this.btnReason.Size = new System.Drawing.Size(83, 35);
+            this.btnReason.Size = new System.Drawing.Size(76, 35);
             this.btnReason.TabIndex = 0;
             this.btnReason.Text = "Reason";
             this.btnReason.UseVisualStyleBackColor = true;
@@ -74,9 +91,9 @@ namespace SHOPLITE
             this.btnGroups.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGroups.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGroups.ForeColor = System.Drawing.Color.White;
-            this.btnGroups.Location = new System.Drawing.Point(102, 10);
+            this.btnGroups.Location = new System.Drawing.Point(90, 10);
             this.btnGroups.Name = "btnGroups";
-            this.btnGroups.Size = new System.Drawing.Size(83, 35);
+            this.btnGroups.Size = new System.Drawing.Size(76, 35);
             this.btnGroups.TabIndex = 0;
             this.btnGroups.Text = "GROUPS";
             this.btnGroups.UseVisualStyleBackColor = true;
@@ -91,7 +108,7 @@ namespace SHOPLITE
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(13, 10);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(83, 35);
+            this.button1.Size = new System.Drawing.Size(71, 35);
             this.button1.TabIndex = 0;
             this.button1.Text = "USERS";
             this.button1.UseVisualStyleBackColor = true;
@@ -106,20 +123,20 @@ namespace SHOPLITE
             this.pnlmain.Size = new System.Drawing.Size(412, 316);
             this.pnlmain.TabIndex = 1;
             // 
-            // btnBackUpDB
+            // btnTill
             // 
-            this.btnBackUpDB.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnBackUpDB.FlatAppearance.BorderSize = 3;
-            this.btnBackUpDB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBackUpDB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBackUpDB.ForeColor = System.Drawing.Color.White;
-            this.btnBackUpDB.Location = new System.Drawing.Point(280, 10);
-            this.btnBackUpDB.Name = "btnBackUpDB";
-            this.btnBackUpDB.Size = new System.Drawing.Size(83, 35);
-            this.btnBackUpDB.TabIndex = 0;
-            this.btnBackUpDB.Text = "Back-Up";
-            this.btnBackUpDB.UseVisualStyleBackColor = true;
-            this.btnBackUpDB.Click += new System.EventHandler(this.btnBackUpDB_Click);
+            this.btnTill.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnTill.FlatAppearance.BorderSize = 3;
+            this.btnTill.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTill.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTill.ForeColor = System.Drawing.Color.White;
+            this.btnTill.Location = new System.Drawing.Point(336, 10);
+            this.btnTill.Name = "btnTill";
+            this.btnTill.Size = new System.Drawing.Size(76, 35);
+            this.btnTill.TabIndex = 0;
+            this.btnTill.Text = "TILL";
+            this.btnTill.UseVisualStyleBackColor = true;
+            this.btnTill.Click += new System.EventHandler(this.btnTill_Click);
             // 
             // frmManagement
             // 
@@ -144,5 +161,6 @@ namespace SHOPLITE
         private System.Windows.Forms.Button btnReason;
         private System.Windows.Forms.Button btnGroups;
         private System.Windows.Forms.Button btnBackUpDB;
+        private System.Windows.Forms.Button btnTill;
     }
 }
