@@ -32,12 +32,21 @@ namespace SHOPLITE.ModalForms
             List<Product> products = productRepository.GetProducts().ToList();
             List<Supplier> suppliers = supplierRepository.GetSuppliers().ToList();
             List<Department> departments = departmentRepository.GetDepartments().ToList();
-            txtProdFrom.Text = products.First<Product>().ProdCd;
-            txtProdTo.Text = products.Last<Product>().ProdCd;
-            txtSuppFrom.Text = suppliers.First<Supplier>().SuppCd;
-            txtSuppTo.Text = suppliers.Last<Supplier>().SuppCd;
-            txtDeptFrom.Text = departments.First<Department>().DeptCd;
-            txtDeptTo.Text = departments.Last<Department>().DeptCd;
+            if (products.Count>=1)
+            {
+                txtProdFrom.Text = products.First<Product>().ProdCd;
+                txtProdTo.Text = products.Last<Product>().ProdCd;
+            }
+            if (suppliers.Count >= 1)
+            {
+                txtSuppFrom.Text = suppliers.First<Supplier>().SuppCd;
+                txtSuppTo.Text = suppliers.Last<Supplier>().SuppCd;
+            }
+            if (departments.Count >= 1)
+            {
+                txtDeptFrom.Text = departments.First<Department>().DeptCd;
+                txtDeptTo.Text = departments.Last<Department>().DeptCd;
+            }
             fromdt.Value = DateTime.Now.Date;
             dtto.Value = DateTime.Now.Date.AddHours(23).AddMinutes(59).AddSeconds(59);
 
@@ -74,6 +83,10 @@ namespace SHOPLITE.ModalForms
         }
         private void txtProdFrom_Leave(object sender, EventArgs e)
         {
+            if (String.IsNullOrEmpty(txtDeptFrom))
+            {
+
+            }
             ProductRepository product = new ProductRepository();
             if (product.GetProduct(txtProdFrom.Text) == null)
             {

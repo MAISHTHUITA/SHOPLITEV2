@@ -1,4 +1,5 @@
 ﻿using SHOPLITE.ModalForms;
+using SHOPLITE.Models;
 using System;
 using System.Windows.Forms;
 
@@ -13,7 +14,11 @@ namespace SHOPLITE
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            if (!GroupPolicy.CheckPolicy(Properties.Settings.Default.USERNAME, "PC"))
+            {
+                MessageBox.Show("Sorry, your Account Has Insufficient Privelleges To Open This Module", "Check Right", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
             Form form = frmPriceChange.Instance;
             form.TopLevel = false;
 
@@ -28,7 +33,11 @@ namespace SHOPLITE
         }
         private void btnStockCard_Click(object sender, EventArgs e)
         {
-
+            if (!GroupPolicy.CheckPolicy(Properties.Settings.Default.USERNAME, "SC"))
+            {
+                MessageBox.Show("Sorry, your Account Has Insufficient Privelleges To Open This Module", "Check Right", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
             Form form = frmStockCard.Instance;
             form.TopLevel = false;
             mainpnl.Controls.Add(form);
@@ -37,7 +46,11 @@ namespace SHOPLITE
         }
         private void btnViewgrn_Click(object sender, EventArgs e)
         {
-
+            if (!GroupPolicy.CheckPolicy(Properties.Settings.Default.USERNAME, "VG"))
+            {
+                MessageBox.Show("Sorry, your Account Has Insufficient Privelleges To Open This Module", "Check Right", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
             Form form = frmViewGrn.Instance;
             form.TopLevel = false;
             mainpnl.Controls.Add(form);

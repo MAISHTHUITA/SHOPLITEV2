@@ -29,6 +29,11 @@ namespace SHOPLITE.ModalForms
         }
         private void btnNew_Click(object sender, EventArgs e)
         {
+            if (!GroupPolicy.CheckPolicy(Properties.Settings.Default.USERNAME, "PM"))
+            {
+                MessageBox.Show("Sorry, your Account Has Insufficient Privelleges To Open This Module", "Check Right", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
             using (frmNewProd prod = new frmNewProd() { product1 = new Product() })
             {
                 if (prod.ShowDialog() == DialogResult.OK)
@@ -47,6 +52,11 @@ namespace SHOPLITE.ModalForms
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            if (!GroupPolicy.CheckPolicy(Properties.Settings.Default.USERNAME, "PM"))
+            {
+                MessageBox.Show("Sorry, your Account Has Insufficient Privelleges To Open This Module", "Check Right", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
             ProductRepository repository = new ProductRepository();
             if (repository.GetProduct(prodCdTextBox.Text) == null)
             { MessageBox.Show("Invalid Product Code."); return; }
@@ -99,6 +109,11 @@ namespace SHOPLITE.ModalForms
 
         private void btnCost_Click(object sender, EventArgs e)
         {
+            if (!GroupPolicy.CheckPolicy(Properties.Settings.Default.USERNAME, "PM"))
+            {
+                MessageBox.Show("Sorry, your Account Has Insufficient Privelleges To Open This Module", "Check Right", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
             ProductRepository repository = new ProductRepository();
             Product product = repository.GetProduct(prodCdTextBox.Text);
             if (product == null)
@@ -112,6 +127,11 @@ namespace SHOPLITE.ModalForms
 
         private void btnSell_Click(object sender, EventArgs e)
         {
+            if (!GroupPolicy.CheckPolicy(Properties.Settings.Default.USERNAME, "PM"))
+            {
+                MessageBox.Show("Sorry, your Account Has Insufficient Privelleges To Open This Module", "Check Right", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
             ProductRepository repository = new ProductRepository();
             Product product = repository.GetProduct(prodCdTextBox.Text);
             if (product == null)
@@ -125,6 +145,11 @@ namespace SHOPLITE.ModalForms
 
         private void btnScan_Click(object sender, EventArgs e)
         {
+            if (!GroupPolicy.CheckPolicy(Properties.Settings.Default.USERNAME, "PM"))
+            {
+                MessageBox.Show("Sorry, your Account Has Insufficient Privelleges To Open This Module", "Check Right", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
             ProductRepository repository = new ProductRepository();
             Product product = repository.GetProduct(prodCdTextBox.Text);
             if (product == null)

@@ -54,6 +54,7 @@ namespace SHOPLITE
             this.btnManagement = new System.Windows.Forms.Button();
             this.btnDashboard = new System.Windows.Forms.Button();
             this.MainPanel = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.TopPanel.SuspendLayout();
             this.BottomPanel.SuspendLayout();
             this.LeftSidePanel.SuspendLayout();
@@ -228,6 +229,7 @@ namespace SHOPLITE
             this.LeftSidePanel.Controls.Add(this.btnPos);
             this.LeftSidePanel.Controls.Add(this.btnProducts);
             this.LeftSidePanel.Controls.Add(this.btnReports);
+            this.LeftSidePanel.Controls.Add(this.button1);
             this.LeftSidePanel.Controls.Add(this.btnInventory);
             this.LeftSidePanel.Controls.Add(this.btnManagement);
             this.LeftSidePanel.Controls.Add(this.btnDashboard);
@@ -280,7 +282,7 @@ namespace SHOPLITE
             this.btnPos.Font = new System.Drawing.Font("Lucida Fax", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPos.Image = ((System.Drawing.Image)(resources.GetObject("btnPos.Image")));
             this.btnPos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPos.Location = new System.Drawing.Point(18, 214);
+            this.btnPos.Location = new System.Drawing.Point(15, 57);
             this.btnPos.Name = "btnPos";
             this.btnPos.Size = new System.Drawing.Size(189, 46);
             this.btnPos.TabIndex = 0;
@@ -297,7 +299,7 @@ namespace SHOPLITE
             this.btnProducts.Font = new System.Drawing.Font("Lucida Fax", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProducts.Image = ((System.Drawing.Image)(resources.GetObject("btnProducts.Image")));
             this.btnProducts.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProducts.Location = new System.Drawing.Point(15, 58);
+            this.btnProducts.Location = new System.Drawing.Point(15, 159);
             this.btnProducts.Name = "btnProducts";
             this.btnProducts.Size = new System.Drawing.Size(189, 46);
             this.btnProducts.TabIndex = 0;
@@ -314,7 +316,7 @@ namespace SHOPLITE
             this.btnReports.Font = new System.Drawing.Font("Lucida Fax", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReports.Image = ((System.Drawing.Image)(resources.GetObject("btnReports.Image")));
             this.btnReports.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReports.Location = new System.Drawing.Point(18, 162);
+            this.btnReports.Location = new System.Drawing.Point(15, 210);
             this.btnReports.Name = "btnReports";
             this.btnReports.Size = new System.Drawing.Size(189, 46);
             this.btnReports.TabIndex = 0;
@@ -331,7 +333,7 @@ namespace SHOPLITE
             this.btnInventory.Font = new System.Drawing.Font("Lucida Fax", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInventory.Image = ((System.Drawing.Image)(resources.GetObject("btnInventory.Image")));
             this.btnInventory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInventory.Location = new System.Drawing.Point(18, 110);
+            this.btnInventory.Location = new System.Drawing.Point(15, 108);
             this.btnInventory.Name = "btnInventory";
             this.btnInventory.Size = new System.Drawing.Size(189, 46);
             this.btnInventory.TabIndex = 0;
@@ -383,6 +385,23 @@ namespace SHOPLITE
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.Size = new System.Drawing.Size(919, 630);
             this.MainPanel.TabIndex = 4;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Lucida Fax", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(15, 261);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(189, 46);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "  CLY";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.btnInventory_Click);
             // 
             // MainForm
             // 
@@ -437,6 +456,7 @@ namespace SHOPLITE
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button AppCloseBtn;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button1;
     }
 }
 

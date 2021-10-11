@@ -38,6 +38,11 @@ namespace SHOPLITE.ModalForms
         }
         private void btnNewCust_Click(object sender, EventArgs e)
         {
+            if (!GroupPolicy.CheckPolicy(Properties.Settings.Default.USERNAME, "CM"))
+            {
+                MessageBox.Show("Sorry, your Account Has Insufficient Privelleges To Open This Module", "Check Right", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
             using (frmNewCust form = new frmNewCust() { customer1 = new Customer() })
             {
                 form.ShowDialog();
@@ -81,6 +86,11 @@ namespace SHOPLITE.ModalForms
 
         private void btnEditCust_Click(object sender, EventArgs e)
         {
+            if (!GroupPolicy.CheckPolicy(Properties.Settings.Default.USERNAME, "CM"))
+            {
+                MessageBox.Show("Sorry, your Account Has Insufficient Privelleges To Open This Module", "Check Right", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
             if (String.IsNullOrEmpty(txtCustCd.Text))
             {
                 MessageBox.Show("Please enter Customer code to Edit", "Error");

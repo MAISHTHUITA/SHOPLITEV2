@@ -37,6 +37,11 @@ namespace SHOPLITE.ModalForms
         }
         private void btnNewVat_Click(object sender, EventArgs e)
         {
+            if (!GroupPolicy.CheckPolicy(Properties.Settings.Default.USERNAME, "VM"))
+            {
+                MessageBox.Show("Sorry, your Account Has Insufficient Privelleges To Open This Module", "Check Right", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
             FrmNewVat formy = new FrmNewVat() { Vat1 = new Vat() };
 
             formy.ShowDialog();
@@ -47,6 +52,11 @@ namespace SHOPLITE.ModalForms
 
         private void btnEditVat_Click(object sender, EventArgs e)
         {
+            if (!GroupPolicy.CheckPolicy(Properties.Settings.Default.USERNAME, "VM"))
+            {
+                MessageBox.Show("Sorry, your Account Has Insufficient Privelleges To Open This Module", "Check Right", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
             if (String.IsNullOrEmpty(txtVatCode.Text))
             {
                 MessageBox.Show("Please Enter Vat Code", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

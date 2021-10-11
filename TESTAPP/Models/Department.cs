@@ -61,10 +61,10 @@ namespace SHOPLITE.Models
                     }
 
                 }
-                catch (Exception)
+                catch (Exception exe)
                 {
-
-                    throw;
+                    Logger.Loggermethod(exe);
+                    return false;
                 }
 
             }
@@ -146,7 +146,7 @@ namespace SHOPLITE.Models
                     SqlDataReader reader = cmd.ExecuteReader();
                     if (!reader.HasRows)
                     {
-                        return null;
+                        return departments;
                     }
                     while (reader.Read())
                     {

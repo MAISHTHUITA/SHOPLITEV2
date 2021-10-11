@@ -66,7 +66,7 @@ namespace SHOPLITE
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            UserRepository repository = new UserRepository();
+            User repository = new User();
 
             if (repository.Login(txtUsername.Text.ToUpper(), txtPassword.Text))
             {

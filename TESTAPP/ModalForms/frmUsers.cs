@@ -27,16 +27,15 @@ namespace SHOPLITE.ModalForms
         }
         private void frmUsers_Load(object sender, EventArgs e)
         {
-            UserRepository repository = new UserRepository();
-            List<UserGroup> userGroups = repository.GetUserGroups().ToList();
-            if (userGroups.Count <= 0)
-            {
-                return;
-            }
             cbxUsergroup.Items.Clear();
-            foreach (UserGroup userGroup in userGroups)
+            Group group = new Group();
+            List<Group> groups = group.GetGroups().ToList();
+            if (groups.Count >= 1)
             {
-                cbxUsergroup.Items.Add(userGroup.GroupCode);
+                foreach (Group item in groups)
+                {
+                    cbxUsergroup.Items.Add(item.GroupCode);
+                }
             }
         }
 
@@ -73,8 +72,8 @@ namespace SHOPLITE.ModalForms
                 txtConfirmPwd.Focus();
                 return;
             }
-            UserRepository repository = new UserRepository();
-            if (repository.GetUserGroup(cbxUsergroup.Text) == null)
+            Group group = new Group();
+            if (group.GetGroup(cbxUsergroup.Text) == null)
             {
                 MessageBox.Show("Please Enter Valid Group.", "Invalid Group", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -84,6 +83,7 @@ namespace SHOPLITE.ModalForms
             user.UserName = txtUsername.Text;
             user.Password = txtPassword.Text;
             user.FullName = txtFullname.Text;
+            user.IsActive = isUserActive.Checked;
             if (cbxUsergroup.Items.Count == 0)
             {
                 user.GroupCode = "Undefined";
@@ -91,9 +91,9 @@ namespace SHOPLITE.ModalForms
             else
                 user.GroupCode = cbxUsergroup.Text;
             // if not null this is an update else create
-            if (repository.GetUserWithRoles(txtUsername.Text) != null)
+            if (user.GetUser(txtUsername.Text) != null)
             {
-                if (repository.UpdateUser(user))
+                if (user.UpdateUser(user))
                 {
                     MessageBox.Show("User updated Successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     btnCancel_Click(sender, e);
@@ -105,7 +105,7 @@ namespace SHOPLITE.ModalForms
             }
             else
             {
-                if (repository.CreateUser(user))
+                if (user.CreateUser(user))
                 {
                     MessageBox.Show("User Created Successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     btnCancel_Click(sender, e);
@@ -135,19 +135,26 @@ namespace SHOPLITE.ModalForms
         {
             if (!String.IsNullOrEmpty(txtUsername.Text))
             {
-                UserRepository repository = new UserRepository();
-                if (repository.GetUserWithRoles(txtUsername.Text) != null)
+
+                User user = new User();
+                user = user.GetUser(txtUsername.Text);
+                if (user != null)
                 {
-                    UserGroup userGroup = new UserGroup();
-                    userGroup = repository.GetUserWithRoles(txtUsername.Text);
-                    txtUsername.Text = userGroup.UserName;
-                    txtFullname.Text = userGroup.FullName;
-                    EncryptKey encryptKey = new EncryptKey();
-                    txtPassword.Text = txtConfirmPwd.Text = encryptKey.Decryptor(userGroup.Password);
-                    cbxUsergroup.Text = userGroup.GroupCode;
+                    txtUsername.Text = user.UserName;
+                    txtFullname.Text = user.FullName;
+                    isUserActive.Checked = user.IsActive;
+                    EncryptKey key = new EncryptKey();
+                    txtPassword.Text = txtConfirmPwd.Text = key.Decryptor(user.Password);
+                    cbxUsergroup.Text = user.GroupCode;
+                }
+                else
+                {
+                    Initializecontrols();
+
                 }
             }
         }
+
 
         private void lblClose_Click(object sender, EventArgs e)
         {
@@ -158,6 +165,7 @@ namespace SHOPLITE.ModalForms
                 this.Close();
                 _instance = null;
             }
+
         }
     }
 }

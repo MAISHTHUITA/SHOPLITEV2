@@ -29,6 +29,11 @@ namespace SHOPLITE.ModalForms
         }
         private void btnNewUnit_Click(object sender, EventArgs e)
         {
+            if (!GroupPolicy.CheckPolicy(Properties.Settings.Default.USERNAME, "UM"))
+            {
+                MessageBox.Show("Sorry, your Account Has Insufficient Privelleges To Open This Module", "Check Right", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
             using (frnNewUnit newUnit = new frnNewUnit() { CreatedUnitCode = string.Empty })
             {
                 newUnit.ShowDialog();
@@ -69,6 +74,11 @@ namespace SHOPLITE.ModalForms
         }
         private void btnEditUnit_Click(object sender, EventArgs e)
         {
+            if (!GroupPolicy.CheckPolicy(Properties.Settings.Default.USERNAME, "UM"))
+            {
+                MessageBox.Show("Sorry, your Account Has Insufficient Privelleges To Open This Module", "Check Right", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
             if (String.IsNullOrEmpty(txtUnitCd.Text))
             {
                 MessageBox.Show("Please enter unit Code.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -48,6 +48,10 @@ namespace SHOPLITE.Models
         }
         private bool checkbase64(string input)
         {
+            if (string.IsNullOrEmpty(input))
+            {
+                return false;
+            }
             byte[] output = null;
             try
             {

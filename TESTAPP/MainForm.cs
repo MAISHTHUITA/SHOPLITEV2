@@ -32,35 +32,24 @@ namespace SHOPLITE
 
         private void btnInventory_Click(object sender, EventArgs e)
         {
-            UserRepository userRepository = new UserRepository();
-            if (userRepository.GetUserWithRoles(Properties.Settings.Default.USERNAME).CANVIEWSTOCK && userRepository.GetUserWithRoles(Properties.Settings.Default.USERNAME).CANCHANGECP &&
-                userRepository.GetUserWithRoles(Properties.Settings.Default.USERNAME).CANCHANGESP && userRepository.GetUserWithRoles(Properties.Settings.Default.USERNAME).CANADDSTOCK)
-            {
-                Form inventory = frmInventory.Instance;
-                inventory.TopLevel = false;
-                MainPanel.Controls.Add(inventory);
-                inventory.BringToFront();
-                inventory.Show();
-            }
-            else
-                MessageBox.Show("You have insufficient privillege to view requested resource");
+
+            Form inventory = frmInventory.Instance;
+            inventory.TopLevel = false;
+            MainPanel.Controls.Add(inventory);
+            inventory.BringToFront();
+            inventory.Show();
 
         }
 
         private void btnProducts_Click(object sender, EventArgs e)
         {
-            UserRepository userRepository = new UserRepository();
-            if (userRepository.GetUserWithRoles(Properties.Settings.Default.USERNAME).CANVIEWSTOCK && userRepository.GetUserWithRoles(Properties.Settings.Default.USERNAME).CANCHANGECP &&
-                userRepository.GetUserWithRoles(Properties.Settings.Default.USERNAME).CANCHANGESP && userRepository.GetUserWithRoles(Properties.Settings.Default.USERNAME).CANADDSTOCK)
-            {
-                Form form = frmProduct.Instance;
-                form.TopLevel = false;
-                MainPanel.Controls.Add(form);
-                form.BringToFront();
-                form.Show();
-            }
-            else
-                MessageBox.Show("You have insufficient privillege to view requested resource");
+
+            Form form = frmProduct.Instance;
+            form.TopLevel = false;
+            MainPanel.Controls.Add(form);
+            form.BringToFront();
+            form.Show();
+
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -110,17 +99,14 @@ namespace SHOPLITE
 
         private void btnManagement_Click(object sender, EventArgs e)
         {
-            UserRepository userRepository = new UserRepository();
-            if (userRepository.GetUserWithRoles(Properties.Settings.Default.USERNAME).CANVIEWSTOCK && userRepository.GetUserWithRoles(Properties.Settings.Default.USERNAME).CANCHANGECP &&
-                userRepository.GetUserWithRoles(Properties.Settings.Default.USERNAME).CANCHANGESP && userRepository.GetUserWithRoles(Properties.Settings.Default.USERNAME).CANADDSTOCK)
-            {
-                Form form = frmManagement.Instance;
-                form.TopLevel = false;
-                MainPanel.Controls.Add(form);
-                form.Dock = DockStyle.Fill;
-                form.BringToFront();
-                form.Show();
-            }
+
+            Form form = frmManagement.Instance;
+            form.TopLevel = false;
+            MainPanel.Controls.Add(form);
+            form.Dock = DockStyle.Fill;
+            form.BringToFront();
+            form.Show();
+
         }
 
         private void AppCloseBtn_Click(object sender, EventArgs e)
@@ -144,6 +130,11 @@ namespace SHOPLITE
 
         private void btnPos_Click(object sender, EventArgs e)
         {
+            if (!GroupPolicy.CheckPolicy(Properties.Settings.Default.USERNAME, "POS"))
+            {
+                MessageBox.Show("Sorry, your Account Has Insufficient Privelleges To Open This Module", "Check Right", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
             Form form = frmPOS.Instance;
             form.TopLevel = false;
             MainPanel.Controls.Add(form);

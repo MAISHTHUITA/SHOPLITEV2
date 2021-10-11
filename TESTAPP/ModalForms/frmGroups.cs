@@ -1,5 +1,7 @@
 ﻿using SHOPLITE.Models;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace SHOPLITE.ModalForms
@@ -23,104 +25,87 @@ namespace SHOPLITE.ModalForms
 
         private void txtGroupcode_Leave(object sender, EventArgs e)
         {
-            UserRepository repository = new UserRepository();
-            UserGroup userGroup = new UserGroup();
-            if (repository.GetUserGroup(txtGroupcode.Text) != null)
-            {
-                userGroup = repository.GetUserGroup(txtGroupcode.Text);
-                txtGroupcode.Text = userGroup.GroupCode;
-                txtGroupname.Text = userGroup.GroupName;
-                cbAddStock.Checked = userGroup.CANADDSTOCK;
-                cbViewStock.Checked = userGroup.CANVIEWSTOCK;
-                cbIssueStock.Checked = userGroup.CANISSUESTOCK;
-                cbManageUsers.Checked = userGroup.CANMANAGEUSERS;
-                cbChangeCp.Checked = userGroup.CANCHANGECP;
-                cbChangeSp.Checked = userGroup.CANCHANGESP;
-                cbAdjustStock.Checked = userGroup.CANADJUSTSTOCK;
-            }
-            else
-                Clearcontrols();
+            //UserRepository repository = new UserRepository();
+            //UserGroup userGroup = new UserGroup();
+            //if (repository.GetUserGroup(txtGroupcode.Text) != null)
+            //{
+            //    userGroup = repository.GetUserGroup(txtGroupcode.Text);
+            //    txtGroupcode.Text = userGroup.GroupCode;
+            //    txtGroupname.Text = userGroup.GroupName;
+
+            //}
+            //else
+            Clearcontrols();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(txtGroupcode.Text))
+            if (string.IsNullOrEmpty(cbGroups.Text))
             {
-                txtGroupcode.Focus();
+                MessageBox.Show("PLEASE ENTER GROUP CODE", "Empty Group Code");
                 return;
             }
-            if (String.IsNullOrEmpty(txtGroupname.Text))
+            if (string.IsNullOrEmpty(txtGroupname.Text))
             {
-                txtGroupname.Focus();
+                MessageBox.Show("PLEASE ENTER GROUP DESCRIPTION", "Empty Group Description");
                 return;
             }
-            UserRepository repository = new UserRepository();
-            UserGroup userGroup = new UserGroup();
-            //excute addgroup command to save the userrgroup 
-            if (repository.GetUserGroup(txtGroupcode.Text) == null)
+            Group group = new Group();
+            group.GroupCode = cbGroups.Text;
+            group.GroupName = txtGroupname.Text;
+            group.CreatedBy = Properties.Settings.Default.USERNAME;
+            group.IsActive = cbIsActive.Checked;
+            if (group.GetGroup(cbGroups.Text) == null)
             {
-                userGroup.GroupCode = txtGroupcode.Text;
-                userGroup.GroupName = txtGroupname.Text;
-                userGroup.CANADDSTOCK = cbAddStock.Checked;
-                userGroup.CANVIEWSTOCK = cbViewStock.Checked;
-                userGroup.CANISSUESTOCK = cbIssueStock.Checked;
-                userGroup.CANMANAGEUSERS = cbManageUsers.Checked;
-                userGroup.CANCHANGECP = cbChangeCp.Checked;
-                userGroup.CANCHANGESP = cbChangeSp.Checked;
-                userGroup.CANADJUSTSTOCK = cbAdjustStock.Checked;
-                if (repository.AddUserGroup(userGroup))
+                if (group.CreateGroup(group))
                 {
-                    MessageBox.Show("Group added successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    btnCancel_Click(sender, e);
+                    MessageBox.Show("Group Saved Successfully", "Success");
+                    initialize();
+                    cbGroups.Text = group.GroupCode;
+                    cbGroups_SelectedIndexChanged(sender, e);
                 }
                 else
-                {
-                    MessageBox.Show("Group adding Failed. Please try again!!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-
+                    MessageBox.Show("Error  on Saving", "Error");
             }
-            //this is an update
             else
             {
-                userGroup.GroupCode = txtGroupcode.Text;
-                userGroup.GroupName = txtGroupname.Text;
-                userGroup.CANADDSTOCK = cbAddStock.Checked;
-                userGroup.CANVIEWSTOCK = cbViewStock.Checked;
-                userGroup.CANISSUESTOCK = cbIssueStock.Checked;
-                userGroup.CANMANAGEUSERS = cbManageUsers.Checked;
-                userGroup.CANCHANGECP = cbChangeCp.Checked;
-                userGroup.CANCHANGESP = cbChangeSp.Checked;
-                userGroup.CANADJUSTSTOCK = cbAdjustStock.Checked;
-                if (repository.UpdateUserGroup(userGroup))
+                List<GroupModel> models = new List<GroupModel>();
+
+                foreach (DataGridViewRow item in dgvPolicy.Rows)
                 {
-                    MessageBox.Show("Group updated successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    btnCancel_Click(sender, e);
+                    GroupModel model = new GroupModel();
+                    model.ModuleCode = item.Cells[0].Value.ToString();
+                    model.GroupCode = group.GroupCode;
+                    if (Convert.ToBoolean(item.Cells[2].Value) == true)
+                    {
+                        model.Policy = "Y";
+                    }
+                    else
+                        model.Policy = "N";
+
+                    models.Add(model);
+                }
+                if (group.EditGroup(group, models))
+                {
+                    MessageBox.Show("Group Updated Successfully", "Success");
                 }
                 else
-                {
-                    MessageBox.Show("Group update Failed. Please try again!!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+                    MessageBox.Show("Error  on Updating", "Error");
 
             }
+
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            txtGroupcode.Text = "";
-            Clearcontrols();
-            txtGroupcode.Focus();
+            initialize();
+            cbGroups.Focus();
         }
 
         private void Clearcontrols()
         {
             txtGroupname.Text = "";
-            cbAddStock.Checked = false;
-            cbViewStock.Checked = false;
-            cbIssueStock.Checked = false;
-            cbManageUsers.Checked = false;
-            cbChangeCp.Checked = false;
-            cbChangeSp.Checked = false;
-            cbAdjustStock.Checked = false;
+
         }
 
         private void lblClose_Click(object sender, EventArgs e)
@@ -132,6 +117,76 @@ namespace SHOPLITE.ModalForms
                 this.Close();
                 _instance = null;
             }
+        }
+
+        private void frmGroups_Load(object sender, EventArgs e)
+        {
+            initialize();
+        }
+        private void initialize()
+        {
+            cbGroups.Items.Clear();
+            Group group = new Group();
+            List<Group> groups = group.GetGroups().ToList();
+            if (groups.Count >= 1)
+            {
+                foreach (Group item in groups)
+                {
+                    cbGroups.Items.Add(item.GroupCode);
+                }
+            }
+            dgvPolicy.Rows.Clear();
+            txtGroupname.Text = "";
+        }
+
+        private void cbGroups_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(cbGroups.Text))
+                {
+                    Group group = new Group();
+                    group = group.GetGroup(cbGroups.Text);
+                    if (group != null)
+                    {
+                        cbGroups.Text = group.GroupCode;
+                        cbGroups.SelectedItem = group.GroupCode;
+                        txtGroupname.Text = group.GroupName;
+                        cbIsActive.Checked = group.IsActive;
+                        dgvPolicy.Rows.Clear();
+                        GroupPolicy model = new GroupPolicy();
+                        List<GroupPolicy> policies = new List<GroupPolicy>();
+                        policies = model.GetGroups(group.GroupCode).ToList();
+                        if (policies.Count >= 1)
+                        {
+                            foreach (GroupPolicy item in policies)
+                            {
+                                bool pcy = false;
+                                if (item.Policy == "Y")
+                                {
+                                    pcy = true;
+                                }
+                                dgvPolicy.Rows.Add(item.ModuleCode, item.ModuleDescription, pcy);
+                            }
+                        }
+                    }
+
+                    else
+                        initialize();
+                }
+                else
+                    initialize();
+            }
+            catch (Exception exe)
+            {
+                throw;
+            }
+
+        }
+
+        private void cbGroups_Leave(object sender, EventArgs e)
+        {
+            cbGroups_SelectedIndexChanged(sender, e);
         }
     }
 }

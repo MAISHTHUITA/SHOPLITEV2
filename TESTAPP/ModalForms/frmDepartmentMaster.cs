@@ -28,11 +28,21 @@ namespace SHOPLITE.ModalForms
         }
         private void btnNewDept_Click(object sender, EventArgs e)
         {
+            if (!GroupPolicy.CheckPolicy(Properties.Settings.Default.USERNAME, "DM"))
+            {
+                MessageBox.Show("Sorry, your Account Has Insufficient Privelleges To Open This Module", "Check Right", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
             Form dept = frmNewDept.Instance;
             dept.ShowDialog();
         }
         private void btnEditDept_Click(object sender, EventArgs e)
         {
+            if (!GroupPolicy.CheckPolicy(Properties.Settings.Default.USERNAME, "DM"))
+            {
+                MessageBox.Show("Sorry, your Account Has Insufficient Privelleges To Open This Module", "Check Right", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
             if (String.IsNullOrEmpty(deptCdTextBox.Text))
             {
                 MessageBox.Show("Please Enter Department Code", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

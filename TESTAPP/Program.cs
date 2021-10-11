@@ -1,6 +1,7 @@
 ﻿using SHOPLITE.Models;
 using System;
 using System.Data.SqlClient;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace SHOPLITE
@@ -13,14 +14,39 @@ namespace SHOPLITE
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            if (!confirmconnection())
+            using (var mutex = new Mutex(false, "SHOPLITEV2"))
             {
+                bool isAnotherInstanceOpen = !mutex.WaitOne(TimeSpan.Zero);
+                if (isAnotherInstanceOpen)
+                {
+                    MessageBox.Show("Shop Lite Application is Already Runnig","ShopLiteV2",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    return;
+                }
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                if (!confirmconnection())
+                {
 
-                Dbsettings db = new Dbsettings();
-                db.ShowDialog();
-                if (db.DialogResult == DialogResult.OK)
+                    Dbsettings db = new Dbsettings();
+                    db.ShowDialog();
+                    if (db.DialogResult == DialogResult.OK)
+                    {
+                        using (frmLogin login = new frmLogin() { user = new Models.User() })
+                        {
+                            login.ShowDialog();
+                            if (login.DialogResult == DialogResult.OK)
+                            {
+                                Properties.Settings.Default.USERNAME = login.user.UserName;
+                                Properties.Settings.Default.COMPANYNAME = login.Company;
+                                Properties.Settings.Default.BRANCHNAME = login.Branch;
+                                Properties.Settings.Default.Save();
+                                Application.Run(new MainForm());
+                            }
+                        }
+                    }
+
+                }
+                else
                 {
                     using (frmLogin login = new frmLogin() { user = new Models.User() })
                     {
@@ -35,23 +61,9 @@ namespace SHOPLITE
                         }
                     }
                 }
-
+                mutex.ReleaseMutex();
             }
-            else
-            {
-                using (frmLogin login = new frmLogin() { user = new Models.User() })
-                {
-                    login.ShowDialog();
-                    if (login.DialogResult == DialogResult.OK)
-                    {
-                        Properties.Settings.Default.USERNAME = login.user.UserName;
-                        Properties.Settings.Default.COMPANYNAME = login.Company;
-                        Properties.Settings.Default.BRANCHNAME = login.Branch;
-                        Properties.Settings.Default.Save();
-                        Application.Run(new MainForm());
-                    }
-                }
-            }
+            
 
 
 

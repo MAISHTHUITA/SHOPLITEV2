@@ -11,6 +11,7 @@
 "SccLocalPath" = "8:"
 "SccAuxPath" = "8:"
 "SccProvider" = "8:"
+"BackwardsCompatibleGUIDGeneration" = "8:TRUE"
     "Hierarchy"
     {
         "Entry"
@@ -45,6 +46,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_603D37A384B6CC5BA31AE14E5662737B"
+        "OwnerKey" = "8:_78E4A94D64754AB5A7607DC7077E9D9E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_603D37A384B6CC5BA31AE14E5662737B"
+        "OwnerKey" = "8:_8B632CE4DD0EC7219578F81881542902"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_65783A5846AA0501EA0041D0638F71EE"
         "OwnerKey" = "8:_35D7931A6B5F6CB97A3D4B3CCEA55319"
         "MsmSig" = "8:_UNDEFINED"
@@ -69,6 +82,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_8B632CE4DD0EC7219578F81881542902"
+        "OwnerKey" = "8:_78E4A94D64754AB5A7607DC7077E9D9E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_FCC0648BC8E502BAA8252E82C16E00AC"
         "OwnerKey" = "8:_78E4A94D64754AB5A7607DC7077E9D9E"
         "MsmSig" = "8:_UNDEFINED"
@@ -83,6 +102,18 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_78E4A94D64754AB5A7607DC7077E9D9E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_8B632CE4DD0EC7219578F81881542902"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_603D37A384B6CC5BA31AE14E5662737B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -323,6 +354,37 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_603D37A384B6CC5BA31AE14E5662737B"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:zxing, Version=0.16.6.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_603D37A384B6CC5BA31AE14E5662737B"
+                    {
+                    "Name" = "8:zxing.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:zxing.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_522D8C3893474C5895DF5A435A7547CE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_65783A5846AA0501EA0041D0638F71EE"
             {
             "AssemblyRegister" = "3:1"
@@ -368,6 +430,37 @@
                     }
                 }
             "SourcePath" = "8:CrystalDecisions.ReportAppServer.Prompting.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_522D8C3893474C5895DF5A435A7547CE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_8B632CE4DD0EC7219578F81881542902"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:zxing.presentation, Version=0.16.6.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_8B632CE4DD0EC7219578F81881542902"
+                    {
+                    "Name" = "8:zxing.presentation.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:zxing.presentation.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_522D8C3893474C5895DF5A435A7547CE"
@@ -484,7 +577,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:SHOPLITE V2"
         "ProductCode" = "8:{7E1160D9-5DD8-4BE7-A526-83158B830495}"
-        "PackageCode" = "8:{241E085A-9B77-480A-B123-DA043B7B8B6B}"
+        "PackageCode" = "8:{777AA0D7-36D4-420C-B268-5728ABAEF481}"
         "UpgradeCode" = "8:{72C9795D-1C0B-4C27-94E1-71A66F438BE0}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -500,7 +593,7 @@
         "ARPCONTACT" = "8:MICHAEL MAINA THUITA"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
-        "ARPURLINFOABOUT" = "8:www.thuitas.com"
+        "ARPURLINFOABOUT" = "8:https://www.thuitas.com"
         "ARPPRODUCTICON" = "8:"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"

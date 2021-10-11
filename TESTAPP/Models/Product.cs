@@ -234,23 +234,24 @@ namespace SHOPLITE.Models
                             transaction.Commit();
                             return true;
                         }
-                        catch (Exception)
+                        catch (Exception EXE)
                         {
                             transaction.Rollback();
+                            Logger.Loggermethod(EXE);
                             return false;
                         }
                     }
                     catch (Exception exe)
                     {
-                        MessageBox.Show(exe.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Logger.Loggermethod(exe);
                         return false;
                     }
 
                 }
-                catch (Exception)
+                catch (Exception exe)
                 {
-
-                    throw;
+                    Logger.Loggermethod(exe);
+                    return false;
                 }
 
             }
@@ -297,10 +298,10 @@ namespace SHOPLITE.Models
                             return false;
                         }
                     }
-                    catch (Exception)
+                    catch (Exception exe)
                     {
-
-                        throw;
+                        Logger.Loggermethod(exe);
+                        return false;
                     }
 
 
@@ -354,7 +355,7 @@ namespace SHOPLITE.Models
                 }
                 catch (Exception exe)
                 {
-                    MessageBox.Show(exe.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Logger.Loggermethod(exe);
                     return null;
                 }
             }
@@ -401,7 +402,7 @@ namespace SHOPLITE.Models
                 }
                 catch (Exception exe)
                 {
-                    MessageBox.Show(exe.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Logger.Loggermethod(exe);
                     products.Clear();
                     return products;
                 }

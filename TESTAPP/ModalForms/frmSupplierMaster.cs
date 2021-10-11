@@ -38,6 +38,11 @@ namespace SHOPLITE.ModalForms
         }
         private void btnNewSupp_Click(object sender, EventArgs e)
         {
+            if (!GroupPolicy.CheckPolicy(Properties.Settings.Default.USERNAME, "SM"))
+            {
+                MessageBox.Show("Sorry, your Account Has Insufficient Privelleges To Open This Module", "Check Right", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
             using (frmNewSupp form = new frmNewSupp() { supplier1 = new Supplier() })
             {
                 form.ShowDialog();
@@ -49,7 +54,11 @@ namespace SHOPLITE.ModalForms
 
         private void btnEditSupp_Click(object sender, EventArgs e)
         {
-
+            if (!GroupPolicy.CheckPolicy(Properties.Settings.Default.USERNAME, "SM"))
+            {
+                MessageBox.Show("Sorry, your Account Has Insufficient Privelleges To Open This Module", "Check Right", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
             if (String.IsNullOrEmpty(suppCdTextBox.Text))
             {
                 MessageBox.Show("Supplier Code Cannot Be Empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -98,22 +107,24 @@ namespace SHOPLITE.ModalForms
 
                 return;
             }
-            Supplier supplier = new Supplier();
-            supplier.SuppCd = suppCdTextBox.Text.ToUpper();
-            supplier.SuppNm = suppNmTextBox.Text.ToUpper();
-            supplier.SuppBox = suppBoxTextBox.Text.ToUpper();
-            supplier.SuppCity = suppCityTextBox.Text.ToUpper();
-            supplier.SuppLocation = suppLocationTextBox.Text.ToUpper();
-            supplier.SuppTel = suppTelTextBox.Text.ToUpper();
-            supplier.SuppPinCode = suppPinCodeTextBox.Text.ToUpper();
-            supplier.SuppEmail = suppEmailTextBox.Text;
-            supplier.SuppFax = suppFaxTextBox.Text.ToUpper();
-            supplier.SuppCreditLimit = Convert.ToDecimal(suppCreditLimitTextBox.Text);
-            supplier.SuppMobile = suppMobileTextBox.Text.ToUpper();
-            supplier.SuppPaymentTerms = suppPaymentTermsTextBox.Text.ToUpper();
-            supplier.SuppLimitDays = Convert.ToInt32(suppLimitDaysTextBox.Text);
-            supplier.SuppVatNo = suppVatNoTextBox.Text.ToUpper();
-            supplier.CreatedBy = Properties.Settings.Default.USERNAME;
+            Supplier supplier = new Supplier
+            {
+                SuppCd = suppCdTextBox.Text.ToUpper(),
+                SuppNm = suppNmTextBox.Text.ToUpper(),
+                SuppBox = suppBoxTextBox.Text.ToUpper(),
+                SuppCity = suppCityTextBox.Text.ToUpper(),
+                SuppLocation = suppLocationTextBox.Text.ToUpper(),
+                SuppTel = suppTelTextBox.Text.ToUpper(),
+                SuppPinCode = suppPinCodeTextBox.Text.ToUpper(),
+                SuppEmail = suppEmailTextBox.Text,
+                SuppFax = suppFaxTextBox.Text.ToUpper(),
+                SuppCreditLimit = Convert.ToDecimal(suppCreditLimitTextBox.Text),
+                SuppMobile = suppMobileTextBox.Text.ToUpper(),
+                SuppPaymentTerms = suppPaymentTermsTextBox.Text.ToUpper(),
+                SuppLimitDays = Convert.ToInt32(suppLimitDaysTextBox.Text),
+                SuppVatNo = suppVatNoTextBox.Text.ToUpper(),
+                CreatedBy = Properties.Settings.Default.USERNAME
+            };
             using (frmeditSupplier form = new frmeditSupplier(supplier) { supplier1 = new Supplier() })
             {
                 form.ShowDialog();

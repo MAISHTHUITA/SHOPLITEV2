@@ -123,6 +123,12 @@
     <Compile Include="frmManagement.Designer.cs">
       <DependentUpon>frmManagement.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmOrders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOrders.Designer.cs">
+      <DependentUpon>frmOrders.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmPos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -212,6 +218,12 @@
     </Compile>
     <Compile Include="ModalForms\frmProductMaster.Designer.cs">
       <DependentUpon>frmProductMaster.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModalForms\frmPurchaseOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModalForms\frmPurchaseOrder.Designer.cs">
+      <DependentUpon>frmPurchaseOrder.cs</DependentUpon>
     </Compile>
     <Compile Include="ModalForms\frmSupplierMaster.cs">
       <SubType>Form</SubType>
@@ -357,6 +369,7 @@
     <Compile Include="ModalForms\frnNewUnit.Designer.cs">
       <DependentUpon>frnNewUnit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\GroupModel.cs" />
     <Compile Include="Models\Logger.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -507,6 +520,9 @@
     <EmbeddedResource Include="frmManagement.resx">
       <DependentUpon>frmManagement.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmOrders.resx">
+      <DependentUpon>frmOrders.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmPos.resx">
       <DependentUpon>FrmPos.cs</DependentUpon>
     </EmbeddedResource>
@@ -551,6 +567,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModalForms\frmProductMaster.resx">
       <DependentUpon>frmProductMaster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModalForms\frmPurchaseOrder.resx">
+      <DependentUpon>frmPurchaseOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModalForms\frmSupplierMaster.resx">
       <DependentUpon>frmSupplierMaster.cs</DependentUpon>
