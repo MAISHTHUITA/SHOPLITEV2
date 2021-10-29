@@ -19,7 +19,7 @@ namespace SHOPLITE
                 bool isAnotherInstanceOpen = !mutex.WaitOne(TimeSpan.Zero);
                 if (isAnotherInstanceOpen)
                 {
-                    MessageBox.Show("Shop Lite Application is Already Runnig","ShopLiteV2",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    MessageBox.Show("Shop Lite Application is Already Runnig", "ShopLiteV2", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 Application.EnableVisualStyles();
@@ -63,7 +63,7 @@ namespace SHOPLITE
                 }
                 mutex.ReleaseMutex();
             }
-            
+
 
 
 

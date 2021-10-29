@@ -50,11 +50,11 @@ namespace SHOPLITE
             this.btnPos = new System.Windows.Forms.Button();
             this.btnProducts = new System.Windows.Forms.Button();
             this.btnReports = new System.Windows.Forms.Button();
+            this.btnOrders = new System.Windows.Forms.Button();
             this.btnInventory = new System.Windows.Forms.Button();
             this.btnManagement = new System.Windows.Forms.Button();
             this.btnDashboard = new System.Windows.Forms.Button();
             this.MainPanel = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.TopPanel.SuspendLayout();
             this.BottomPanel.SuspendLayout();
             this.LeftSidePanel.SuspendLayout();
@@ -229,7 +229,7 @@ namespace SHOPLITE
             this.LeftSidePanel.Controls.Add(this.btnPos);
             this.LeftSidePanel.Controls.Add(this.btnProducts);
             this.LeftSidePanel.Controls.Add(this.btnReports);
-            this.LeftSidePanel.Controls.Add(this.button1);
+            this.LeftSidePanel.Controls.Add(this.btnOrders);
             this.LeftSidePanel.Controls.Add(this.btnInventory);
             this.LeftSidePanel.Controls.Add(this.btnManagement);
             this.LeftSidePanel.Controls.Add(this.btnDashboard);
@@ -287,7 +287,7 @@ namespace SHOPLITE
             this.btnPos.Size = new System.Drawing.Size(189, 46);
             this.btnPos.TabIndex = 0;
             this.btnPos.Text = "  &Point of Sale";
-            this.btnPos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPos.UseVisualStyleBackColor = false;
             this.btnPos.Click += new System.EventHandler(this.btnPos_Click);
             // 
@@ -304,7 +304,7 @@ namespace SHOPLITE
             this.btnProducts.Size = new System.Drawing.Size(189, 46);
             this.btnProducts.TabIndex = 0;
             this.btnProducts.Text = "    &Masters";
-            this.btnProducts.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnProducts.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnProducts.UseVisualStyleBackColor = false;
             this.btnProducts.Click += new System.EventHandler(this.btnProducts_Click);
             // 
@@ -321,9 +321,26 @@ namespace SHOPLITE
             this.btnReports.Size = new System.Drawing.Size(189, 46);
             this.btnReports.TabIndex = 0;
             this.btnReports.Text = "   &Reports";
-            this.btnReports.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnReports.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnReports.UseVisualStyleBackColor = false;
             this.btnReports.Click += new System.EventHandler(this.btnReports_Click);
+            // 
+            // btnOrders
+            // 
+            this.btnOrders.BackColor = System.Drawing.Color.Transparent;
+            this.btnOrders.FlatAppearance.BorderSize = 0;
+            this.btnOrders.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOrders.Font = new System.Drawing.Font("Lucida Fax", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOrders.Image = ((System.Drawing.Image)(resources.GetObject("btnOrders.Image")));
+            this.btnOrders.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnOrders.Location = new System.Drawing.Point(15, 261);
+            this.btnOrders.Name = "btnOrders";
+            this.btnOrders.Size = new System.Drawing.Size(189, 46);
+            this.btnOrders.TabIndex = 0;
+            this.btnOrders.Text = "ORDERS";
+            this.btnOrders.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnOrders.UseVisualStyleBackColor = false;
+            this.btnOrders.Click += new System.EventHandler(this.btnOrders_Click);
             // 
             // btnInventory
             // 
@@ -338,7 +355,7 @@ namespace SHOPLITE
             this.btnInventory.Size = new System.Drawing.Size(189, 46);
             this.btnInventory.TabIndex = 0;
             this.btnInventory.Text = "   &Inventory";
-            this.btnInventory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnInventory.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnInventory.UseVisualStyleBackColor = false;
             this.btnInventory.Click += new System.EventHandler(this.btnInventory_Click);
             // 
@@ -373,7 +390,7 @@ namespace SHOPLITE
             this.btnDashboard.Size = new System.Drawing.Size(189, 46);
             this.btnDashboard.TabIndex = 0;
             this.btnDashboard.Text = "   &Dash-Board";
-            this.btnDashboard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDashboard.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDashboard.UseVisualStyleBackColor = false;
             this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
             // 
@@ -385,23 +402,6 @@ namespace SHOPLITE
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.Size = new System.Drawing.Size(919, 630);
             this.MainPanel.TabIndex = 4;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Lucida Fax", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(15, 261);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(189, 46);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "  CLY";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.btnInventory_Click);
             // 
             // MainForm
             // 
@@ -456,7 +456,7 @@ namespace SHOPLITE
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button AppCloseBtn;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnOrders;
     }
 }
 

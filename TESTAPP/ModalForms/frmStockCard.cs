@@ -32,7 +32,7 @@ namespace SHOPLITE.ModalForms
             List<Product> products = productRepository.GetProducts().ToList();
             List<Supplier> suppliers = supplierRepository.GetSuppliers().ToList();
             List<Department> departments = departmentRepository.GetDepartments().ToList();
-            if (products.Count>=1)
+            if (products.Count >= 1)
             {
                 txtProdFrom.Text = products.First<Product>().ProdCd;
                 txtProdTo.Text = products.Last<Product>().ProdCd;
@@ -83,10 +83,7 @@ namespace SHOPLITE.ModalForms
         }
         private void txtProdFrom_Leave(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(txtDeptFrom))
-            {
 
-            }
             ProductRepository product = new ProductRepository();
             if (product.GetProduct(txtProdFrom.Text) == null)
             {

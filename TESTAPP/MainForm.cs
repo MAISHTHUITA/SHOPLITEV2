@@ -141,5 +141,14 @@ namespace SHOPLITE
             form.BringToFront();
             form.Show();
         }
+
+        private void btnOrders_Click(object sender, EventArgs e)
+        {
+            Form form = frmOrders.Instance;
+            form.TopLevel = false;
+            MainPanel.Controls.Add(form);
+            form.BringToFront();
+            form.Show();
+        }
     }
 }

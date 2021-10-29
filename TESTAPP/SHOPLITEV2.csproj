@@ -377,6 +377,7 @@
     <Compile Include="Models\DbCon.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\EncryptKey.cs" />
+    <Compile Include="Models\Orders.cs" />
     <Compile Include="Models\PosModel.cs" />
     <Compile Include="Models\Price.cs" />
     <Compile Include="Models\PrintClass.cs" />
