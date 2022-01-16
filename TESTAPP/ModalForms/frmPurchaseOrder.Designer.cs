@@ -29,8 +29,10 @@ namespace SHOPLITE.ModalForms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPurchaseOrder));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblSupname = new System.Windows.Forms.Label();
             this.dtpValidto = new System.Windows.Forms.DateTimePicker();
             this.dtpPoDate = new System.Windows.Forms.DateTimePicker();
             this.txtSupcd = new System.Windows.Forms.TextBox();
@@ -47,7 +49,9 @@ namespace SHOPLITE.ModalForms
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.pnlpoproduct = new System.Windows.Forms.Panel();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.txtProdNm = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtProdCd = new System.Windows.Forms.TextBox();
@@ -55,25 +59,25 @@ namespace SHOPLITE.ModalForms
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.txtUnit = new System.Windows.Forms.TextBox();
+            this.txtQty = new System.Windows.Forms.TextBox();
             this.txtCurQty = new System.Windows.Forms.TextBox();
             this.txtSp = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.txtCp = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.txtVat = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.txtQty = new System.Windows.Forms.TextBox();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnClear = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.lblNetAmt = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.BtnExit = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.BtnPrint = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnNew = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dgvPo = new System.Windows.Forms.DataGridView();
-            this.btnNew = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.BtnExit = new System.Windows.Forms.Button();
-            this.lblSupname = new System.Windows.Forms.Label();
             this.ProductCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -83,7 +87,7 @@ namespace SHOPLITE.ModalForms
             this.Vat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.pnlpoproduct.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPo)).BeginInit();
             this.SuspendLayout();
@@ -111,8 +115,16 @@ namespace SHOPLITE.ModalForms
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(857, 95);
+            this.panel1.Size = new System.Drawing.Size(863, 95);
             this.panel1.TabIndex = 0;
+            // 
+            // lblSupname
+            // 
+            this.lblSupname.AutoSize = true;
+            this.lblSupname.Location = new System.Drawing.Point(254, 38);
+            this.lblSupname.Name = "lblSupname";
+            this.lblSupname.Size = new System.Drawing.Size(0, 14);
+            this.lblSupname.TabIndex = 3;
             // 
             // dtpValidto
             // 
@@ -123,11 +135,13 @@ namespace SHOPLITE.ModalForms
             this.dtpValidto.Name = "dtpValidto";
             this.dtpValidto.Size = new System.Drawing.Size(110, 22);
             this.dtpValidto.TabIndex = 2;
+            this.dtpValidto.TabStop = false;
             // 
             // dtpPoDate
             // 
             this.dtpPoDate.CustomFormat = "dd-MMM-yyyy";
             this.dtpPoDate.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
+            this.dtpPoDate.Enabled = false;
             this.dtpPoDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpPoDate.Location = new System.Drawing.Point(320, 5);
             this.dtpPoDate.Name = "dtpPoDate";
@@ -141,7 +155,9 @@ namespace SHOPLITE.ModalForms
             this.txtSupcd.Location = new System.Drawing.Point(108, 34);
             this.txtSupcd.Name = "txtSupcd";
             this.txtSupcd.Size = new System.Drawing.Size(100, 22);
-            this.txtSupcd.TabIndex = 1;
+            this.txtSupcd.TabIndex = 0;
+            this.txtSupcd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSupcd_KeyDown);
+            this.txtSupcd.Leave += new System.EventHandler(this.txtSupcd_Leave);
             // 
             // txtInstr2
             // 
@@ -149,7 +165,7 @@ namespace SHOPLITE.ModalForms
             this.txtInstr2.Location = new System.Drawing.Point(516, 62);
             this.txtInstr2.Name = "txtInstr2";
             this.txtInstr2.Size = new System.Drawing.Size(328, 22);
-            this.txtInstr2.TabIndex = 1;
+            this.txtInstr2.TabIndex = 4;
             // 
             // txtInstr1
             // 
@@ -157,7 +173,7 @@ namespace SHOPLITE.ModalForms
             this.txtInstr1.Location = new System.Drawing.Point(108, 62);
             this.txtInstr1.Name = "txtInstr1";
             this.txtInstr1.Size = new System.Drawing.Size(334, 22);
-            this.txtInstr1.TabIndex = 1;
+            this.txtInstr1.TabIndex = 3;
             // 
             // txtRefNo
             // 
@@ -173,7 +189,7 @@ namespace SHOPLITE.ModalForms
             this.txtDeliverto.Location = new System.Drawing.Point(538, 34);
             this.txtDeliverto.Name = "txtDeliverto";
             this.txtDeliverto.Size = new System.Drawing.Size(306, 22);
-            this.txtDeliverto.TabIndex = 1;
+            this.txtDeliverto.TabIndex = 2;
             // 
             // txtPoNo
             // 
@@ -182,6 +198,8 @@ namespace SHOPLITE.ModalForms
             this.txtPoNo.Name = "txtPoNo";
             this.txtPoNo.Size = new System.Drawing.Size(100, 22);
             this.txtPoNo.TabIndex = 0;
+            this.txtPoNo.TabStop = false;
+            this.txtPoNo.Leave += new System.EventHandler(this.txtPoNo_Leave);
             // 
             // label8
             // 
@@ -255,37 +273,58 @@ namespace SHOPLITE.ModalForms
             this.label1.TabIndex = 0;
             this.label1.Text = "LPO No.";
             // 
-            // panel2
+            // pnlpoproduct
             // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.btnClear);
-            this.panel2.Controls.Add(this.btnAdd);
-            this.panel2.Controls.Add(this.txtProdNm);
-            this.panel2.Controls.Add(this.label10);
-            this.panel2.Controls.Add(this.txtProdCd);
-            this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.label12);
-            this.panel2.Controls.Add(this.label11);
-            this.panel2.Controls.Add(this.txtUnit);
-            this.panel2.Controls.Add(this.txtQty);
-            this.panel2.Controls.Add(this.txtCurQty);
-            this.panel2.Controls.Add(this.txtSp);
-            this.panel2.Controls.Add(this.label16);
-            this.panel2.Controls.Add(this.txtCp);
-            this.panel2.Controls.Add(this.label15);
-            this.panel2.Controls.Add(this.label14);
-            this.panel2.Controls.Add(this.txtVat);
-            this.panel2.Controls.Add(this.label13);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 95);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(857, 65);
-            this.panel2.TabIndex = 1;
+            this.pnlpoproduct.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlpoproduct.Controls.Add(this.btnClear);
+            this.pnlpoproduct.Controls.Add(this.btnAdd);
+            this.pnlpoproduct.Controls.Add(this.txtProdNm);
+            this.pnlpoproduct.Controls.Add(this.label10);
+            this.pnlpoproduct.Controls.Add(this.txtProdCd);
+            this.pnlpoproduct.Controls.Add(this.label9);
+            this.pnlpoproduct.Controls.Add(this.label12);
+            this.pnlpoproduct.Controls.Add(this.label11);
+            this.pnlpoproduct.Controls.Add(this.txtUnit);
+            this.pnlpoproduct.Controls.Add(this.txtQty);
+            this.pnlpoproduct.Controls.Add(this.txtCurQty);
+            this.pnlpoproduct.Controls.Add(this.txtSp);
+            this.pnlpoproduct.Controls.Add(this.label16);
+            this.pnlpoproduct.Controls.Add(this.txtCp);
+            this.pnlpoproduct.Controls.Add(this.label15);
+            this.pnlpoproduct.Controls.Add(this.label14);
+            this.pnlpoproduct.Controls.Add(this.txtVat);
+            this.pnlpoproduct.Controls.Add(this.label13);
+            this.pnlpoproduct.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlpoproduct.Location = new System.Drawing.Point(0, 95);
+            this.pnlpoproduct.Name = "pnlpoproduct";
+            this.pnlpoproduct.Size = new System.Drawing.Size(863, 65);
+            this.pnlpoproduct.TabIndex = 1;
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(768, 34);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(76, 23);
+            this.btnClear.TabIndex = 3;
+            this.btnClear.Text = "CLEAR";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(657, 34);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(76, 23);
+            this.btnAdd.TabIndex = 2;
+            this.btnAdd.Text = "ADD";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // txtProdNm
             // 
             this.txtProdNm.BackColor = System.Drawing.Color.White;
             this.txtProdNm.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtProdNm.Enabled = false;
             this.txtProdNm.Location = new System.Drawing.Point(298, 5);
             this.txtProdNm.Name = "txtProdNm";
             this.txtProdNm.Size = new System.Drawing.Size(328, 22);
@@ -308,6 +347,8 @@ namespace SHOPLITE.ModalForms
             this.txtProdCd.Name = "txtProdCd";
             this.txtProdCd.Size = new System.Drawing.Size(100, 22);
             this.txtProdCd.TabIndex = 0;
+            this.txtProdCd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtProdCd_KeyDown);
+            this.txtProdCd.Leave += new System.EventHandler(this.txtProdCd_Leave);
             // 
             // label9
             // 
@@ -339,14 +380,24 @@ namespace SHOPLITE.ModalForms
             // txtUnit
             // 
             this.txtUnit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtUnit.Enabled = false;
             this.txtUnit.Location = new System.Drawing.Point(669, 5);
             this.txtUnit.Name = "txtUnit";
             this.txtUnit.Size = new System.Drawing.Size(64, 22);
             this.txtUnit.TabIndex = 1;
             // 
+            // txtQty
+            // 
+            this.txtQty.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtQty.Location = new System.Drawing.Point(566, 34);
+            this.txtQty.Name = "txtQty";
+            this.txtQty.Size = new System.Drawing.Size(59, 22);
+            this.txtQty.TabIndex = 1;
+            // 
             // txtCurQty
             // 
             this.txtCurQty.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCurQty.Enabled = false;
             this.txtCurQty.Location = new System.Drawing.Point(451, 34);
             this.txtCurQty.Name = "txtCurQty";
             this.txtCurQty.Size = new System.Drawing.Size(59, 22);
@@ -355,14 +406,25 @@ namespace SHOPLITE.ModalForms
             // txtSp
             // 
             this.txtSp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSp.Enabled = false;
             this.txtSp.Location = new System.Drawing.Point(298, 34);
             this.txtSp.Name = "txtSp";
             this.txtSp.Size = new System.Drawing.Size(60, 22);
             this.txtSp.TabIndex = 1;
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(526, 38);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(32, 14);
+            this.label16.TabIndex = 0;
+            this.label16.Text = "Qty.";
+            // 
             // txtCp
             // 
             this.txtCp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCp.Enabled = false;
             this.txtCp.Location = new System.Drawing.Point(108, 34);
             this.txtCp.Name = "txtCp";
             this.txtCp.Size = new System.Drawing.Size(70, 22);
@@ -389,6 +451,7 @@ namespace SHOPLITE.ModalForms
             // txtVat
             // 
             this.txtVat.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtVat.Enabled = false;
             this.txtVat.Location = new System.Drawing.Point(787, 5);
             this.txtVat.Name = "txtVat";
             this.txtVat.Size = new System.Drawing.Size(57, 22);
@@ -403,54 +466,134 @@ namespace SHOPLITE.ModalForms
             this.label13.TabIndex = 0;
             this.label13.Text = "Cur. CP.";
             // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(526, 38);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(32, 14);
-            this.label16.TabIndex = 0;
-            this.label16.Text = "Qty.";
-            // 
-            // txtQty
-            // 
-            this.txtQty.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtQty.Location = new System.Drawing.Point(566, 34);
-            this.txtQty.Name = "txtQty";
-            this.txtQty.Size = new System.Drawing.Size(59, 22);
-            this.txtQty.TabIndex = 1;
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(657, 34);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(76, 23);
-            this.btnAdd.TabIndex = 2;
-            this.btnAdd.Text = "ADD";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            // 
-            // btnClear
-            // 
-            this.btnClear.Location = new System.Drawing.Point(768, 34);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(76, 23);
-            this.btnClear.TabIndex = 3;
-            this.btnClear.Text = "CLEAR";
-            this.btnClear.UseVisualStyleBackColor = true;
-            // 
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.lblNetAmt);
+            this.panel3.Controls.Add(this.label17);
             this.panel3.Controls.Add(this.BtnExit);
             this.panel3.Controls.Add(this.btnCancel);
+            this.panel3.Controls.Add(this.BtnPrint);
             this.panel3.Controls.Add(this.btnSave);
             this.panel3.Controls.Add(this.btnNew);
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 310);
+            this.panel3.Location = new System.Drawing.Point(0, 416);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(857, 95);
+            this.panel3.Size = new System.Drawing.Size(863, 95);
             this.panel3.TabIndex = 2;
+            // 
+            // lblNetAmt
+            // 
+            this.lblNetAmt.AutoSize = true;
+            this.lblNetAmt.Location = new System.Drawing.Point(755, 16);
+            this.lblNetAmt.Name = "lblNetAmt";
+            this.lblNetAmt.Size = new System.Drawing.Size(35, 14);
+            this.lblNetAmt.TabIndex = 5;
+            this.lblNetAmt.Text = "0.00";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(654, 16);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(100, 14);
+            this.label17.TabIndex = 4;
+            this.label17.Text = "Order Amount:";
+            // 
+            // BtnExit
+            // 
+            this.BtnExit.BackColor = System.Drawing.Color.LightGray;
+            this.BtnExit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BtnExit.BackgroundImage")));
+            this.BtnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnExit.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BtnExit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.BtnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnExit.ForeColor = System.Drawing.Color.Maroon;
+            this.BtnExit.Location = new System.Drawing.Point(484, 8);
+            this.BtnExit.Margin = new System.Windows.Forms.Padding(5);
+            this.BtnExit.Name = "BtnExit";
+            this.BtnExit.Size = new System.Drawing.Size(64, 64);
+            this.BtnExit.TabIndex = 3;
+            this.BtnExit.Text = "EXIT";
+            this.BtnExit.UseVisualStyleBackColor = false;
+            this.BtnExit.Click += new System.EventHandler(this.BtnExit_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(246)))), ((int)(((byte)(157)))));
+            this.btnCancel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCancel.BackgroundImage")));
+            this.btnCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.ForeColor = System.Drawing.Color.Transparent;
+            this.btnCancel.Location = new System.Drawing.Point(410, 8);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(5);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(64, 64);
+            this.btnCancel.TabIndex = 2;
+            this.btnCancel.Text = "CANCEL";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // BtnPrint
+            // 
+            this.BtnPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(111)))), ((int)(((byte)(209)))));
+            this.BtnPrint.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BtnPrint.BackgroundImage")));
+            this.BtnPrint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnPrint.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BtnPrint.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.BtnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnPrint.ForeColor = System.Drawing.Color.Transparent;
+            this.BtnPrint.Location = new System.Drawing.Point(336, 8);
+            this.BtnPrint.Margin = new System.Windows.Forms.Padding(5);
+            this.BtnPrint.Name = "BtnPrint";
+            this.BtnPrint.Size = new System.Drawing.Size(64, 64);
+            this.BtnPrint.TabIndex = 0;
+            this.BtnPrint.Text = "PRINT";
+            this.BtnPrint.UseVisualStyleBackColor = false;
+            this.BtnPrint.Click += new System.EventHandler(this.BtnPrint_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(171)))), ((int)(((byte)(91)))));
+            this.btnSave.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSave.BackgroundImage")));
+            this.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.ForeColor = System.Drawing.Color.Transparent;
+            this.btnSave.Location = new System.Drawing.Point(262, 8);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(5);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(64, 64);
+            this.btnSave.TabIndex = 0;
+            this.btnSave.Text = "SAVE";
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnNew
+            // 
+            this.btnNew.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(167)))), ((int)(((byte)(204)))));
+            this.btnNew.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnNew.BackgroundImage")));
+            this.btnNew.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnNew.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNew.ForeColor = System.Drawing.Color.Transparent;
+            this.btnNew.Location = new System.Drawing.Point(188, 8);
+            this.btnNew.Margin = new System.Windows.Forms.Padding(5);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(64, 64);
+            this.btnNew.TabIndex = 1;
+            this.btnNew.Text = "NEW";
+            this.btnNew.UseVisualStyleBackColor = false;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // panel4
             // 
@@ -458,7 +601,7 @@ namespace SHOPLITE.ModalForms
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel4.Location = new System.Drawing.Point(0, 74);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(855, 19);
+            this.panel4.Size = new System.Drawing.Size(861, 19);
             this.panel4.TabIndex = 0;
             // 
             // dgvPo
@@ -470,10 +613,10 @@ namespace SHOPLITE.ModalForms
             this.dgvPo.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkSlateGray;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(3);
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvPo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
@@ -490,61 +633,22 @@ namespace SHOPLITE.ModalForms
             this.dgvPo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPo.EnableHeadersVisualStyles = false;
             this.dgvPo.Location = new System.Drawing.Point(0, 160);
+            this.dgvPo.MultiSelect = false;
             this.dgvPo.Name = "dgvPo";
             this.dgvPo.ReadOnly = true;
-            this.dgvPo.Size = new System.Drawing.Size(857, 150);
+            this.dgvPo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPo.Size = new System.Drawing.Size(863, 256);
             this.dgvPo.TabIndex = 3;
-            // 
-            // btnNew
-            // 
-            this.btnNew.Location = new System.Drawing.Point(192, 16);
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(75, 36);
-            this.btnNew.TabIndex = 1;
-            this.btnNew.Text = "NEW";
-            this.btnNew.UseVisualStyleBackColor = true;
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(308, 16);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 36);
-            this.btnSave.TabIndex = 1;
-            this.btnSave.Text = "SAVE";
-            this.btnSave.UseVisualStyleBackColor = true;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Location = new System.Drawing.Point(424, 16);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 36);
-            this.btnCancel.TabIndex = 1;
-            this.btnCancel.Text = "CANCEL";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            // 
-            // BtnExit
-            // 
-            this.BtnExit.Location = new System.Drawing.Point(540, 16);
-            this.BtnExit.Name = "BtnExit";
-            this.BtnExit.Size = new System.Drawing.Size(75, 36);
-            this.BtnExit.TabIndex = 1;
-            this.BtnExit.Text = "EXIT";
-            this.BtnExit.UseVisualStyleBackColor = true;
-            this.BtnExit.Click += new System.EventHandler(this.BtnExit_Click);
-            // 
-            // lblSupname
-            // 
-            this.lblSupname.AutoSize = true;
-            this.lblSupname.Location = new System.Drawing.Point(254, 38);
-            this.lblSupname.Name = "lblSupname";
-            this.lblSupname.Size = new System.Drawing.Size(0, 14);
-            this.lblSupname.TabIndex = 3;
+            this.dgvPo.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvPo_CellFormatting);
+            this.dgvPo.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvPo_CellMouseDoubleClick);
+            this.dgvPo.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvPo_RowsAdded);
             // 
             // ProductCode
             // 
             this.ProductCode.HeaderText = "Prod. Code";
             this.ProductCode.Name = "ProductCode";
             this.ProductCode.ReadOnly = true;
+            this.ProductCode.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.ProductCode.Width = 110;
             // 
             // Description
@@ -553,12 +657,14 @@ namespace SHOPLITE.ModalForms
             this.Description.HeaderText = "Description";
             this.Description.Name = "Description";
             this.Description.ReadOnly = true;
+            this.Description.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Unit
             // 
             this.Unit.HeaderText = "Unit";
             this.Unit.Name = "Unit";
             this.Unit.ReadOnly = true;
+            this.Unit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Unit.Width = 70;
             // 
             // Quantity
@@ -566,6 +672,7 @@ namespace SHOPLITE.ModalForms
             this.Quantity.HeaderText = "Quantity";
             this.Quantity.Name = "Quantity";
             this.Quantity.ReadOnly = true;
+            this.Quantity.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Quantity.Width = 80;
             // 
             // CurCP
@@ -573,6 +680,7 @@ namespace SHOPLITE.ModalForms
             this.CurCP.HeaderText = "CP";
             this.CurCP.Name = "CurCP";
             this.CurCP.ReadOnly = true;
+            this.CurCP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.CurCP.Width = 80;
             // 
             // CurSP
@@ -580,6 +688,7 @@ namespace SHOPLITE.ModalForms
             this.CurSP.HeaderText = "SP";
             this.CurSP.Name = "CurSP";
             this.CurSP.ReadOnly = true;
+            this.CurSP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.CurSP.Width = 80;
             // 
             // Vat
@@ -587,6 +696,7 @@ namespace SHOPLITE.ModalForms
             this.Vat.HeaderText = "Vat";
             this.Vat.Name = "Vat";
             this.Vat.ReadOnly = true;
+            this.Vat.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Vat.Width = 70;
             // 
             // Amount
@@ -594,16 +704,17 @@ namespace SHOPLITE.ModalForms
             this.Amount.HeaderText = "Amount";
             this.Amount.Name = "Amount";
             this.Amount.ReadOnly = true;
+            this.Amount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // frmPurchaseOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(233)))), ((int)(((byte)(216)))));
-            this.ClientSize = new System.Drawing.Size(857, 405);
+            this.ClientSize = new System.Drawing.Size(863, 511);
             this.Controls.Add(this.dgvPo);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.pnlpoproduct);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -615,9 +726,10 @@ namespace SHOPLITE.ModalForms
             this.Load += new System.EventHandler(this.frmPurchaseOrder_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.pnlpoproduct.ResumeLayout(false);
+            this.pnlpoproduct.PerformLayout();
             this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPo)).EndInit();
             this.ResumeLayout(false);
 
@@ -642,7 +754,7 @@ namespace SHOPLITE.ModalForms
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel pnlpoproduct;
         private System.Windows.Forms.TextBox txtProdCd;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtProdNm;
@@ -677,5 +789,8 @@ namespace SHOPLITE.ModalForms
         private System.Windows.Forms.DataGridViewTextBoxColumn CurSP;
         private System.Windows.Forms.DataGridViewTextBoxColumn Vat;
         private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
+        private System.Windows.Forms.Label lblNetAmt;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Button BtnPrint;
     }
 }

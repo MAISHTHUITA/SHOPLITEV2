@@ -68,7 +68,7 @@ namespace SHOPLITE
             this.TopPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.TopPanel.Location = new System.Drawing.Point(0, 0);
             this.TopPanel.Name = "TopPanel";
-            this.TopPanel.Size = new System.Drawing.Size(1134, 55);
+            this.TopPanel.Size = new System.Drawing.Size(1134, 69);
             this.TopPanel.TabIndex = 0;
             // 
             // label6
@@ -85,15 +85,17 @@ namespace SHOPLITE
             // AppCloseBtn
             // 
             this.AppCloseBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.AppCloseBtn.BackColor = System.Drawing.Color.Red;
+            this.AppCloseBtn.BackColor = System.Drawing.Color.AliceBlue;
+            this.AppCloseBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AppCloseBtn.BackgroundImage")));
+            this.AppCloseBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.AppCloseBtn.FlatAppearance.BorderColor = System.Drawing.Color.Cyan;
-            this.AppCloseBtn.FlatAppearance.BorderSize = 5;
             this.AppCloseBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AppCloseBtn.Location = new System.Drawing.Point(1047, 9);
+            this.AppCloseBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AppCloseBtn.ForeColor = System.Drawing.Color.Blue;
+            this.AppCloseBtn.Location = new System.Drawing.Point(1068, 9);
             this.AppCloseBtn.Name = "AppCloseBtn";
-            this.AppCloseBtn.Size = new System.Drawing.Size(75, 37);
+            this.AppCloseBtn.Size = new System.Drawing.Size(47, 47);
             this.AppCloseBtn.TabIndex = 0;
-            this.AppCloseBtn.Text = "EXIT";
             this.AppCloseBtn.UseVisualStyleBackColor = false;
             this.AppCloseBtn.Click += new System.EventHandler(this.AppCloseBtn_Click);
             // 
@@ -234,9 +236,9 @@ namespace SHOPLITE
             this.LeftSidePanel.Controls.Add(this.btnManagement);
             this.LeftSidePanel.Controls.Add(this.btnDashboard);
             this.LeftSidePanel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.LeftSidePanel.Location = new System.Drawing.Point(0, 55);
+            this.LeftSidePanel.Location = new System.Drawing.Point(0, 69);
             this.LeftSidePanel.Name = "LeftSidePanel";
-            this.LeftSidePanel.Size = new System.Drawing.Size(215, 630);
+            this.LeftSidePanel.Size = new System.Drawing.Size(215, 616);
             this.LeftSidePanel.TabIndex = 3;
             // 
             // btnSetting
@@ -248,7 +250,7 @@ namespace SHOPLITE
             this.btnSetting.Font = new System.Drawing.Font("Lucida Fax", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSetting.Image = ((System.Drawing.Image)(resources.GetObject("btnSetting.Image")));
             this.btnSetting.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSetting.Location = new System.Drawing.Point(12, 535);
+            this.btnSetting.Location = new System.Drawing.Point(12, 521);
             this.btnSetting.Name = "btnSetting";
             this.btnSetting.Size = new System.Drawing.Size(189, 46);
             this.btnSetting.TabIndex = 0;
@@ -265,7 +267,7 @@ namespace SHOPLITE
             this.BtnUser.Font = new System.Drawing.Font("Lucida Fax", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnUser.Image = ((System.Drawing.Image)(resources.GetObject("BtnUser.Image")));
             this.BtnUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnUser.Location = new System.Drawing.Point(12, 578);
+            this.BtnUser.Location = new System.Drawing.Point(12, 564);
             this.BtnUser.Name = "BtnUser";
             this.BtnUser.Size = new System.Drawing.Size(189, 46);
             this.BtnUser.TabIndex = 0;
@@ -286,8 +288,9 @@ namespace SHOPLITE
             this.btnPos.Name = "btnPos";
             this.btnPos.Size = new System.Drawing.Size(189, 46);
             this.btnPos.TabIndex = 0;
-            this.btnPos.Text = "  &Point of Sale";
+            this.btnPos.Text = "   &Point of Sale";
             this.btnPos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPos.UseVisualStyleBackColor = false;
             this.btnPos.Click += new System.EventHandler(this.btnPos_Click);
             // 
@@ -303,8 +306,9 @@ namespace SHOPLITE
             this.btnProducts.Name = "btnProducts";
             this.btnProducts.Size = new System.Drawing.Size(189, 46);
             this.btnProducts.TabIndex = 0;
-            this.btnProducts.Text = "    &Masters";
+            this.btnProducts.Text = "   &Masters";
             this.btnProducts.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnProducts.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnProducts.UseVisualStyleBackColor = false;
             this.btnProducts.Click += new System.EventHandler(this.btnProducts_Click);
             // 
@@ -322,6 +326,7 @@ namespace SHOPLITE
             this.btnReports.TabIndex = 0;
             this.btnReports.Text = "   &Reports";
             this.btnReports.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnReports.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnReports.UseVisualStyleBackColor = false;
             this.btnReports.Click += new System.EventHandler(this.btnReports_Click);
             // 
@@ -337,8 +342,9 @@ namespace SHOPLITE
             this.btnOrders.Name = "btnOrders";
             this.btnOrders.Size = new System.Drawing.Size(189, 46);
             this.btnOrders.TabIndex = 0;
-            this.btnOrders.Text = "ORDERS";
+            this.btnOrders.Text = "   ORDERS";
             this.btnOrders.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnOrders.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnOrders.UseVisualStyleBackColor = false;
             this.btnOrders.Click += new System.EventHandler(this.btnOrders_Click);
             // 
@@ -356,6 +362,7 @@ namespace SHOPLITE
             this.btnInventory.TabIndex = 0;
             this.btnInventory.Text = "   &Inventory";
             this.btnInventory.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnInventory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnInventory.UseVisualStyleBackColor = false;
             this.btnInventory.Click += new System.EventHandler(this.btnInventory_Click);
             // 
@@ -368,7 +375,7 @@ namespace SHOPLITE
             this.btnManagement.Font = new System.Drawing.Font("Lucida Fax", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnManagement.Image = ((System.Drawing.Image)(resources.GetObject("btnManagement.Image")));
             this.btnManagement.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnManagement.Location = new System.Drawing.Point(12, 483);
+            this.btnManagement.Location = new System.Drawing.Point(12, 469);
             this.btnManagement.Name = "btnManagement";
             this.btnManagement.Size = new System.Drawing.Size(189, 46);
             this.btnManagement.TabIndex = 0;
@@ -389,8 +396,9 @@ namespace SHOPLITE
             this.btnDashboard.Name = "btnDashboard";
             this.btnDashboard.Size = new System.Drawing.Size(189, 46);
             this.btnDashboard.TabIndex = 0;
-            this.btnDashboard.Text = "   &Dash-Board";
+            this.btnDashboard.Text = "  &Dash-Board";
             this.btnDashboard.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDashboard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDashboard.UseVisualStyleBackColor = false;
             this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
             // 
@@ -398,9 +406,9 @@ namespace SHOPLITE
             // 
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MainPanel.Location = new System.Drawing.Point(215, 55);
+            this.MainPanel.Location = new System.Drawing.Point(215, 69);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(919, 630);
+            this.MainPanel.Size = new System.Drawing.Size(919, 616);
             this.MainPanel.TabIndex = 4;
             // 
             // MainForm

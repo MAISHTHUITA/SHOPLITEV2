@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Windows.Forms;
 
 namespace SHOPLITE.Models
 {
@@ -26,9 +25,9 @@ namespace SHOPLITE.Models
         #endregion
 
         #region Methods
-        public void AddLpo(Order orders, List<OrderDetail> details, out string report)
+        public void AddLpo(Order orders, List<OrderDetail> details, out string report, out int LpoNumber)
         {
-            using (SqlConnection con=new SqlConnection(DbCon.connection))
+            using (SqlConnection con = new SqlConnection(DbCon.connection))
             {
                 int returngrnnumber;
                 con.Open();
@@ -38,7 +37,7 @@ namespace SHOPLITE.Models
                 command.Transaction = sqlTransaction;
                 try
                 {
-                    command.CommandText = @"insert into LPOMASTER (SUPPLIERCODE,SUPPLIERNAME,LPODATE,VALIDUPTO,PREPAREDBY,AMOUNT,INSTRUCTION1,INSTRUCTION2,REFNO,DELIVERYLOCATION) values(@suppcd,@suppnm, @LPODATE,@VALIDUPTO ,@Username, @TotalAmount, @Instruction1, @Instruction2,@Refno,@Deliverylocation) SELECT SCOPE_IDENTITY()";
+                    command.CommandText = @"insert into LPOMASTER (SUPPLIERCODE,SUPPLIERRNAME,LPODATE,VALIDUPTO,PREPAREDBY,AMOUNT,INSTRUCTION1,INSTRUCTION2,REFNO,DELIVERYLOCATION) values(@suppcd,@suppnm, @LPODATE,@VALIDUPTO ,@Username, @TotalAmount, @Instruction1, @Instruction2,@Refno,@Deliverylocation) SELECT SCOPE_IDENTITY()";
                     command.Parameters.AddWithValue("@suppcd", orders.SupplierCode);
                     command.Parameters.AddWithValue("@suppnm", orders.SupplierName);
                     command.Parameters.AddWithValue("@LPODATE", orders.LpoDate);
@@ -50,14 +49,12 @@ namespace SHOPLITE.Models
                     command.Parameters.AddWithValue("@Refno", orders.RefNo);
                     command.Parameters.AddWithValue("@Deliverylocation", orders.DeliveryLocation);
                     string returned = command.ExecuteScalar().ToString();
-                    
-                    string txtSn= returned;
                     int values = Convert.ToInt32(returned);
                     returngrnnumber = values;
                     command.Parameters.Clear();
                     foreach (OrderDetail item in details)
                     {
-                        command.CommandText = @"insert into ORDERDETAILS(ProdCd,ProdNm,Unit,Quantity,CP,SP,VATPERCENTAGE,LINEAMOUNT,LPONUMBER) values (@Prodcd,@ProdNm, @unit, @Quantity, @Cp,@SP, @LINEVAT, @LineAmt, @SrNo)";
+                        command.CommandText = @"insert into ORDERDETAIL(ProdCd,ProdNm,Unit,Quantity,CP,SP,VATPERCENTAGE,LINEAMOUNT,LPONUMBER) values (@Prodcd,@ProdNm, @unit, @Quantity, @Cp,@SP, @LINEVAT, @LineAmt, @SrNo)";
                         command.Parameters.AddWithValue("@ProdCd", item.ProdCd);
                         command.Parameters.AddWithValue("@ProdNm", item.ProdName);
                         command.Parameters.AddWithValue("@unit", item.Unit);
@@ -71,9 +68,7 @@ namespace SHOPLITE.Models
                         command.Parameters.Clear();
                     }
                     sqlTransaction.Commit();
-                    MessageBox.Show("Lpo Saved Successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    /// if  we reach here, no error has occurred;
-                    MessageBox.Show("The Lpo Number is " + returned);
+                    LpoNumber = returngrnnumber;
                     report = "Success";
                 }
                 catch (Exception exe)
@@ -84,13 +79,14 @@ namespace SHOPLITE.Models
                     }
                     catch (Exception exe1)
                     {
-                        Logger.Loggermethod(exe1); 
+                        Logger.Loggermethod(exe1);
                     }
                     Logger.Loggermethod(exe);
                     report = "Failed";
+                    LpoNumber = 0;
                 }
             }
-            
+
         }
         /// <summary>
         /// RETURNS AN ORDER WITHOUT DETAILS I.E. SUMMARY
@@ -113,7 +109,52 @@ namespace SHOPLITE.Models
                     {
                         while (rdr.Read())
                         {
-                            Order order1 = new Order() { Amount = Convert.ToDecimal(rdr["AMOUNT"]), DeliveryLocation = rdr["DELIVERYLOCATION"].ToString(), Instruction1 = rdr["INSTRUCTION1"].ToString(), Instruction2 = rdr["INSTRUCTION2"].ToString(), LpoDate = Convert.ToDateTime(rdr["LPODATE"]), LpoNumber = Convert.ToInt32(rdr["LPONUMBER"]), PreparedBy = rdr["PREPAREDBY"].ToString(), RefNo = rdr["REFNO"].ToString(), SupplierCode = rdr["SUPPLIERCODE"].ToString(), SupplierName = rdr["SUPPLIERNAME"].ToString(), ValidUpto = Convert.ToDateTime(rdr["VALIDUPTO"]) };
+                            Order order1 = new Order();
+
+                            if (rdr["AMOUNT"] != DBNull.Value)
+                            {
+                                order1.Amount = Convert.ToDecimal(rdr["AMOUNT"]);
+                            }
+                            if (rdr["DELIVERYLOCATION"] != DBNull.Value)
+                            {
+                                order1.DeliveryLocation = rdr["DELIVERYLOCATION"].ToString();
+                            }
+                            if (rdr["INSTRUCTION1"] != DBNull.Value)
+                            {
+                                order1.Instruction1 = rdr["INSTRUCTION1"].ToString();
+                            }
+                            if (rdr["INSTRUCTION2"] != DBNull.Value)
+                            {
+                                order1.Instruction2 = rdr["INSTRUCTION2"].ToString();
+                            }
+                            if (rdr["LPODATE"] != DBNull.Value)
+                            {
+                                order1.LpoDate = Convert.ToDateTime(rdr["LPODATE"]);
+                            }
+                            if (rdr["LPONUMBER"] != DBNull.Value)
+                            {
+                                order1.LpoNumber = Convert.ToInt32(rdr["LPONUMBER"]);
+                            }
+                            if (rdr["PREPAREDBY"] != DBNull.Value)
+                            {
+                                order1.PreparedBy = rdr["PREPAREDBY"].ToString();
+                            }
+                            if (rdr["REFNO"] != DBNull.Value)
+                            {
+                                order1.RefNo = rdr["REFNO"].ToString();
+                            }
+                            if (rdr["SUPPLIERCODE"] != DBNull.Value)
+                            {
+                                order1.SupplierCode = rdr["SUPPLIERCODE"].ToString();
+                            }
+                            if (rdr["SUPPLIERRNAME"] != DBNull.Value)
+                            {
+                                order1.SupplierName = rdr["SUPPLIERRNAME"].ToString();
+                            }
+                            if (rdr["VALIDUPTO"] != DBNull.Value)
+                            {
+                                order1.ValidUpto = Convert.ToDateTime(rdr["VALIDUPTO"]);
+                            }
                             order = order1;
                         }
                     }
@@ -127,16 +168,16 @@ namespace SHOPLITE.Models
                 Logger.Loggermethod(exe);
                 return null;
             }
-            
+
         }
         /// <summary>
         /// RETRIEVES THE ORDER DETAILS FROM DB 
         /// </summary>
         /// <param name="LpoNumber"></param>
         /// <returns></returns>
-        public IEnumerable< OrderDetail> GetOrderDetail(int LpoNumber)
+        public IEnumerable<OrderDetail> GetOrderDetail(int LpoNumber)
         {
-           List< OrderDetail> detail = new List<OrderDetail>();
+            List<OrderDetail> detail = new List<OrderDetail>();
             try
             {
                 using (SqlConnection con = new SqlConnection(DbCon.connection))
@@ -150,7 +191,40 @@ namespace SHOPLITE.Models
                     {
                         while (rdr.Read())
                         {
-                            OrderDetail order1 = new OrderDetail() { Cp=Convert.ToDecimal(rdr["CP"]), LineAmount= Convert.ToDecimal(rdr["LINEAMOUNT"]), Sp= Convert.ToDecimal(rdr["SP"]), Quantity= Convert.ToDecimal(rdr["QUANTITY"]), VatPercentage= Convert.ToInt32(rdr["VATPERCENTAGE"]), ProdCd= rdr["PRODCD"].ToString(), ProdName= rdr["PRODNM"].ToString(), Unit= rdr["UNIT"].ToString() };
+                            OrderDetail order1 = new OrderDetail();
+
+                            if (rdr["CP"] != DBNull.Value)
+                            {
+                                order1.Cp = Convert.ToDecimal(rdr["CP"]);
+                            }
+                            if (rdr["SP"] != DBNull.Value)
+                            {
+                                order1.Sp = Convert.ToDecimal(rdr["SP"]);
+                            }
+                            if (rdr["LINEAMOUNT"] != DBNull.Value)
+                            {
+                                order1.LineAmount = Convert.ToDecimal(rdr["LINEAMOUNT"]);
+                            }
+                            if (rdr["QUANTITY"] != DBNull.Value)
+                            {
+                                order1.Quantity = Convert.ToDecimal(rdr["QUANTITY"]);
+                            }
+                            if (rdr["VatPercentage"] != DBNull.Value)
+                            {
+                                order1.VatPercentage = Convert.ToInt32(rdr["VatPercentage"]);
+                            }
+                            if (rdr["ProdCd"] != DBNull.Value)
+                            {
+                                order1.ProdCd = rdr["ProdCd"].ToString();
+                            }
+                            if (rdr["PRODNM"] != DBNull.Value)
+                            {
+                                order1.ProdName = rdr["PRODNM"].ToString();
+                            }
+                            if (rdr["UNIT"] != DBNull.Value)
+                            {
+                                order1.Unit = rdr["UNIT"].ToString();
+                            }
                             detail.Add(order1);
                         }
                     }
@@ -160,13 +234,13 @@ namespace SHOPLITE.Models
                 return detail;
             }
 
-            
+
             catch (Exception exe)
             {
                 Logger.Loggermethod(exe);
                 return null;
             }
-           
+
         }
         #endregion
     }
