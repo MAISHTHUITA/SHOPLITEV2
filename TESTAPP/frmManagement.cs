@@ -84,7 +84,7 @@ namespace SHOPLITE
                 MessageBox.Show("Sorry, your Account Has Insufficient Privelleges To Open This Module", "Check Right", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            Form form = frmTillManagement.Instance;
+            Form form = frmSalesReport.Instance;
             form.TopLevel = false;
             pnlmain.Controls.Add(form);
             form.BringToFront();

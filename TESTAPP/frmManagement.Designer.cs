@@ -30,12 +30,13 @@ namespace SHOPLITE
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnTill = new System.Windows.Forms.Button();
             this.btnBackUpDB = new System.Windows.Forms.Button();
             this.btnReason = new System.Windows.Forms.Button();
             this.btnGroups = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.pnlmain = new System.Windows.Forms.Panel();
-            this.btnTill = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -43,6 +44,7 @@ namespace SHOPLITE
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(3)))), ((int)(((byte)(109)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.btnTill);
             this.panel1.Controls.Add(this.btnBackUpDB);
             this.panel1.Controls.Add(this.btnReason);
@@ -53,6 +55,21 @@ namespace SHOPLITE
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(828, 61);
             this.panel1.TabIndex = 0;
+            // 
+            // btnTill
+            // 
+            this.btnTill.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnTill.FlatAppearance.BorderSize = 3;
+            this.btnTill.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTill.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTill.ForeColor = System.Drawing.Color.White;
+            this.btnTill.Location = new System.Drawing.Point(336, 10);
+            this.btnTill.Name = "btnTill";
+            this.btnTill.Size = new System.Drawing.Size(76, 35);
+            this.btnTill.TabIndex = 0;
+            this.btnTill.Text = "TILL";
+            this.btnTill.UseVisualStyleBackColor = true;
+            this.btnTill.Click += new System.EventHandler(this.btnTill_Click);
             // 
             // btnBackUpDB
             // 
@@ -123,20 +140,20 @@ namespace SHOPLITE
             this.pnlmain.Size = new System.Drawing.Size(412, 316);
             this.pnlmain.TabIndex = 1;
             // 
-            // btnTill
+            // button2
             // 
-            this.btnTill.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnTill.FlatAppearance.BorderSize = 3;
-            this.btnTill.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTill.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTill.ForeColor = System.Drawing.Color.White;
-            this.btnTill.Location = new System.Drawing.Point(336, 10);
-            this.btnTill.Name = "btnTill";
-            this.btnTill.Size = new System.Drawing.Size(76, 35);
-            this.btnTill.TabIndex = 0;
-            this.btnTill.Text = "TILL";
-            this.btnTill.UseVisualStyleBackColor = true;
-            this.btnTill.Click += new System.EventHandler(this.btnTill_Click);
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button2.FlatAppearance.BorderSize = 3;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(418, 10);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(76, 35);
+            this.button2.TabIndex = 0;
+            this.button2.Text = "SALES";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.btnTill_Click);
             // 
             // frmManagement
             // 
@@ -162,5 +179,6 @@ namespace SHOPLITE
         private System.Windows.Forms.Button btnGroups;
         private System.Windows.Forms.Button btnBackUpDB;
         private System.Windows.Forms.Button btnTill;
+        private System.Windows.Forms.Button button2;
     }
 }

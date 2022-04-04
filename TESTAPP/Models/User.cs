@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
+
 namespace SHOPLITE.Models
 {
     public class User
@@ -149,6 +150,48 @@ namespace SHOPLITE.Models
                 Logger.Loggermethod(exe);
                 return false;
             }
+        }
+        public IEnumerable<User> AllUsers()
+        {
+            List<User> users = new List<User>();
+            try
+            {
+                using (SqlConnection con = new SqlConnection(DbCon.connection))
+                {
+                    SqlCommand cmd = new SqlCommand("GetAllUsers", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    if (con.State==ConnectionState.Closed)
+                    {
+                        con.Open();
+                    }
+                    SqlDataReader rdr = cmd.ExecuteReader();
+                    if (rdr.HasRows)
+                    {
+                        while (rdr.Read())
+                        {
+                            User userGroup = new User();
+                            userGroup.UserName = rdr["USERNAME"].ToString();
+                            userGroup.FullName = rdr["FullName"].ToString();
+                            userGroup.GroupCode = rdr["GroupCode"].ToString();
+                            users.Add(userGroup);
+                        }
+                        return users;
+                    }
+                    else
+                    {
+                        users.Clear();
+                        return users;
+                    }    
+                }
+            }
+            catch (Exception exe)
+            {
+                users.Clear();
+                Logger.Loggermethod(exe);
+                return users;
+            }
+           
         }
         #endregion
     }

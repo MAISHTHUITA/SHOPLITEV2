@@ -183,6 +183,7 @@ namespace SHOPLITE
             posMaster.Username = Properties.Settings.Default.USERNAME;
             posMaster.CmpnyCd = Properties.Settings.Default.COMPANYNAME;
             posMaster.BrnchCd = Properties.Settings.Default.BRANCHNAME;
+            
             posMaster.Discount = 0;
             posMaster.DiscountNarration = "no discount";
             posMaster.CashGiven = 1000;
@@ -208,6 +209,17 @@ namespace SHOPLITE
                     posMaster.CashGiven = paymentform.CashGiven;
                     posMaster.PaymentMethod = paymentform.PaymentMethod;
                     posMaster.PaymentNarration = paymentform.PaymentNarration;
+                    if (paymentform.PaymentNarration=="OTHER METHOD")
+                    {
+                        posMaster.OtherMethodamount = posMaster.TotalAmount;
+                        posMaster.Cash = 0;
+                    }
+                    else
+                    {
+                        posMaster.OtherMethodamount = 0;
+                        posMaster.Cash = posMaster.TotalAmount;
+                    }
+                    
                     saveresult = repository.SavePos(posMaster, posDetails, out values);
                 }
 

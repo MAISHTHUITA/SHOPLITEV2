@@ -20,6 +20,8 @@ namespace SHOPLITE.Models
         public string DiscountNarration { get; set; }
         public decimal CashGiven { get; set; }
         public string PaymentNarration { get; set; }
+        public decimal OtherMethodamount { get; set; }
+        public decimal Cash { get; set; }
     }
     public class PosDetail
     {
@@ -32,6 +34,7 @@ namespace SHOPLITE.Models
         public string VatCd { get; set; }
         public decimal LineVat { get; set; }
         public decimal LineAmount { get; set; }
+
     }
     public class PosRepository
     {
@@ -51,18 +54,20 @@ namespace SHOPLITE.Models
                     command.Transaction = sqlTransaction;
                     try
                     {
-                        command.CommandText = @"insert into TblPosMaster (VatAmount,TotalAmount,MachineName,Username,PaymentMethod,CmpnyCd,BrnchCd,Discount,DiscountNarration,CashGiven,PaymentNarration) values(@VatAmount,@TotalAmount,@MachineName,@Username,@PaymentMethod,@CmpnyCd,@BrnchCd,@Discount,@DiscountNarration,@CashGiven,@PaymentNarration) SELECT SCOPE_IDENTITY()";
+                        command.CommandText = @"insert into TblPosMaster (VatAmount,TotalAmount,MachineName,Username,PaymentMethod,OtherMethodamount,CmpnyCd,BrnchCd,Discount,DiscountNarration,CashGiven,Cash,PaymentNarration) values(@VatAmount,@TotalAmount,@MachineName,@Username,@PaymentMethod,@OtherMethodamount,@CmpnyCd,@BrnchCd,@Discount,@DiscountNarration,@CashGiven,@Cash,@PaymentNarration) SELECT SCOPE_IDENTITY()";
 
                         command.Parameters.AddWithValue("@VatAmount", pos.VatAmount);
                         command.Parameters.AddWithValue("@TotalAmount", pos.TotalAmount);
                         command.Parameters.AddWithValue("@MachineName", pos.MachineName);
                         command.Parameters.AddWithValue("@Username", pos.Username);
                         command.Parameters.AddWithValue("@PaymentMethod", pos.PaymentMethod);
+                        command.Parameters.AddWithValue("@OtherMethodamount", pos.OtherMethodamount);
                         command.Parameters.AddWithValue("@CmpnyCd", pos.CmpnyCd);
                         command.Parameters.AddWithValue("@BrnchCd", pos.BrnchCd);
                         command.Parameters.AddWithValue("@Discount", pos.Discount);
                         command.Parameters.AddWithValue("@DiscountNarration", pos.DiscountNarration);
                         command.Parameters.AddWithValue("@CashGiven", pos.CashGiven);
+                        command.Parameters.AddWithValue("@Cash", pos.Cash);
                         command.Parameters.AddWithValue("@PaymentNarration", pos.PaymentNarration);
                         string returned = command.ExecuteScalar().ToString();
                         int values = Convert.ToInt32(returned);
