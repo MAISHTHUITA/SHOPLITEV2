@@ -255,6 +255,7 @@ namespace SHOPLITE.ModalForms
             this.txtgdQty.Name = "txtgdQty";
             this.txtgdQty.Size = new System.Drawing.Size(98, 21);
             this.txtgdQty.TabIndex = 1;
+            this.txtgdQty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtgdQty_KeyPress);
             // 
             // txtgdCuqty
             // 
@@ -328,7 +329,7 @@ namespace SHOPLITE.ModalForms
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(248, 11);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(43, 16);
+            this.label5.Size = new System.Drawing.Size(42, 16);
             this.label5.TabIndex = 0;
             this.label5.Text = "Desc:";
             // 
@@ -337,7 +338,7 @@ namespace SHOPLITE.ModalForms
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(500, 44);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(66, 16);
+            this.label11.Size = new System.Drawing.Size(65, 16);
             this.label11.TabIndex = 0;
             this.label11.Text = "Qty Rcvd:";
             // 
@@ -346,7 +347,7 @@ namespace SHOPLITE.ModalForms
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(354, 44);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(61, 16);
+            this.label10.Size = new System.Drawing.Size(60, 16);
             this.label10.TabIndex = 0;
             this.label10.Text = "Curr. Qty:";
             // 
@@ -355,7 +356,7 @@ namespace SHOPLITE.ModalForms
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(251, 44);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(32, 16);
+            this.label9.Size = new System.Drawing.Size(31, 16);
             this.label9.TabIndex = 0;
             this.label9.Text = "S.P:";
             // 
@@ -364,7 +365,7 @@ namespace SHOPLITE.ModalForms
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(143, 44);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(32, 16);
+            this.label8.Size = new System.Drawing.Size(31, 16);
             this.label8.TabIndex = 0;
             this.label8.Text = "C.P:";
             // 
@@ -373,7 +374,7 @@ namespace SHOPLITE.ModalForms
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(17, 44);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(67, 16);
+            this.label7.Size = new System.Drawing.Size(66, 16);
             this.label7.TabIndex = 0;
             this.label7.Text = "Vat Code:";
             // 
@@ -382,7 +383,7 @@ namespace SHOPLITE.ModalForms
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(724, 11);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(34, 16);
+            this.label6.Size = new System.Drawing.Size(33, 16);
             this.label6.TabIndex = 0;
             this.label6.Text = "Unit:";
             // 
@@ -391,7 +392,7 @@ namespace SHOPLITE.ModalForms
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(17, 9);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(76, 16);
+            this.label4.Size = new System.Drawing.Size(75, 16);
             this.label4.TabIndex = 0;
             this.label4.Text = "Prod Code:";
             // 

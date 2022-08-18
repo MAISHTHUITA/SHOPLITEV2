@@ -470,7 +470,6 @@ namespace SHOPLITE.ModalForms
                 {
                     MessageBox.Show("Please Enter Valid Reason Code.");
                     txtReason.Text = "";
-                    txtReason.Focus();
                     return;
                 }
                 else

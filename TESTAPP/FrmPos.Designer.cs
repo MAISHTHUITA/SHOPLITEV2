@@ -51,14 +51,16 @@ namespace SHOPLITE
             this.BtnCancel = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnCancelReceipt = new System.Windows.Forms.Button();
+            this.BtnSave = new System.Windows.Forms.Button();
+            this.lbltotalamount = new System.Windows.Forms.Label();
+            this.lblvantamount = new System.Windows.Forms.Label();
+            this.lblNetamount = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.GvReceipt = new System.Windows.Forms.DataGridView();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.lblNetamount = new System.Windows.Forms.Label();
-            this.lblvantamount = new System.Windows.Forms.Label();
-            this.lbltotalamount = new System.Windows.Forms.Label();
             this.ProdCd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProdNm = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProdUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,8 +70,6 @@ namespace SHOPLITE
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LineVat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Remove = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.BtnSave = new System.Windows.Forms.Button();
-            this.btnCancelReceipt = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -156,15 +156,16 @@ namespace SHOPLITE
             this.TxtQty.Size = new System.Drawing.Size(87, 23);
             this.TxtQty.TabIndex = 1;
             this.TxtQty.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtQty_KeyDown);
+            this.TxtQty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtQty_KeyPress);
             // 
             // TxtProdSp
             // 
             this.TxtProdSp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtProdSp.Enabled = false;
             this.TxtProdSp.Location = new System.Drawing.Point(112, 53);
             this.TxtProdSp.Name = "TxtProdSp";
             this.TxtProdSp.Size = new System.Drawing.Size(95, 23);
             this.TxtProdSp.TabIndex = 2;
+            this.TxtProdSp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtProdSp_KeyPress);
             // 
             // TxtProdCd
             // 
@@ -181,7 +182,7 @@ namespace SHOPLITE
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(226, 16);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(102, 16);
+            this.label2.Size = new System.Drawing.Size(101, 16);
             this.label2.TabIndex = 1;
             this.label2.Text = "Product Desc:";
             // 
@@ -191,7 +192,7 @@ namespace SHOPLITE
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(680, 16);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(96, 16);
+            this.label3.Size = new System.Drawing.Size(95, 16);
             this.label3.TabIndex = 1;
             this.label3.Text = "Product Unit:";
             // 
@@ -200,7 +201,7 @@ namespace SHOPLITE
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(351, 57);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(66, 16);
+            this.label7.Size = new System.Drawing.Size(65, 16);
             this.label7.TabIndex = 1;
             this.label7.Text = "Vat (%):";
             // 
@@ -209,7 +210,7 @@ namespace SHOPLITE
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(220, 57);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(36, 16);
+            this.label6.Size = new System.Drawing.Size(35, 16);
             this.label6.TabIndex = 1;
             this.label6.Text = "Vat:";
             // 
@@ -218,7 +219,7 @@ namespace SHOPLITE
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(498, 56);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(71, 16);
+            this.label5.Size = new System.Drawing.Size(70, 16);
             this.label5.TabIndex = 1;
             this.label5.Text = "Quantity:";
             // 
@@ -227,7 +228,7 @@ namespace SHOPLITE
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(68, 56);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 16);
+            this.label4.Size = new System.Drawing.Size(45, 16);
             this.label4.TabIndex = 1;
             this.label4.Text = "Price:";
             // 
@@ -236,7 +237,7 @@ namespace SHOPLITE
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(11, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 16);
+            this.label1.Size = new System.Drawing.Size(102, 16);
             this.label1.TabIndex = 1;
             this.label1.Text = "Product Code:";
             // 
@@ -260,6 +261,7 @@ namespace SHOPLITE
             this.BtnCancel.TabIndex = 0;
             this.BtnCancel.Text = "CANCEL";
             this.BtnCancel.UseVisualStyleBackColor = true;
+            this.BtnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
             // panel3
             // 
@@ -285,6 +287,92 @@ namespace SHOPLITE
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(961, 100);
             this.panel4.TabIndex = 2;
+            // 
+            // btnCancelReceipt
+            // 
+            this.btnCancelReceipt.Location = new System.Drawing.Point(495, 39);
+            this.btnCancelReceipt.Name = "btnCancelReceipt";
+            this.btnCancelReceipt.Size = new System.Drawing.Size(75, 48);
+            this.btnCancelReceipt.TabIndex = 2;
+            this.btnCancelReceipt.Text = "CANCEL";
+            this.btnCancelReceipt.UseVisualStyleBackColor = true;
+            this.btnCancelReceipt.Click += new System.EventHandler(this.btnCancelReceipt_Click);
+            // 
+            // BtnSave
+            // 
+            this.BtnSave.Location = new System.Drawing.Point(319, 39);
+            this.BtnSave.Name = "BtnSave";
+            this.BtnSave.Size = new System.Drawing.Size(75, 48);
+            this.BtnSave.TabIndex = 2;
+            this.BtnSave.Text = "SAVE";
+            this.BtnSave.UseVisualStyleBackColor = true;
+            this.BtnSave.Click += new System.EventHandler(this.BtnSave_Click);
+            // 
+            // lbltotalamount
+            // 
+            this.lbltotalamount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbltotalamount.AutoSize = true;
+            this.lbltotalamount.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbltotalamount.Location = new System.Drawing.Point(840, 69);
+            this.lbltotalamount.Name = "lbltotalamount";
+            this.lbltotalamount.Size = new System.Drawing.Size(43, 18);
+            this.lbltotalamount.TabIndex = 1;
+            this.lbltotalamount.Text = "0.00";
+            // 
+            // lblvantamount
+            // 
+            this.lblvantamount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblvantamount.AutoSize = true;
+            this.lblvantamount.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblvantamount.Location = new System.Drawing.Point(840, 44);
+            this.lblvantamount.Name = "lblvantamount";
+            this.lblvantamount.Size = new System.Drawing.Size(43, 18);
+            this.lblvantamount.TabIndex = 1;
+            this.lblvantamount.Text = "0.00";
+            // 
+            // lblNetamount
+            // 
+            this.lblNetamount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblNetamount.AutoSize = true;
+            this.lblNetamount.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNetamount.Location = new System.Drawing.Point(840, 19);
+            this.lblNetamount.Name = "lblNetamount";
+            this.lblNetamount.Size = new System.Drawing.Size(43, 18);
+            this.lblNetamount.TabIndex = 1;
+            this.lblNetamount.Text = "0.00";
+            // 
+            // label10
+            // 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(732, 69);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(114, 18);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "Total Amount:";
+            // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(743, 44);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(103, 18);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Vat Amount:";
+            // 
+            // label8
+            // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(741, 19);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(105, 18);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Net Amount:";
             // 
             // panel5
             // 
@@ -333,72 +421,7 @@ namespace SHOPLITE
             this.GvReceipt.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.GvReceipt.Size = new System.Drawing.Size(961, 229);
             this.GvReceipt.TabIndex = 0;
-            // 
-            // label8
-            // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(741, 19);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(105, 18);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "Net Amount:";
-            // 
-            // label9
-            // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(743, 44);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(103, 18);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "Vat Amount:";
-            // 
-            // label10
-            // 
-            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(732, 69);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(114, 18);
-            this.label10.TabIndex = 0;
-            this.label10.Text = "Total Amount:";
-            // 
-            // lblNetamount
-            // 
-            this.lblNetamount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblNetamount.AutoSize = true;
-            this.lblNetamount.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNetamount.Location = new System.Drawing.Point(840, 19);
-            this.lblNetamount.Name = "lblNetamount";
-            this.lblNetamount.Size = new System.Drawing.Size(43, 18);
-            this.lblNetamount.TabIndex = 1;
-            this.lblNetamount.Text = "0.00";
-            // 
-            // lblvantamount
-            // 
-            this.lblvantamount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblvantamount.AutoSize = true;
-            this.lblvantamount.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblvantamount.Location = new System.Drawing.Point(840, 44);
-            this.lblvantamount.Name = "lblvantamount";
-            this.lblvantamount.Size = new System.Drawing.Size(43, 18);
-            this.lblvantamount.TabIndex = 1;
-            this.lblvantamount.Text = "0.00";
-            // 
-            // lbltotalamount
-            // 
-            this.lbltotalamount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbltotalamount.AutoSize = true;
-            this.lbltotalamount.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbltotalamount.Location = new System.Drawing.Point(840, 69);
-            this.lbltotalamount.Name = "lbltotalamount";
-            this.lbltotalamount.Size = new System.Drawing.Size(43, 18);
-            this.lbltotalamount.TabIndex = 1;
-            this.lbltotalamount.Text = "0.00";
+            this.GvReceipt.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GvReceipt_CellDoubleClick);
             // 
             // ProdCd
             // 
@@ -471,26 +494,6 @@ namespace SHOPLITE
             this.Remove.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Remove.Text = "Edit";
             this.Remove.ToolTipText = "Remove item. Requires a Password.";
-            // 
-            // BtnSave
-            // 
-            this.BtnSave.Location = new System.Drawing.Point(319, 39);
-            this.BtnSave.Name = "BtnSave";
-            this.BtnSave.Size = new System.Drawing.Size(75, 48);
-            this.BtnSave.TabIndex = 2;
-            this.BtnSave.Text = "SAVE";
-            this.BtnSave.UseVisualStyleBackColor = true;
-            this.BtnSave.Click += new System.EventHandler(this.BtnSave_Click);
-            // 
-            // btnCancelReceipt
-            // 
-            this.btnCancelReceipt.Location = new System.Drawing.Point(495, 39);
-            this.btnCancelReceipt.Name = "btnCancelReceipt";
-            this.btnCancelReceipt.Size = new System.Drawing.Size(75, 48);
-            this.btnCancelReceipt.TabIndex = 2;
-            this.btnCancelReceipt.Text = "CANCEL";
-            this.btnCancelReceipt.UseVisualStyleBackColor = true;
-            this.btnCancelReceipt.Click += new System.EventHandler(this.btnCancelReceipt_Click);
             // 
             // frmPOS
             // 

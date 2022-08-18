@@ -45,17 +45,17 @@ namespace SHOPLITE
                 TxtVat.Text = product.VatCd;
                 TxtQty.Text = product.DefaultQuantity.ToString();
 
-                if (product.DefaultQuantity != 0)
-                {
-                    BtnAdd_Click(sender, e);
-                    ClearTextboxes();
-                    TxtProdCd.Focus();
-                }
-                else
-                {
+                //if (product.DefaultQuantity != 0)
+                //{
+                //    BtnAdd_Click(sender, e);
+                //    ClearTextboxes();
+                //    TxtProdCd.Focus();
+                //}
+                //else
+                //{
                     TxtQty.Focus();
                     TxtQty.Text = "";
-                }
+                //}
             }
             else
             {
@@ -129,6 +129,12 @@ namespace SHOPLITE
                 lblNetamount.Text = vatamount.ToString("0.00");
                 lblvantamount.Text = (Amount - vatamount).ToString("0.00");
                 lbltotalamount.Text = Amount.ToString("0.00");
+            }
+            else
+            {
+                lblNetamount.Text = "0.00";
+                lblvantamount.Text = "0.00";
+                lbltotalamount.Text = "0.00";
             }
         }
 
@@ -209,7 +215,7 @@ namespace SHOPLITE
                     posMaster.CashGiven = paymentform.CashGiven;
                     posMaster.PaymentMethod = paymentform.PaymentMethod;
                     posMaster.PaymentNarration = paymentform.PaymentNarration;
-                    if (paymentform.PaymentNarration=="OTHER METHOD")
+                    if (String.Equals("OTHER METHODS".ToUpper(),posMaster.PaymentMethod.ToUpper()))
                     {
                         posMaster.OtherMethodamount = posMaster.TotalAmount;
                         posMaster.Cash = 0;
@@ -229,7 +235,7 @@ namespace SHOPLITE
             if (saveresult)
             {
                 MessageBox.Show($"Receipt Saved! \n Receipt No.{values.ToString()}", "Transaction Successful");
-                MessageBox.Show("Print", "Print");
+                MessageBox.Show("Print", "Print?");
                 PrintClass printClass = new PrintClass();
                 ///dummy value
                 bool tobbe = true;
@@ -246,8 +252,69 @@ namespace SHOPLITE
             PrintClass print = new PrintClass();
             // print.PrintReceipt();
         }
+
         #endregion
 
+        private void GvReceipt_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int y = e.RowIndex;
+            if (y >= 0)
+            {
+                if (String.IsNullOrEmpty(TxtProdCd.Text))
+                {
+                    string codde = GvReceipt.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    string quty = GvReceipt.Rows[e.RowIndex].Cells[3].Value.ToString();
+                    TxtProdCd.Text = codde;
+                    TxtProdCd_Leave(sender, e);
+                    TxtQty.Text = quty;
+                    GvReceipt.Rows.RemoveAt(e.RowIndex);
+                    calculatetotals();
+                    TxtQty.Focus();
 
+                }
+                else
+                {
+                    MessageBox.Show("Please Enter or clear Current Product ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+        }
+
+        private void BtnCancel_Click(object sender, EventArgs e)
+        {
+            TxtProdCd.Text = "";
+            ClearTextboxes();
+            TxtProdCd.Focus();
+            calculatetotals();
+        }
+
+        private void TxtProdSp_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if (e.KeyChar == '.'
+                && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TxtQty_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if (e.KeyChar == '.'
+                && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

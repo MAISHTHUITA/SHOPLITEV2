@@ -32,7 +32,11 @@ namespace SHOPLITE
 
         private void btnInventory_Click(object sender, EventArgs e)
         {
-
+            if (!GroupPolicy.CheckPolicy(Properties.Settings.Default.USERNAME, "IM"))
+            {
+                MessageBox.Show("Sorry, your Account Has Insufficient Privelleges To Open This Module", "Check Right", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
             Form inventory = frmInventory.Instance;
             inventory.TopLevel = false;
             MainPanel.Controls.Add(inventory);
@@ -43,7 +47,11 @@ namespace SHOPLITE
 
         private void btnProducts_Click(object sender, EventArgs e)
         {
-
+            if (!GroupPolicy.CheckPolicy(Properties.Settings.Default.USERNAME, "PMM"))
+            {
+                MessageBox.Show("Sorry, your Account Has Insufficient Privelleges To Open This Module", "Check Right", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
             Form form = frmProduct.Instance;
             form.TopLevel = false;
             MainPanel.Controls.Add(form);
@@ -89,6 +97,11 @@ namespace SHOPLITE
 
         private void btnReports_Click(object sender, EventArgs e)
         {
+            if (!GroupPolicy.CheckPolicy(Properties.Settings.Default.USERNAME, "OM"))
+            {
+                MessageBox.Show("Sorry, your Account Has Insufficient Privelleges To Open This Module", "Check Right", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
             Form form = frmReports.Instance;
             form.TopLevel = false;
             MainPanel.Controls.Add(form);
@@ -99,7 +112,11 @@ namespace SHOPLITE
 
         private void btnManagement_Click(object sender, EventArgs e)
         {
-
+            if (!GroupPolicy.CheckPolicy(Properties.Settings.Default.USERNAME, "AM"))
+            {
+                MessageBox.Show("Sorry, your Account Has Insufficient Privelleges To Open This Module", "Check Right", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
             Form form = frmManagement.Instance;
             form.TopLevel = false;
             MainPanel.Controls.Add(form);
@@ -144,6 +161,11 @@ namespace SHOPLITE
 
         private void btnOrders_Click(object sender, EventArgs e)
         {
+            if (!GroupPolicy.CheckPolicy(Properties.Settings.Default.USERNAME, "OM"))
+            {
+                MessageBox.Show("Sorry, your Account Has Insufficient Privelleges To Open This Module", "Check Right", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
             Form form = frmOrders.Instance;
             form.TopLevel = false;
             MainPanel.Controls.Add(form);
