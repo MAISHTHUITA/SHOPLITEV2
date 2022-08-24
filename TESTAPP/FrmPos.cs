@@ -37,13 +37,31 @@ namespace SHOPLITE
 
             if (product != null)
             {
+                decimal sellingprice = Convert.ToDecimal(0.00);
+                if (RdRetail.Checked)
+                {
+                    sellingprice = product.Sp;
+                }
+                else if (RdWholesale.Checked)
+                {
+                    sellingprice = product.WholesaleSp;
+                }
                 TxtProdCd.Text = product.ProdCd;
                 TxtProdDesc.Text = product.ProdNm;
                 TxtProdUnit.Text = product.UnitCd;
-                TxtProdSp.Text = product.Sp.ToString();
+                TxtProdSp.Text = sellingprice.ToString();
                 txtVatPer.Text = product.VatPercentage.ToString();
                 TxtVat.Text = product.VatCd;
                 TxtQty.Text = product.DefaultQuantity.ToString();
+                if (product.Cp >= sellingprice)
+                {
+                    MessageBox.Show("Negative sale is not allowed Current Cp is " + product.Cp + "and Sp is "+sellingprice.ToString(), "Negative Sale.",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    ClearTextboxes();
+                    TxtProdCd.Clear();
+                    TxtProdCd.Focus();
+                    return;
+                }
+                    
 
                 //if (product.DefaultQuantity != 0)
                 //{
@@ -53,8 +71,8 @@ namespace SHOPLITE
                 //}
                 //else
                 //{
-                    TxtQty.Focus();
-                    TxtQty.Text = "";
+                TxtQty.Focus();
+                TxtQty.Text = "";
                 //}
             }
             else
@@ -189,7 +207,7 @@ namespace SHOPLITE
             posMaster.Username = Properties.Settings.Default.USERNAME;
             posMaster.CmpnyCd = Properties.Settings.Default.COMPANYNAME;
             posMaster.BrnchCd = Properties.Settings.Default.BRANCHNAME;
-            
+
             posMaster.Discount = 0;
             posMaster.DiscountNarration = "no discount";
             posMaster.CashGiven = 1000;
@@ -215,7 +233,7 @@ namespace SHOPLITE
                     posMaster.CashGiven = paymentform.CashGiven;
                     posMaster.PaymentMethod = paymentform.PaymentMethod;
                     posMaster.PaymentNarration = paymentform.PaymentNarration;
-                    if (String.Equals("OTHER METHODS".ToUpper(),posMaster.PaymentMethod.ToUpper()))
+                    if (String.Equals("OTHER METHODS".ToUpper(), posMaster.PaymentMethod.ToUpper()))
                     {
                         posMaster.OtherMethodamount = posMaster.TotalAmount;
                         posMaster.Cash = 0;
@@ -225,7 +243,7 @@ namespace SHOPLITE
                         posMaster.OtherMethodamount = 0;
                         posMaster.Cash = posMaster.TotalAmount;
                     }
-                    
+
                     saveresult = repository.SavePos(posMaster, posDetails, out values);
                 }
 
@@ -249,8 +267,11 @@ namespace SHOPLITE
         }
         private void btnCancelReceipt_Click(object sender, EventArgs e)
         {
+            clearall(sender,e);
+            // dummy code
             PrintClass print = new PrintClass();
             // print.PrintReceipt();
+
         }
 
         #endregion
@@ -315,6 +336,20 @@ namespace SHOPLITE
             {
                 e.Handled = true;
             }
+        }
+        private void clearall(object sender,EventArgs e) {
+            GvReceipt.Rows.Clear();
+            BtnCancel_Click(sender, e);
+        }
+
+        private void RdRetail_CheckedChanged(object sender, EventArgs e)
+        {
+            clearall(sender, e);
+        }
+
+        private void RdWholesale_CheckedChanged(object sender, EventArgs e)
+        {
+            clearall(sender, e);
         }
     }
 }

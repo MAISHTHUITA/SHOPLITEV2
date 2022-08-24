@@ -57,7 +57,7 @@ namespace SHOPLITE.ModalForms
                 }
                 else
                 {
-                    ReportDocument report = new PriceChange();
+                    ReportDocument report = new SpChange();
                     report.SetDataSource(costPrices);
                     report.SetParameterValue("@Company", Properties.Settings.Default.COMPANYNAME.ToUpper());
                     report.SetParameterValue("@Branch", Properties.Settings.Default.BRANCHNAME.ToUpper());

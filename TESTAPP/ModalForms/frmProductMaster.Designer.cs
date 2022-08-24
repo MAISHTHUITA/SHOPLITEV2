@@ -40,6 +40,7 @@ namespace SHOPLITE.ModalForms
             System.Windows.Forms.Label isActiveLabel;
             System.Windows.Forms.Label deptCdLabel;
             System.Windows.Forms.Label cpLabel;
+            System.Windows.Forms.Label label2;
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.lblClose = new System.Windows.Forms.Label();
@@ -63,6 +64,7 @@ namespace SHOPLITE.ModalForms
             this.isActiveCheckBox = new System.Windows.Forms.CheckBox();
             this.cpTextBox = new System.Windows.Forms.TextBox();
             this.prodCdTextBox = new System.Windows.Forms.TextBox();
+            this.Wholesaletxt = new System.Windows.Forms.TextBox();
             prodCdLabel = new System.Windows.Forms.Label();
             vatCdLabel = new System.Windows.Forms.Label();
             unitCdLabel = new System.Windows.Forms.Label();
@@ -74,6 +76,7 @@ namespace SHOPLITE.ModalForms
             isActiveLabel = new System.Windows.Forms.Label();
             deptCdLabel = new System.Windows.Forms.Label();
             cpLabel = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -118,11 +121,11 @@ namespace SHOPLITE.ModalForms
             // spLabel
             // 
             spLabel.AutoSize = true;
-            spLabel.Location = new System.Drawing.Point(263, 83);
+            spLabel.Location = new System.Drawing.Point(437, 81);
             spLabel.Name = "spLabel";
-            spLabel.Size = new System.Drawing.Size(82, 13);
+            spLabel.Size = new System.Drawing.Size(43, 13);
             spLabel.TabIndex = 14;
-            spLabel.Text = "Selling Price:";
+            spLabel.Text = "R.S.P:";
             // 
             // qtyOnOrderLabel
             // 
@@ -227,7 +230,9 @@ namespace SHOPLITE.ModalForms
             this.panel3.Controls.Add(vatCdLabel);
             this.panel3.Controls.Add(unitCdLabel);
             this.panel3.Controls.Add(supCdLabel);
+            this.panel3.Controls.Add(label2);
             this.panel3.Controls.Add(spLabel);
+            this.panel3.Controls.Add(this.Wholesaletxt);
             this.panel3.Controls.Add(this.spTextBox);
             this.panel3.Controls.Add(qtyOnOrderLabel);
             this.panel3.Controls.Add(this.qtyOnOrderTextBox);
@@ -245,6 +250,7 @@ namespace SHOPLITE.ModalForms
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(564, 341);
             this.panel3.TabIndex = 23;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // SupTextBox
             // 
@@ -402,10 +408,10 @@ namespace SHOPLITE.ModalForms
             // 
             this.spTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(238)))), ((int)(((byte)(245)))));
             this.spTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.spTextBox.Location = new System.Drawing.Point(362, 79);
+            this.spTextBox.Location = new System.Drawing.Point(486, 78);
             this.spTextBox.Name = "spTextBox";
             this.spTextBox.ReadOnly = true;
-            this.spTextBox.Size = new System.Drawing.Size(81, 21);
+            this.spTextBox.Size = new System.Drawing.Size(48, 21);
             this.spTextBox.TabIndex = 3;
             // 
             // qtyOnOrderTextBox
@@ -469,6 +475,25 @@ namespace SHOPLITE.ModalForms
             this.prodCdTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.prodCdTextBox_KeyDown);
             this.prodCdTextBox.Leave += new System.EventHandler(this.prodCdTextBox_Leave);
             // 
+            // Wholesaletxt
+            // 
+            this.Wholesaletxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(238)))), ((int)(((byte)(245)))));
+            this.Wholesaletxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Wholesaletxt.Location = new System.Drawing.Point(381, 78);
+            this.Wholesaletxt.Name = "Wholesaletxt";
+            this.Wholesaletxt.ReadOnly = true;
+            this.Wholesaletxt.Size = new System.Drawing.Size(48, 21);
+            this.Wholesaletxt.TabIndex = 3;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(332, 81);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(45, 13);
+            label2.TabIndex = 14;
+            label2.Text = "W.S.P:";
+            // 
             // frmProductMaster
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -514,5 +539,6 @@ namespace SHOPLITE.ModalForms
         private System.Windows.Forms.TextBox cpTextBox;
         private System.Windows.Forms.TextBox prodCdTextBox;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox Wholesaletxt;
     }
 }

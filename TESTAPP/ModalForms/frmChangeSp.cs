@@ -36,14 +36,29 @@ namespace SHOPLITE.ModalForms
             txtProdCd.Text = product1.ProdCd;
             txtProdNm.Text = product1.ProdNm;
             txtSP.Text = product1.Sp.ToString("0.00");
+            WholesaleoldSptxt.Text = product1.WholesaleSp.ToString("0.00");
+            txtNewPrice.Text = product1.Sp.ToString("0.00");
+            NewWholesaleSptxt.Text = product1.WholesaleSp.ToString("0.00");
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (String.IsNullOrEmpty(NewWholesaleSptxt.Text))
+            {
+                MessageBox.Show("Please enter New Wholesale Price", "Info", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                NewWholesaleSptxt.Focus();
+            }
+            if (String.IsNullOrEmpty(txtNewPrice.Text))
+            {
+                MessageBox.Show("Please enter New Retail Price", "Info", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtNewPrice.Focus();
+            }
             PriceRepository priceRepository = new PriceRepository();
             SellingPrice cost = new SellingPrice();
             cost.ProdCd = txtProdCd.Text;
             cost.Old = product1.Sp;
+            cost.OldWholesalesp = product1.WholesaleSp;
+            cost.NewWholesalesp = Convert.ToDecimal(NewWholesaleSptxt.Text);
             cost.New = Convert.ToDecimal(txtNewPrice.Text);
             if (priceRepository.ChangeSP(cost))
             {

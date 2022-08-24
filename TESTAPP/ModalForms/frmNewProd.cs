@@ -51,6 +51,11 @@ namespace SHOPLITE.ModalForms
                 MessageBox.Show("Please Enter Product Supplier.");
                 return;
             }
+            if (String.IsNullOrEmpty(WholesaleSpTxt.Text))
+            {
+                MessageBox.Show("Please Enter Product WholeSale Price.");
+                return;
+            }
             if (String.IsNullOrEmpty(cpTextBox.Text))
             {
                 MessageBox.Show("Please Enter Product Cost Price.");
@@ -80,6 +85,7 @@ namespace SHOPLITE.ModalForms
             product.DeptCd = deptTextBox.Text;
             product.SuppCd = SupTextBox.Text;
             product.VatCd = VatTextBox.Text;
+            product.WholesaleSp = Convert.ToDecimal(WholesaleSpTxt.Text);
             product.CreatedBy = Properties.Settings.Default.USERNAME;
             product.Cp = Convert.ToDecimal(cpTextBox.Text);
             product.Sp = Convert.ToDecimal(spTextBox.Text);

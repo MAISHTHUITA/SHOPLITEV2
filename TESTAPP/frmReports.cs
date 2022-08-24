@@ -57,5 +57,19 @@ namespace SHOPLITE
             form.BringToFront();
             form.Show();
         }
+
+        private void btnProdlist_Click(object sender, EventArgs e)
+        {
+            if (!GroupPolicy.CheckPolicy(Properties.Settings.Default.USERNAME, "SC"))
+            {
+                MessageBox.Show("Sorry, your Account Has Insufficient Privelleges To Open This Module", "Check Right", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            Form form = frmProductlist.Instance;
+            form.TopLevel = false;
+            mainpnl.Controls.Add(form);
+            form.BringToFront();
+            form.Show();
+        }
     }
 }

@@ -23,6 +23,7 @@ namespace SHOPLITE.Models
         public decimal Cp { get; set; }
         [Required]
         public decimal Sp { get; set; }
+        public decimal WholesaleSp { get; set; }
         [Required]
         public decimal VatPercentage { get; set; }
         [Required]
@@ -74,6 +75,7 @@ namespace SHOPLITE.Models
         public string ProdDepartment { get; set; }
         public decimal Cp { get; set; }
         public decimal Sp { get; set; }
+        
         public int Vat { get; set; }
         public string ProdUnit { get; set; }
         public decimal QuantityAvailable { get; set; }
@@ -209,7 +211,7 @@ namespace SHOPLITE.Models
                 try
                 {
 
-                    string query = "Insert into tblProd(ProdCd,ProdNm,UnitCd,DeptCd,SuppCd,Cp,Sp,VatCd,CreatedBy) values(@ProdCd,@ProdNm,@UnitCd,@DeptCd,@SuppCd,@Cp,@Sp,@VatCd,@CreatedBy)";
+                    string query = "Insert into tblProd(ProdCd,ProdNm,UnitCd,DeptCd,SuppCd,Cp,Sp,VatCd,CreatedBy,WholesaleSp) values(@ProdCd,@ProdNm,@UnitCd,@DeptCd,@SuppCd,@Cp,@Sp,@VatCd,@CreatedBy,@wholesalesp)";
                     SqlCommand sql = new SqlCommand(query, con);
                     sql.Parameters.AddWithValue("@ProdCd", product.ProdCd.ToUpper());
                     sql.Parameters.AddWithValue("@ProdNm", product.ProdNm.ToUpper());
@@ -218,6 +220,8 @@ namespace SHOPLITE.Models
                     sql.Parameters.AddWithValue("@SuppCd", product.SuppCd.ToUpper());
                     sql.Parameters.AddWithValue("@Cp", product.Cp);
                     sql.Parameters.AddWithValue("@Sp", product.Sp);
+                    //added to accomodate whole sale
+                    sql.Parameters.AddWithValue("@wholesaleSp", product.WholesaleSp);
                     sql.Parameters.AddWithValue("@VatCd", product.VatCd.ToUpper());
                     sql.Parameters.AddWithValue("@CreatedBy", product.CreatedBy.ToUpper());
 
@@ -318,7 +322,7 @@ namespace SHOPLITE.Models
             Product product = new Product();
             using (SqlConnection con = new SqlConnection(DbCon.connection))
             {
-                string query = "select TblProd.Prodcd,TblProd.prodnm,TblProd.unitcd,TblProd.deptcd,TblProd.suppcd,TblProd.vatcd,TblProd.qtyavble,TblProd.qtyonorder,TblProd.cp,TblProd.sp,TblProd.isactive,TblVat.vatpercentage,DefaultQuantity from TblProd left join TblScnCd on TblProd.ProdCd=TblScnCd.ProdCd left join TblVat on TblProd.vatcd=tblvat.vatcd where tblProd.ProdCd=@ProdCd or ScanCode=@ProdCd";
+                string query = "select TblProd.Prodcd,TblProd.prodnm,TblProd.unitcd,TblProd.deptcd,TblProd.suppcd,TblProd.vatcd,TblProd.qtyavble,TblProd.qtyonorder,TblProd.cp,TblProd.sp,TblProd.isactive,TblVat.vatpercentage,DefaultQuantity, WholesaleSp from TblProd left join TblScnCd on TblProd.ProdCd=TblScnCd.ProdCd left join TblVat on TblProd.vatcd=tblvat.vatcd where tblProd.ProdCd=@ProdCd or ScanCode=@ProdCd";
                 SqlCommand cmd = new SqlCommand(query, con);
                 cmd.Parameters.AddWithValue("@ProdCd", Productcode);
                 try
@@ -345,9 +349,10 @@ namespace SHOPLITE.Models
                         product.QtyOnOrder = Convert.ToDecimal(rdr["QtyOnOrder"].ToString());
                         product.Cp = Convert.ToDecimal(rdr["Cp"].ToString());
                         product.Sp = Convert.ToDecimal(rdr["Sp"].ToString());
+                        product.WholesaleSp = Convert.ToDecimal(rdr["WholesaleSp"].ToString());
                         product.IsActive = Convert.ToBoolean(rdr["IsActive"].ToString());
                         product.DefaultQuantity = Convert.ToDecimal(rdr["DefaultQuantity"]);
-
+                        
 
                     }
                     return product;
@@ -391,7 +396,7 @@ namespace SHOPLITE.Models
                             QtyAvble = Convert.ToDecimal(rdr["QtyAvble"].ToString()),
                             QtyOnOrder = Convert.ToDecimal(rdr["QtyOnOrder"].ToString()),
                             Cp = Convert.ToDecimal(rdr["Cp"].ToString()),
-                            Sp = Convert.ToDecimal(rdr["Sp"].ToString()),
+                            Sp = Convert.ToDecimal(rdr["Sp"].ToString()),WholesaleSp= Convert.ToDecimal(rdr["WholesaleSp"].ToString()),
                             IsActive = Convert.ToBoolean(rdr["IsActive"].ToString())
                         };
                         products.Add(product);
@@ -510,6 +515,7 @@ namespace SHOPLITE.Models
             }
 
         }
+        
         public IEnumerable<ScanCode> ProdScans(string ProdCd)
         {
             List<ScanCode> scans = new List<ScanCode>();

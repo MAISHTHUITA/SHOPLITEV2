@@ -34,12 +34,14 @@ namespace SHOPLITE
             this.btnStockcard = new System.Windows.Forms.Button();
             this.btnPrcChange = new System.Windows.Forms.Button();
             this.mainpnl = new System.Windows.Forms.Panel();
+            this.btnProdlist = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(94)))), ((int)(((byte)(242)))));
+            this.panel1.Controls.Add(this.btnProdlist);
             this.panel1.Controls.Add(this.btnViewGrn);
             this.panel1.Controls.Add(this.btnStockcard);
             this.panel1.Controls.Add(this.btnPrcChange);
@@ -103,6 +105,21 @@ namespace SHOPLITE
             this.mainpnl.Size = new System.Drawing.Size(476, 358);
             this.mainpnl.TabIndex = 1;
             // 
+            // btnProdlist
+            // 
+            this.btnProdlist.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.btnProdlist.FlatAppearance.BorderSize = 2;
+            this.btnProdlist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProdlist.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProdlist.ForeColor = System.Drawing.Color.White;
+            this.btnProdlist.Location = new System.Drawing.Point(281, 12);
+            this.btnProdlist.Name = "btnProdlist";
+            this.btnProdlist.Size = new System.Drawing.Size(73, 39);
+            this.btnProdlist.TabIndex = 0;
+            this.btnProdlist.Text = "Product List";
+            this.btnProdlist.UseVisualStyleBackColor = true;
+            this.btnProdlist.Click += new System.EventHandler(this.btnProdlist_Click);
+            // 
             // frmReports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -126,5 +143,6 @@ namespace SHOPLITE
         private System.Windows.Forms.Button btnPrcChange;
         private System.Windows.Forms.Button btnStockcard;
         private System.Windows.Forms.Button btnViewGrn;
+        private System.Windows.Forms.Button btnProdlist;
     }
 }

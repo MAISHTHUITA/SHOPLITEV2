@@ -95,6 +95,7 @@ namespace SHOPLITE.ModalForms
             SupTextBox.Text = product.SuppCd.ToUpper() + " - " + supplier.SuppNm;
             cpTextBox.Text = product.Cp.ToString();
             spTextBox.Text = product.Sp.ToString();
+            Wholesaletxt.Text = product.WholesaleSp.ToString();
             isActiveCheckBox.Checked = product.IsActive;
             VatTextBox.Text = product.VatCd;
             qtyAvbleTextBox.Text = product.QtyAvble.ToString();
@@ -199,6 +200,11 @@ namespace SHOPLITE.ModalForms
                     }
                 }
             }
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

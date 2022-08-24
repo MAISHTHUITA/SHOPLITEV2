@@ -29,9 +29,13 @@ namespace SHOPLITE
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.RdWholesale = new System.Windows.Forms.RadioButton();
+            this.RdRetail = new System.Windows.Forms.RadioButton();
+            this.label11 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.TxtProdDesc = new System.Windows.Forms.TextBox();
             this.TxtProdUnit = new System.Windows.Forms.TextBox();
@@ -70,6 +74,8 @@ namespace SHOPLITE
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LineVat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Remove = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.panel1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -79,11 +85,58 @@ namespace SHOPLITE
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(961, 94);
             this.panel1.TabIndex = 0;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.RdWholesale);
+            this.groupBox1.Controls.Add(this.RdRetail);
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Location = new System.Drawing.Point(11, 11);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(579, 76);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            // 
+            // RdWholesale
+            // 
+            this.RdWholesale.AutoSize = true;
+            this.RdWholesale.Location = new System.Drawing.Point(307, 32);
+            this.RdWholesale.Name = "RdWholesale";
+            this.RdWholesale.Size = new System.Drawing.Size(91, 20);
+            this.RdWholesale.TabIndex = 1;
+            this.RdWholesale.Text = "Wholesale";
+            this.RdWholesale.UseVisualStyleBackColor = true;
+            this.RdWholesale.CheckedChanged += new System.EventHandler(this.RdWholesale_CheckedChanged);
+            // 
+            // RdRetail
+            // 
+            this.RdRetail.AutoSize = true;
+            this.RdRetail.Checked = true;
+            this.RdRetail.Location = new System.Drawing.Point(218, 31);
+            this.RdRetail.Name = "RdRetail";
+            this.RdRetail.Size = new System.Drawing.Size(61, 20);
+            this.RdRetail.TabIndex = 1;
+            this.RdRetail.TabStop = true;
+            this.RdRetail.Text = "Retail";
+            this.RdRetail.UseVisualStyleBackColor = true;
+            this.RdRetail.CheckedChanged += new System.EventHandler(this.RdRetail_CheckedChanged);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.OrangeRed;
+            this.label11.Location = new System.Drawing.Point(17, 31);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(172, 18);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "Customer Category:";
             // 
             // panel2
             // 
@@ -161,6 +214,7 @@ namespace SHOPLITE
             // TxtProdSp
             // 
             this.TxtProdSp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtProdSp.Enabled = false;
             this.TxtProdSp.Location = new System.Drawing.Point(112, 53);
             this.TxtProdSp.Name = "TxtProdSp";
             this.TxtProdSp.Size = new System.Drawing.Size(95, 23);
@@ -387,20 +441,20 @@ namespace SHOPLITE
             // 
             this.GvReceipt.AllowUserToAddRows = false;
             this.GvReceipt.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            this.GvReceipt.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            this.GvReceipt.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.GvReceipt.BackgroundColor = System.Drawing.SystemColors.Control;
             this.GvReceipt.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(4);
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GvReceipt.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(4);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GvReceipt.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.GvReceipt.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GvReceipt.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ProdCd,
@@ -511,6 +565,9 @@ namespace SHOPLITE
             this.Name = "frmPOS";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.panel1.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel4.ResumeLayout(false);
@@ -562,5 +619,9 @@ namespace SHOPLITE
         private System.Windows.Forms.DataGridViewButtonColumn Remove;
         private System.Windows.Forms.Button btnCancelReceipt;
         private System.Windows.Forms.Button BtnSave;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton RdWholesale;
+        private System.Windows.Forms.RadioButton RdRetail;
+        private System.Windows.Forms.Label label11;
     }
 }

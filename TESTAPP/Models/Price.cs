@@ -11,6 +11,8 @@ namespace SHOPLITE.Models
         public string ProdNm { get; set; }
         public DateTime Chg_Dt { get; set; }
         public decimal Old { get; set; }
+        public decimal OldWholesalesp { get; set; }
+        public decimal NewWholesalesp { get; set; }
         public decimal New { get; set; }
         public string Usr_Nm { get; set; }
         public string Brch_Cd { get; set; }
@@ -96,20 +98,23 @@ namespace SHOPLITE.Models
                 try
                 {
 
-                    string updateproduct = "Update tblprod set sp =@sp where prodcd =@prodcd";
-                    string updatecpchange = "insert into tblsphist (PROD_CD,INT_SP,NW_SP,USR_NM,CHG_DT,BRCH_CD,CMPY_CD) VALUES(@PROD_CD,@INT_SP,@NW_SP,@USR_NM,@CHG_DT,@BRCH_CD,@CMPY_CD)";
+                    string updateproduct = "Update tblprod set sp =@sp, wholesalesp=@newwsp where prodcd =@prodcd";
+                    string updatecpchange = "insert into tblsphist (PROD_CD,INT_SP,NW_SP,USR_NM,CHG_DT,BRCH_CD,CMPY_CD,INT_WSP,NW_WSP) VALUES(@PROD_CD,@INT_SP,@NW_SP,@USR_NM,@CHG_DT,@BRCH_CD,@CMPY_CD,@INT_WSP,@NW_WSP)";
 
                     if (con.State == ConnectionState.Closed)
                         con.Open();
                     SqlTransaction transaction = con.BeginTransaction();
                     SqlCommand sql1 = new SqlCommand(updateproduct, con);
                     sql1.Parameters.AddWithValue("@sp", product.New);
+                    sql1.Parameters.AddWithValue("@newwsp", product.NewWholesalesp);
                     sql1.Parameters.AddWithValue("@prodcd", product.ProdCd);
                     sql1.Transaction = transaction;
                     SqlCommand sql2 = new SqlCommand(updatecpchange, con);
                     sql2.Parameters.AddWithValue("@PROD_CD", product.ProdCd);
                     sql2.Parameters.AddWithValue("@INT_SP", product.Old);
                     sql2.Parameters.AddWithValue("@NW_SP", product.New);
+                    sql2.Parameters.AddWithValue("@INT_WSP", product.OldWholesalesp);
+                    sql2.Parameters.AddWithValue("@NW_WSP", product.NewWholesalesp);
                     sql2.Parameters.AddWithValue("@USR_NM", Properties.Settings.Default.USERNAME);
                     sql2.Parameters.AddWithValue("@BRCH_CD", "NRK");
                     sql2.Parameters.AddWithValue("@CMPY_CD", "TT");
@@ -196,7 +201,7 @@ namespace SHOPLITE.Models
             {
                 try
                 {
-                    string query = "select c.PROD_CD,p.ProdNm,c.BRCH_CD, p.ProdNm, c.INT_sP,c.NW_SP,c.USR_NM,c.CHG_DT from TBLSPHIST c inner join TblProd p on c.PROD_CD=p.ProdCd where PROD_CD between @fromprdct and @toprdct and SuppCd between @fromsupp and @tosupp and DeptCd between @fromdept and @todept and c.CHG_DT between @fromdate and @todate";
+                    string query = "select c.PROD_CD,p.ProdNm,c.BRCH_CD, p.ProdNm, c.INT_sP,c.NW_SP,c.USR_NM,c.CHG_DT,C.INT_WSP,C.Nw_WSP from TBLSPHIST c inner join TblProd p on c.PROD_CD=p.ProdCd where PROD_CD between @fromprdct and @toprdct and SuppCd between @fromsupp and @tosupp and DeptCd between @fromdept and @todept and c.CHG_DT between @fromdate and @todate";
                     SqlCommand cmd = new SqlCommand(query, con);
                     cmd.Parameters.AddWithValue("@fromprdct", fromprdct);
                     cmd.Parameters.AddWithValue("@toprdct", toprdct);
@@ -222,6 +227,8 @@ namespace SHOPLITE.Models
                             costPrice.ProdNm = sql["ProdNm"].ToString();
                             costPrice.Old = (decimal)sql["INT_SP"];
                             costPrice.New = (decimal)sql["Nw_SP"];
+                            costPrice.OldWholesalesp = (decimal)sql["INT_WSP"];
+                            costPrice.NewWholesalesp = (decimal)sql["Nw_WSP"];
                             costPrice.Brch_Cd = sql["BRCH_CD"].ToString();
                             costPrice.Chg_Dt = (DateTime)sql["Chg_Dt"];
                             costPrice.Usr_Nm = sql["USR_NM"].ToString();

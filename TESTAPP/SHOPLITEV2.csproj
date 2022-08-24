@@ -213,6 +213,12 @@
     <Compile Include="ModalForms\frmPosPayment.Designer.cs">
       <DependentUpon>frmPosPayment.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModalForms\frmProductlist.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModalForms\frmProductlist.Designer.cs">
+      <DependentUpon>frmProductlist.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModalForms\frmProductMaster.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -388,6 +394,7 @@
     <Compile Include="Models\Price.cs" />
     <Compile Include="Models\PrintClass.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductListModel.cs" />
     <Compile Include="Models\Reasons.cs" />
     <Compile Include="Models\Reports.cs" />
     <Compile Include="Models\Supplier.cs" />
@@ -395,6 +402,7 @@
     <Compile Include="Models\Transactions.cs" />
     <Compile Include="Models\Unit.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Validates.cs" />
     <Compile Include="Models\Vat.cs" />
     <Compile Include="PrintingForms\frmPrint.cs">
       <SubType>Form</SubType>
@@ -456,6 +464,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ProductList.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\SpChange.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SpChange.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\StockCard.cs">
@@ -583,6 +597,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModalForms\frmPosPayment.resx">
       <DependentUpon>frmPosPayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModalForms\frmProductlist.resx">
+      <DependentUpon>frmProductlist.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModalForms\frmProductMaster.resx">
       <DependentUpon>frmProductMaster.cs</DependentUpon>
@@ -713,6 +730,10 @@
     <EmbeddedResource Include="Reports\ProductList.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ProductList.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\SpChange.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SpChange.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\StockCard.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
