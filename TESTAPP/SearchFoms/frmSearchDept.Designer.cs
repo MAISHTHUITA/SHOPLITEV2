@@ -105,6 +105,8 @@ namespace SHOPLITE.SearchFoms
             // 
             // txtSearchDept
             // 
+            this.txtSearchDept.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(220)))), ((int)(((byte)(181)))));
+            this.txtSearchDept.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSearchDept.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtSearchDept.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearchDept.Location = new System.Drawing.Point(0, 0);

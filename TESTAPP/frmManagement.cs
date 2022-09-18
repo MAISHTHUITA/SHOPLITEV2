@@ -90,5 +90,18 @@ namespace SHOPLITE
             form.BringToFront();
             form.Show();
         }
+        private void btnReprint_Click(object sender,EventArgs e)
+        {
+            if (!GroupPolicy.CheckPolicy(Properties.Settings.Default.USERNAME, "POS"))
+            {
+                MessageBox.Show("Sorry, your Account Has Insufficient Privelleges To Open This Module", "Check Right", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            Form form = frmReprintReceipt.Instance;
+            form.TopLevel = false;
+            pnlmain.Controls.Add(form);
+            form.BringToFront();
+            form.Show();
+        }
     }
 }

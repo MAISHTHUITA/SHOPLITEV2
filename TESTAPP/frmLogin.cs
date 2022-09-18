@@ -2,15 +2,31 @@
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Windows.Forms;
-
+using System.Runtime.InteropServices;
 namespace SHOPLITE
 {
     public partial class frmLogin : Form
     {
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+
+        private static extern IntPtr CreateRoundRectRgn
+         (
+              int nLeftRect,
+              int nTopRect,
+              int nRightRect,
+              int nBottomRect,
+              int nWidthEllipse,
+                 int nHeightEllipse
+
+          );
+        bool mousedown;
+        public Point offset;
         public frmLogin()
         {
             InitializeComponent();
+            Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 25, 25));
         }
 
         private void frmLogin_Load(object sender, EventArgs e)
@@ -99,6 +115,27 @@ namespace SHOPLITE
                     }
                 }
             }
+        }
+
+        private void headerpanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            offset.X = e.X;
+            offset.Y = e.Y;
+            mousedown = true;
+        }
+
+        private void headerpanel_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mousedown==true)
+            {
+                Point Poittoscreen = PointToScreen(e.Location);
+                Location=new Point(Poittoscreen.X-offset.X, Poittoscreen.Y-offset.Y);
+            }
+        }
+
+        private void headerpanel_MouseUp(object sender, MouseEventArgs e)
+        {
+            mousedown=false;
         }
     }
 }

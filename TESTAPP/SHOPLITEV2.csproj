@@ -53,7 +53,7 @@
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>TICK.ico</ApplicationIcon>
+    <ApplicationIcon>diagram.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
@@ -64,6 +64,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -81,6 +82,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomControls\MyButtons.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Dbsettings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -230,6 +234,12 @@
     </Compile>
     <Compile Include="ModalForms\frmPurchaseOrder.Designer.cs">
       <DependentUpon>frmPurchaseOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModalForms\frmReprintReceipt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModalForms\frmReprintReceipt.Designer.cs">
+      <DependentUpon>frmReprintReceipt.cs</DependentUpon>
     </Compile>
     <Compile Include="ModalForms\frmSalesReport.cs">
       <SubType>Form</SubType>
@@ -381,6 +391,7 @@
     <Compile Include="ModalForms\frnNewUnit.Designer.cs">
       <DependentUpon>frnNewUnit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\DashboardModel.cs" />
     <Compile Include="Models\GroupModel.cs" />
     <Compile Include="Models\Logger.cs" />
     <Compile Include="Models\Company.cs" />
@@ -397,6 +408,7 @@
     <Compile Include="Models\ProductListModel.cs" />
     <Compile Include="Models\Reasons.cs" />
     <Compile Include="Models\Reports.cs" />
+    <Compile Include="Models\SalesModel.cs" />
     <Compile Include="Models\Supplier.cs" />
     <Compile Include="Models\TillManager.cs" />
     <Compile Include="Models\Transactions.cs" />
@@ -422,6 +434,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DeptList.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\DetailedProductList.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DetailedProductList.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\GrnReport.cs">
@@ -464,6 +482,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ProductList.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Receipt.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Receipt.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\SpChange.cs">
@@ -607,6 +631,9 @@
     <EmbeddedResource Include="ModalForms\frmPurchaseOrder.resx">
       <DependentUpon>frmPurchaseOrder.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModalForms\frmReprintReceipt.resx">
+      <DependentUpon>frmReprintReceipt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModalForms\frmSalesReport.resx">
       <DependentUpon>frmSalesReport.cs</DependentUpon>
     </EmbeddedResource>
@@ -703,6 +730,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>DeptList1.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\DetailedProductList.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DetailedProductList.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\GrnReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>GrnReport.cs</LastGenOutput>
@@ -730,6 +761,10 @@
     <EmbeddedResource Include="Reports\ProductList.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ProductList.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Receipt.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Receipt.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\SpChange.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -801,6 +836,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DbScript\ShopLiteDb.sql" />
+    <Content Include="diagram.ico" />
     <Content Include="TICK.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

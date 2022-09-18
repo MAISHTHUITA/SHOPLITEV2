@@ -2,6 +2,7 @@
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Windows.Forms;
 
 namespace SHOPLITE.ModalForms
@@ -25,6 +26,9 @@ namespace SHOPLITE.ModalForms
         public frmBackUpDb()
         {
             InitializeComponent();
+            if (!Directory.Exists(@"C:\backups"))
+                Directory.CreateDirectory(@"C:\backups");
+            txtPath.Text = @"C:\backups";
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)
@@ -65,6 +69,8 @@ namespace SHOPLITE.ModalForms
                 catch (Exception exe)
                 {
                     Logger.Loggermethod(exe);
+                    progressBar.Style = ProgressBarStyle.Blocks;
+                    progressBar.Value = 0;
                     MessageBox.Show("Error " + exe.Message, "Error occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     btnStart.Enabled = true;
                 }

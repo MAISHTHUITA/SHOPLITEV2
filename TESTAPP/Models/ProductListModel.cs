@@ -67,6 +67,14 @@ namespace SHOPLITE.Models
                             {
                                 product.Unit = rdr["UNITCD"].ToString();
                             }
+                            if (rdr["VatCd"] != DBNull.Value)
+                            {
+                                product.Vatcd = rdr["VatCd"].ToString();
+                            }
+                            if (rdr["DeptNm"] != DBNull.Value)
+                            {
+                                product.Department = rdr["DeptNm"].ToString();
+                            }
 
                             productLists.Add(product);
                         }

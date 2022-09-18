@@ -7,7 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CrystalDecisions.CrystalReports.Engine;
 using SHOPLITE.Models;
+using SHOPLITE.PrintingForms;
+using SHOPLITE.Reports;
 
 namespace SHOPLITE.ModalForms
 {
@@ -38,6 +41,110 @@ namespace SHOPLITE.ModalForms
         }
         private void btnPrint_Click(object sender, EventArgs e)
         {
+            if (String.IsNullOrEmpty(txtProdFrom.Text))
+            {
+                MessageBox.Show("Please enter from product code", "info", MessageBoxButtons.OK);
+                txtProdFrom.Focus();
+                return;
+            }
+            if (String.IsNullOrEmpty(txtProdTo.Text))
+            {
+                MessageBox.Show("Please enter To product code", "info", MessageBoxButtons.OK);
+                txtProdTo.Focus();
+                return;
+            }
+            if (String.IsNullOrEmpty(txtSuppFrom.Text))
+            {
+                MessageBox.Show("Please enter from Supplier code", "info", MessageBoxButtons.OK);
+                txtSuppFrom.Focus();
+                return;
+            }
+            if (String.IsNullOrEmpty(txtSuppTo.Text))
+            {
+                MessageBox.Show("Please enter to Supplier code", "info", MessageBoxButtons.OK);
+                txtSuppTo.Focus();
+                return;
+            }
+            if (String.IsNullOrEmpty(txtDeptFrom.Text))
+            {
+                MessageBox.Show("Please enter from department code", "info", MessageBoxButtons.OK);
+                txtDeptFrom.Focus();
+                return;
+            }
+            if (String.IsNullOrEmpty(txtDeptTo.Text))
+            {
+                MessageBox.Show("Please enter to Department code", "info", MessageBoxButtons.OK);
+                txtDeptTo.Focus();
+                return;
+            }
+            if (String.IsNullOrEmpty(txtfromunit.Text))
+            {
+                MessageBox.Show("Please enter from unit code", "info", MessageBoxButtons.OK);
+                txtfromunit.Focus();
+                return;
+            }
+            if (String.IsNullOrEmpty(txttounit.Text))
+            {
+                MessageBox.Show("Please enter to unit code", "info", MessageBoxButtons.OK);
+                txttounit.Focus();
+                return;
+            }
+            if (String.IsNullOrEmpty(txtvatfrom.Text))
+            {
+                MessageBox.Show("Please enter from Vat code", "info", MessageBoxButtons.OK);
+                txtvatfrom.Focus();
+                return;
+            }
+            if (String.IsNullOrEmpty(txtvatto.Text))
+            {
+                MessageBox.Show("Please enter to Vat code", "info", MessageBoxButtons.OK);
+                txttounit.Focus();
+                return;
+            }
+            ProductListModel productListModel = new ProductListModel();
+            List<ProductListModel> productListModelList = new List<ProductListModel>();
+            if (rdall.Checked)
+            {
+                string query = "select ProdCd,ProdNm,CP,Sp,WholesaleSp,QtyAvble,Deptnm,UnitCd,VatCd from ProductListView where prodcd between '" + txtProdFrom.Text + "' and '" + txtProdTo.Text +
+                  "' and SuppCd between '" + txtSuppFrom.Text + "' and '" + txtSuppTo.Text + "' and unitcd between '" + txtfromunit.Text + "' and '" + txttounit.Text + "' and deptcd between '" + txtDeptFrom.Text +
+                  "' and '" + txtDeptTo.Text + "' and vatcd between '" + txtvatfrom.Text + "' and '" + txtvatto.Text + "'";
+                productListModelList = productListModel.GetAllProducts(query).ToList();
+            }
+            else if (rdpositive.Checked)
+            {
+                string query = "select ProdCd,ProdNm,CP,Sp,WholesaleSp,QtyAvble,Deptnm,UnitCd,Vatcd from ProductListView where qtyavble > 0 and prodcd between '" + txtProdFrom.Text + "' and '" + txtProdTo.Text +
+                  "' and SuppCd between '" + txtSuppFrom.Text + "' and '" + txtSuppTo.Text + "' and unitcd between '" + txtfromunit.Text + "' and '" + txttounit.Text + "' and deptcd between '" + txtDeptFrom.Text +
+                  "' and '" + txtDeptTo.Text + "' and vatcd between '" + txtvatfrom.Text + "' and '" + txtvatto.Text + "'";
+                productListModelList = productListModel.GetAllProducts(query).ToList();
+            }
+            else if(rdnegative.Checked)
+            {
+                string query = "select ProdCd,ProdNm,CP,Sp,WholesaleSp,QtyAvble,Deptnm,UnitCd,Vatcd from ProductListView where qtyavble < 0 and prodcd between '" + txtProdFrom.Text + "' and '" + txtProdTo.Text +
+                  "' and SuppCd between '" + txtSuppFrom.Text + "' and '" + txtSuppTo.Text + "' and unitcd between '" + txtfromunit.Text + "' and '" + txttounit.Text + "' and deptcd between '" + txtDeptFrom.Text +
+                  "' and '" + txtDeptTo.Text + "' and vatcd between '" + txtvatfrom.Text + "' and '" + txtvatto.Text + "'";
+                productListModelList = productListModel.GetAllProducts(query).ToList();
+            }
+            else
+            {
+                string query = "select ProdCd,ProdNm,CP,Sp,WholesaleSp,QtyAvble,Deptnm,UnitCd,vatcd from ProductListView where qtyavble = 0 and prodcd between '" + txtProdFrom.Text + "' and '" + txtProdTo.Text +
+                   "' and SuppCd between '" + txtSuppFrom.Text + "' and '" + txtSuppTo.Text + "' and unitcd between '" + txtfromunit.Text + "' and '" + txttounit.Text + "' and deptcd between '" + txtDeptFrom.Text +
+                   "' and '" + txtDeptTo.Text + "' and vatcd between '" + txtvatfrom.Text + "' and '" + txtvatto.Text+"'";
+                productListModelList = productListModel.GetAllProducts(query).ToList();
+            }
+            if (productListModelList.Count()<=0)
+            {
+                MessageBox.Show("No Records To Display.", "Info", MessageBoxButtons.OK);
+                return;
+            }
+            ReportDocument report = new DetailedProductList();
+            report.SetDataSource(productListModelList);
+            report.SetParameterValue("@Company", Properties.Settings.Default.COMPANYNAME.ToUpper());
+            report.SetParameterValue("@Branch", Properties.Settings.Default.BRANCHNAME.ToUpper());
+            report.SetParameterValue("@Username", Properties.Settings.Default.USERNAME.ToUpper());
+        
+            Form form = new frmPrint(report);
+            form.Text = "Detailed Product List Report";
+            form.Show();
 
         }
         #region populate txt
@@ -107,5 +214,144 @@ namespace SHOPLITE.ModalForms
             }
         }
         #endregion
+
+        private void txtProdFrom_Leave(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtProdFrom.Text))
+            {
+                Validates validateproduct = new Validates();
+                if (!validateproduct.checkproduct(txtProdFrom.Text))
+                {
+                    MessageBox.Show("Invalid Product Code", "Info", MessageBoxButtons.OK);
+                    txtProdFrom.Text = "";
+                    txtProdFrom.Focus();
+                }
+            }
+        }
+
+        private void txtProdTo_Leave(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtProdTo.Text))
+            {
+                Validates validateproduct = new Validates();
+                if (!validateproduct.checkproduct(txtProdTo.Text))
+                {
+                    MessageBox.Show("Invalid Product Code", "Info", MessageBoxButtons.OK);
+                    txtProdTo.Text = "";
+                    txtProdTo.Focus();
+                }
+            }
+        }
+
+        private void txtSuppFrom_Leave(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtSuppFrom.Text))
+            {
+                Validates validateproduct = new Validates();
+                if (!validateproduct.checksupplier(txtSuppFrom.Text))
+                {
+                    MessageBox.Show("Invalid Supplier Code", "Info", MessageBoxButtons.OK);
+                    txtSuppFrom.Text = "";
+                    txtSuppFrom.Focus();
+                }
+            }
+        }
+
+        private void txtSuppTo_Leave(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtSuppTo.Text))
+            {
+                Validates validatessupplier = new Validates();
+                if (!validatessupplier.checksupplier(txtSuppTo.Text))
+                {
+                    MessageBox.Show("Invalid Supplier Code", "Info", MessageBoxButtons.OK);
+                    txtSuppTo.Text = "";
+                    txtSuppTo.Focus();
+                }
+            }
+        }
+
+        private void txtDeptFrom_Leave(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtDeptFrom.Text))
+            {
+                Validates validatessupplier = new Validates();
+                if (!validatessupplier.checkdepartment(txtDeptFrom.Text))
+                {
+                    MessageBox.Show("Invalid Department Code", "Info", MessageBoxButtons.OK);
+                    txtDeptFrom.Text = "";
+                    txtDeptFrom.Focus();
+                }
+            }
+        }
+        private void txtDeptTo_Leave(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtDeptTo.Text))
+            {
+                Validates validatessupplier = new Validates();
+                if (!validatessupplier.checkdepartment(txtDeptTo.Text))
+                {
+                    MessageBox.Show("Invalid Department Code", "Info", MessageBoxButtons.OK);
+                    txtDeptTo.Text = "";
+                    txtDeptTo.Focus();
+                }
+            }
+        }
+
+        private void txtfromunit_Leave(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtfromunit.Text))
+            {
+                Validates validatessupplier = new Validates();
+                if (!validatessupplier.checkunit(txtfromunit.Text))
+                {
+                    MessageBox.Show("Invalid Unit Code", "Info", MessageBoxButtons.OK);
+                    txtfromunit.Text = "";
+                    txtfromunit.Focus();
+                }
+            }
+        }
+
+        private void txttounit_Leave(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txttounit.Text))
+            {
+                Validates validatessupplier = new Validates();
+                if (!validatessupplier.checkunit(txttounit.Text))
+                {
+                    MessageBox.Show("Invalid Unit Code", "Info", MessageBoxButtons.OK);
+                    txttounit.Text = "";
+                    txttounit.Focus();
+                }
+            }
+        }
+
+        private void txtvatfrom_Leave(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtvatfrom.Text))
+            {
+                Validates validatessupplier = new Validates();
+                if (!validatessupplier.checkvat(txtvatfrom.Text))
+                {
+                    MessageBox.Show("Invalid Vat Code", "Info", MessageBoxButtons.OK);
+                    txtvatfrom.Text = "";
+                    txtvatfrom.Focus();
+                }
+            }
+        }
+
+        private void txtvatto_Leave(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtvatto.Text))
+            {
+                Validates validatessupplier = new Validates();
+                if (!validatessupplier.checkvat(txtvatto.Text))
+                {
+                    MessageBox.Show("Invalid Vat Code", "Info", MessageBoxButtons.OK);
+                    txtvatto.Text = "";
+                    txtvatto.Focus();
+                }
+            }
+        }
     }
 }

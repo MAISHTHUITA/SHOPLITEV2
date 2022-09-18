@@ -253,7 +253,6 @@ namespace SHOPLITE
             if (saveresult)
             {
                 MessageBox.Show($"Receipt Saved! \n Receipt No.{values.ToString()}", "Transaction Successful");
-                MessageBox.Show("Print", "Print?");
                 PrintClass printClass = new PrintClass();
                 ///dummy value
                 bool tobbe = true;

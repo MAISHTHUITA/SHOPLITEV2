@@ -22,6 +22,9 @@ namespace SHOPLITE.Models
         public string PaymentNarration { get; set; }
         public decimal OtherMethodamount { get; set; }
         public decimal Cash { get; set; }
+        public decimal Change { get { return CashGiven - Cash; } }
+        public string Phone { get; set; }
+
     }
     public class PosDetail
     {
@@ -38,6 +41,10 @@ namespace SHOPLITE.Models
     }
     public class PosRepository
     {
+        public  int latestreceipt()
+        {
+           return getlatestreceipNo();
+        }
         public bool SavePos(PosMaster pos, List<PosDetail> posDetail, out int ReceiptNumber)
         {
             try
@@ -163,6 +170,10 @@ namespace SHOPLITE.Models
                             {
                                 receipt.BrnchCd = rdr["BrnchCd"].ToString();
                             }
+                            if (rdr["BRNCHTELEPHONE"] != DBNull.Value)
+                            {
+                                receipt.Phone = rdr["BRNCHTELEPHONE"].ToString();
+                            }
                             if (rdr["CashGiven"] != DBNull.Value)
                             {
                                 receipt.CashGiven = Convert.ToDecimal(rdr["CashGiven"]);
@@ -170,6 +181,10 @@ namespace SHOPLITE.Models
                             if (rdr["PaymentNarration"] != DBNull.Value)
                             {
                                 receipt.PaymentNarration = rdr["PaymentNarration"].ToString();
+                            }
+                            if (rdr["CASH"] != DBNull.Value)
+                            {
+                                receipt.Cash = Convert.ToDecimal(rdr["CASH"]);
                             }
                             //populate the posdetail and then add it to enumerable posdetails
                             PosDetail details1 = new PosDetail();
@@ -197,6 +212,10 @@ namespace SHOPLITE.Models
                             {
                                 details1.VatCd = rdr["VatCd"].ToString();
                             }
+                            if (rdr["LineVat"] != DBNull.Value)
+                            {
+                                details1.LineVat = Convert.ToDecimal(rdr["LineVat"]);
+                            }
                             if (rdr["LineAmount"] != DBNull.Value)
                             {
                                 details1.LineAmount = Convert.ToDecimal(rdr["LineAmount"]);
@@ -219,6 +238,166 @@ namespace SHOPLITE.Models
             }
             details = receiptDetails;
             return receipt;
+        }
+        public PosMaster GetReceipt(int posnumber, out List<PosDetail> details, DateTime fromDate,DateTime toDate)
+        {
+            List<PosDetail> receiptDetails = new List<PosDetail>();
+            PosMaster receipt = new PosMaster();
+            try
+            {
+                using (SqlConnection con = new SqlConnection(DbCon.connection))
+                {
+                    string query = @"select PM.PosNumber, PM.PosDate,PM.VatAmount,PM.TotalAmount,PM.Username,
+                                    PM.PaymentMethod,PM.PaymentNarration,PM.CMPNYCD,CPY.CMPNYNM,CPY.CMPNYTAXPIN,CPY.CMPNYREGNO,PM.BrnchCd,BRNCH.BRNCHNM,BRNCH.BRNCHTELEPHONE,PM.CashGiven,PM.CASH,
+                                    PD.ProdCd,PD.ProdNm, PD.UnitCd,PD.Quantity,PD.Sp,PD.Vatcd,PD.LineVat,PD.LineAmount
+                                     from
+                                     TblPosMaster PM
+                                     join
+                                     TblPosDetails PD
+                                     on PM.PosNumber = pd.PosNumber
+                                     join
+                                     TBLCMPNY CPY
+                                     ON PM.CmpnyCd = CPY.CMPNYNM
+                                     JOIN
+                                     TBLBRNCH BRNCH
+                                     ON PM.BrnchCd = BRNCH.BRNCHNM
+                                     where pm.PosNumber = @ReceiptNo and pm.posdate between @fromdate and @todate";
+                    SqlCommand command = new SqlCommand(query, con);
+                    command.Parameters.AddWithValue("@ReceiptNo", posnumber);
+                    command.Parameters.AddWithValue("@fromdate", fromDate);
+                    command.Parameters.AddWithValue("@todate", toDate);
+                    if (con.State == ConnectionState.Closed)
+                    {
+                        con.Open();
+                    }
+                    SqlDataReader rdr = command.ExecuteReader();
+                    if (rdr.HasRows)
+                    {
+                        while (rdr.Read())
+                        {
+
+                            /* This is to populate posmaster but the code need review to optimize perfomance i.e. to avoid repeatedly looping of posmaster yet is it will always be the same.*/
+                            if (rdr["PosNumber"] != DBNull.Value)
+                            {
+                                receipt.PosNumber = Convert.ToInt32(rdr["PosNumber"]);
+                            }
+                            if (rdr["POSDATE"] != DBNull.Value)
+                            {
+                                receipt.ReceiptDate = (DateTime)(rdr["POSDATE"]);
+                            }
+                            if (rdr["VatAmount"] != DBNull.Value)
+                            {
+                                receipt.VatAmount = Convert.ToDecimal(rdr["VatAmount"]);
+                            }
+                            if (rdr["TotalAmount"] != DBNull.Value)
+                            {
+                                receipt.TotalAmount = Convert.ToDecimal(rdr["TotalAmount"]);
+                            }
+                            if (rdr["Username"] != DBNull.Value)
+                            {
+                                receipt.Username = rdr["Username"].ToString();
+                            }
+                            if (rdr["PaymentMethod"] != DBNull.Value)
+                            {
+                                receipt.PaymentMethod = rdr["PaymentMethod"].ToString();
+                            }
+                            if (rdr["CmpnyCd"] != DBNull.Value)
+                            {
+                                receipt.CmpnyCd = rdr["CmpnyCd"].ToString();
+                            }
+                            if (rdr["BrnchCd"] != DBNull.Value)
+                            {
+                                receipt.BrnchCd = rdr["BrnchCd"].ToString();
+                            }
+                            if (rdr["BRNCHTELEPHONE"] != DBNull.Value)
+                            {
+                                receipt.Phone = rdr["BRNCHTELEPHONE"].ToString();
+                            }
+                            if (rdr["CashGiven"] != DBNull.Value)
+                            {
+                                receipt.CashGiven = Convert.ToDecimal(rdr["CashGiven"]);
+                            }
+                            if (rdr["PaymentNarration"] != DBNull.Value)
+                            {
+                                receipt.PaymentNarration = rdr["PaymentNarration"].ToString();
+                            }
+                            if (rdr["CASH"] != DBNull.Value)
+                            {
+                                receipt.Cash = Convert.ToDecimal(rdr["CASH"]);
+                            }
+                            //populate the posdetail and then add it to enumerable posdetails
+                            PosDetail details1 = new PosDetail();
+                            if (rdr["ProdCd"] != DBNull.Value)
+                            {
+                                details1.ProdCd = rdr["ProdCd"].ToString();
+                            }
+                            if (rdr["ProdNm"] != DBNull.Value)
+                            {
+                                details1.ProdNm = rdr["ProdNm"].ToString();
+                            }
+                            if (rdr["UnitCd"] != DBNull.Value)
+                            {
+                                details1.UnitCd = rdr["UnitCd"].ToString();
+                            }
+                            if (rdr["Quantity"] != DBNull.Value)
+                            {
+                                details1.Quantity = Convert.ToDecimal(rdr["Quantity"]);
+                            }
+                            if (rdr["Sp"] != DBNull.Value)
+                            {
+                                details1.Sp = Convert.ToDecimal(rdr["Sp"]);
+                            }
+                            if (rdr["VatCd"] != DBNull.Value)
+                            {
+                                details1.VatCd = rdr["VatCd"].ToString();
+                            }
+                            if (rdr["LineVat"] != DBNull.Value)
+                            {
+                                details1.LineVat = Convert.ToDecimal(rdr["LineVat"]);
+                            }
+                            if (rdr["LineAmount"] != DBNull.Value)
+                            {
+                                details1.LineAmount = Convert.ToDecimal(rdr["LineAmount"]);
+                            }
+                            receiptDetails.Add(details1);
+                        }
+                    }
+                    else
+                    {
+                        details = receiptDetails;
+                        receipt = null;
+                    }
+                }
+            }
+            catch (Exception exe)
+            {
+                receiptDetails.Clear();
+                Logger.Loggermethod(exe);
+                receipt = null;
+            }
+            details = receiptDetails;
+            return receipt;
+        }
+        private int getlatestreceipNo()
+        {
+            int number = 1;
+            try
+            {
+                using (SqlConnection con = new SqlConnection(DbCon.connection))
+                {
+                    SqlCommand cmd = new SqlCommand("select max(PosNumber) from TblPosMaster", con);
+                    if (con.State == ConnectionState.Closed)
+                        con.Open();
+                    number = (int)cmd.ExecuteScalar();
+                }
+            }
+            catch (Exception exe)
+            {
+                number = 0;
+                Logger.Loggermethod(exe);
+            }
+            
+            return number;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using SHOPLITE.ModalForms;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace SHOPLITE
@@ -24,6 +25,14 @@ namespace SHOPLITE
         public frmProduct()
         {
             InitializeComponent();
+            pnlNav.Left = btnProduct.Left;
+            pnlNav.Top=btnProduct.Top-4;
+            pnlNav.Width = btnProduct.Width;
+            Form form = frmProductMaster.Instance;
+            form.TopLevel = false;
+            Productmainpanel.Controls.Add(form);
+            form.BringToFront();
+            form.Show();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -674,6 +683,10 @@ namespace SHOPLITE
         //}
         private void btnProduct_Click(object sender, EventArgs e)
         {
+            pnlNav.Left = btnProduct.Left;
+            pnlNav.Top = btnProduct.Top - 4;
+            pnlNav.Width = btnProduct.Width;
+            btnProduct.BackColor=Color.FromArgb(72,58,192);
             Form form = frmProductMaster.Instance;
             form.TopLevel = false;
             Productmainpanel.Controls.Add(form);
@@ -683,6 +696,10 @@ namespace SHOPLITE
 
         private void btnSuppliermaster_Click(object sender, EventArgs e)
         {
+            pnlNav.Left = btnSuppliermaster.Left;
+            pnlNav.Top = btnSuppliermaster.Top - 4;
+            pnlNav.Width = btnSuppliermaster.Width;
+            btnSuppliermaster.BackColor = Color.FromArgb(72, 58, 192);
             Form form = frmSupplierMaster.Instance;
             form.TopLevel = false;
             Productmainpanel.Controls.Add(form);
@@ -692,6 +709,10 @@ namespace SHOPLITE
 
         private void btncustomermaster_Click(object sender, EventArgs e)
         {
+            pnlNav.Left = btncustomermaster.Left;
+            pnlNav.Top = btncustomermaster.Top - 4;
+            pnlNav.Width = btncustomermaster.Width;
+            btncustomermaster.BackColor = Color.FromArgb(72, 58, 192);
             Form form = frmCustMaster.Instance;
             form.TopLevel = false;
             Productmainpanel.Controls.Add(form);
@@ -701,6 +722,10 @@ namespace SHOPLITE
 
         private void btndepartmentmaster_Click(object sender, EventArgs e)
         {
+            pnlNav.Left = btndepartmentmaster.Left;
+            pnlNav.Top = btndepartmentmaster.Top - 4;
+            pnlNav.Width = btndepartmentmaster.Width;
+            btndepartmentmaster.BackColor = Color.FromArgb(72, 58, 192);
             Form form = frmDepartmentMaster.Instance;
             form.TopLevel = false;
             Productmainpanel.Controls.Add(form);
@@ -710,6 +735,10 @@ namespace SHOPLITE
 
         private void btnunitmaster_Click(object sender, EventArgs e)
         {
+            pnlNav.Left = btnunitmaster.Left;
+            pnlNav.Top = btnunitmaster.Top - 4;
+            pnlNav.Width = btnunitmaster.Width;
+            btnunitmaster.BackColor = Color.FromArgb(72, 58, 192);
             Form form = frmUnitMaster.Instance;
             form.TopLevel = false;
             Productmainpanel.Controls.Add(form);
@@ -719,6 +748,10 @@ namespace SHOPLITE
 
         private void btnvatmaster_Click(object sender, EventArgs e)
         {
+            pnlNav.Left = btnvatmaster.Left;
+            pnlNav.Top = btnvatmaster.Top - 4;
+            pnlNav.Width = btnvatmaster.Width;
+            btnvatmaster.BackColor = Color.FromArgb(72, 58, 192);
             Form form = frmVatMaster.Instance;
             form.TopLevel = false;
             Productmainpanel.Controls.Add(form);
@@ -728,12 +761,58 @@ namespace SHOPLITE
 
         private void btncompanymaster_Click(object sender, EventArgs e)
         {
-
+            pnlNav.Left = btncompanymaster.Left;
+            pnlNav.Top = btncompanymaster.Top - 4;
+            pnlNav.Width = btncompanymaster.Width;
+            btncompanymaster.BackColor = Color.FromArgb(72, 58, 192);
         }
 
         private void btnbranchmaster_Click(object sender, EventArgs e)
         {
+            pnlNav.Left = btnbranchmaster.Left;
+            pnlNav.Top = btnbranchmaster.Top - 4;
+            pnlNav.Width = btnbranchmaster.Width;
+            btnbranchmaster.BackColor = Color.FromArgb(72, 58, 192);
+        }
 
+        private void btnProduct_Leave(object sender, EventArgs e)
+        {
+            btnProduct.BackColor = Color.FromArgb(35,29,95);
+        }
+
+        private void btnSuppliermaster_Leave(object sender, EventArgs e)
+        {
+            btnSuppliermaster.BackColor = Color.FromArgb(35, 29, 95);
+        }
+
+        private void btncustomermaster_Leave(object sender, EventArgs e)
+        {
+            btncustomermaster.BackColor = Color.FromArgb(35, 29, 95);
+        }
+
+        private void btndepartmentmaster_Leave(object sender, EventArgs e)
+        {
+            btndepartmentmaster.BackColor = Color.FromArgb(35, 29, 95);
+        }
+
+        private void btnunitmaster_Leave(object sender, EventArgs e)
+        {
+            btnunitmaster.BackColor = Color.FromArgb(35, 29, 95);
+        }
+
+        private void btnvatmaster_Leave(object sender, EventArgs e)
+        {
+            btnvatmaster.BackColor = Color.FromArgb(35, 29, 95);
+        }
+
+        private void btncompanymaster_Leave(object sender, EventArgs e)
+        {
+            btncompanymaster.BackColor = Color.FromArgb(35, 29, 95);
+        }
+
+        private void btnbranchmaster_Leave(object sender, EventArgs e)
+        {
+            btnbranchmaster.BackColor = Color.FromArgb(35, 29, 95);
         }
     }
 }

@@ -2,6 +2,7 @@
 using SHOPLITE.Models;
 using SHOPLITE.PrintingForms;
 using SHOPLITE.Reports;
+using SHOPLITE.SearchFoms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -106,6 +107,28 @@ namespace SHOPLITE.ModalForms
                 this.Close();
                 _instance = null;
             }
+        }
+        private void deptTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F3)
+            {
+                DepartmentRepository repository = new DepartmentRepository();
+                List<Department> units = repository.GetDepartments().ToList();
+                if (units.Count == 0)
+                {
+                    MessageBox.Show("No Records to Display.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else
+                {
+                    using (frmSearchDept su = new frmSearchDept(units) { department = new Department() })
+                    {
+                        su.ShowDialog();
+                        deptCdTextBox.Text = su.department.DeptCd;
+                    }
+                }
+            }
+
         }
     }
 }

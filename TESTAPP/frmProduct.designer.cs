@@ -39,12 +39,13 @@ namespace SHOPLITE
             this.btnSuppliermaster = new System.Windows.Forms.Button();
             this.btnProduct = new System.Windows.Forms.Button();
             this.Productmainpanel = new System.Windows.Forms.Panel();
+            this.pnlNav = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(32)))), ((int)(((byte)(244)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(29)))), ((int)(((byte)(95)))));
             this.panel1.Controls.Add(this.btnunitmaster);
             this.panel1.Controls.Add(this.btncompanymaster);
             this.panel1.Controls.Add(this.btnbranchmaster);
@@ -61,7 +62,8 @@ namespace SHOPLITE
             // 
             // btnunitmaster
             // 
-            this.btnunitmaster.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(32)))), ((int)(((byte)(244)))));
+            this.btnunitmaster.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(29)))), ((int)(((byte)(95)))));
+            this.btnunitmaster.FlatAppearance.BorderSize = 0;
             this.btnunitmaster.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnunitmaster.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnunitmaster.ForeColor = System.Drawing.Color.White;
@@ -72,10 +74,12 @@ namespace SHOPLITE
             this.btnunitmaster.Text = "Unit Master";
             this.btnunitmaster.UseVisualStyleBackColor = false;
             this.btnunitmaster.Click += new System.EventHandler(this.btnunitmaster_Click);
+            this.btnunitmaster.Leave += new System.EventHandler(this.btnunitmaster_Leave);
             // 
             // btncompanymaster
             // 
-            this.btncompanymaster.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(32)))), ((int)(((byte)(244)))));
+            this.btncompanymaster.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(29)))), ((int)(((byte)(95)))));
+            this.btncompanymaster.FlatAppearance.BorderSize = 0;
             this.btncompanymaster.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btncompanymaster.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btncompanymaster.ForeColor = System.Drawing.Color.White;
@@ -86,10 +90,12 @@ namespace SHOPLITE
             this.btncompanymaster.Text = "Company Master";
             this.btncompanymaster.UseVisualStyleBackColor = false;
             this.btncompanymaster.Click += new System.EventHandler(this.btncompanymaster_Click);
+            this.btncompanymaster.Leave += new System.EventHandler(this.btncompanymaster_Leave);
             // 
             // btnbranchmaster
             // 
-            this.btnbranchmaster.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(32)))), ((int)(((byte)(244)))));
+            this.btnbranchmaster.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(29)))), ((int)(((byte)(95)))));
+            this.btnbranchmaster.FlatAppearance.BorderSize = 0;
             this.btnbranchmaster.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnbranchmaster.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnbranchmaster.ForeColor = System.Drawing.Color.White;
@@ -100,10 +106,12 @@ namespace SHOPLITE
             this.btnbranchmaster.Text = "Branch Master";
             this.btnbranchmaster.UseVisualStyleBackColor = false;
             this.btnbranchmaster.Click += new System.EventHandler(this.btnbranchmaster_Click);
+            this.btnbranchmaster.Leave += new System.EventHandler(this.btnbranchmaster_Leave);
             // 
             // btnvatmaster
             // 
-            this.btnvatmaster.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(32)))), ((int)(((byte)(244)))));
+            this.btnvatmaster.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(29)))), ((int)(((byte)(95)))));
+            this.btnvatmaster.FlatAppearance.BorderSize = 0;
             this.btnvatmaster.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnvatmaster.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnvatmaster.ForeColor = System.Drawing.Color.White;
@@ -114,10 +122,12 @@ namespace SHOPLITE
             this.btnvatmaster.Text = "Vat Master";
             this.btnvatmaster.UseVisualStyleBackColor = false;
             this.btnvatmaster.Click += new System.EventHandler(this.btnvatmaster_Click);
+            this.btnvatmaster.Leave += new System.EventHandler(this.btnvatmaster_Leave);
             // 
             // btndepartmentmaster
             // 
-            this.btndepartmentmaster.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(32)))), ((int)(((byte)(244)))));
+            this.btndepartmentmaster.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(29)))), ((int)(((byte)(95)))));
+            this.btndepartmentmaster.FlatAppearance.BorderSize = 0;
             this.btndepartmentmaster.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btndepartmentmaster.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btndepartmentmaster.ForeColor = System.Drawing.Color.White;
@@ -128,10 +138,12 @@ namespace SHOPLITE
             this.btndepartmentmaster.Text = "Department Master";
             this.btndepartmentmaster.UseVisualStyleBackColor = false;
             this.btndepartmentmaster.Click += new System.EventHandler(this.btndepartmentmaster_Click);
+            this.btndepartmentmaster.Leave += new System.EventHandler(this.btndepartmentmaster_Leave);
             // 
             // btncustomermaster
             // 
-            this.btncustomermaster.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(32)))), ((int)(((byte)(244)))));
+            this.btncustomermaster.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(29)))), ((int)(((byte)(95)))));
+            this.btncustomermaster.FlatAppearance.BorderSize = 0;
             this.btncustomermaster.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btncustomermaster.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btncustomermaster.ForeColor = System.Drawing.Color.White;
@@ -142,10 +154,12 @@ namespace SHOPLITE
             this.btncustomermaster.Text = "&Customer Master";
             this.btncustomermaster.UseVisualStyleBackColor = false;
             this.btncustomermaster.Click += new System.EventHandler(this.btncustomermaster_Click);
+            this.btncustomermaster.Leave += new System.EventHandler(this.btncustomermaster_Leave);
             // 
             // btnSuppliermaster
             // 
-            this.btnSuppliermaster.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(32)))), ((int)(((byte)(244)))));
+            this.btnSuppliermaster.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(29)))), ((int)(((byte)(95)))));
+            this.btnSuppliermaster.FlatAppearance.BorderSize = 0;
             this.btnSuppliermaster.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSuppliermaster.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSuppliermaster.ForeColor = System.Drawing.Color.White;
@@ -156,10 +170,12 @@ namespace SHOPLITE
             this.btnSuppliermaster.Text = "&Supplier Master";
             this.btnSuppliermaster.UseVisualStyleBackColor = false;
             this.btnSuppliermaster.Click += new System.EventHandler(this.btnSuppliermaster_Click);
+            this.btnSuppliermaster.Leave += new System.EventHandler(this.btnSuppliermaster_Leave);
             // 
             // btnProduct
             // 
-            this.btnProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(32)))), ((int)(((byte)(244)))));
+            this.btnProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(29)))), ((int)(((byte)(95)))));
+            this.btnProduct.FlatAppearance.BorderSize = 0;
             this.btnProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProduct.ForeColor = System.Drawing.Color.White;
@@ -170,6 +186,7 @@ namespace SHOPLITE
             this.btnProduct.Text = "&Product Master";
             this.btnProduct.UseVisualStyleBackColor = false;
             this.btnProduct.Click += new System.EventHandler(this.btnProduct_Click);
+            this.btnProduct.Leave += new System.EventHandler(this.btnProduct_Leave);
             // 
             // Productmainpanel
             // 
@@ -179,11 +196,20 @@ namespace SHOPLITE
             this.Productmainpanel.Size = new System.Drawing.Size(561, 437);
             this.Productmainpanel.TabIndex = 2;
             // 
+            // pnlNav
+            // 
+            this.pnlNav.BackColor = System.Drawing.Color.White;
+            this.pnlNav.Location = new System.Drawing.Point(30, 85);
+            this.pnlNav.Name = "pnlNav";
+            this.pnlNav.Size = new System.Drawing.Size(50, 5);
+            this.pnlNav.TabIndex = 3;
+            // 
             // frmProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(855, 558);
+            this.Controls.Add(this.pnlNav);
             this.Controls.Add(this.Productmainpanel);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -206,5 +232,6 @@ namespace SHOPLITE
         private System.Windows.Forms.Button btncompanymaster;
         private System.Windows.Forms.Button btnbranchmaster;
         private System.Windows.Forms.Panel Productmainpanel;
+        private System.Windows.Forms.Panel pnlNav;
     }
 }

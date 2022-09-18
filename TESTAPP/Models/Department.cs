@@ -95,8 +95,6 @@ namespace SHOPLITE.Models
                     Logger.Loggermethod(exe);
                     return false;
                 }
-
-
             }
         }
 

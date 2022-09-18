@@ -72,167 +72,182 @@ namespace SHOPLITE.ModalForms
             // prodCdLabel
             // 
             prodCdLabel.AutoSize = true;
-            prodCdLabel.Location = new System.Drawing.Point(25, 39);
+            prodCdLabel.Font = new System.Drawing.Font("Arial", 8.25F);
+            prodCdLabel.Location = new System.Drawing.Point(14, 12);
             prodCdLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             prodCdLabel.Name = "prodCdLabel";
-            prodCdLabel.Size = new System.Drawing.Size(98, 17);
+            prodCdLabel.Size = new System.Drawing.Size(75, 14);
             prodCdLabel.TabIndex = 31;
             prodCdLabel.Text = "Product Code:";
             // 
             // vatCdLabel
             // 
             vatCdLabel.AutoSize = true;
-            vatCdLabel.Location = new System.Drawing.Point(309, 243);
+            vatCdLabel.Font = new System.Drawing.Font("Arial", 8.25F);
+            vatCdLabel.Location = new System.Drawing.Point(287, 149);
             vatCdLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             vatCdLabel.Name = "vatCdLabel";
-            vatCdLabel.Size = new System.Drawing.Size(33, 17);
+            vatCdLabel.Size = new System.Drawing.Size(26, 14);
             vatCdLabel.TabIndex = 41;
             vatCdLabel.Text = "Vat:";
             // 
             // unitCdLabel
             // 
             unitCdLabel.AutoSize = true;
-            unitCdLabel.Location = new System.Drawing.Point(86, 140);
+            unitCdLabel.Font = new System.Drawing.Font("Arial", 8.25F);
+            unitCdLabel.Location = new System.Drawing.Point(61, 94);
             unitCdLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             unitCdLabel.Name = "unitCdLabel";
-            unitCdLabel.Size = new System.Drawing.Size(37, 17);
+            unitCdLabel.Size = new System.Drawing.Size(28, 14);
             unitCdLabel.TabIndex = 40;
             unitCdLabel.Text = "Unit:";
             // 
             // supCdLabel
             // 
             supCdLabel.AutoSize = true;
-            supCdLabel.Location = new System.Drawing.Point(59, 173);
+            supCdLabel.Font = new System.Drawing.Font("Arial", 8.25F);
+            supCdLabel.Location = new System.Drawing.Point(40, 122);
             supCdLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             supCdLabel.Name = "supCdLabel";
-            supCdLabel.Size = new System.Drawing.Size(64, 17);
+            supCdLabel.Size = new System.Drawing.Size(49, 14);
             supCdLabel.TabIndex = 39;
             supCdLabel.Text = "Supplier:";
             // 
             // spLabel
             // 
             spLabel.AutoSize = true;
-            spLabel.Location = new System.Drawing.Point(377, 108);
+            spLabel.Font = new System.Drawing.Font("Arial", 8.25F);
+            spLabel.Location = new System.Drawing.Point(275, 65);
             spLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             spLabel.Name = "spLabel";
-            spLabel.Size = new System.Drawing.Size(48, 17);
+            spLabel.Size = new System.Drawing.Size(36, 14);
             spLabel.TabIndex = 38;
             spLabel.Text = "R.S.P:";
             // 
             // qtyAvbleLabel
             // 
             qtyAvbleLabel.AutoSize = true;
-            qtyAvbleLabel.Location = new System.Drawing.Point(48, 208);
+            qtyAvbleLabel.Font = new System.Drawing.Font("Arial", 8.25F);
+            qtyAvbleLabel.Location = new System.Drawing.Point(32, 150);
             qtyAvbleLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             qtyAvbleLabel.Name = "qtyAvbleLabel";
-            qtyAvbleLabel.Size = new System.Drawing.Size(73, 17);
+            qtyAvbleLabel.Size = new System.Drawing.Size(57, 14);
             qtyAvbleLabel.TabIndex = 36;
             qtyAvbleLabel.Text = "Qty Avble:";
             // 
             // prodNmLabel
             // 
             prodNmLabel.AutoSize = true;
-            prodNmLabel.Location = new System.Drawing.Point(18, 67);
+            prodNmLabel.Font = new System.Drawing.Font("Arial", 8.25F);
+            prodNmLabel.Location = new System.Drawing.Point(12, 38);
             prodNmLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             prodNmLabel.Name = "prodNmLabel";
-            prodNmLabel.Size = new System.Drawing.Size(102, 17);
+            prodNmLabel.Size = new System.Drawing.Size(77, 14);
             prodNmLabel.TabIndex = 34;
             prodNmLabel.Text = "Product Name:";
             // 
             // isActiveLabel
             // 
             isActiveLabel.AutoSize = true;
-            isActiveLabel.Location = new System.Drawing.Point(56, 243);
+            isActiveLabel.Font = new System.Drawing.Font("Arial", 8.25F);
+            isActiveLabel.Location = new System.Drawing.Point(275, 12);
             isActiveLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             isActiveLabel.Name = "isActiveLabel";
-            isActiveLabel.Size = new System.Drawing.Size(64, 17);
+            isActiveLabel.Size = new System.Drawing.Size(51, 14);
             isActiveLabel.TabIndex = 28;
             isActiveLabel.Text = "Is Active:";
             // 
             // deptCdLabel
             // 
             deptCdLabel.AutoSize = true;
-            deptCdLabel.Location = new System.Drawing.Point(295, 140);
+            deptCdLabel.Font = new System.Drawing.Font("Arial", 8.25F);
+            deptCdLabel.Location = new System.Drawing.Point(167, 94);
             deptCdLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             deptCdLabel.Name = "deptCdLabel";
-            deptCdLabel.Size = new System.Drawing.Size(86, 17);
+            deptCdLabel.Size = new System.Drawing.Size(65, 14);
             deptCdLabel.TabIndex = 24;
             deptCdLabel.Text = "Department:";
             // 
             // cpLabel
             // 
             cpLabel.AutoSize = true;
-            cpLabel.Location = new System.Drawing.Point(86, 106);
+            cpLabel.Font = new System.Drawing.Font("Arial", 8.25F);
+            cpLabel.Location = new System.Drawing.Point(63, 65);
             cpLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             cpLabel.Name = "cpLabel";
-            cpLabel.Size = new System.Drawing.Size(34, 17);
+            cpLabel.Size = new System.Drawing.Size(26, 14);
             cpLabel.TabIndex = 22;
             cpLabel.Text = "C.P:";
             // 
             // qtyOnOrderLabel
             // 
             qtyOnOrderLabel.AutoSize = true;
-            qtyOnOrderLabel.Location = new System.Drawing.Point(244, 208);
+            qtyOnOrderLabel.Font = new System.Drawing.Font("Arial", 8.25F);
+            qtyOnOrderLabel.Location = new System.Drawing.Point(164, 149);
             qtyOnOrderLabel.Name = "qtyOnOrderLabel";
-            qtyOnOrderLabel.Size = new System.Drawing.Size(98, 17);
+            qtyOnOrderLabel.Size = new System.Drawing.Size(75, 14);
             qtyOnOrderLabel.TabIndex = 42;
             qtyOnOrderLabel.Text = "Qty On Order:";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(250, 108);
+            label1.Font = new System.Drawing.Font("Arial", 8.25F);
+            label1.Location = new System.Drawing.Point(164, 65);
             label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(51, 17);
+            label1.Size = new System.Drawing.Size(38, 14);
             label1.TabIndex = 38;
             label1.Text = "W.S.P:";
             // 
             // SupTextBox
             // 
-            this.SupTextBox.BackColor = System.Drawing.Color.White;
+            this.SupTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(220)))), ((int)(((byte)(181)))));
             this.SupTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.SupTextBox.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SupTextBox.Location = new System.Drawing.Point(128, 168);
+            this.SupTextBox.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.SupTextBox.Location = new System.Drawing.Point(92, 119);
             this.SupTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.SupTextBox.Name = "SupTextBox";
-            this.SupTextBox.Size = new System.Drawing.Size(367, 26);
+            this.SupTextBox.Size = new System.Drawing.Size(298, 20);
             this.SupTextBox.TabIndex = 6;
+            this.SupTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SupTextBox_KeyDown);
             this.SupTextBox.Leave += new System.EventHandler(this.SupTextBox_Leave);
             // 
             // deptTextBox
             // 
-            this.deptTextBox.BackColor = System.Drawing.Color.White;
+            this.deptTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(220)))), ((int)(((byte)(181)))));
             this.deptTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.deptTextBox.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deptTextBox.Location = new System.Drawing.Point(388, 135);
+            this.deptTextBox.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.deptTextBox.Location = new System.Drawing.Point(233, 91);
             this.deptTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.deptTextBox.Name = "deptTextBox";
-            this.deptTextBox.Size = new System.Drawing.Size(107, 26);
+            this.deptTextBox.Size = new System.Drawing.Size(157, 20);
             this.deptTextBox.TabIndex = 5;
+            this.deptTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.deptTextBox_KeyDown);
             this.deptTextBox.Leave += new System.EventHandler(this.deptTextBox_Leave);
             // 
             // UnitTextBox
             // 
-            this.UnitTextBox.BackColor = System.Drawing.Color.White;
+            this.UnitTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(220)))), ((int)(((byte)(181)))));
             this.UnitTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.UnitTextBox.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UnitTextBox.Location = new System.Drawing.Point(128, 135);
+            this.UnitTextBox.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.UnitTextBox.Location = new System.Drawing.Point(92, 91);
             this.UnitTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.UnitTextBox.Name = "UnitTextBox";
-            this.UnitTextBox.Size = new System.Drawing.Size(155, 26);
+            this.UnitTextBox.Size = new System.Drawing.Size(67, 20);
             this.UnitTextBox.TabIndex = 4;
+            this.UnitTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UnitTextBox_KeyDown);
             this.UnitTextBox.Leave += new System.EventHandler(this.UnitTextBox_Leave);
             // 
             // VatTextBox
             // 
-            this.VatTextBox.BackColor = System.Drawing.Color.White;
+            this.VatTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(220)))), ((int)(((byte)(181)))));
             this.VatTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.VatTextBox.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VatTextBox.Location = new System.Drawing.Point(357, 238);
+            this.VatTextBox.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.VatTextBox.Location = new System.Drawing.Point(325, 144);
             this.VatTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.VatTextBox.Name = "VatTextBox";
-            this.VatTextBox.Size = new System.Drawing.Size(138, 26);
+            this.VatTextBox.Size = new System.Drawing.Size(65, 20);
             this.VatTextBox.TabIndex = 9;
             this.VatTextBox.Leave += new System.EventHandler(this.VatTextBox_Leave);
             // 
@@ -240,11 +255,11 @@ namespace SHOPLITE.ModalForms
             // 
             this.spTextBox.BackColor = System.Drawing.Color.White;
             this.spTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.spTextBox.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.spTextBox.Location = new System.Drawing.Point(430, 103);
+            this.spTextBox.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.spTextBox.Location = new System.Drawing.Point(325, 62);
             this.spTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.spTextBox.Name = "spTextBox";
-            this.spTextBox.Size = new System.Drawing.Size(65, 26);
+            this.spTextBox.Size = new System.Drawing.Size(65, 20);
             this.spTextBox.TabIndex = 3;
             this.spTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_KeyPress);
             // 
@@ -253,12 +268,12 @@ namespace SHOPLITE.ModalForms
             this.qtyOnOrderTextBox.BackColor = System.Drawing.Color.White;
             this.qtyOnOrderTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.qtyOnOrderTextBox.Enabled = false;
-            this.qtyOnOrderTextBox.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.qtyOnOrderTextBox.Location = new System.Drawing.Point(357, 203);
+            this.qtyOnOrderTextBox.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.qtyOnOrderTextBox.Location = new System.Drawing.Point(240, 147);
             this.qtyOnOrderTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.qtyOnOrderTextBox.Name = "qtyOnOrderTextBox";
             this.qtyOnOrderTextBox.ReadOnly = true;
-            this.qtyOnOrderTextBox.Size = new System.Drawing.Size(136, 26);
+            this.qtyOnOrderTextBox.Size = new System.Drawing.Size(45, 20);
             this.qtyOnOrderTextBox.TabIndex = 8;
             this.qtyOnOrderTextBox.Text = "0";
             this.qtyOnOrderTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_KeyPress);
@@ -268,12 +283,12 @@ namespace SHOPLITE.ModalForms
             this.qtyAvbleTextBox.BackColor = System.Drawing.Color.White;
             this.qtyAvbleTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.qtyAvbleTextBox.Enabled = false;
-            this.qtyAvbleTextBox.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.qtyAvbleTextBox.Location = new System.Drawing.Point(128, 203);
+            this.qtyAvbleTextBox.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.qtyAvbleTextBox.Location = new System.Drawing.Point(92, 147);
             this.qtyAvbleTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.qtyAvbleTextBox.Name = "qtyAvbleTextBox";
             this.qtyAvbleTextBox.ReadOnly = true;
-            this.qtyAvbleTextBox.Size = new System.Drawing.Size(111, 26);
+            this.qtyAvbleTextBox.Size = new System.Drawing.Size(67, 20);
             this.qtyAvbleTextBox.TabIndex = 7;
             this.qtyAvbleTextBox.Text = "0";
             this.qtyAvbleTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_KeyPress);
@@ -282,21 +297,22 @@ namespace SHOPLITE.ModalForms
             // 
             this.prodNmTextBox.BackColor = System.Drawing.Color.White;
             this.prodNmTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.prodNmTextBox.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.prodNmTextBox.Location = new System.Drawing.Point(128, 67);
+            this.prodNmTextBox.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.prodNmTextBox.Location = new System.Drawing.Point(92, 35);
             this.prodNmTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.prodNmTextBox.Name = "prodNmTextBox";
-            this.prodNmTextBox.Size = new System.Drawing.Size(367, 26);
+            this.prodNmTextBox.Size = new System.Drawing.Size(299, 20);
             this.prodNmTextBox.TabIndex = 1;
             // 
             // isActiveCheckBox
             // 
             this.isActiveCheckBox.Checked = true;
             this.isActiveCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.isActiveCheckBox.Location = new System.Drawing.Point(128, 236);
+            this.isActiveCheckBox.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.isActiveCheckBox.Location = new System.Drawing.Point(334, 4);
             this.isActiveCheckBox.Margin = new System.Windows.Forms.Padding(4);
             this.isActiveCheckBox.Name = "isActiveCheckBox";
-            this.isActiveCheckBox.Size = new System.Drawing.Size(111, 30);
+            this.isActiveCheckBox.Size = new System.Drawing.Size(57, 30);
             this.isActiveCheckBox.TabIndex = 37;
             this.isActiveCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -304,30 +320,31 @@ namespace SHOPLITE.ModalForms
             // 
             this.cpTextBox.BackColor = System.Drawing.Color.White;
             this.cpTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cpTextBox.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cpTextBox.Location = new System.Drawing.Point(128, 103);
+            this.cpTextBox.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.cpTextBox.Location = new System.Drawing.Point(92, 62);
             this.cpTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.cpTextBox.Name = "cpTextBox";
-            this.cpTextBox.Size = new System.Drawing.Size(67, 26);
+            this.cpTextBox.Size = new System.Drawing.Size(67, 20);
             this.cpTextBox.TabIndex = 2;
             this.cpTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_KeyPress);
             // 
             // prodCdTextBox
             // 
-            this.prodCdTextBox.BackColor = System.Drawing.Color.White;
+            this.prodCdTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(220)))), ((int)(((byte)(181)))));
             this.prodCdTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.prodCdTextBox.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.prodCdTextBox.Location = new System.Drawing.Point(128, 36);
+            this.prodCdTextBox.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.prodCdTextBox.Location = new System.Drawing.Point(92, 9);
             this.prodCdTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.prodCdTextBox.Name = "prodCdTextBox";
-            this.prodCdTextBox.Size = new System.Drawing.Size(155, 26);
+            this.prodCdTextBox.Size = new System.Drawing.Size(155, 20);
             this.prodCdTextBox.TabIndex = 0;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(201, 269);
+            this.btnSave.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.btnSave.Location = new System.Drawing.Point(110, 185);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 45);
+            this.btnSave.Size = new System.Drawing.Size(92, 37);
             this.btnSave.TabIndex = 10;
             this.btnSave.Text = "&Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -335,9 +352,10 @@ namespace SHOPLITE.ModalForms
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(282, 269);
+            this.btnCancel.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.btnCancel.Location = new System.Drawing.Point(263, 185);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 45);
+            this.btnCancel.Size = new System.Drawing.Size(82, 37);
             this.btnCancel.TabIndex = 11;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -346,11 +364,11 @@ namespace SHOPLITE.ModalForms
             // 
             this.WholesaleSpTxt.BackColor = System.Drawing.Color.White;
             this.WholesaleSpTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.WholesaleSpTxt.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.WholesaleSpTxt.Location = new System.Drawing.Point(304, 103);
+            this.WholesaleSpTxt.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.WholesaleSpTxt.Location = new System.Drawing.Point(203, 62);
             this.WholesaleSpTxt.Margin = new System.Windows.Forms.Padding(4);
             this.WholesaleSpTxt.Name = "WholesaleSpTxt";
-            this.WholesaleSpTxt.Size = new System.Drawing.Size(65, 26);
+            this.WholesaleSpTxt.Size = new System.Drawing.Size(65, 20);
             this.WholesaleSpTxt.TabIndex = 3;
             this.WholesaleSpTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_KeyPress);
             // 
@@ -359,7 +377,7 @@ namespace SHOPLITE.ModalForms
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MintCream;
-            this.ClientSize = new System.Drawing.Size(526, 326);
+            this.ClientSize = new System.Drawing.Size(405, 234);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(qtyOnOrderLabel);

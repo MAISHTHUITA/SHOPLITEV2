@@ -16,14 +16,14 @@ namespace SHOPLITE.Reports {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class DailySaleReport : ReportClass {
+    public class DetailedProductList : ReportClass {
         
-        public DailySaleReport() {
+        public DetailedProductList() {
         }
         
         public override string ResourceName {
             get {
-                return "DailySaleReport.rpt";
+                return "DetailedProductList.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace SHOPLITE.Reports {
         
         public override string FullResourceName {
             get {
-                return "SHOPLITE.Reports.DailySaleReport.rpt";
+                return "SHOPLITE.Reports.DetailedProductList.rpt";
             }
             set {
                 // Do nothing
@@ -130,9 +130,9 @@ namespace SHOPLITE.Reports {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedDailySaleReport : Component, ICachedReport {
+    public class CachedDetailedProductList : Component, ICachedReport {
         
-        public CachedDailySaleReport() {
+        public CachedDetailedProductList() {
         }
         
         [Browsable(false)]
@@ -169,7 +169,7 @@ namespace SHOPLITE.Reports {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            DailySaleReport rpt = new DailySaleReport();
+            DetailedProductList rpt = new DetailedProductList();
             rpt.Site = this.Site;
             return rpt;
         }

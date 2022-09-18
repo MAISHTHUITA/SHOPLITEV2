@@ -16,14 +16,14 @@ namespace SHOPLITE.Reports {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class DailySaleReport : ReportClass {
+    public class Receipt : ReportClass {
         
-        public DailySaleReport() {
+        public Receipt() {
         }
         
         public override string ResourceName {
             get {
-                return "DailySaleReport.rpt";
+                return "Receipt.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace SHOPLITE.Reports {
         
         public override string FullResourceName {
             get {
-                return "SHOPLITE.Reports.DailySaleReport.rpt";
+                return "SHOPLITE.Reports.Receipt.rpt";
             }
             set {
                 // Do nothing
@@ -122,17 +122,65 @@ namespace SHOPLITE.Reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_Username {
+        public CrystalDecisions.Shared.IParameterField Parameter_ReceiptDate {
             get {
                 return this.DataDefinition.ParameterFields[2];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_ReceiptNumber {
+            get {
+                return this.DataDefinition.ParameterFields[3];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_Phone {
+            get {
+                return this.DataDefinition.ParameterFields[4];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_Username {
+            get {
+                return this.DataDefinition.ParameterFields[5];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_Narration {
+            get {
+                return this.DataDefinition.ParameterFields[6];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_Change {
+            get {
+                return this.DataDefinition.ParameterFields[7];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_Cashgiven {
+            get {
+                return this.DataDefinition.ParameterFields[8];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedDailySaleReport : Component, ICachedReport {
+    public class CachedReceipt : Component, ICachedReport {
         
-        public CachedDailySaleReport() {
+        public CachedReceipt() {
         }
         
         [Browsable(false)]
@@ -169,7 +217,7 @@ namespace SHOPLITE.Reports {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            DailySaleReport rpt = new DailySaleReport();
+            Receipt rpt = new Receipt();
             rpt.Site = this.Site;
             return rpt;
         }

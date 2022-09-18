@@ -45,6 +45,7 @@ namespace SHOPLITE
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.LeftSidePanel = new System.Windows.Forms.Panel();
+            this.pnlNav = new System.Windows.Forms.Panel();
             this.btnSetting = new System.Windows.Forms.Button();
             this.BtnUser = new System.Windows.Forms.Button();
             this.btnPos = new System.Windows.Forms.Button();
@@ -62,7 +63,7 @@ namespace SHOPLITE
             // 
             // TopPanel
             // 
-            this.TopPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(22)))), ((int)(((byte)(205)))));
+            this.TopPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.TopPanel.Controls.Add(this.label6);
             this.TopPanel.Controls.Add(this.AppCloseBtn);
             this.TopPanel.Dock = System.Windows.Forms.DockStyle.Top;
@@ -73,29 +74,30 @@ namespace SHOPLITE
             // 
             // label6
             // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(25, 9);
+            this.label6.Font = new System.Drawing.Font("Nirmala UI", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Coral;
+            this.label6.Location = new System.Drawing.Point(314, 18);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(275, 29);
+            this.label6.Size = new System.Drawing.Size(506, 41);
             this.label6.TabIndex = 1;
-            this.label6.Text = "SHOPLITE VERSION 2";
+            this.label6.Text = "SHOPLITE INVENTORY SOFTWARE";
             // 
             // AppCloseBtn
             // 
             this.AppCloseBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.AppCloseBtn.BackColor = System.Drawing.Color.AliceBlue;
-            this.AppCloseBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AppCloseBtn.BackgroundImage")));
+            this.AppCloseBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.AppCloseBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.AppCloseBtn.FlatAppearance.BorderColor = System.Drawing.Color.Cyan;
+            this.AppCloseBtn.FlatAppearance.BorderSize = 0;
             this.AppCloseBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AppCloseBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AppCloseBtn.ForeColor = System.Drawing.Color.Blue;
-            this.AppCloseBtn.Location = new System.Drawing.Point(1068, 9);
+            this.AppCloseBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AppCloseBtn.ForeColor = System.Drawing.Color.White;
+            this.AppCloseBtn.Location = new System.Drawing.Point(1075, 9);
             this.AppCloseBtn.Name = "AppCloseBtn";
             this.AppCloseBtn.Size = new System.Drawing.Size(47, 47);
             this.AppCloseBtn.TabIndex = 0;
+            this.AppCloseBtn.Text = "X";
             this.AppCloseBtn.UseVisualStyleBackColor = false;
             this.AppCloseBtn.Click += new System.EventHandler(this.AppCloseBtn_Click);
             // 
@@ -225,7 +227,8 @@ namespace SHOPLITE
             // 
             // LeftSidePanel
             // 
-            this.LeftSidePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(148)))), ((int)(((byte)(243)))));
+            this.LeftSidePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.LeftSidePanel.Controls.Add(this.pnlNav);
             this.LeftSidePanel.Controls.Add(this.btnSetting);
             this.LeftSidePanel.Controls.Add(this.BtnUser);
             this.LeftSidePanel.Controls.Add(this.btnPos);
@@ -241,130 +244,168 @@ namespace SHOPLITE
             this.LeftSidePanel.Size = new System.Drawing.Size(215, 616);
             this.LeftSidePanel.TabIndex = 3;
             // 
+            // pnlNav
+            // 
+            this.pnlNav.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(246)))));
+            this.pnlNav.Location = new System.Drawing.Point(3, 321);
+            this.pnlNav.Name = "pnlNav";
+            this.pnlNav.Size = new System.Drawing.Size(3, 100);
+            this.pnlNav.TabIndex = 1;
+            // 
             // btnSetting
             // 
-            this.btnSetting.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSetting.BackColor = System.Drawing.Color.Transparent;
+            this.btnSetting.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnSetting.FlatAppearance.BorderSize = 0;
             this.btnSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSetting.Font = new System.Drawing.Font("Lucida Fax", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSetting.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSetting.ForeColor = System.Drawing.Color.White;
             this.btnSetting.Image = ((System.Drawing.Image)(resources.GetObject("btnSetting.Image")));
-            this.btnSetting.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSetting.Location = new System.Drawing.Point(12, 521);
+            this.btnSetting.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSetting.Location = new System.Drawing.Point(0, 524);
             this.btnSetting.Name = "btnSetting";
-            this.btnSetting.Size = new System.Drawing.Size(189, 46);
+            this.btnSetting.Padding = new System.Windows.Forms.Padding(15, 0, 10, 0);
+            this.btnSetting.Size = new System.Drawing.Size(215, 46);
             this.btnSetting.TabIndex = 0;
-            this.btnSetting.Text = "   Setting";
-            this.btnSetting.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSetting.Text = "Settings";
+            this.btnSetting.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSetting.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnSetting.UseVisualStyleBackColor = false;
+            this.btnSetting.Click += new System.EventHandler(this.btnSetting_Click);
+            this.btnSetting.Leave += new System.EventHandler(this.btnSetting_Leave);
             // 
             // BtnUser
             // 
-            this.BtnUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.BtnUser.BackColor = System.Drawing.Color.Transparent;
+            this.BtnUser.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.BtnUser.FlatAppearance.BorderSize = 0;
             this.BtnUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnUser.Font = new System.Drawing.Font("Lucida Fax", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnUser.Image = ((System.Drawing.Image)(resources.GetObject("BtnUser.Image")));
+            this.BtnUser.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(246)))));
             this.BtnUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnUser.Location = new System.Drawing.Point(12, 564);
+            this.BtnUser.Location = new System.Drawing.Point(0, 570);
             this.BtnUser.Name = "BtnUser";
-            this.BtnUser.Size = new System.Drawing.Size(189, 46);
+            this.BtnUser.Size = new System.Drawing.Size(215, 46);
             this.BtnUser.TabIndex = 0;
-            this.BtnUser.Text = "LOG OUT";
-            this.BtnUser.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnUser.Text = "LOG-OUT";
+            this.BtnUser.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.BtnUser.UseVisualStyleBackColor = false;
             this.BtnUser.Click += new System.EventHandler(this.BtnUser_Click);
             // 
             // btnPos
             // 
             this.btnPos.BackColor = System.Drawing.Color.Transparent;
+            this.btnPos.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnPos.FlatAppearance.BorderSize = 0;
             this.btnPos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPos.Font = new System.Drawing.Font("Lucida Fax", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPos.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPos.ForeColor = System.Drawing.Color.White;
             this.btnPos.Image = ((System.Drawing.Image)(resources.GetObject("btnPos.Image")));
-            this.btnPos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPos.Location = new System.Drawing.Point(15, 57);
+            this.btnPos.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPos.Location = new System.Drawing.Point(0, 230);
+            this.btnPos.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.btnPos.Name = "btnPos";
-            this.btnPos.Size = new System.Drawing.Size(189, 46);
+            this.btnPos.Padding = new System.Windows.Forms.Padding(15, 0, 10, 0);
+            this.btnPos.Size = new System.Drawing.Size(215, 46);
             this.btnPos.TabIndex = 0;
-            this.btnPos.Text = "   &Point of Sale";
-            this.btnPos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnPos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPos.Text = "&Point of Sale";
+            this.btnPos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPos.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnPos.UseVisualStyleBackColor = false;
             this.btnPos.Click += new System.EventHandler(this.btnPos_Click);
+            this.btnPos.Leave += new System.EventHandler(this.btnPos_Leave);
             // 
             // btnProducts
             // 
             this.btnProducts.BackColor = System.Drawing.Color.Transparent;
+            this.btnProducts.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnProducts.FlatAppearance.BorderSize = 0;
             this.btnProducts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProducts.Font = new System.Drawing.Font("Lucida Fax", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProducts.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProducts.ForeColor = System.Drawing.Color.White;
             this.btnProducts.Image = ((System.Drawing.Image)(resources.GetObject("btnProducts.Image")));
-            this.btnProducts.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProducts.Location = new System.Drawing.Point(15, 159);
+            this.btnProducts.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnProducts.Location = new System.Drawing.Point(0, 184);
+            this.btnProducts.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.btnProducts.Name = "btnProducts";
-            this.btnProducts.Size = new System.Drawing.Size(189, 46);
+            this.btnProducts.Padding = new System.Windows.Forms.Padding(15, 0, 10, 0);
+            this.btnProducts.Size = new System.Drawing.Size(215, 46);
             this.btnProducts.TabIndex = 0;
-            this.btnProducts.Text = "   &Masters";
-            this.btnProducts.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnProducts.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnProducts.Text = "&MASTERS";
+            this.btnProducts.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnProducts.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnProducts.UseVisualStyleBackColor = false;
             this.btnProducts.Click += new System.EventHandler(this.btnProducts_Click);
+            this.btnProducts.Leave += new System.EventHandler(this.btnProducts_Leave);
             // 
             // btnReports
             // 
             this.btnReports.BackColor = System.Drawing.Color.Transparent;
+            this.btnReports.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnReports.FlatAppearance.BorderSize = 0;
             this.btnReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReports.Font = new System.Drawing.Font("Lucida Fax", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReports.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReports.ForeColor = System.Drawing.Color.White;
             this.btnReports.Image = ((System.Drawing.Image)(resources.GetObject("btnReports.Image")));
-            this.btnReports.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReports.Location = new System.Drawing.Point(15, 210);
+            this.btnReports.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnReports.Location = new System.Drawing.Point(0, 138);
+            this.btnReports.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.btnReports.Name = "btnReports";
-            this.btnReports.Size = new System.Drawing.Size(189, 46);
+            this.btnReports.Padding = new System.Windows.Forms.Padding(15, 0, 10, 0);
+            this.btnReports.Size = new System.Drawing.Size(215, 46);
             this.btnReports.TabIndex = 0;
-            this.btnReports.Text = "   &Reports";
-            this.btnReports.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnReports.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnReports.Text = "&REPORTS";
+            this.btnReports.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReports.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnReports.UseVisualStyleBackColor = false;
             this.btnReports.Click += new System.EventHandler(this.btnReports_Click);
+            this.btnReports.Leave += new System.EventHandler(this.btnReports_Leave);
             // 
             // btnOrders
             // 
             this.btnOrders.BackColor = System.Drawing.Color.Transparent;
+            this.btnOrders.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnOrders.FlatAppearance.BorderSize = 0;
             this.btnOrders.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOrders.Font = new System.Drawing.Font("Lucida Fax", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOrders.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOrders.ForeColor = System.Drawing.Color.White;
             this.btnOrders.Image = ((System.Drawing.Image)(resources.GetObject("btnOrders.Image")));
-            this.btnOrders.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOrders.Location = new System.Drawing.Point(15, 261);
+            this.btnOrders.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnOrders.Location = new System.Drawing.Point(0, 92);
+            this.btnOrders.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.btnOrders.Name = "btnOrders";
-            this.btnOrders.Size = new System.Drawing.Size(189, 46);
+            this.btnOrders.Padding = new System.Windows.Forms.Padding(15, 0, 10, 0);
+            this.btnOrders.Size = new System.Drawing.Size(215, 46);
             this.btnOrders.TabIndex = 0;
-            this.btnOrders.Text = "   ORDERS";
-            this.btnOrders.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnOrders.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnOrders.Text = "ORDERS";
+            this.btnOrders.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnOrders.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnOrders.UseVisualStyleBackColor = false;
             this.btnOrders.Click += new System.EventHandler(this.btnOrders_Click);
+            this.btnOrders.Leave += new System.EventHandler(this.btnOrders_Leave);
             // 
             // btnInventory
             // 
             this.btnInventory.BackColor = System.Drawing.Color.Transparent;
+            this.btnInventory.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnInventory.FlatAppearance.BorderSize = 0;
             this.btnInventory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInventory.Font = new System.Drawing.Font("Lucida Fax", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInventory.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInventory.ForeColor = System.Drawing.Color.White;
             this.btnInventory.Image = ((System.Drawing.Image)(resources.GetObject("btnInventory.Image")));
-            this.btnInventory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInventory.Location = new System.Drawing.Point(15, 108);
+            this.btnInventory.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnInventory.Location = new System.Drawing.Point(0, 46);
+            this.btnInventory.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.btnInventory.Name = "btnInventory";
-            this.btnInventory.Size = new System.Drawing.Size(189, 46);
+            this.btnInventory.Padding = new System.Windows.Forms.Padding(15, 0, 10, 0);
+            this.btnInventory.Size = new System.Drawing.Size(215, 46);
             this.btnInventory.TabIndex = 0;
-            this.btnInventory.Text = "   &Inventory";
-            this.btnInventory.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnInventory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnInventory.Text = "&INVENTORY";
+            this.btnInventory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInventory.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnInventory.UseVisualStyleBackColor = false;
             this.btnInventory.Click += new System.EventHandler(this.btnInventory_Click);
+            this.btnInventory.Leave += new System.EventHandler(this.btnInventory_Leave);
             // 
             // btnManagement
             // 
@@ -372,35 +413,44 @@ namespace SHOPLITE
             this.btnManagement.BackColor = System.Drawing.Color.Transparent;
             this.btnManagement.FlatAppearance.BorderSize = 0;
             this.btnManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnManagement.Font = new System.Drawing.Font("Lucida Fax", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnManagement.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnManagement.ForeColor = System.Drawing.Color.White;
             this.btnManagement.Image = ((System.Drawing.Image)(resources.GetObject("btnManagement.Image")));
-            this.btnManagement.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnManagement.Location = new System.Drawing.Point(12, 469);
+            this.btnManagement.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnManagement.Location = new System.Drawing.Point(0, 481);
             this.btnManagement.Name = "btnManagement";
-            this.btnManagement.Size = new System.Drawing.Size(189, 46);
+            this.btnManagement.Padding = new System.Windows.Forms.Padding(15, 0, 10, 0);
+            this.btnManagement.Size = new System.Drawing.Size(212, 46);
             this.btnManagement.TabIndex = 0;
-            this.btnManagement.Text = "   Mana&gement";
-            this.btnManagement.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnManagement.Text = "Mana&gement";
+            this.btnManagement.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnManagement.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnManagement.UseVisualStyleBackColor = false;
             this.btnManagement.Click += new System.EventHandler(this.btnManagement_Click);
+            this.btnManagement.Leave += new System.EventHandler(this.btnManagement_Leave);
             // 
             // btnDashboard
             // 
             this.btnDashboard.BackColor = System.Drawing.Color.Transparent;
+            this.btnDashboard.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnDashboard.FlatAppearance.BorderSize = 0;
             this.btnDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDashboard.Font = new System.Drawing.Font("Lucida Fax", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDashboard.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDashboard.ForeColor = System.Drawing.Color.White;
             this.btnDashboard.Image = ((System.Drawing.Image)(resources.GetObject("btnDashboard.Image")));
-            this.btnDashboard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDashboard.Location = new System.Drawing.Point(15, 6);
+            this.btnDashboard.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDashboard.Location = new System.Drawing.Point(0, 0);
+            this.btnDashboard.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.btnDashboard.Name = "btnDashboard";
-            this.btnDashboard.Size = new System.Drawing.Size(189, 46);
+            this.btnDashboard.Padding = new System.Windows.Forms.Padding(15, 0, 10, 0);
+            this.btnDashboard.Size = new System.Drawing.Size(215, 46);
             this.btnDashboard.TabIndex = 0;
-            this.btnDashboard.Text = "  &Dash-Board";
-            this.btnDashboard.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnDashboard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDashboard.Text = "&DASHBOARD";
+            this.btnDashboard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDashboard.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnDashboard.UseVisualStyleBackColor = false;
             this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
+            this.btnDashboard.Leave += new System.EventHandler(this.btnDashboard_Leave);
             // 
             // MainPanel
             // 
@@ -465,6 +515,7 @@ namespace SHOPLITE
         private System.Windows.Forms.Button AppCloseBtn;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnOrders;
+        private System.Windows.Forms.Panel pnlNav;
     }
 }
 

@@ -1,5 +1,8 @@
 ﻿using SHOPLITE.Models;
+using SHOPLITE.SearchFoms;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace SHOPLITE.ModalForms
@@ -173,5 +176,72 @@ namespace SHOPLITE.ModalForms
                     VatTextBox.Text = vat.VatCd;
             }
         }
-    }
+
+        private void SupTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F3)
+            {
+                SupplierRepository repository = new SupplierRepository();
+                List<Supplier> suppliers = repository.GetSuppliers().ToList();
+                if (suppliers.Count == 0)
+                {
+                    MessageBox.Show("No Records to Display.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else
+                {
+                    using (frmSearchSupp su = new frmSearchSupp(suppliers) { supplier = new Supplier() })
+                    {
+                        su.ShowDialog();
+                        SupTextBox.Text = su.supplier.SuppCd;
+                    }
+                }
+            }
+        }
+
+        private void UnitTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F3)
+            {
+                UnitRepository repository = new UnitRepository();
+                List<Unit> units = repository.GetUnits().ToList();
+                if (units.Count == 0)
+                {
+                    MessageBox.Show("No Records to Display.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else
+                {
+                    using (frmSearchUnit su = new frmSearchUnit(units) { unit = new Unit() })
+                    {
+                        su.ShowDialog();
+                        UnitTextBox.Text = su.unit.UnitCd;
+                    }
+                }
+            }
+        }
+
+        private void deptTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F3)
+            {
+                DepartmentRepository repository = new DepartmentRepository();
+                List<Department> units = repository.GetDepartments().ToList();
+                if (units.Count == 0)
+                {
+                    MessageBox.Show("No Records to Display.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else
+                {
+                    using (frmSearchDept su = new frmSearchDept(units) { department = new Department() })
+                    {
+                        su.ShowDialog();
+                        deptTextBox.Text = su.department.DeptCd;
+                    }
+                }
+            }
+
+        }
+}
 }

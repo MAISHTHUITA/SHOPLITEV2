@@ -173,10 +173,13 @@ namespace SHOPLITE.ModalForms
             // 
             // deptCdTextBox
             // 
+            this.deptCdTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(220)))), ((int)(((byte)(181)))));
+            this.deptCdTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.deptCdTextBox.Location = new System.Drawing.Point(126, 26);
             this.deptCdTextBox.Name = "deptCdTextBox";
             this.deptCdTextBox.Size = new System.Drawing.Size(118, 21);
             this.deptCdTextBox.TabIndex = 1;
+            this.deptCdTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.deptTextBox_KeyDown);
             this.deptCdTextBox.Leave += new System.EventHandler(this.deptCdTextBox_Leave);
             // 
             // deptNmTextBox

@@ -57,6 +57,7 @@ namespace SHOPLITE.ModalForms
             this.btnCost = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
+            this.Wholesaletxt = new System.Windows.Forms.TextBox();
             this.spTextBox = new System.Windows.Forms.TextBox();
             this.qtyOnOrderTextBox = new System.Windows.Forms.TextBox();
             this.qtyAvbleTextBox = new System.Windows.Forms.TextBox();
@@ -64,7 +65,6 @@ namespace SHOPLITE.ModalForms
             this.isActiveCheckBox = new System.Windows.Forms.CheckBox();
             this.cpTextBox = new System.Windows.Forms.TextBox();
             this.prodCdTextBox = new System.Windows.Forms.TextBox();
-            this.Wholesaletxt = new System.Windows.Forms.TextBox();
             prodCdLabel = new System.Windows.Forms.Label();
             vatCdLabel = new System.Windows.Forms.Label();
             unitCdLabel = new System.Windows.Forms.Label();
@@ -181,6 +181,15 @@ namespace SHOPLITE.ModalForms
             cpLabel.TabIndex = 0;
             cpLabel.Text = "Cost Price:";
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(332, 81);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(45, 13);
+            label2.TabIndex = 14;
+            label2.Text = "W.S.P:";
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(32)))), ((int)(((byte)(244)))));
@@ -209,7 +218,7 @@ namespace SHOPLITE.ModalForms
             this.lblClose.AutoSize = true;
             this.lblClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblClose.ForeColor = System.Drawing.Color.White;
-            this.lblClose.Location = new System.Drawing.Point(517, 19);
+            this.lblClose.Location = new System.Drawing.Point(496, 9);
             this.lblClose.Name = "lblClose";
             this.lblClose.Size = new System.Drawing.Size(69, 17);
             this.lblClose.TabIndex = 0;
@@ -404,6 +413,16 @@ namespace SHOPLITE.ModalForms
             this.btnNew.UseVisualStyleBackColor = false;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
+            // Wholesaletxt
+            // 
+            this.Wholesaletxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(238)))), ((int)(((byte)(245)))));
+            this.Wholesaletxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Wholesaletxt.Location = new System.Drawing.Point(381, 78);
+            this.Wholesaletxt.Name = "Wholesaletxt";
+            this.Wholesaletxt.ReadOnly = true;
+            this.Wholesaletxt.Size = new System.Drawing.Size(48, 21);
+            this.Wholesaletxt.TabIndex = 3;
+            // 
             // spTextBox
             // 
             this.spTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(238)))), ((int)(((byte)(245)))));
@@ -466,7 +485,7 @@ namespace SHOPLITE.ModalForms
             // 
             // prodCdTextBox
             // 
-            this.prodCdTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(238)))), ((int)(((byte)(245)))));
+            this.prodCdTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(220)))), ((int)(((byte)(181)))));
             this.prodCdTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.prodCdTextBox.Location = new System.Drawing.Point(123, 25);
             this.prodCdTextBox.Name = "prodCdTextBox";
@@ -474,25 +493,6 @@ namespace SHOPLITE.ModalForms
             this.prodCdTextBox.TabIndex = 0;
             this.prodCdTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.prodCdTextBox_KeyDown);
             this.prodCdTextBox.Leave += new System.EventHandler(this.prodCdTextBox_Leave);
-            // 
-            // Wholesaletxt
-            // 
-            this.Wholesaletxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(238)))), ((int)(((byte)(245)))));
-            this.Wholesaletxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Wholesaletxt.Location = new System.Drawing.Point(381, 78);
-            this.Wholesaletxt.Name = "Wholesaletxt";
-            this.Wholesaletxt.ReadOnly = true;
-            this.Wholesaletxt.Size = new System.Drawing.Size(48, 21);
-            this.Wholesaletxt.TabIndex = 3;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(332, 81);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(45, 13);
-            label2.TabIndex = 14;
-            label2.Text = "W.S.P:";
             // 
             // frmProductMaster
             // 

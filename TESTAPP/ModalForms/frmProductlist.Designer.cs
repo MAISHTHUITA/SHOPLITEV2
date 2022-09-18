@@ -35,34 +35,30 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dtto = new System.Windows.Forms.DateTimePicker();
-            this.fromdt = new System.Windows.Forms.DateTimePicker();
+            this.rdzero = new System.Windows.Forms.RadioButton();
+            this.rdnegative = new System.Windows.Forms.RadioButton();
+            this.rdpositive = new System.Windows.Forms.RadioButton();
+            this.rdall = new System.Windows.Forms.RadioButton();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txttounit = new System.Windows.Forms.TextBox();
+            this.txtvatto = new System.Windows.Forms.TextBox();
             this.txtDeptTo = new System.Windows.Forms.TextBox();
             this.txtSuppTo = new System.Windows.Forms.TextBox();
+            this.txtfromunit = new System.Windows.Forms.TextBox();
+            this.txtvatfrom = new System.Windows.Forms.TextBox();
             this.txtProdTo = new System.Windows.Forms.TextBox();
             this.txtDeptFrom = new System.Windows.Forms.TextBox();
             this.txtSuppFrom = new System.Windows.Forms.TextBox();
             this.txtProdFrom = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtvatfrom = new System.Windows.Forms.TextBox();
-            this.txtvatto = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.rdall = new System.Windows.Forms.RadioButton();
-            this.rdpositive = new System.Windows.Forms.RadioButton();
-            this.rdnegative = new System.Windows.Forms.RadioButton();
-            this.rdzero = new System.Windows.Forms.RadioButton();
-            this.txtfromunit = new System.Windows.Forms.TextBox();
-            this.txttounit = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -145,15 +141,11 @@
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.dtto);
-            this.groupBox1.Controls.Add(this.fromdt);
             this.groupBox1.Controls.Add(this.txttounit);
             this.groupBox1.Controls.Add(this.txtvatto);
             this.groupBox1.Controls.Add(this.txtDeptTo);
@@ -171,78 +163,146 @@
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             // 
-            // dtto
+            // rdzero
             // 
-            this.dtto.CustomFormat = "dd-MMM-yyyy";
-            this.dtto.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtto.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtto.Location = new System.Drawing.Point(236, 22);
-            this.dtto.Name = "dtto";
-            this.dtto.ShowUpDown = true;
-            this.dtto.Size = new System.Drawing.Size(112, 22);
-            this.dtto.TabIndex = 1;
+            this.rdzero.AutoSize = true;
+            this.rdzero.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.rdzero.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.rdzero.Location = new System.Drawing.Point(285, 203);
+            this.rdzero.Name = "rdzero";
+            this.rdzero.Size = new System.Drawing.Size(48, 18);
+            this.rdzero.TabIndex = 25;
+            this.rdzero.TabStop = true;
+            this.rdzero.Text = "Zero";
+            this.rdzero.UseVisualStyleBackColor = true;
             // 
-            // fromdt
+            // rdnegative
             // 
-            this.fromdt.CustomFormat = "dd-MMM-yyyy";
-            this.fromdt.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fromdt.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.fromdt.Location = new System.Drawing.Point(83, 22);
-            this.fromdt.Name = "fromdt";
-            this.fromdt.ShowUpDown = true;
-            this.fromdt.Size = new System.Drawing.Size(115, 22);
-            this.fromdt.TabIndex = 0;
+            this.rdnegative.AutoSize = true;
+            this.rdnegative.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.rdnegative.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.rdnegative.Location = new System.Drawing.Point(184, 203);
+            this.rdnegative.Name = "rdnegative";
+            this.rdnegative.Size = new System.Drawing.Size(67, 18);
+            this.rdnegative.TabIndex = 25;
+            this.rdnegative.TabStop = true;
+            this.rdnegative.Text = "Negative";
+            this.rdnegative.UseVisualStyleBackColor = true;
             // 
-            // txtDeptTo
+            // rdpositive
             // 
-            this.txtDeptTo.Location = new System.Drawing.Point(236, 111);
-            this.txtDeptTo.Name = "txtDeptTo";
-            this.txtDeptTo.Size = new System.Drawing.Size(112, 20);
-            this.txtDeptTo.TabIndex = 7;
+            this.rdpositive.AutoSize = true;
+            this.rdpositive.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.rdpositive.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.rdpositive.Location = new System.Drawing.Point(96, 203);
+            this.rdpositive.Name = "rdpositive";
+            this.rdpositive.Size = new System.Drawing.Size(62, 18);
+            this.rdpositive.TabIndex = 25;
+            this.rdpositive.TabStop = true;
+            this.rdpositive.Text = "Positive";
+            this.rdpositive.UseVisualStyleBackColor = true;
             // 
-            // txtSuppTo
+            // rdall
             // 
-            this.txtSuppTo.Location = new System.Drawing.Point(236, 80);
-            this.txtSuppTo.Name = "txtSuppTo";
-            this.txtSuppTo.Size = new System.Drawing.Size(112, 20);
-            this.txtSuppTo.TabIndex = 5;
+            this.rdall.AutoSize = true;
+            this.rdall.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.rdall.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.rdall.Location = new System.Drawing.Point(34, 203);
+            this.rdall.Name = "rdall";
+            this.rdall.Size = new System.Drawing.Size(37, 18);
+            this.rdall.TabIndex = 25;
+            this.rdall.TabStop = true;
+            this.rdall.Text = "All";
+            this.rdall.UseVisualStyleBackColor = true;
             // 
-            // txtProdTo
+            // label13
             // 
-            this.txtProdTo.Location = new System.Drawing.Point(236, 51);
-            this.txtProdTo.Name = "txtProdTo";
-            this.txtProdTo.Size = new System.Drawing.Size(112, 20);
-            this.txtProdTo.TabIndex = 3;
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold);
+            this.label13.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label13.Location = new System.Drawing.Point(204, 140);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(23, 14);
+            this.label13.TabIndex = 21;
+            this.label13.Text = "To:";
             // 
-            // txtDeptFrom
+            // label11
             // 
-            this.txtDeptFrom.Location = new System.Drawing.Point(83, 111);
-            this.txtDeptFrom.Name = "txtDeptFrom";
-            this.txtDeptFrom.Size = new System.Drawing.Size(115, 20);
-            this.txtDeptFrom.TabIndex = 6;
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold);
+            this.label11.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label11.Location = new System.Drawing.Point(204, 166);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(23, 14);
+            this.label11.TabIndex = 21;
+            this.label11.Text = "To:";
             // 
-            // txtSuppFrom
+            // label9
             // 
-            this.txtSuppFrom.Location = new System.Drawing.Point(83, 80);
-            this.txtSuppFrom.Name = "txtSuppFrom";
-            this.txtSuppFrom.Size = new System.Drawing.Size(115, 20);
-            this.txtSuppFrom.TabIndex = 4;
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold);
+            this.label9.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label9.Location = new System.Drawing.Point(204, 114);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(23, 14);
+            this.label9.TabIndex = 21;
+            this.label9.Text = "To:";
             // 
-            // txtProdFrom
+            // label7
             // 
-            this.txtProdFrom.Location = new System.Drawing.Point(83, 51);
-            this.txtProdFrom.Name = "txtProdFrom";
-            this.txtProdFrom.Size = new System.Drawing.Size(115, 20);
-            this.txtProdFrom.TabIndex = 2;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold);
+            this.label7.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label7.Location = new System.Drawing.Point(204, 83);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(23, 14);
+            this.label7.TabIndex = 22;
+            this.label7.Text = "To:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold);
+            this.label5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label5.Location = new System.Drawing.Point(204, 54);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(23, 14);
+            this.label5.TabIndex = 23;
+            this.label5.Text = "To:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.SystemColors.Control;
+            this.label12.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold);
+            this.label12.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label12.Location = new System.Drawing.Point(20, 140);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(63, 14);
+            this.label12.TabIndex = 17;
+            this.label12.Text = "From Unit:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.Control;
+            this.label1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label1.Location = new System.Drawing.Point(26, 166);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 14);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "From Vat:";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.SystemColors.Control;
+            this.label8.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold);
             this.label8.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label8.Location = new System.Drawing.Point(18, 114);
+            this.label8.Location = new System.Drawing.Point(17, 114);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(59, 13);
+            this.label8.Size = new System.Drawing.Size(67, 14);
             this.label8.TabIndex = 17;
             this.label8.Text = "From Dept:";
             // 
@@ -250,10 +310,11 @@
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.SystemColors.Control;
+            this.label6.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold);
             this.label6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label6.Location = new System.Drawing.Point(3, 83);
+            this.label6.Location = new System.Drawing.Point(-1, 83);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(74, 13);
+            this.label6.Size = new System.Drawing.Size(88, 14);
             this.label6.TabIndex = 18;
             this.label6.Text = "From Supplier:";
             // 
@@ -261,181 +322,123 @@
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.SystemColors.Control;
+            this.label4.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label4.Location = new System.Drawing.Point(3, 54);
+            this.label4.Location = new System.Drawing.Point(0, 54);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(74, 13);
+            this.label4.Size = new System.Drawing.Size(86, 14);
             this.label4.TabIndex = 19;
             this.label4.Text = "From Prod Cd:";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.SystemColors.Control;
-            this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label2.Location = new System.Drawing.Point(18, 27);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 13);
-            this.label2.TabIndex = 20;
-            this.label2.Text = "From Date:";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label9.Location = new System.Drawing.Point(204, 114);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(23, 13);
-            this.label9.TabIndex = 21;
-            this.label9.Text = "To:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label7.Location = new System.Drawing.Point(204, 83);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(23, 13);
-            this.label7.TabIndex = 22;
-            this.label7.Text = "To:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label5.Location = new System.Drawing.Point(204, 54);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(23, 13);
-            this.label5.TabIndex = 23;
-            this.label5.Text = "To:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label3.Location = new System.Drawing.Point(204, 27);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(23, 13);
-            this.label3.TabIndex = 24;
-            this.label3.Text = "To:";
-            // 
-            // txtvatfrom
-            // 
-            this.txtvatfrom.Location = new System.Drawing.Point(83, 163);
-            this.txtvatfrom.Name = "txtvatfrom";
-            this.txtvatfrom.Size = new System.Drawing.Size(115, 20);
-            this.txtvatfrom.TabIndex = 6;
-            // 
-            // txtvatto
-            // 
-            this.txtvatto.Location = new System.Drawing.Point(236, 163);
-            this.txtvatto.Name = "txtvatto";
-            this.txtvatto.Size = new System.Drawing.Size(112, 20);
-            this.txtvatto.TabIndex = 7;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.Control;
-            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(18, 166);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 13);
-            this.label1.TabIndex = 17;
-            this.label1.Text = "From Vat:";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label11.Location = new System.Drawing.Point(204, 166);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(23, 13);
-            this.label11.TabIndex = 21;
-            this.label11.Text = "To:";
-            // 
-            // rdall
-            // 
-            this.rdall.AutoSize = true;
-            this.rdall.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.rdall.Location = new System.Drawing.Point(34, 203);
-            this.rdall.Name = "rdall";
-            this.rdall.Size = new System.Drawing.Size(36, 17);
-            this.rdall.TabIndex = 25;
-            this.rdall.TabStop = true;
-            this.rdall.Text = "All";
-            this.rdall.UseVisualStyleBackColor = true;
-            // 
-            // rdpositive
-            // 
-            this.rdpositive.AutoSize = true;
-            this.rdpositive.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.rdpositive.Location = new System.Drawing.Point(96, 203);
-            this.rdpositive.Name = "rdpositive";
-            this.rdpositive.Size = new System.Drawing.Size(62, 17);
-            this.rdpositive.TabIndex = 25;
-            this.rdpositive.TabStop = true;
-            this.rdpositive.Text = "Positive";
-            this.rdpositive.UseVisualStyleBackColor = true;
-            // 
-            // rdnegative
-            // 
-            this.rdnegative.AutoSize = true;
-            this.rdnegative.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.rdnegative.Location = new System.Drawing.Point(184, 203);
-            this.rdnegative.Name = "rdnegative";
-            this.rdnegative.Size = new System.Drawing.Size(68, 17);
-            this.rdnegative.TabIndex = 25;
-            this.rdnegative.TabStop = true;
-            this.rdnegative.Text = "Negative";
-            this.rdnegative.UseVisualStyleBackColor = true;
-            // 
-            // rdzero
-            // 
-            this.rdzero.AutoSize = true;
-            this.rdzero.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.rdzero.Location = new System.Drawing.Point(285, 203);
-            this.rdzero.Name = "rdzero";
-            this.rdzero.Size = new System.Drawing.Size(47, 17);
-            this.rdzero.TabIndex = 25;
-            this.rdzero.TabStop = true;
-            this.rdzero.Text = "Zero";
-            this.rdzero.UseVisualStyleBackColor = true;
-            // 
-            // txtfromunit
-            // 
-            this.txtfromunit.Location = new System.Drawing.Point(83, 137);
-            this.txtfromunit.Name = "txtfromunit";
-            this.txtfromunit.Size = new System.Drawing.Size(115, 20);
-            this.txtfromunit.TabIndex = 6;
-            // 
             // txttounit
             // 
+            this.txttounit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(222)))), ((int)(((byte)(187)))));
+            this.txttounit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txttounit.Font = new System.Drawing.Font("Arial", 8.25F);
             this.txttounit.Location = new System.Drawing.Point(236, 137);
             this.txttounit.Name = "txttounit";
             this.txttounit.Size = new System.Drawing.Size(112, 20);
             this.txttounit.TabIndex = 7;
+            this.txttounit.Leave += new System.EventHandler(this.txttounit_Leave);
             // 
-            // label12
+            // txtvatto
             // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.SystemColors.Control;
-            this.label12.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label12.Location = new System.Drawing.Point(18, 140);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(55, 13);
-            this.label12.TabIndex = 17;
-            this.label12.Text = "From Unit:";
+            this.txtvatto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(222)))), ((int)(((byte)(187)))));
+            this.txtvatto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtvatto.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.txtvatto.Location = new System.Drawing.Point(236, 163);
+            this.txtvatto.Name = "txtvatto";
+            this.txtvatto.Size = new System.Drawing.Size(112, 20);
+            this.txtvatto.TabIndex = 9;
+            this.txtvatto.Leave += new System.EventHandler(this.txtvatto_Leave);
             // 
-            // label13
+            // txtDeptTo
             // 
-            this.label13.AutoSize = true;
-            this.label13.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label13.Location = new System.Drawing.Point(204, 140);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(23, 13);
-            this.label13.TabIndex = 21;
-            this.label13.Text = "To:";
+            this.txtDeptTo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(222)))), ((int)(((byte)(187)))));
+            this.txtDeptTo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDeptTo.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.txtDeptTo.Location = new System.Drawing.Point(236, 111);
+            this.txtDeptTo.Name = "txtDeptTo";
+            this.txtDeptTo.Size = new System.Drawing.Size(112, 20);
+            this.txtDeptTo.TabIndex = 5;
+            this.txtDeptTo.Leave += new System.EventHandler(this.txtDeptTo_Leave);
+            // 
+            // txtSuppTo
+            // 
+            this.txtSuppTo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(222)))), ((int)(((byte)(187)))));
+            this.txtSuppTo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSuppTo.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.txtSuppTo.Location = new System.Drawing.Point(236, 80);
+            this.txtSuppTo.Name = "txtSuppTo";
+            this.txtSuppTo.Size = new System.Drawing.Size(112, 20);
+            this.txtSuppTo.TabIndex = 3;
+            this.txtSuppTo.Leave += new System.EventHandler(this.txtSuppTo_Leave);
+            // 
+            // txtfromunit
+            // 
+            this.txtfromunit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(222)))), ((int)(((byte)(187)))));
+            this.txtfromunit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtfromunit.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.txtfromunit.Location = new System.Drawing.Point(88, 137);
+            this.txtfromunit.Name = "txtfromunit";
+            this.txtfromunit.Size = new System.Drawing.Size(115, 20);
+            this.txtfromunit.TabIndex = 6;
+            this.txtfromunit.Leave += new System.EventHandler(this.txtfromunit_Leave);
+            // 
+            // txtvatfrom
+            // 
+            this.txtvatfrom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(222)))), ((int)(((byte)(187)))));
+            this.txtvatfrom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtvatfrom.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.txtvatfrom.Location = new System.Drawing.Point(88, 163);
+            this.txtvatfrom.Name = "txtvatfrom";
+            this.txtvatfrom.Size = new System.Drawing.Size(115, 20);
+            this.txtvatfrom.TabIndex = 8;
+            this.txtvatfrom.Leave += new System.EventHandler(this.txtvatfrom_Leave);
+            // 
+            // txtProdTo
+            // 
+            this.txtProdTo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(222)))), ((int)(((byte)(187)))));
+            this.txtProdTo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtProdTo.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.txtProdTo.Location = new System.Drawing.Point(236, 51);
+            this.txtProdTo.Name = "txtProdTo";
+            this.txtProdTo.Size = new System.Drawing.Size(112, 20);
+            this.txtProdTo.TabIndex = 1;
+            this.txtProdTo.Leave += new System.EventHandler(this.txtProdTo_Leave);
+            // 
+            // txtDeptFrom
+            // 
+            this.txtDeptFrom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(222)))), ((int)(((byte)(187)))));
+            this.txtDeptFrom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDeptFrom.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.txtDeptFrom.Location = new System.Drawing.Point(88, 111);
+            this.txtDeptFrom.Name = "txtDeptFrom";
+            this.txtDeptFrom.Size = new System.Drawing.Size(115, 20);
+            this.txtDeptFrom.TabIndex = 4;
+            this.txtDeptFrom.Leave += new System.EventHandler(this.txtDeptFrom_Leave);
+            // 
+            // txtSuppFrom
+            // 
+            this.txtSuppFrom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(222)))), ((int)(((byte)(187)))));
+            this.txtSuppFrom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSuppFrom.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.txtSuppFrom.Location = new System.Drawing.Point(88, 80);
+            this.txtSuppFrom.Name = "txtSuppFrom";
+            this.txtSuppFrom.Size = new System.Drawing.Size(115, 20);
+            this.txtSuppFrom.TabIndex = 2;
+            this.txtSuppFrom.Leave += new System.EventHandler(this.txtSuppFrom_Leave);
+            // 
+            // txtProdFrom
+            // 
+            this.txtProdFrom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(222)))), ((int)(((byte)(187)))));
+            this.txtProdFrom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtProdFrom.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.txtProdFrom.Location = new System.Drawing.Point(88, 51);
+            this.txtProdFrom.Name = "txtProdFrom";
+            this.txtProdFrom.Size = new System.Drawing.Size(115, 20);
+            this.txtProdFrom.TabIndex = 0;
+            this.txtProdFrom.Leave += new System.EventHandler(this.txtProdFrom_Leave);
             // 
             // frmProductlist
             // 
@@ -468,8 +471,6 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DateTimePicker dtto;
-        private System.Windows.Forms.DateTimePicker fromdt;
         private System.Windows.Forms.TextBox txtDeptTo;
         private System.Windows.Forms.TextBox txtSuppTo;
         private System.Windows.Forms.TextBox txtProdTo;
@@ -479,11 +480,9 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RadioButton rdzero;
         private System.Windows.Forms.RadioButton rdnegative;
         private System.Windows.Forms.RadioButton rdpositive;

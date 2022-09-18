@@ -84,6 +84,7 @@ namespace SHOPLITE
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -97,18 +98,22 @@ namespace SHOPLITE
             this.groupBox1.Controls.Add(this.RdWholesale);
             this.groupBox1.Controls.Add(this.RdRetail);
             this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Location = new System.Drawing.Point(11, 11);
+            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox1.Location = new System.Drawing.Point(186, 11);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(579, 76);
+            this.groupBox1.Size = new System.Drawing.Size(579, 61);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
             // RdWholesale
             // 
             this.RdWholesale.AutoSize = true;
-            this.RdWholesale.Location = new System.Drawing.Point(307, 32);
+            this.RdWholesale.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RdWholesale.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RdWholesale.ForeColor = System.Drawing.Color.White;
+            this.RdWholesale.Location = new System.Drawing.Point(358, 20);
             this.RdWholesale.Name = "RdWholesale";
-            this.RdWholesale.Size = new System.Drawing.Size(91, 20);
+            this.RdWholesale.Size = new System.Drawing.Size(126, 29);
             this.RdWholesale.TabIndex = 1;
             this.RdWholesale.Text = "Wholesale";
             this.RdWholesale.UseVisualStyleBackColor = true;
@@ -118,9 +123,12 @@ namespace SHOPLITE
             // 
             this.RdRetail.AutoSize = true;
             this.RdRetail.Checked = true;
-            this.RdRetail.Location = new System.Drawing.Point(218, 31);
+            this.RdRetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RdRetail.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RdRetail.ForeColor = System.Drawing.Color.White;
+            this.RdRetail.Location = new System.Drawing.Point(218, 20);
             this.RdRetail.Name = "RdRetail";
-            this.RdRetail.Size = new System.Drawing.Size(61, 20);
+            this.RdRetail.Size = new System.Drawing.Size(83, 29);
             this.RdRetail.TabIndex = 1;
             this.RdRetail.TabStop = true;
             this.RdRetail.Text = "Retail";
@@ -130,11 +138,12 @@ namespace SHOPLITE
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label11.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.OrangeRed;
-            this.label11.Location = new System.Drawing.Point(17, 31);
+            this.label11.Location = new System.Drawing.Point(17, 22);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(172, 18);
+            this.label11.Size = new System.Drawing.Size(197, 25);
             this.label11.TabIndex = 0;
             this.label11.Text = "Customer Category:";
             // 

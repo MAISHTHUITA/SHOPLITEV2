@@ -34,10 +34,10 @@ namespace SHOPLITE.ModalForms
             this.label2 = new System.Windows.Forms.Label();
             this.txtPath = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnBrowse = new System.Windows.Forms.Button();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.btnStart = new System.Windows.Forms.Button();
+            this.btnBrowse = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -91,9 +91,8 @@ namespace SHOPLITE.ModalForms
             this.txtPath.Location = new System.Drawing.Point(70, 26);
             this.txtPath.Name = "txtPath";
             this.txtPath.ReadOnly = true;
-            this.txtPath.Size = new System.Drawing.Size(210, 22);
+            this.txtPath.Size = new System.Drawing.Size(186, 22);
             this.txtPath.TabIndex = 16;
-            this.txtPath.Text = "C:\\backups";
             // 
             // panel1
             // 
@@ -107,26 +106,6 @@ namespace SHOPLITE.ModalForms
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(378, 128);
             this.panel1.TabIndex = 17;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 30);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 14);
-            this.label1.TabIndex = 17;
-            this.label1.Text = "Save To:";
-            // 
-            // btnBrowse
-            // 
-            this.btnBrowse.Enabled = false;
-            this.btnBrowse.Location = new System.Drawing.Point(286, 26);
-            this.btnBrowse.Name = "btnBrowse";
-            this.btnBrowse.Size = new System.Drawing.Size(75, 23);
-            this.btnBrowse.TabIndex = 18;
-            this.btnBrowse.Text = "Browse..";
-            this.btnBrowse.UseVisualStyleBackColor = true;
-            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
             // 
             // progressBar
             // 
@@ -146,6 +125,25 @@ namespace SHOPLITE.ModalForms
             this.btnStart.Text = "Start";
             this.btnStart.UseVisualStyleBackColor = true;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            // 
+            // btnBrowse
+            // 
+            this.btnBrowse.Location = new System.Drawing.Point(262, 26);
+            this.btnBrowse.Name = "btnBrowse";
+            this.btnBrowse.Size = new System.Drawing.Size(99, 23);
+            this.btnBrowse.TabIndex = 18;
+            this.btnBrowse.Text = "Select Path...";
+            this.btnBrowse.UseVisualStyleBackColor = true;
+            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 30);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(61, 14);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Save To:";
             // 
             // label3
             // 
