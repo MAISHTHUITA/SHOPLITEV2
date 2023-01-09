@@ -143,6 +143,7 @@ namespace SHOPLITE.ModalForms
                     txtgdProdNm.Text = product.ProdCd; txtgdDesc.Text = product.ProdNm; txtgdUnit.Text = product.UnitCd;
                     txtgdVatcd.Text = product.VatPercentage.ToString(); txtgdCp.Text = product.Cp.ToString("0.00"); txtgdSp.Text = product.Sp.ToString("0.00");
                     txtgdCuqty.Text = product.QtyAvble.ToString("0.00"); txtgdQty.Text = "0";
+                    btngdadd.Enabled = true;
 
                 }
                 else

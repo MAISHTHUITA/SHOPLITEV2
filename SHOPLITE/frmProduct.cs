@@ -28,7 +28,7 @@ namespace SHOPLITE
         public frmProduct()
         {
             InitializeComponent();
-            
+
             btnProduct.Select();
             setbuttons(btnProduct);
             setcurrentform(frmProductMaster.Instance);
@@ -40,7 +40,7 @@ namespace SHOPLITE
             pnlNav.Visible = true;
             pnlNav.Left = btn.Left;
             pnlNav.Top = btn.Top - 5;
-            
+
             pnlNav.Width = btn.Width;
             if (currentbutton != null && currentbutton != btn)
             {
@@ -51,11 +51,11 @@ namespace SHOPLITE
         private void setcurrentform(object form)
         {
             Productmainpanel.Controls.Clear();
-            var frm =(Form) form;
-            if (currentchildform !=null && currentchildform!=frm)
+            var frm = (Form)form;
+            if (currentchildform != null && currentchildform != frm)
             {
                 currentchildform.Hide();
-                
+
             }
             frm.TopLevel = false;
             Productmainpanel.Controls.Add(frm);
@@ -69,7 +69,7 @@ namespace SHOPLITE
             this.Close();
         }
 
-       
+
         private void btnProduct_Click(object sender, EventArgs e)
         {
 
@@ -93,7 +93,7 @@ namespace SHOPLITE
         private void btndepartmentmaster_Click(object sender, EventArgs e)
         {
 
-           
+
             setcurrentform(frmDepartmentMaster.Instance);
             setbuttons(sender);
         }
@@ -108,12 +108,12 @@ namespace SHOPLITE
         private void btnvatmaster_Click(object sender, EventArgs e)
         {
 
-            
+
             setcurrentform(frmVatMaster.Instance);
             setbuttons(sender);
         }
 
-      
+
 
 
         private void btncompanymaster_Click(object sender, EventArgs e)

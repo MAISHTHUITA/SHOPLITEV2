@@ -32,23 +32,35 @@ namespace SHOPLITE.Models
                 SettingsModel settings1 = new SettingsModel();
                 settings1.loaddata();
                 Receipt receipt = new Receipt();
+                Company company = new Company();
+                company = company.GetCompany(posmaster.CmpnyCd);
+
                 receipt.SetDataSource(posdetails);
                 receipt.SetParameterValue("@Company", posmaster.CmpnyCd);
                 receipt.SetParameterValue("@Branch", posmaster.BrnchCd);
-                receipt.SetParameterValue("@Phone", posmaster.Phone);
-                receipt.SetParameterValue("@ReceiptNumber", posmaster.PosNumber);
-                receipt.SetParameterValue("@Change", posmaster.Change);
-                receipt.SetParameterValue("@Cashgiven", posmaster.CashGiven);
+                receipt.SetParameterValue("@Phone", "TEL: " + posmaster.Phone);
+                receipt.SetParameterValue("@ReceiptNumber", "CASHSALE NO: " + posmaster.PosNumber.ToString());
+                receipt.SetParameterValue("@Change", posmaster.Change.ToString("0.00"));
+                receipt.SetParameterValue("@Cashgiven", posmaster.CashGiven.ToString("0.00"));
                 receipt.SetParameterValue("@Narration", posmaster.PaymentNarration);
                 receipt.SetParameterValue("@Username", posmaster.Username);
-                receipt.SetParameterValue("@ReceiptDate", posmaster.ReceiptDate.ToString("dd-MMM-yyyy H-mm-ss"));
+                receipt.SetParameterValue("Cname", posmaster.Comment);
+                receipt.SetParameterValue("Comment", "ORIGINAL RECEIPT");
+                receipt.SetParameterValue("Pin", "PIN: " + company.CompanyTaxpin);
+                receipt.SetParameterValue("Email", "Email: " + company.CompanyEmail);
+                receipt.SetParameterValue("Address", company.CompanyAddress);
+                //FOMART DATE
+                var date = posmaster.ReceiptDate.ToString("dd-MMM-yyyy");
+                var time = posmaster.ReceiptDate.ToString("hh:mm:ss tt");
+                receipt.SetParameterValue("@ReceiptDate", date + "      " + time);
+                // determines weather to suppress values and fields that displays vat calculations
                 if (settings1.showvatonreceipts)
                 {
-                    receipt.SetParameterValue("@Policy", true);
+                    receipt.SetParameterValue("@Policy", false);
                 }
                 else
                 {
-                    receipt.SetParameterValue("@Policy", false);
+                    receipt.SetParameterValue("@Policy", true);
                 }
 
 
@@ -56,6 +68,7 @@ namespace SHOPLITE.Models
                 if (settings1.Printername == string.Empty)
                 {
                     PageSettings printerSettings = new PageSettings();
+                    settings.PrinterName = settings.PrinterName;
                     printerSettings.PaperSize = new PaperSize("Custom", 300, 3000);
                     receipt.PrintToPrinter(settings, printerSettings, false);
                 }
@@ -93,8 +106,12 @@ namespace SHOPLITE.Models
                     response = false;
                     return;
                 }
-
+                // initialize settings
+                SettingsModel settings1 = new SettingsModel();
+                settings1.loaddata();
                 Receipt receipt = new Receipt();
+                Company company = new Company();
+                company = company.GetCompany(posmaster.CmpnyCd);
                 receipt.SetDataSource(posdetails);
                 receipt.SetParameterValue("@Company", posmaster.CmpnyCd);
                 receipt.SetParameterValue("@Branch", posmaster.BrnchCd);
@@ -104,13 +121,42 @@ namespace SHOPLITE.Models
                 receipt.SetParameterValue("@Cashgiven", posmaster.CashGiven);
                 receipt.SetParameterValue("@Narration", posmaster.PaymentNarration);
                 receipt.SetParameterValue("@Username", posmaster.Username);
-                receipt.SetParameterValue("@ReceiptDate", posmaster.ReceiptDate.ToString("dd-MMM-yyyy H-mm-ss"));
+                receipt.SetParameterValue("Pin", company.CompanyTaxpin);
+                receipt.SetParameterValue("Email", company.CompanyEmail);
+                receipt.SetParameterValue("Address", company.CompanyAddress);
+                //FOMART DATE
+                var date = posmaster.ReceiptDate.ToString("dd-MMM-yyyy");
+                var time = posmaster.ReceiptDate.ToString("hh:mm:ss tt");
+                receipt.SetParameterValue("@ReceiptDate", date + "      " + time);
+                receipt.SetParameterValue("Cname", posmaster.Comment);
+                receipt.SetParameterValue("Comment", "REPRINT");
+
+                // determines weather to suppress values and fields that displays vat calculations
+                if (settings1.showvatonreceipts)
+                {
+                    receipt.SetParameterValue("@Policy", false);
+                }
+                else
+                {
+                    receipt.SetParameterValue("@Policy", true);
+                }
+
 
                 PrinterSettings settings = new PrinterSettings();
-                settings.PrinterName = "POS80 Printer";
-                PageSettings printerSettings = new PageSettings();
-                printerSettings.PaperSize = new PaperSize("Custom", 300, 3000);
-                receipt.PrintToPrinter(settings, printerSettings, false);
+                if (settings1.Printername == string.Empty)
+                {
+                    PageSettings printerSettings = new PageSettings();
+                    settings.PrinterName = settings.PrinterName;
+                    printerSettings.PaperSize = new PaperSize("Custom", 300, 3000);
+                    receipt.PrintToPrinter(settings, printerSettings, false);
+                }
+                else
+                {
+                    settings.PrinterName = settings1.Printername;
+                    PageSettings printerSettings = new PageSettings();
+                    printerSettings.PaperSize = new PaperSize("Custom", 300, 3000);
+                    receipt.PrintToPrinter(settings, printerSettings, false);
+                }
                 response = true;
             }
             catch (Exception exe)

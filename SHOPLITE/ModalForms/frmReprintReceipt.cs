@@ -55,7 +55,7 @@ namespace SHOPLITE.ModalForms
                     RJMessageBox.Show("Reprint Success", "Shoplite Notifications", MessageBoxButtons.OK);
                 }
                 else
-                    RJMessageBox.Show("No Records Found", "Shoplite Notifications", MessageBoxButtons.OK);
+                    RJMessageBox.Show("No Records Found or Error on Printer", "Shoplite Notifications", MessageBoxButtons.OK);
 
             }
 

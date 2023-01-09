@@ -17,6 +17,7 @@ namespace SHOPLITE
             enddate.Value = DateTime.Now;
             btn7days.Select();
             btn7days.BackColor = btn30days.FlatAppearance.BorderColor;
+            btn7days.ForeColor = Color.White;
             currentbutton = btn7days;
             model = new DashboardModel();
             model.usrnm = Properties.Settings.Default.USERNAME;
@@ -102,7 +103,7 @@ namespace SHOPLITE
             if (currentbutton != null && currentbutton != btn)
             {
                 currentbutton.BackColor = this.BackColor;
-                currentbutton.ForeColor = Color.White;
+                currentbutton.ForeColor = Color.DimGray;
             }
             currentbutton = btn;
             startdate.Enabled = false;

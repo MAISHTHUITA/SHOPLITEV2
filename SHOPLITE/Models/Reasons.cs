@@ -27,8 +27,14 @@ namespace SHOPLITE.Models
                     {
                         while (rdr.Read())
                         {
-                            reason.ReasonCode = rdr["ReasonCode"].ToString();
-                            reason.ReasonName = rdr["ReasonName"].ToString();
+                            if (rdr["ReasonCode"] != DBNull.Value)
+                            {
+                                reason.ReasonCode = rdr["ReasonCode"].ToString();
+                            }
+                            if (rdr["ReasonName"] != DBNull.Value)
+                            {
+                                reason.ReasonName = rdr["ReasonName"].ToString();
+                            }
                         }
                         return reason;
                     }

@@ -217,7 +217,7 @@ namespace SHOPLITE.Models
                     }
 
                     // get top 5 understock products
-                    command.CommandText = @"select TOP 5 p.ProdNm,p.QtyAvble as qty from 
+                    command.CommandText = @"select TOP 6 p.ProdNm,p.QtyAvble as qty from 
                                             TblProd p
                                             order by qty asc ";
                     using (var rdr = command.ExecuteReader())

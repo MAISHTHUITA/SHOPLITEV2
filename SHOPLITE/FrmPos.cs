@@ -238,6 +238,8 @@ namespace SHOPLITE
                     posMaster.CashGiven = paymentform.CashGiven;
                     posMaster.PaymentMethod = paymentform.PaymentMethod;
                     posMaster.PaymentNarration = paymentform.PaymentNarration;
+
+                    posMaster.Comment = paymentform.Cname;
                     if (String.Equals("OTHER METHODS".ToUpper(), posMaster.PaymentMethod.ToUpper()))
                     {
                         posMaster.OtherMethodamount = posMaster.TotalAmount;
@@ -246,6 +248,7 @@ namespace SHOPLITE
                     else
                     {
                         posMaster.OtherMethodamount = 0;
+                        posMaster.PaymentNarration = "PAID CASH";
                         posMaster.Cash = posMaster.TotalAmount;
                     }
 

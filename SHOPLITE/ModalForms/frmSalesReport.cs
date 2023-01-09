@@ -127,10 +127,24 @@ namespace SHOPLITE.ModalForms
                 return;
             }
             Sale daily = new Sale();
-            string query = "SELECT CAST(TXN_DATE AS DATE) AS TXN_DATE, SUM(LINETOTAL) AS LINETOTAL,sum(case when txn_type='INV' THEN LineTotal END) AS SUMINVOCE, sum(case when txn_type='POS' THEN LineTotal END) AS SUMPOS FROM Vw_Sales  Where Prod_Cd between '" + txtProdFrom.Text + "' and '" + txtProdTo.Text + "' and Suppcd between '" + txtSuppFrom.Text + "' and '" + txtSuppTo.Text +
-                "' and DeptCd between '" + txtDeptFrom.Text + "' and '" + txtDeptTo.Text + "' and Unitcd between '" + txtfromunit.Text + "' and '" + txttounit.Text +
-                "' and Vatcd between '" + txtvatfrom.Text + "' and '" + txtvatto.Text + "' and USR_NM between '" + txtFromUser.Text + "' and '" + TxtToUser.Text +
-                "' and Txn_Date between '" + dtFrom.Value.Date.ToString("MM/dd/yyyy") + "' and '" + dtTo.Value.Date.AddHours(23).AddMinutes(59).AddSeconds(59).AddMilliseconds(999).ToString("MM/dd/yyyy H:mm:ss") + "' GROUP BY CAST(TXN_DATE AS DATE)";
+            SettingsModel settings = new SettingsModel();
+            settings.loaddata();
+            string query = "";
+            if (settings.ViewInvoiceReports)
+            {
+                query = "SELECT CAST(TXN_DATE AS DATE) AS TXN_DATE, SUM(LINETOTAL) AS LINETOTAL,sum(case when txn_type='INV' THEN LineTotal END) AS SUMINVOCE, sum(case when txn_type='POS' THEN LineTotal END) AS SUMPOS FROM Vw_Sales  Where Prod_Cd between '" + txtProdFrom.Text + "' and '" + txtProdTo.Text + "' and Suppcd between '" + txtSuppFrom.Text + "' and '" + txtSuppTo.Text +
+               "' and DeptCd between '" + txtDeptFrom.Text + "' and '" + txtDeptTo.Text + "' and Unitcd between '" + txtfromunit.Text + "' and '" + txttounit.Text +
+               "' and Vatcd between '" + txtvatfrom.Text + "' and '" + txtvatto.Text + "' and USR_NM between '" + txtFromUser.Text + "' and '" + TxtToUser.Text +
+               "' and Txn_Date between '" + dtFrom.Value.Date.ToString("MM/dd/yyyy") + "' and '" + dtTo.Value.Date.AddHours(23).AddMinutes(59).AddSeconds(59).AddMilliseconds(999).ToString("MM/dd/yyyy H:mm:ss") + "' GROUP BY CAST(TXN_DATE AS DATE)";
+            }
+            else
+            {
+                query = "SELECT CAST(TXN_DATE AS DATE) AS TXN_DATE, SUM(LINETOTAL) AS LINETOTAL,sum(case when txn_type='INV' THEN LineTotal END) AS SUMINVOCE, sum(case when txn_type='POS' THEN LineTotal END) AS SUMPOS FROM Vw_Sales  Where txn_type='POS' and Prod_Cd between '" + txtProdFrom.Text + "' and '" + txtProdTo.Text + "' and Suppcd between '" + txtSuppFrom.Text + "' and '" + txtSuppTo.Text +
+               "' and DeptCd between '" + txtDeptFrom.Text + "' and '" + txtDeptTo.Text + "' and Unitcd between '" + txtfromunit.Text + "' and '" + txttounit.Text +
+               "' and Vatcd between '" + txtvatfrom.Text + "' and '" + txtvatto.Text + "' and USR_NM between '" + txtFromUser.Text + "' and '" + TxtToUser.Text +
+               "' and Txn_Date between '" + dtFrom.Value.Date.ToString("MM/dd/yyyy") + "' and '" + dtTo.Value.Date.AddHours(23).AddMinutes(59).AddSeconds(59).AddMilliseconds(999).ToString("MM/dd/yyyy H:mm:ss") + "' GROUP BY CAST(TXN_DATE AS DATE)";
+            }
+
             List<Sale> dailies = daily.SaleList(query).ToList();
             if (dailies.Count() > 0)
             {

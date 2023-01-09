@@ -48,6 +48,7 @@ namespace SHOPLITE
             this.LblRevenue = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lbltime = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblNumReceipts = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -61,6 +62,7 @@ namespace SHOPLITE
             this.RevenueChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.Top5Chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -77,7 +79,6 @@ namespace SHOPLITE
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.displaytime = new System.Windows.Forms.Timer(this.components);
-            this.lbltime = new System.Windows.Forms.Label();
             this.lblStartDate = new System.Windows.Forms.Label();
             this.lblEndDate = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -98,6 +99,7 @@ namespace SHOPLITE
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(131)))), ((int)(((byte)(252)))));
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.LblRevenue);
             this.panel1.Controls.Add(this.label1);
@@ -140,14 +142,25 @@ namespace SHOPLITE
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(212)))), ((int)(((byte)(238)))));
             this.panel2.Controls.Add(this.lbltime);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.lblNumReceipts);
             this.panel2.Controls.Add(this.label3);
-            this.panel2.Location = new System.Drawing.Point(420, 55);
+            this.panel2.Location = new System.Drawing.Point(427, 55);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(502, 67);
+            this.panel2.Size = new System.Drawing.Size(495, 67);
             this.panel2.TabIndex = 0;
+            // 
+            // lbltime
+            // 
+            this.lbltime.AutoSize = true;
+            this.lbltime.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbltime.Location = new System.Drawing.Point(348, 8);
+            this.lbltime.Name = "lbltime";
+            this.lbltime.Size = new System.Drawing.Size(120, 31);
+            this.lbltime.TabIndex = 2;
+            this.lbltime.Text = "00:00:00";
             // 
             // pictureBox1
             // 
@@ -184,6 +197,7 @@ namespace SHOPLITE
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.DimGray;
             this.label4.Location = new System.Drawing.Point(8, 11);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(149, 20);
@@ -217,6 +231,7 @@ namespace SHOPLITE
             this.btnThismonth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnThismonth.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(83)))), ((int)(((byte)(255)))));
             this.btnThismonth.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnThismonth.ForeColor = System.Drawing.Color.DimGray;
             this.btnThismonth.Location = new System.Drawing.Point(835, 0);
             this.btnThismonth.Name = "btnThismonth";
             this.btnThismonth.Size = new System.Drawing.Size(86, 43);
@@ -230,6 +245,7 @@ namespace SHOPLITE
             this.btn30days.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn30days.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(83)))), ((int)(((byte)(255)))));
             this.btn30days.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn30days.ForeColor = System.Drawing.Color.DimGray;
             this.btn30days.Location = new System.Drawing.Point(750, 0);
             this.btn30days.Name = "btn30days";
             this.btn30days.Size = new System.Drawing.Size(86, 43);
@@ -243,6 +259,7 @@ namespace SHOPLITE
             this.btn7days.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn7days.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(83)))), ((int)(((byte)(255)))));
             this.btn7days.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn7days.ForeColor = System.Drawing.Color.DimGray;
             this.btn7days.Location = new System.Drawing.Point(665, 0);
             this.btn7days.Name = "btn7days";
             this.btn7days.Size = new System.Drawing.Size(86, 43);
@@ -256,6 +273,7 @@ namespace SHOPLITE
             this.btnCustom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCustom.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(83)))), ((int)(((byte)(255)))));
             this.btnCustom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCustom.ForeColor = System.Drawing.Color.DimGray;
             this.btnCustom.Location = new System.Drawing.Point(493, 0);
             this.btnCustom.Name = "btnCustom";
             this.btnCustom.Size = new System.Drawing.Size(86, 43);
@@ -269,29 +287,30 @@ namespace SHOPLITE
             this.RevenueChart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.RevenueChart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(61)))), ((int)(((byte)(82)))));
             this.RevenueChart.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
             chartArea1.Area3DStyle.Inclination = 20;
             chartArea1.Area3DStyle.Rotation = 20;
             chartArea1.Area3DStyle.WallWidth = 5;
             chartArea1.AxisX.IsMarginVisible = false;
-            chartArea1.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea1.AxisX.LabelStyle.ForeColor = System.Drawing.Color.SteelBlue;
             chartArea1.AxisX.LineColor = System.Drawing.Color.White;
             chartArea1.AxisX.MajorGrid.Enabled = false;
-            chartArea1.AxisX.TitleForeColor = System.Drawing.Color.White;
+            chartArea1.AxisX.MajorTickMark.LineColor = System.Drawing.Color.OrangeRed;
+            chartArea1.AxisX.Title = "Date";
+            chartArea1.AxisX.TitleForeColor = System.Drawing.Color.SteelBlue;
             chartArea1.AxisX2.MajorGrid.LineColor = System.Drawing.Color.White;
-            chartArea1.AxisY.LabelStyle.ForeColor = System.Drawing.Color.WhiteSmoke;
-            chartArea1.AxisY.LabelStyle.Format = "Kshs {0}";
+            chartArea1.AxisY.LabelStyle.ForeColor = System.Drawing.Color.LightSkyBlue;
+            chartArea1.AxisY.LabelStyle.Format = "Kshs {0:N}";
             chartArea1.AxisY.LineColor = System.Drawing.Color.White;
             chartArea1.AxisY.LineWidth = 0;
-            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.White;
+            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.DarkGray;
             chartArea1.AxisY.MajorTickMark.Enabled = false;
             chartArea1.AxisY.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Rotated270;
             chartArea1.AxisY.Title = "Revenue";
             chartArea1.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea1.AxisY.TitleForeColor = System.Drawing.Color.White;
-            chartArea1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(61)))), ((int)(((byte)(82)))));
-            chartArea1.BorderColor = System.Drawing.Color.White;
+            chartArea1.AxisY.TitleForeColor = System.Drawing.Color.DeepSkyBlue;
+            chartArea1.BackColor = System.Drawing.Color.White;
+            chartArea1.BorderColor = System.Drawing.Color.Gray;
             chartArea1.Name = "ChartArea1";
             this.RevenueChart.ChartAreas.Add(chartArea1);
             this.RevenueChart.Location = new System.Drawing.Point(12, 128);
@@ -305,6 +324,7 @@ namespace SHOPLITE
             this.RevenueChart.Size = new System.Drawing.Size(622, 212);
             this.RevenueChart.TabIndex = 4;
             this.RevenueChart.Text = "chart1";
+            title1.BackColor = System.Drawing.Color.SlateBlue;
             title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             title1.ForeColor = System.Drawing.Color.White;
             title1.Name = "Title1";
@@ -315,24 +335,27 @@ namespace SHOPLITE
             // 
             this.Top5Chart.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Top5Chart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(61)))), ((int)(((byte)(82)))));
             this.Top5Chart.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
             this.Top5Chart.BorderSkin.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
-            chartArea2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(61)))), ((int)(((byte)(82)))));
+            chartArea2.AxisX.LabelStyle.ForeColor = System.Drawing.Color.Silver;
+            chartArea2.AxisX.TitleForeColor = System.Drawing.Color.Gray;
+            chartArea2.BackColor = System.Drawing.Color.White;
+            chartArea2.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            chartArea2.BorderColor = System.Drawing.Color.DarkGray;
             chartArea2.Name = "ChartArea1";
             this.Top5Chart.ChartAreas.Add(chartArea2);
-            legend1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(61)))), ((int)(((byte)(82)))));
+            legend1.BackColor = System.Drawing.Color.White;
             legend1.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.NotSet;
             legend1.BorderWidth = 0;
             legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend1.ForeColor = System.Drawing.Color.White;
+            legend1.ForeColor = System.Drawing.Color.SteelBlue;
+            legend1.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
             legend1.Name = "Legend1";
             this.Top5Chart.Legends.Add(legend1);
             this.Top5Chart.Location = new System.Drawing.Point(640, 128);
             this.Top5Chart.Name = "Top5Chart";
-            this.Top5Chart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
-            series2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(61)))), ((int)(((byte)(82)))));
-            series2.BorderWidth = 5;
+            series2.BorderColor = System.Drawing.Color.White;
+            series2.BorderWidth = 2;
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
             series2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
@@ -348,6 +371,7 @@ namespace SHOPLITE
             this.Top5Chart.TabIndex = 5;
             this.Top5Chart.Text = "chart2";
             title2.Alignment = System.Drawing.ContentAlignment.TopCenter;
+            title2.BackColor = System.Drawing.Color.Purple;
             title2.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.Top;
             title2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             title2.ForeColor = System.Drawing.Color.White;
@@ -358,7 +382,9 @@ namespace SHOPLITE
             // panel3
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(150)))), ((int)(((byte)(188)))));
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.pictureBox5);
             this.panel3.Controls.Add(this.pictureBox4);
             this.panel3.Controls.Add(this.pictureBox3);
@@ -372,6 +398,18 @@ namespace SHOPLITE
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(268, 258);
             this.panel3.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.DimGray;
+            this.label2.Location = new System.Drawing.Point(60, 23);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(132, 24);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Total Counters";
             // 
             // pictureBox5
             // 
@@ -388,7 +426,7 @@ namespace SHOPLITE
             // 
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
             this.pictureBox4.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox4.InitialImage")));
-            this.pictureBox4.Location = new System.Drawing.Point(20, 104);
+            this.pictureBox4.Location = new System.Drawing.Point(20, 132);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(50, 50);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -399,7 +437,7 @@ namespace SHOPLITE
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
             this.pictureBox3.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.InitialImage")));
-            this.pictureBox3.Location = new System.Drawing.Point(20, 15);
+            this.pictureBox3.Location = new System.Drawing.Point(20, 67);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(50, 50);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -420,7 +458,7 @@ namespace SHOPLITE
             // 
             this.lblSuppliers.AutoSize = true;
             this.lblSuppliers.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSuppliers.Location = new System.Drawing.Point(76, 130);
+            this.lblSuppliers.Location = new System.Drawing.Point(76, 158);
             this.lblSuppliers.Name = "lblSuppliers";
             this.lblSuppliers.Size = new System.Drawing.Size(60, 24);
             this.lblSuppliers.TabIndex = 0;
@@ -430,7 +468,7 @@ namespace SHOPLITE
             // 
             this.lblNumOfproducts.AutoSize = true;
             this.lblNumOfproducts.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumOfproducts.Location = new System.Drawing.Point(76, 38);
+            this.lblNumOfproducts.Location = new System.Drawing.Point(76, 90);
             this.lblNumOfproducts.Name = "lblNumOfproducts";
             this.lblNumOfproducts.Size = new System.Drawing.Size(60, 24);
             this.lblNumOfproducts.TabIndex = 0;
@@ -450,7 +488,7 @@ namespace SHOPLITE
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(76, 107);
+            this.label7.Location = new System.Drawing.Point(76, 135);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(180, 18);
             this.label7.TabIndex = 0;
@@ -460,7 +498,7 @@ namespace SHOPLITE
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(76, 15);
+            this.label6.Location = new System.Drawing.Point(76, 67);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(179, 18);
             this.label6.TabIndex = 0;
@@ -471,23 +509,24 @@ namespace SHOPLITE
             this.DgvUnderstocked.AllowUserToAddRows = false;
             this.DgvUnderstocked.AllowUserToDeleteRows = false;
             this.DgvUnderstocked.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(198)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightPink;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(220)))), ((int)(((byte)(205)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
             this.DgvUnderstocked.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.DgvUnderstocked.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DgvUnderstocked.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(61)))), ((int)(((byte)(82)))));
+            this.DgvUnderstocked.BackgroundColor = System.Drawing.Color.White;
             this.DgvUnderstocked.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DgvUnderstocked.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.DgvUnderstocked.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(61)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(61)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(0, 5, 0, 7);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Gray;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.DgvUnderstocked.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.DgvUnderstocked.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -503,6 +542,7 @@ namespace SHOPLITE
             this.DgvUnderstocked.Location = new System.Drawing.Point(3, 37);
             this.DgvUnderstocked.Name = "DgvUnderstocked";
             this.DgvUnderstocked.ReadOnly = true;
+            this.DgvUnderstocked.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -512,13 +552,13 @@ namespace SHOPLITE
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.DgvUnderstocked.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.DgvUnderstocked.RowHeadersVisible = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(61)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(61)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(220)))), ((int)(((byte)(205)))));
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
             this.DgvUnderstocked.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.DgvUnderstocked.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(61)))), ((int)(((byte)(82)))));
-            this.DgvUnderstocked.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
+            this.DgvUnderstocked.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+            this.DgvUnderstocked.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Gray;
             this.DgvUnderstocked.RowTemplate.Height = 30;
             this.DgvUnderstocked.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvUnderstocked.Size = new System.Drawing.Size(628, 216);
@@ -526,10 +566,11 @@ namespace SHOPLITE
             // 
             // label11
             // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label11.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(0, 7);
+            this.label11.ForeColor = System.Drawing.Color.DimGray;
+            this.label11.Location = new System.Drawing.Point(211, 9);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(206, 24);
             this.label11.TabIndex = 7;
@@ -540,6 +581,7 @@ namespace SHOPLITE
             this.btnok.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnok.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(83)))), ((int)(((byte)(255)))));
             this.btnok.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnok.ForeColor = System.Drawing.Color.DimGray;
             this.btnok.Location = new System.Drawing.Point(446, 0);
             this.btnok.Name = "btnok";
             this.btnok.Size = new System.Drawing.Size(46, 43);
@@ -554,6 +596,7 @@ namespace SHOPLITE
             this.btnToday.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnToday.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(83)))), ((int)(((byte)(255)))));
             this.btnToday.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnToday.ForeColor = System.Drawing.Color.DimGray;
             this.btnToday.Location = new System.Drawing.Point(579, 0);
             this.btnToday.Name = "btnToday";
             this.btnToday.Size = new System.Drawing.Size(86, 43);
@@ -593,20 +636,11 @@ namespace SHOPLITE
             this.displaytime.Interval = 1000;
             this.displaytime.Tick += new System.EventHandler(this.displaytime_Tick);
             // 
-            // lbltime
-            // 
-            this.lbltime.AutoSize = true;
-            this.lbltime.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbltime.Location = new System.Drawing.Point(378, 8);
-            this.lbltime.Name = "lbltime";
-            this.lbltime.Size = new System.Drawing.Size(120, 31);
-            this.lbltime.TabIndex = 2;
-            this.lbltime.Text = "00:00:00";
-            // 
             // lblStartDate
             // 
             this.lblStartDate.AutoSize = true;
             this.lblStartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStartDate.ForeColor = System.Drawing.Color.Gray;
             this.lblStartDate.Location = new System.Drawing.Point(161, 12);
             this.lblStartDate.MinimumSize = new System.Drawing.Size(90, 18);
             this.lblStartDate.Name = "lblStartDate";
@@ -619,6 +653,7 @@ namespace SHOPLITE
             // 
             this.lblEndDate.AutoSize = true;
             this.lblEndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEndDate.ForeColor = System.Drawing.Color.Gray;
             this.lblEndDate.Location = new System.Drawing.Point(288, 12);
             this.lblEndDate.MinimumSize = new System.Drawing.Size(90, 18);
             this.lblEndDate.Name = "lblEndDate";
@@ -641,7 +676,7 @@ namespace SHOPLITE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(61)))), ((int)(((byte)(82)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(217)))), ((int)(((byte)(252)))));
             this.ClientSize = new System.Drawing.Size(924, 616);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
@@ -731,5 +766,6 @@ namespace SHOPLITE
         private System.Windows.Forms.Label lblStartDate;
         private System.Windows.Forms.Label lblEndDate;
         private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Label label2;
     }
 }

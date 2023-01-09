@@ -30,17 +30,20 @@ namespace SHOPLITE
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnProdlist = new System.Windows.Forms.Button();
             this.btnViewGrn = new System.Windows.Forms.Button();
             this.btnStockcard = new System.Windows.Forms.Button();
             this.btnPrcChange = new System.Windows.Forms.Button();
             this.mainpnl = new System.Windows.Forms.Panel();
-            this.btnProdlist = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btn1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(94)))), ((int)(((byte)(242)))));
+            this.panel1.Controls.Add(this.btn1);
             this.panel1.Controls.Add(this.btnProdlist);
             this.panel1.Controls.Add(this.btnViewGrn);
             this.panel1.Controls.Add(this.btnStockcard);
@@ -51,16 +54,31 @@ namespace SHOPLITE
             this.panel1.Size = new System.Drawing.Size(800, 58);
             this.panel1.TabIndex = 0;
             // 
+            // btnProdlist
+            // 
+            this.btnProdlist.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(83)))), ((int)(((byte)(255)))));
+            this.btnProdlist.FlatAppearance.BorderSize = 2;
+            this.btnProdlist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProdlist.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProdlist.ForeColor = System.Drawing.Color.White;
+            this.btnProdlist.Location = new System.Drawing.Point(266, 0);
+            this.btnProdlist.Name = "btnProdlist";
+            this.btnProdlist.Size = new System.Drawing.Size(88, 58);
+            this.btnProdlist.TabIndex = 0;
+            this.btnProdlist.Text = "Product List";
+            this.btnProdlist.UseVisualStyleBackColor = true;
+            this.btnProdlist.Click += new System.EventHandler(this.btnProdlist_Click);
+            // 
             // btnViewGrn
             // 
-            this.btnViewGrn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.btnViewGrn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(83)))), ((int)(((byte)(255)))));
             this.btnViewGrn.FlatAppearance.BorderSize = 2;
             this.btnViewGrn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewGrn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnViewGrn.ForeColor = System.Drawing.Color.White;
-            this.btnViewGrn.Location = new System.Drawing.Point(186, 13);
+            this.btnViewGrn.Location = new System.Drawing.Point(178, 0);
             this.btnViewGrn.Name = "btnViewGrn";
-            this.btnViewGrn.Size = new System.Drawing.Size(73, 39);
+            this.btnViewGrn.Size = new System.Drawing.Size(88, 58);
             this.btnViewGrn.TabIndex = 0;
             this.btnViewGrn.Text = "View Grn";
             this.btnViewGrn.UseVisualStyleBackColor = true;
@@ -68,14 +86,14 @@ namespace SHOPLITE
             // 
             // btnStockcard
             // 
-            this.btnStockcard.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.btnStockcard.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(83)))), ((int)(((byte)(255)))));
             this.btnStockcard.FlatAppearance.BorderSize = 2;
             this.btnStockcard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStockcard.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStockcard.ForeColor = System.Drawing.Color.White;
-            this.btnStockcard.Location = new System.Drawing.Point(99, 13);
+            this.btnStockcard.Location = new System.Drawing.Point(90, 0);
             this.btnStockcard.Name = "btnStockcard";
-            this.btnStockcard.Size = new System.Drawing.Size(73, 39);
+            this.btnStockcard.Size = new System.Drawing.Size(88, 58);
             this.btnStockcard.TabIndex = 0;
             this.btnStockcard.Text = "Stock Card";
             this.btnStockcard.UseVisualStyleBackColor = true;
@@ -83,14 +101,14 @@ namespace SHOPLITE
             // 
             // btnPrcChange
             // 
-            this.btnPrcChange.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.btnPrcChange.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(83)))), ((int)(((byte)(255)))));
             this.btnPrcChange.FlatAppearance.BorderSize = 2;
             this.btnPrcChange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrcChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrcChange.ForeColor = System.Drawing.Color.White;
-            this.btnPrcChange.Location = new System.Drawing.Point(12, 13);
+            this.btnPrcChange.Location = new System.Drawing.Point(2, 0);
             this.btnPrcChange.Name = "btnPrcChange";
-            this.btnPrcChange.Size = new System.Drawing.Size(73, 39);
+            this.btnPrcChange.Size = new System.Drawing.Size(88, 58);
             this.btnPrcChange.TabIndex = 0;
             this.btnPrcChange.Text = "Price Change";
             this.btnPrcChange.UseVisualStyleBackColor = true;
@@ -104,27 +122,36 @@ namespace SHOPLITE
             this.mainpnl.Name = "mainpnl";
             this.mainpnl.Size = new System.Drawing.Size(476, 358);
             this.mainpnl.TabIndex = 1;
+            this.mainpnl.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.mainpnl_ControlRemoved);
             // 
-            // btnProdlist
+            // panel2
             // 
-            this.btnProdlist.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
-            this.btnProdlist.FlatAppearance.BorderSize = 2;
-            this.btnProdlist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProdlist.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProdlist.ForeColor = System.Drawing.Color.White;
-            this.btnProdlist.Location = new System.Drawing.Point(281, 12);
-            this.btnProdlist.Name = "btnProdlist";
-            this.btnProdlist.Size = new System.Drawing.Size(73, 39);
-            this.btnProdlist.TabIndex = 0;
-            this.btnProdlist.Text = "Product List";
-            this.btnProdlist.UseVisualStyleBackColor = true;
-            this.btnProdlist.Click += new System.EventHandler(this.btnProdlist_Click);
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(83)))), ((int)(((byte)(255)))));
+            this.panel2.Location = new System.Drawing.Point(0, 58);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(800, 10);
+            this.panel2.TabIndex = 3;
+            // 
+            // btn1
+            // 
+            this.btn1.FlatAppearance.BorderSize = 0;
+            this.btn1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn1.Location = new System.Drawing.Point(638, 42);
+            this.btn1.Name = "btn1";
+            this.btn1.Size = new System.Drawing.Size(75, 10);
+            this.btn1.TabIndex = 3;
+            this.btn1.Text = "1";
+            this.btn1.UseVisualStyleBackColor = true;
+            this.btn1.Visible = false;
             // 
             // frmReports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 629);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.mainpnl);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -144,5 +171,7 @@ namespace SHOPLITE
         private System.Windows.Forms.Button btnStockcard;
         private System.Windows.Forms.Button btnViewGrn;
         private System.Windows.Forms.Button btnProdlist;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button btn1;
     }
 }

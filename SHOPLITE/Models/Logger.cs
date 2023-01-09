@@ -26,10 +26,7 @@ namespace SHOPLITE.Models
                 ex = ex.InnerException;
             } while (ex != null);
 
-
             File.AppendAllText(filepath, sb.ToString());
-
-
         }
     }
 }

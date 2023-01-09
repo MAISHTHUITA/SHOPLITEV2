@@ -65,6 +65,8 @@ namespace SHOPLITE.ModalForms
             // 
             // txtNewPrice
             // 
+            this.txtNewPrice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.txtNewPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNewPrice.Location = new System.Drawing.Point(349, 122);
             this.txtNewPrice.Name = "txtNewPrice";
             this.txtNewPrice.Size = new System.Drawing.Size(53, 20);
@@ -134,6 +136,8 @@ namespace SHOPLITE.ModalForms
             // 
             // NewWholesaleSptxt
             // 
+            this.NewWholesaleSptxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.NewWholesaleSptxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.NewWholesaleSptxt.Location = new System.Drawing.Point(143, 122);
             this.NewWholesaleSptxt.Name = "NewWholesaleSptxt";
             this.NewWholesaleSptxt.Size = new System.Drawing.Size(53, 20);
@@ -170,7 +174,7 @@ namespace SHOPLITE.ModalForms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightSalmon;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(231)))), ((int)(((byte)(210)))));
             this.ClientSize = new System.Drawing.Size(461, 210);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label5);

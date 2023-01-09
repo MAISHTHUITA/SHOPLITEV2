@@ -78,11 +78,11 @@ namespace SHOPLITE
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Nirmala UI", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Coral;
-            this.label6.Location = new System.Drawing.Point(314, 18);
+            this.label6.Location = new System.Drawing.Point(402, 11);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(506, 41);
+            this.label6.Size = new System.Drawing.Size(337, 41);
             this.label6.TabIndex = 1;
-            this.label6.Text = "SHOPLITE INVENTORY SOFTWARE";
+            this.label6.Text = "SHOPLITE INVENTORY";
             // 
             // AppCloseBtn
             // 
@@ -272,7 +272,6 @@ namespace SHOPLITE
             this.btnSetting.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnSetting.UseVisualStyleBackColor = false;
             this.btnSetting.Click += new System.EventHandler(this.btnSetting_Click);
-            this.btnSetting.Leave += new System.EventHandler(this.btnSetting_Leave);
             // 
             // BtnUser
             // 
@@ -313,7 +312,6 @@ namespace SHOPLITE
             this.btnPos.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnPos.UseVisualStyleBackColor = false;
             this.btnPos.Click += new System.EventHandler(this.btnPos_Click);
-            this.btnPos.Leave += new System.EventHandler(this.btnPos_Leave);
             // 
             // btnProducts
             // 
@@ -336,7 +334,6 @@ namespace SHOPLITE
             this.btnProducts.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnProducts.UseVisualStyleBackColor = false;
             this.btnProducts.Click += new System.EventHandler(this.btnProducts_Click);
-            this.btnProducts.Leave += new System.EventHandler(this.btnProducts_Leave);
             // 
             // btnReports
             // 
@@ -359,7 +356,6 @@ namespace SHOPLITE
             this.btnReports.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnReports.UseVisualStyleBackColor = false;
             this.btnReports.Click += new System.EventHandler(this.btnReports_Click);
-            this.btnReports.Leave += new System.EventHandler(this.btnReports_Leave);
             // 
             // btnOrders
             // 
@@ -382,7 +378,6 @@ namespace SHOPLITE
             this.btnOrders.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnOrders.UseVisualStyleBackColor = false;
             this.btnOrders.Click += new System.EventHandler(this.btnOrders_Click);
-            this.btnOrders.Leave += new System.EventHandler(this.btnOrders_Leave);
             // 
             // btnInventory
             // 
@@ -405,7 +400,6 @@ namespace SHOPLITE
             this.btnInventory.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnInventory.UseVisualStyleBackColor = false;
             this.btnInventory.Click += new System.EventHandler(this.btnInventory_Click);
-            this.btnInventory.Leave += new System.EventHandler(this.btnInventory_Leave);
             // 
             // btnManagement
             // 
@@ -427,7 +421,6 @@ namespace SHOPLITE
             this.btnManagement.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnManagement.UseVisualStyleBackColor = false;
             this.btnManagement.Click += new System.EventHandler(this.btnManagement_Click);
-            this.btnManagement.Leave += new System.EventHandler(this.btnManagement_Leave);
             // 
             // btnDashboard
             // 
@@ -450,7 +443,6 @@ namespace SHOPLITE
             this.btnDashboard.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnDashboard.UseVisualStyleBackColor = false;
             this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
-            this.btnDashboard.Leave += new System.EventHandler(this.btnDashboard_Leave);
             // 
             // MainPanel
             // 
@@ -460,6 +452,7 @@ namespace SHOPLITE
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.Size = new System.Drawing.Size(919, 616);
             this.MainPanel.TabIndex = 4;
+            this.MainPanel.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.MainPanel_ControlRemoved);
             // 
             // MainForm
             // 

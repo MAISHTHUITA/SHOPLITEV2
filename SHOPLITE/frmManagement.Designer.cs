@@ -30,6 +30,7 @@ namespace SHOPLITE
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn1 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.btnTill = new System.Windows.Forms.Button();
@@ -38,13 +39,14 @@ namespace SHOPLITE
             this.btnGroups = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.pnlmain = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(3)))), ((int)(((byte)(109)))));
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.btn1);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.btnTill);
@@ -58,16 +60,27 @@ namespace SHOPLITE
             this.panel1.Size = new System.Drawing.Size(828, 61);
             this.panel1.TabIndex = 0;
             // 
+            // btn1
+            // 
+            this.btn1.FlatAppearance.BorderSize = 0;
+            this.btn1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn1.Location = new System.Drawing.Point(654, 21);
+            this.btn1.Name = "btn1";
+            this.btn1.Size = new System.Drawing.Size(75, 10);
+            this.btn1.TabIndex = 2;
+            this.btn1.Text = "1";
+            this.btn1.UseVisualStyleBackColor = true;
+            this.btn1.Visible = false;
+            // 
             // button3
             // 
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button3.FlatAppearance.BorderSize = 3;
+            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(83)))), ((int)(((byte)(255)))));
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(500, 10);
+            this.button3.Location = new System.Drawing.Point(539, -2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(76, 35);
+            this.button3.Size = new System.Drawing.Size(92, 61);
             this.button3.TabIndex = 0;
             this.button3.Text = "REPRINT RECEIPTS";
             this.button3.UseVisualStyleBackColor = true;
@@ -75,29 +88,27 @@ namespace SHOPLITE
             // 
             // button2
             // 
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button2.FlatAppearance.BorderSize = 3;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(83)))), ((int)(((byte)(255)))));
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(418, 10);
+            this.button2.Location = new System.Drawing.Point(448, -3);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(76, 35);
+            this.button2.Size = new System.Drawing.Size(92, 61);
             this.button2.TabIndex = 0;
             this.button2.Text = "SALES";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.btnTill_Click);
+            this.button2.Click += new System.EventHandler(this.btnsale_Click);
             // 
             // btnTill
             // 
-            this.btnTill.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnTill.FlatAppearance.BorderSize = 3;
+            this.btnTill.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(83)))), ((int)(((byte)(255)))));
             this.btnTill.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTill.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTill.ForeColor = System.Drawing.Color.White;
-            this.btnTill.Location = new System.Drawing.Point(336, 10);
+            this.btnTill.Location = new System.Drawing.Point(357, -2);
             this.btnTill.Name = "btnTill";
-            this.btnTill.Size = new System.Drawing.Size(76, 35);
+            this.btnTill.Size = new System.Drawing.Size(92, 61);
             this.btnTill.TabIndex = 0;
             this.btnTill.Text = "TILL";
             this.btnTill.UseVisualStyleBackColor = true;
@@ -105,14 +116,13 @@ namespace SHOPLITE
             // 
             // btnBackUpDB
             // 
-            this.btnBackUpDB.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnBackUpDB.FlatAppearance.BorderSize = 3;
+            this.btnBackUpDB.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(83)))), ((int)(((byte)(255)))));
             this.btnBackUpDB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBackUpDB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBackUpDB.ForeColor = System.Drawing.Color.White;
-            this.btnBackUpDB.Location = new System.Drawing.Point(254, 10);
+            this.btnBackUpDB.Location = new System.Drawing.Point(266, -2);
             this.btnBackUpDB.Name = "btnBackUpDB";
-            this.btnBackUpDB.Size = new System.Drawing.Size(76, 35);
+            this.btnBackUpDB.Size = new System.Drawing.Size(92, 61);
             this.btnBackUpDB.TabIndex = 0;
             this.btnBackUpDB.Text = "Back-Up";
             this.btnBackUpDB.UseVisualStyleBackColor = true;
@@ -120,14 +130,13 @@ namespace SHOPLITE
             // 
             // btnReason
             // 
-            this.btnReason.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnReason.FlatAppearance.BorderSize = 3;
+            this.btnReason.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(83)))), ((int)(((byte)(255)))));
             this.btnReason.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReason.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReason.ForeColor = System.Drawing.Color.White;
-            this.btnReason.Location = new System.Drawing.Point(172, 10);
+            this.btnReason.Location = new System.Drawing.Point(175, -2);
             this.btnReason.Name = "btnReason";
-            this.btnReason.Size = new System.Drawing.Size(76, 35);
+            this.btnReason.Size = new System.Drawing.Size(92, 61);
             this.btnReason.TabIndex = 0;
             this.btnReason.Text = "Reason";
             this.btnReason.UseVisualStyleBackColor = true;
@@ -135,14 +144,13 @@ namespace SHOPLITE
             // 
             // btnGroups
             // 
-            this.btnGroups.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnGroups.FlatAppearance.BorderSize = 3;
+            this.btnGroups.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(83)))), ((int)(((byte)(255)))));
             this.btnGroups.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGroups.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGroups.ForeColor = System.Drawing.Color.White;
-            this.btnGroups.Location = new System.Drawing.Point(90, 10);
+            this.btnGroups.Location = new System.Drawing.Point(84, -3);
             this.btnGroups.Name = "btnGroups";
-            this.btnGroups.Size = new System.Drawing.Size(76, 35);
+            this.btnGroups.Size = new System.Drawing.Size(92, 61);
             this.btnGroups.TabIndex = 0;
             this.btnGroups.Text = "GROUPS";
             this.btnGroups.UseVisualStyleBackColor = true;
@@ -150,14 +158,13 @@ namespace SHOPLITE
             // 
             // button1
             // 
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button1.FlatAppearance.BorderSize = 3;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(83)))), ((int)(((byte)(255)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(13, 10);
+            this.button1.Location = new System.Drawing.Point(-2, -2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(71, 35);
+            this.button1.Size = new System.Drawing.Size(87, 61);
             this.button1.TabIndex = 0;
             this.button1.Text = "USERS";
             this.button1.UseVisualStyleBackColor = true;
@@ -166,11 +173,22 @@ namespace SHOPLITE
             // pnlmain
             // 
             this.pnlmain.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pnlmain.BackColor = System.Drawing.SystemColors.Control;
+            this.pnlmain.BackColor = System.Drawing.Color.Transparent;
             this.pnlmain.Location = new System.Drawing.Point(204, 117);
             this.pnlmain.Name = "pnlmain";
             this.pnlmain.Size = new System.Drawing.Size(412, 316);
             this.pnlmain.TabIndex = 1;
+            this.pnlmain.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.pnlmain_ControlRemoved);
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(83)))), ((int)(((byte)(255)))));
+            this.panel2.Location = new System.Drawing.Point(0, 55);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(828, 10);
+            this.panel2.TabIndex = 2;
             // 
             // frmManagement
             // 
@@ -178,6 +196,7 @@ namespace SHOPLITE
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(828, 471);
             this.ControlBox = false;
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.pnlmain);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -198,5 +217,7 @@ namespace SHOPLITE
         private System.Windows.Forms.Button btnTill;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button btn1;
     }
 }

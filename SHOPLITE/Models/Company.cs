@@ -14,6 +14,61 @@ namespace SHOPLITE.Models
         public string CompanyLocation { get; set; }
         public string CompanyTaxpin { get; set; }
         public string CompanyVatRegNo { get; set; }
+        public string CompanyEmail { get; set; }
+        public Company GetCompany(string CompanyCode)
+        {
+            Company company = new Company();
+            using (SqlConnection con = new SqlConnection(DbCon.connection))
+            {
+                SqlCommand cmd = new SqlCommand("Select * from TBLCMPNY where CMPNYCD =@companycode or CMPNYNM=@companycode", con);
+                cmd.Parameters.AddWithValue("@companycode", CompanyCode);
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+                SqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.HasRows)
+                {
+                    while (rdr.Read())
+                    {
+                        if (rdr["CMPNYCD"] != DBNull.Value)
+                        {
+                            company.CompanyCode = rdr["CMPNYCD"].ToString();
+                        }
+                        if (rdr["CMPNYNM"] != DBNull.Value)
+                        {
+                            company.CompanyName = rdr["CMPNYNM"].ToString();
+                        }
+                        if (rdr["CMPNYADDR"] != DBNull.Value)
+                        {
+                            company.CompanyAddress = rdr["CMPNYADDR"].ToString();
+                        }
+                        if (rdr["COMPANYEMAIL"] != DBNull.Value)
+                        {
+                            company.CompanyEmail = rdr["COMPANYEMAIL"].ToString();
+                        }
+                        if (rdr["CMPNYTAXPIN"] != DBNull.Value)
+                        {
+                            company.CompanyTaxpin = rdr["CMPNYTAXPIN"].ToString();
+                        }
+                        if (rdr["CMPNYTEL"] != DBNull.Value)
+                        {
+                            company.CompanyTelephone = rdr["CMPNYTEL"].ToString();
+                        }
+                        if (rdr["CMPNYREGNO"] != DBNull.Value)
+                        {
+                            company.CompanyVatRegNo = rdr["CMPNYREGNO"].ToString();
+                        }
+                    }
+                    return company;
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+        }
 
     }
     public class Branch
@@ -28,6 +83,7 @@ namespace SHOPLITE.Models
         public string BrchPassword { get; set; }
         public bool IsParent { get; set; }
         public bool IsChild { get; set; }
+
     }
     interface ICompanyRepository
     {
@@ -91,7 +147,7 @@ namespace SHOPLITE.Models
             throw new NotImplementedException();
         }
 
-        public Company GetCompany(string CompanyCode)
+        public Company GetCompany(string companycd)
         {
             throw new NotImplementedException();
         }

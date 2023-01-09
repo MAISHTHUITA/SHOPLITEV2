@@ -187,6 +187,7 @@ namespace SHOPLITE.Private
             this.MinimumSize = new System.Drawing.Size(350, 150);
             this.Name = "FormMessageBox";
             this.Padding = new System.Windows.Forms.Padding(2);
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Form1";
             this.panelTitleBar.ResumeLayout(false);

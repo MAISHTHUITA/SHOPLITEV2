@@ -10,7 +10,7 @@ namespace SHOPLITE
     {
         private Button currentbutton;
         private Form currentchildform;
-       
+
         public frmInventory()
         {
             InitializeComponent();
@@ -37,7 +37,7 @@ namespace SHOPLITE
             if (currentbutton != null && currentbutton != btn)
             {
                 currentbutton.BackColor = Color.FromArgb(9, 148, 25);
-                
+
             }
             currentbutton = btn;
         }
@@ -48,7 +48,7 @@ namespace SHOPLITE
             if (currentchildform != null && currentchildform != frm)
             {
                 currentchildform.Hide();
-                
+
             }
             frm.TopLevel = false;
             mainpnl.Controls.Add(frm);
@@ -68,7 +68,7 @@ namespace SHOPLITE
                 RJMessageBox.Show("Sorry, your Account Has Insufficient Privelleges To Open This Module", "Check Right", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            
+
             setcurrentform(frmGdRcv.Instance);
             setbuttons(sender);
         }
@@ -79,7 +79,7 @@ namespace SHOPLITE
                 RJMessageBox.Show("Sorry, your Account Has Insufficient Privelleges To Open This Module", "Check Right", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            
+
             setcurrentform(frmInvoice.Instance);
             setbuttons(sender);
         }
@@ -90,7 +90,7 @@ namespace SHOPLITE
                 RJMessageBox.Show("Sorry, your Account Has Insufficient Privelleges To Open This Module", "Check Right", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            
+
             setcurrentform(frmMiscIssue.Instance);
             setbuttons(sender);
         }
@@ -101,7 +101,7 @@ namespace SHOPLITE
                 RJMessageBox.Show("Sorry, your Account Has Insufficient Privelleges To Open This Module", "Check Right", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-           
+
             setcurrentform(frmMiscReceipt.Instance);
             setbuttons(sender);
         }
@@ -112,7 +112,7 @@ namespace SHOPLITE
                 RJMessageBox.Show("Sorry, your Account Has Insufficient Privelleges To Open This Module", "Check Right", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-           
+
             setcurrentform(frmViewInvoices.Instance);
             setbuttons(sender);
         }

@@ -24,6 +24,7 @@ namespace SHOPLITE.Models
         public decimal Cash { get; set; }
         public decimal Change { get { return CashGiven - Cash; } }
         public string Phone { get; set; }
+        public string Comment { get; set; }
 
     }
     public class PosDetail
@@ -61,7 +62,7 @@ namespace SHOPLITE.Models
                     command.Transaction = sqlTransaction;
                     try
                     {
-                        command.CommandText = @"insert into TblPosMaster (VatAmount,TotalAmount,MachineName,Username,PaymentMethod,OtherMethodamount,CmpnyCd,BrnchCd,Discount,DiscountNarration,CashGiven,Cash,PaymentNarration) values(@VatAmount,@TotalAmount,@MachineName,@Username,@PaymentMethod,@OtherMethodamount,@CmpnyCd,@BrnchCd,@Discount,@DiscountNarration,@CashGiven,@Cash,@PaymentNarration) SELECT SCOPE_IDENTITY()";
+                        command.CommandText = @"insert into TblPosMaster (VatAmount,TotalAmount,MachineName,Username,PaymentMethod,OtherMethodamount,CmpnyCd,BrnchCd,Discount,DiscountNarration,CashGiven,Cash,PaymentNarration,Comment) values(@VatAmount,@TotalAmount,@MachineName,@Username,@PaymentMethod,@OtherMethodamount,@CmpnyCd,@BrnchCd,@Discount,@DiscountNarration,@CashGiven,@Cash,@PaymentNarration,@comment) SELECT SCOPE_IDENTITY()";
 
                         command.Parameters.AddWithValue("@VatAmount", pos.VatAmount);
                         command.Parameters.AddWithValue("@TotalAmount", pos.TotalAmount);
@@ -76,6 +77,7 @@ namespace SHOPLITE.Models
                         command.Parameters.AddWithValue("@CashGiven", pos.CashGiven);
                         command.Parameters.AddWithValue("@Cash", pos.Cash);
                         command.Parameters.AddWithValue("@PaymentNarration", pos.PaymentNarration);
+                        command.Parameters.AddWithValue("@Comment", pos.Comment);
                         string returned = command.ExecuteScalar().ToString();
                         int values = Convert.ToInt32(returned);
                         ReceiptNumber = values;
@@ -181,6 +183,10 @@ namespace SHOPLITE.Models
                             if (rdr["PaymentNarration"] != DBNull.Value)
                             {
                                 receipt.PaymentNarration = rdr["PaymentNarration"].ToString();
+                            }
+                            if (rdr["Comment"] != DBNull.Value)
+                            {
+                                receipt.Comment = rdr["Comment"].ToString();
                             }
                             if (rdr["CASH"] != DBNull.Value)
                             {

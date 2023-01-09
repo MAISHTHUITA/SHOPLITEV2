@@ -9,6 +9,7 @@ namespace SHOPLITE.ModalForms
         decimal _Cashgiven = 0;
         string _PaymentMethod = "CASH";
         string _PaymentNarration = "CASH";
+        string _Cname = "";
         DialogResult _dialogResult = DialogResult.Cancel;
         public frmPosPayment(decimal amount)
         {
@@ -31,6 +32,7 @@ namespace SHOPLITE.ModalForms
         public decimal CashGiven { get { return _Cashgiven; } }
         public string PaymentMethod { get { return _PaymentMethod; } }
         public string PaymentNarration { get { return _PaymentNarration; } }
+        public string Cname { get { return _Cname; } }
         private void txtGiven_TextChanged(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(txtGiven.Text.Trim()))
@@ -70,6 +72,7 @@ namespace SHOPLITE.ModalForms
                     _dialogResult = DialogResult.OK;
                     _Cashgiven = 0;
                     _PaymentMethod = cbPaymentMethod.Text;
+                    _Cname = txtcname.Text;
                     this.Close();
                 }
             }
@@ -78,6 +81,7 @@ namespace SHOPLITE.ModalForms
                 _dialogResult = DialogResult.OK;
                 _Cashgiven = Convert.ToDecimal(txtGiven.Text);
                 _PaymentMethod = cbPaymentMethod.Text;
+                _Cname = txtcname.Text;
                 this.Close();
             }
         }
@@ -99,6 +103,31 @@ namespace SHOPLITE.ModalForms
                 lblnarration.Visible = txtNarration.Visible = false;
                 _PaymentNarration = "CASH";
                 txtGiven.Focus();
+            }
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtGiven_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if (e.KeyChar == '.'
+                && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
             }
         }
     }
