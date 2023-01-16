@@ -43,7 +43,7 @@ namespace SHOPLITE.ModalForms
             SupplierRepository supplier = new SupplierRepository();
             List<Supplier> suppliers = supplier.GetSuppliers().ToList();
             if (suppliers.Count() > 0 && supplier != null)
-            {
+            {  
                 txtfromSupplier.Text = suppliers.FirstOrDefault().SuppCd;
                 txtToSupplier.Text = suppliers.LastOrDefault().SuppCd;
             }
