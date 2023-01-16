@@ -34,12 +34,13 @@ namespace SHOPLITE.Models
                 Receipt receipt = new Receipt();
                 Company company = new Company();
                 company = company.GetCompany(posmaster.CmpnyCd);
-
+                SettingsModel model = new SettingsModel();
+                string receipttext = model.Receipttext();
                 receipt.SetDataSource(posdetails);
                 receipt.SetParameterValue("@Company", posmaster.CmpnyCd);
                 receipt.SetParameterValue("@Branch", posmaster.BrnchCd);
                 receipt.SetParameterValue("@Phone", "TEL: " + posmaster.Phone);
-                receipt.SetParameterValue("@ReceiptNumber", "CASHSALE NO: " + posmaster.PosNumber.ToString());
+                receipt.SetParameterValue("@ReceiptNumber", receipttext + " " + posmaster.PosNumber.ToString());
                 receipt.SetParameterValue("@Change", posmaster.Change.ToString("0.00"));
                 receipt.SetParameterValue("@Cashgiven", posmaster.CashGiven.ToString("0.00"));
                 receipt.SetParameterValue("@Narration", posmaster.PaymentNarration);

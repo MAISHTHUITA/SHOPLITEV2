@@ -311,7 +311,7 @@ namespace SHOPLITE.ModalForms
                             }
                             btngdCancel_Click(sender, e);
 
-                            btnExit.Enabled = btngdPrint.Enabled = btngdNew.Enabled=btngdadd.Enabled = true;
+                            btnExit.Enabled = btngdPrint.Enabled = btngdNew.Enabled = btngdadd.Enabled = true;
                             btngdSave.Enabled = btngdCancel.Enabled = btngdadd.Enabled = btnExit.Enabled = false;
                         }
                         catch (Exception exe)

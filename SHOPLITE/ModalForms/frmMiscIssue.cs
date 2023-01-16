@@ -319,7 +319,7 @@ namespace SHOPLITE.ModalForms
                             }
                             btngdCancel_Click(sender, e);
 
-                            btnExit.Enabled = btngdPrint.Enabled = btngdNew.Enabled=btngdadd.Enabled = true;
+                            btnExit.Enabled = btngdPrint.Enabled = btngdNew.Enabled = btngdadd.Enabled = true;
                             btngdSave.Enabled = btngdCancel.Enabled = btngdadd.Enabled = btnExit.Enabled = false;
                         }
                         catch (Exception exe)
@@ -485,7 +485,7 @@ namespace SHOPLITE.ModalForms
                     txtReason.Text = reason.ReasonCode;
                     lblsupnm.Text = reason.ReasonName;
                     txtReason.Enabled = false;
-                    pnlgdproduct.Enabled = btngdSave.Enabled=btngdadd.Enabled = true;
+                    pnlgdproduct.Enabled = btngdSave.Enabled = btngdadd.Enabled = true;
                     txtgdProdNm.Focus();
                 }
 

@@ -41,6 +41,7 @@ namespace SHOPLITE.Models
         public DateTime CreatedOn { get; set; }
         public string UploadFlag { get; set; }
         #endregion
+
     }
     #region repository
     interface IProductRepository

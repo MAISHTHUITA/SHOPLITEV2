@@ -42,6 +42,7 @@ namespace SHOPLITE
             {
                 lblPrinter.Text = "No Printer Set";
             }
+           lblReceipttext.Text= settingsModel.Receipttext();
             BtnChangePolicy.Checked = settingsModel.showvatonreceipts;
             changepolicy.Checked = settingsModel.ViewInvoiceReports;
 
@@ -88,6 +89,21 @@ namespace SHOPLITE
             else
             {
                 settingsModel.InvoicePolicy(false);
+            }
+        }
+
+        private void btnSetText_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtReceipttext.Text))
+            {
+                SettingsModel settings = new SettingsModel();
+                settings.SetReceiptText(txtReceipttext.Text);
+                lblReceipttext.Text=txtReceipttext.Text;
+                MessageBox.Show("Receipt Text Added", "Shoplite Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Please Enter Receipt text", "Shoplite Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

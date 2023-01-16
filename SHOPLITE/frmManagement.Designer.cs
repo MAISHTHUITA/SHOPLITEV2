@@ -40,6 +40,7 @@ namespace SHOPLITE
             this.button1 = new System.Windows.Forms.Button();
             this.pnlmain = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,6 +49,7 @@ namespace SHOPLITE
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(3)))), ((int)(((byte)(109)))));
             this.panel1.Controls.Add(this.btn1);
             this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.btnTill);
             this.panel1.Controls.Add(this.btnBackUpDB);
@@ -64,7 +66,7 @@ namespace SHOPLITE
             // 
             this.btn1.FlatAppearance.BorderSize = 0;
             this.btn1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn1.Location = new System.Drawing.Point(654, 21);
+            this.btn1.Location = new System.Drawing.Point(729, 22);
             this.btn1.Name = "btn1";
             this.btn1.Size = new System.Drawing.Size(75, 10);
             this.btn1.TabIndex = 2;
@@ -76,7 +78,7 @@ namespace SHOPLITE
             // 
             this.button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(83)))), ((int)(((byte)(255)))));
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.White;
             this.button3.Location = new System.Drawing.Point(539, -2);
             this.button3.Name = "button3";
@@ -190,6 +192,20 @@ namespace SHOPLITE
             this.panel2.Size = new System.Drawing.Size(828, 10);
             this.panel2.TabIndex = 2;
             // 
+            // button4
+            // 
+            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(83)))), ((int)(((byte)(255)))));
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.Color.White;
+            this.button4.Location = new System.Drawing.Point(631, -2);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(92, 61);
+            this.button4.TabIndex = 0;
+            this.button4.Text = "VIEW RECEIPTS";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.btnViewReceipts_Click);
+            // 
             // frmManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -219,5 +235,6 @@ namespace SHOPLITE
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btn1;
+        private System.Windows.Forms.Button button4;
     }
 }

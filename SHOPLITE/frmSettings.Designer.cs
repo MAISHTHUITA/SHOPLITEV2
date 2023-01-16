@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.Printerbox = new System.Windows.Forms.GroupBox();
-            this.rjButton1 = new SHOPLITE.RJButton();
-            this.listofprinters = new SHOPLITE.RJComboBox();
             this.lblPrinter = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -39,13 +37,22 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.BtnChangePolicy = new SHOPLITE.RJToggleButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.lblReceipttext = new System.Windows.Forms.Label();
+            this.txtReceipttext = new System.Windows.Forms.TextBox();
+            this.btnSetText = new SHOPLITE.RJButton();
             this.changepolicy = new SHOPLITE.RJToggleButton();
+            this.BtnChangePolicy = new SHOPLITE.RJToggleButton();
+            this.rjButton1 = new SHOPLITE.RJButton();
+            this.listofprinters = new SHOPLITE.RJComboBox();
             this.Printerbox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // Printerbox
@@ -69,46 +76,6 @@
             this.Printerbox.TabIndex = 0;
             this.Printerbox.TabStop = false;
             this.Printerbox.Text = "Select Receipt Printer";
-            // 
-            // rjButton1
-            // 
-            this.rjButton1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.rjButton1.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjButton1.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjButton1.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.rjButton1.BorderRadius = 0;
-            this.rjButton1.BorderSize = 0;
-            this.rjButton1.FlatAppearance.BorderSize = 0;
-            this.rjButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton1.ForeColor = System.Drawing.Color.White;
-            this.rjButton1.Location = new System.Drawing.Point(504, 45);
-            this.rjButton1.Name = "rjButton1";
-            this.rjButton1.Size = new System.Drawing.Size(82, 30);
-            this.rjButton1.TabIndex = 2;
-            this.rjButton1.Text = "Set";
-            this.rjButton1.TextColor = System.Drawing.Color.White;
-            this.rjButton1.UseVisualStyleBackColor = false;
-            this.rjButton1.Click += new System.EventHandler(this.rjButton1_Click);
-            // 
-            // listofprinters
-            // 
-            this.listofprinters.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.listofprinters.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.listofprinters.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.listofprinters.BorderSize = 1;
-            this.listofprinters.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            this.listofprinters.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.listofprinters.ForeColor = System.Drawing.Color.MediumSlateBlue;
-            this.listofprinters.IconColor = System.Drawing.Color.MediumSlateBlue;
-            this.listofprinters.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
-            this.listofprinters.ListTextColor = System.Drawing.Color.DimGray;
-            this.listofprinters.Location = new System.Drawing.Point(266, 45);
-            this.listofprinters.MinimumSize = new System.Drawing.Size(200, 30);
-            this.listofprinters.Name = "listofprinters";
-            this.listofprinters.Padding = new System.Windows.Forms.Padding(1);
-            this.listofprinters.Size = new System.Drawing.Size(200, 30);
-            this.listofprinters.TabIndex = 1;
-            this.listofprinters.Texts = "";
             // 
             // lblPrinter
             // 
@@ -210,24 +177,6 @@
             this.label6.TabIndex = 1;
             this.label6.Text = "Show Vat calculation on Receipt";
             // 
-            // BtnChangePolicy
-            // 
-            this.BtnChangePolicy.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnChangePolicy.AutoSize = true;
-            this.BtnChangePolicy.Checked = true;
-            this.BtnChangePolicy.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.BtnChangePolicy.Location = new System.Drawing.Point(376, 25);
-            this.BtnChangePolicy.MinimumSize = new System.Drawing.Size(45, 22);
-            this.BtnChangePolicy.Name = "BtnChangePolicy";
-            this.BtnChangePolicy.OffBackColor = System.Drawing.Color.Thistle;
-            this.BtnChangePolicy.OffToggleColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.BtnChangePolicy.OnBackColor = System.Drawing.Color.MediumSlateBlue;
-            this.BtnChangePolicy.OnToggleColor = System.Drawing.Color.LawnGreen;
-            this.BtnChangePolicy.Size = new System.Drawing.Size(45, 22);
-            this.BtnChangePolicy.TabIndex = 0;
-            this.BtnChangePolicy.UseVisualStyleBackColor = true;
-            this.BtnChangePolicy.CheckedChanged += new System.EventHandler(this.rjToggleButton1_CheckedChanged);
-            // 
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -255,6 +204,74 @@
             this.label7.TabIndex = 1;
             this.label7.Text = "Show Invoices calculation on Reports";
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.txtReceipttext);
+            this.groupBox3.Controls.Add(this.btnSetText);
+            this.groupBox3.Controls.Add(this.lblReceipttext);
+            this.groupBox3.Controls.Add(this.label9);
+            this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.ForeColor = System.Drawing.Color.MediumSlateBlue;
+            this.groupBox3.Location = new System.Drawing.Point(18, 312);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(770, 106);
+            this.groupBox3.TabIndex = 3;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Text Before Receipt Number";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(164, 30);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(94, 14);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Current Text: ";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(189, 61);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(63, 14);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Set Text:";
+            // 
+            // lblReceipttext
+            // 
+            this.lblReceipttext.AutoSize = true;
+            this.lblReceipttext.Location = new System.Drawing.Point(261, 31);
+            this.lblReceipttext.Name = "lblReceipttext";
+            this.lblReceipttext.Size = new System.Drawing.Size(0, 14);
+            this.lblReceipttext.TabIndex = 0;
+            // 
+            // txtReceipttext
+            // 
+            this.txtReceipttext.Location = new System.Drawing.Point(259, 55);
+            this.txtReceipttext.Name = "txtReceipttext";
+            this.txtReceipttext.Size = new System.Drawing.Size(201, 22);
+            this.txtReceipttext.TabIndex = 3;
+            // 
+            // btnSetText
+            // 
+            this.btnSetText.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.btnSetText.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.btnSetText.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnSetText.BorderRadius = 0;
+            this.btnSetText.BorderSize = 0;
+            this.btnSetText.FlatAppearance.BorderSize = 0;
+            this.btnSetText.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSetText.ForeColor = System.Drawing.Color.White;
+            this.btnSetText.Location = new System.Drawing.Point(498, 46);
+            this.btnSetText.Name = "btnSetText";
+            this.btnSetText.Size = new System.Drawing.Size(82, 31);
+            this.btnSetText.TabIndex = 2;
+            this.btnSetText.Text = "Set";
+            this.btnSetText.TextColor = System.Drawing.Color.White;
+            this.btnSetText.UseVisualStyleBackColor = false;
+            this.btnSetText.Click += new System.EventHandler(this.btnSetText_Click);
+            // 
             // changepolicy
             // 
             this.changepolicy.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -273,11 +290,70 @@
             this.changepolicy.UseVisualStyleBackColor = true;
             this.changepolicy.CheckedChanged += new System.EventHandler(this.changepolicy_CheckedChanged);
             // 
+            // BtnChangePolicy
+            // 
+            this.BtnChangePolicy.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnChangePolicy.AutoSize = true;
+            this.BtnChangePolicy.Checked = true;
+            this.BtnChangePolicy.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.BtnChangePolicy.Location = new System.Drawing.Point(376, 25);
+            this.BtnChangePolicy.MinimumSize = new System.Drawing.Size(45, 22);
+            this.BtnChangePolicy.Name = "BtnChangePolicy";
+            this.BtnChangePolicy.OffBackColor = System.Drawing.Color.Thistle;
+            this.BtnChangePolicy.OffToggleColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.BtnChangePolicy.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.BtnChangePolicy.OnToggleColor = System.Drawing.Color.LawnGreen;
+            this.BtnChangePolicy.Size = new System.Drawing.Size(45, 22);
+            this.BtnChangePolicy.TabIndex = 0;
+            this.BtnChangePolicy.UseVisualStyleBackColor = true;
+            this.BtnChangePolicy.CheckedChanged += new System.EventHandler(this.rjToggleButton1_CheckedChanged);
+            // 
+            // rjButton1
+            // 
+            this.rjButton1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rjButton1.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjButton1.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjButton1.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.rjButton1.BorderRadius = 0;
+            this.rjButton1.BorderSize = 0;
+            this.rjButton1.FlatAppearance.BorderSize = 0;
+            this.rjButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjButton1.ForeColor = System.Drawing.Color.White;
+            this.rjButton1.Location = new System.Drawing.Point(504, 45);
+            this.rjButton1.Name = "rjButton1";
+            this.rjButton1.Size = new System.Drawing.Size(82, 30);
+            this.rjButton1.TabIndex = 2;
+            this.rjButton1.Text = "Set";
+            this.rjButton1.TextColor = System.Drawing.Color.White;
+            this.rjButton1.UseVisualStyleBackColor = false;
+            this.rjButton1.Click += new System.EventHandler(this.rjButton1_Click);
+            // 
+            // listofprinters
+            // 
+            this.listofprinters.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.listofprinters.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.listofprinters.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.listofprinters.BorderSize = 1;
+            this.listofprinters.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            this.listofprinters.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.listofprinters.ForeColor = System.Drawing.Color.MediumSlateBlue;
+            this.listofprinters.IconColor = System.Drawing.Color.MediumSlateBlue;
+            this.listofprinters.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
+            this.listofprinters.ListTextColor = System.Drawing.Color.DimGray;
+            this.listofprinters.Location = new System.Drawing.Point(266, 45);
+            this.listofprinters.MinimumSize = new System.Drawing.Size(200, 30);
+            this.listofprinters.Name = "listofprinters";
+            this.listofprinters.Padding = new System.Windows.Forms.Padding(1);
+            this.listofprinters.Size = new System.Drawing.Size(200, 30);
+            this.listofprinters.TabIndex = 1;
+            this.listofprinters.Texts = "";
+            // 
             // frmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 554);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
@@ -294,6 +370,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -316,5 +394,11 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label7;
         private RJToggleButton changepolicy;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private RJButton btnSetText;
+        private System.Windows.Forms.Label lblReceipttext;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtReceipttext;
     }
 }

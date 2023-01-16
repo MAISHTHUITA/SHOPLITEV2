@@ -30,13 +30,14 @@ namespace SHOPLITE
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn1 = new System.Windows.Forms.Button();
             this.btnProdlist = new System.Windows.Forms.Button();
             this.btnViewGrn = new System.Windows.Forms.Button();
             this.btnStockcard = new System.Windows.Forms.Button();
             this.btnPrcChange = new System.Windows.Forms.Button();
             this.mainpnl = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btn1 = new System.Windows.Forms.Button();
+            this.btnProductCatalogue = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,6 +45,7 @@ namespace SHOPLITE
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(94)))), ((int)(((byte)(242)))));
             this.panel1.Controls.Add(this.btn1);
+            this.panel1.Controls.Add(this.btnProductCatalogue);
             this.panel1.Controls.Add(this.btnProdlist);
             this.panel1.Controls.Add(this.btnViewGrn);
             this.panel1.Controls.Add(this.btnStockcard);
@@ -53,6 +55,18 @@ namespace SHOPLITE
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 58);
             this.panel1.TabIndex = 0;
+            // 
+            // btn1
+            // 
+            this.btn1.FlatAppearance.BorderSize = 0;
+            this.btn1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn1.Location = new System.Drawing.Point(638, 42);
+            this.btn1.Name = "btn1";
+            this.btn1.Size = new System.Drawing.Size(75, 10);
+            this.btn1.TabIndex = 3;
+            this.btn1.Text = "1";
+            this.btn1.UseVisualStyleBackColor = true;
+            this.btn1.Visible = false;
             // 
             // btnProdlist
             // 
@@ -134,17 +148,20 @@ namespace SHOPLITE
             this.panel2.Size = new System.Drawing.Size(800, 10);
             this.panel2.TabIndex = 3;
             // 
-            // btn1
+            // btnProductCatalogue
             // 
-            this.btn1.FlatAppearance.BorderSize = 0;
-            this.btn1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn1.Location = new System.Drawing.Point(638, 42);
-            this.btn1.Name = "btn1";
-            this.btn1.Size = new System.Drawing.Size(75, 10);
-            this.btn1.TabIndex = 3;
-            this.btn1.Text = "1";
-            this.btn1.UseVisualStyleBackColor = true;
-            this.btn1.Visible = false;
+            this.btnProductCatalogue.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(83)))), ((int)(((byte)(255)))));
+            this.btnProductCatalogue.FlatAppearance.BorderSize = 2;
+            this.btnProductCatalogue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProductCatalogue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProductCatalogue.ForeColor = System.Drawing.Color.White;
+            this.btnProductCatalogue.Location = new System.Drawing.Point(353, 0);
+            this.btnProductCatalogue.Name = "btnProductCatalogue";
+            this.btnProductCatalogue.Size = new System.Drawing.Size(88, 58);
+            this.btnProductCatalogue.TabIndex = 0;
+            this.btnProductCatalogue.Text = "Price List  or Catalogue";
+            this.btnProductCatalogue.UseVisualStyleBackColor = true;
+            this.btnProductCatalogue.Click += new System.EventHandler(this.btnProductcatalogueClick);
             // 
             // frmReports
             // 
@@ -173,5 +190,6 @@ namespace SHOPLITE
         private System.Windows.Forms.Button btnProdlist;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btn1;
+        private System.Windows.Forms.Button btnProductCatalogue;
     }
 }

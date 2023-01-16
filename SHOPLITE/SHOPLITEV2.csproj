@@ -206,6 +206,12 @@
     <Compile Include="ModalForms\frmBackUpDb.Designer.cs">
       <DependentUpon>frmBackUpDb.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModalForms\frmCatalogue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModalForms\frmCatalogue.Designer.cs">
+      <DependentUpon>frmCatalogue.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModalForms\frmChangeCp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -277,6 +283,12 @@
     </Compile>
     <Compile Include="ModalForms\frmPurchaseOrder.Designer.cs">
       <DependentUpon>frmPurchaseOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModalForms\frmReceiptReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModalForms\frmReceiptReports.Designer.cs">
+      <DependentUpon>frmReceiptReports.cs</DependentUpon>
     </Compile>
     <Compile Include="ModalForms\frmReprintReceipt.cs">
       <SubType>Form</SubType>
@@ -434,6 +446,7 @@
     <Compile Include="ModalForms\frnNewUnit.Designer.cs">
       <DependentUpon>frnNewUnit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\CatalogueModel.cs" />
     <Compile Include="Models\DashboardModel.cs" />
     <Compile Include="Models\GroupModel.cs" />
     <Compile Include="Models\Logger.cs" />
@@ -468,6 +481,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\CatalogueReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CatalogueReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reports\DailySaleReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -564,6 +583,12 @@
       <DependentUpon>VatList.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reports\ViewReceipts.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ViewReceipts.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="SearchFoms\frmSearchCust.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -648,6 +673,9 @@
     <EmbeddedResource Include="ModalForms\frmBackUpDb.resx">
       <DependentUpon>frmBackUpDb.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModalForms\frmCatalogue.resx">
+      <DependentUpon>frmCatalogue.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModalForms\frmChangeCp.resx">
       <DependentUpon>frmChangeCp.cs</DependentUpon>
     </EmbeddedResource>
@@ -683,6 +711,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModalForms\frmPurchaseOrder.resx">
       <DependentUpon>frmPurchaseOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModalForms\frmReceiptReports.resx">
+      <DependentUpon>frmReceiptReports.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModalForms\frmReprintReceipt.resx">
       <DependentUpon>frmReprintReceipt.cs</DependentUpon>
@@ -775,6 +806,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reports\CatalogueReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CatalogueReport.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\DailySaleReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>DailySaleReport.cs</LastGenOutput>
@@ -838,6 +873,10 @@
     <EmbeddedResource Include="Reports\VatList.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>VatList1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ViewReceipts.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ViewReceipts.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="SearchFoms\frmSearchCust.resx">
       <DependentUpon>frmSearchCust.cs</DependentUpon>

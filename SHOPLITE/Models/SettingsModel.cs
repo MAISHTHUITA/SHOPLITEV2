@@ -312,6 +312,78 @@ namespace SHOPLITE.Models
             getmachineserial();
             getvalues();
         }
+        /// <summary>
+        /// Get ReceiptText for the current machine
+        /// </summary>
+        /// <returns></returns>
+        public string Receipttext()
+        {
+            string Receipttext = "";
+            try
+            {
+                getmachineserial();
+                
+                using (SqlConnection con = new SqlConnection(DbCon.connection))
+                {
+                    var query = "select ReceiptText from tblsettings where MachineSerial =  @MachineSerial";
+                    SqlCommand sql = new SqlCommand(query, con);
+                    sql.Parameters.AddWithValue("@MachineSerial", machine);
+                    if (con.State == System.Data.ConnectionState.Closed)
+                    {
+                        con.Open();
+                    }
+                    SqlDataReader rdr = sql.ExecuteReader();
+                    if (rdr.HasRows)
+                    {
+                        while (rdr.Read())
+                        {
+                            if (rdr["ReceiptText"] != DBNull.Value)
+                            {
+                                Receipttext = rdr["ReceiptText"].ToString();
+                            }
+                        }
+                    }
+
+                }
+            }
+            catch (Exception exe)
+            {
+                Logger.Loggermethod(exe);
+            }
+            
+
+            return Receipttext;
+        }
+        /// <summary>
+        /// set receipt text
+        /// </summary>
+        /// <param name="receipttext"></param>
+        public void SetReceiptText(string receipttext)
+        {
+            try
+            {
+                getmachineserial();
+
+                using (SqlConnection con = new SqlConnection(DbCon.connection))
+                {
+                    var query = "UPDATE  tblsettings SET ReceiptText =  @text where MachineSerial =  @MachineSerial";
+                    SqlCommand sql = new SqlCommand(query, con);
+                    sql.Parameters.AddWithValue("@MachineSerial", machine);
+                    sql.Parameters.AddWithValue("@text", receipttext);
+                    if (con.State == System.Data.ConnectionState.Closed)
+                    {
+                        con.Open();
+                    }
+                    sql.ExecuteNonQuery();
+
+                }
+            }
+            catch (Exception exe)
+            {
+                Logger.Loggermethod(exe);
+            }
+           
+        }
 
     }
 }

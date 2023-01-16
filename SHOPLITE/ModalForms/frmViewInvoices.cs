@@ -108,9 +108,10 @@ namespace SHOPLITE.ModalForms
             customer = customer.getCustomer(txtCustCode.Text);
             if (customer == null)
             {
-                RJMessageBox.Show("Please enter Valid From Customer Code.");
+                txtCustCode.Text = "";
+                
                 txtCustCode.Focus();
-                txtCustName.Text = "";
+                RJMessageBox.Show("Please enter Valid From Customer Code.");
                 return;
             }
             else
@@ -130,9 +131,10 @@ namespace SHOPLITE.ModalForms
             customer = customer.getCustomer(txtToCustCd.Text);
             if (customer == null)
             {
+                txtToCustNm.Text = "";
                 RJMessageBox.Show("Please enter Valid To Customer Code.");
                 txtToCustCd.Focus();
-                txtToCustNm.Text = "";
+                
                 return;
             }
             else
