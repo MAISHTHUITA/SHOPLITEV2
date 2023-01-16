@@ -24,7 +24,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <UpdateUrl>http://localhost/SHOPLITEV2/</UpdateUrl>
-    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationRevision>1</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -942,7 +942,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DbScript\ShopLiteDb.sql" />
     <Content Include="diagram.ico" />
     <Content Include="Resources\chat.png" />
     <Content Include="Resources\error.png" />
@@ -950,6 +949,10 @@
     <Content Include="Resources\information.png" />
     <Content Include="Resources\question.png" />
     <Content Include="TICK.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DbScript\" />
+    <Folder Include="publish\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
