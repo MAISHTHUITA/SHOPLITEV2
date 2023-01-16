@@ -58,6 +58,9 @@ namespace SHOPLITE.ModalForms
             rdWithoutCp.Checked = false;
         }
 
+
+
+
         private void BtnPrint_Click(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(txtfromSupplier.Text))
