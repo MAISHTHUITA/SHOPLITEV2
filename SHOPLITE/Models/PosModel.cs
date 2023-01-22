@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 
 namespace SHOPLITE.Models
 {
@@ -114,7 +115,13 @@ namespace SHOPLITE.Models
                         command.Parameters.Clear();
                         foreach (PosDetail item in posDetail)
                         {
-                            command.CommandText = @"Declare @intqty decimal  Declare @Spp decimal set @intqty=(select QtyAvble from tblProd where ProdCd=@prodcd) set @Spp=(select Cp from TblProd where prodcd=@prodcd) insert into TblPosDetails(PosNumber,ProdCd,ProdNm,UnitCd,Quantity,Sp,VatCd,LineVat,LineAmount) values(@PosNo,@Prodcd,@ProdNm, @unit, @Quantity, @Sp,@VatCd ,@LineVat, @LineAmount ) update tblprod set QtyAvble = QtyAvble - @Quantity where ProdCd = @ProdCd  declare @Newqty decimal set @newqty =(@IntQty - @quantity) insert into tblProdHist (Prod_Cd,Txn_Type, QTY,Int_QTy,Nw_Qty,Prod_Cp,Prod_Sp,Usr_Nm,DOC_NO) values (@ProdCd,'POS',@Quantity*-1,@IntQty,@NewQty,@spp,@Sp,@Username,@PosNo)";
+                            command.CommandText = @"Declare @intqty decimal  Declare @Spp decimal set @intqty=(select QtyAvble from 
+                                                    tblProd where ProdCd=@prodcd) set @Spp=(select Cp from TblProd where prodcd=@prodcd)
+                                                    insert into TblPosDetails(PosNumber,ProdCd,ProdNm,UnitCd,Quantity,Sp,VatCd,LineVat,LineAmount) 
+                                                    values(@PosNo,@Prodcd,@ProdNm, @unit, @Quantity, @Sp,@VatCd ,@LineVat, @LineAmount ) update tblprod 
+                                                    set QtyAvble = QtyAvble - @Quantity where ProdCd = @ProdCd  declare @Newqty decimal set @newqty =(@IntQty - @quantity) 
+                                                    insert into tblProdHist (Prod_Cd,Txn_Type, QTY,Int_QTy,Nw_Qty,Prod_Cp,Prod_Sp,Usr_Nm,DOC_NO) values (@ProdCd,'POS',@Quantity*-1,
+                                                    @IntQty,@NewQty,@spp,@Sp,@Username,@PosNo)";
                             command.Parameters.AddWithValue("@PosNo", values);
                             command.Parameters.AddWithValue("@Prodcd", item.ProdCd);
                             command.Parameters.AddWithValue("@ProdNm", item.ProdNm);
@@ -274,6 +281,182 @@ namespace SHOPLITE.Models
             }
             details = receiptDetails;
             return receipt;
+        }
+        public bool VoidReceipt(int posnumber,string reason)
+        {
+            List<PosDetail> receiptDetails = new List<PosDetail>();
+            PosMaster receipt = new PosMaster();
+            try
+            {
+                using (SqlConnection con = new SqlConnection(DbCon.connection))
+                {
+                    SqlCommand command = new SqlCommand("GetPos", con);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@ReceiptNo", posnumber);
+                    if (con.State == ConnectionState.Closed)
+                    {
+                        con.Open();
+                    }
+                    SqlDataReader rdr = command.ExecuteReader();
+                    if (rdr.HasRows)
+                    {
+                        while (rdr.Read())
+                        {
+
+                            /* This is to populate posmaster but the code need review to optimize perfomance i.e. to avoid repeatedly looping of posmaster yet is it will always be the same.*/
+                            if (rdr["PosNumber"] != DBNull.Value)
+                            {
+                                receipt.PosNumber = Convert.ToInt32(rdr["PosNumber"]);
+                            }
+                            if (rdr["POSDATE"] != DBNull.Value)
+                            {
+                                receipt.ReceiptDate = (DateTime)(rdr["POSDATE"]);
+                            }
+                            if (rdr["VatAmount"] != DBNull.Value)
+                            {
+                                receipt.VatAmount = Convert.ToDecimal(rdr["VatAmount"]);
+                            }
+                            if (rdr["TotalAmount"] != DBNull.Value)
+                            {
+                                receipt.TotalAmount = Convert.ToDecimal(rdr["TotalAmount"]);
+                            }
+                            if (rdr["Username"] != DBNull.Value)
+                            {
+                                receipt.Username = rdr["Username"].ToString();
+                            }
+                            if (rdr["PaymentMethod"] != DBNull.Value)
+                            {
+                                receipt.PaymentMethod = rdr["PaymentMethod"].ToString();
+                            }
+                            if (rdr["CmpnyCd"] != DBNull.Value)
+                            {
+                                receipt.CmpnyCd = rdr["CmpnyCd"].ToString();
+                            }
+                            if (rdr["BrnchCd"] != DBNull.Value)
+                            {
+                                receipt.BrnchCd = rdr["BrnchCd"].ToString();
+                            }
+                            if (rdr["BRNCHTELEPHONE"] != DBNull.Value)
+                            {
+                                receipt.Phone = rdr["BRNCHTELEPHONE"].ToString();
+                            }
+                            if (rdr["CashGiven"] != DBNull.Value)
+                            {
+                                receipt.CashGiven = Convert.ToDecimal(rdr["CashGiven"]);
+                            }
+                            if (rdr["PaymentNarration"] != DBNull.Value)
+                            {
+                                receipt.PaymentNarration = rdr["PaymentNarration"].ToString();
+                            }
+                            if (rdr["Comment"] != DBNull.Value)
+                            {
+                                receipt.Comment = rdr["Comment"].ToString();
+                            }
+                            if (rdr["CASH"] != DBNull.Value)
+                            {
+                                receipt.Cash = Convert.ToDecimal(rdr["CASH"]);
+                            }
+                            //populate the posdetail and then add it to enumerable posdetails
+                            PosDetail details1 = new PosDetail();
+                            if (rdr["ProdCd"] != DBNull.Value)
+                            {
+                                details1.ProdCd = rdr["ProdCd"].ToString();
+                            }
+                            if (rdr["ProdNm"] != DBNull.Value)
+                            {
+                                details1.ProdNm = rdr["ProdNm"].ToString();
+                            }
+                            if (rdr["UnitCd"] != DBNull.Value)
+                            {
+                                details1.UnitCd = rdr["UnitCd"].ToString();
+                            }
+                            if (rdr["Quantity"] != DBNull.Value)
+                            {
+                                details1.Quantity = Convert.ToDecimal(rdr["Quantity"]);
+                            }
+                            if (rdr["Sp"] != DBNull.Value)
+                            {
+                                details1.Sp = Convert.ToDecimal(rdr["Sp"]);
+                            }
+                            if (rdr["VatCd"] != DBNull.Value)
+                            {
+                                details1.VatCd = rdr["VatCd"].ToString();
+                            }
+                            if (rdr["LineVat"] != DBNull.Value)
+                            {
+                                details1.LineVat = Convert.ToDecimal(rdr["LineVat"]);
+                            }
+                            if (rdr["LineAmount"] != DBNull.Value)
+                            {
+                                details1.LineAmount = Convert.ToDecimal(rdr["LineAmount"]);
+                            }
+                            receiptDetails.Add(details1);
+                        }
+                    }
+                    if (receipt != null && receiptDetails.Count > 0)
+                    {
+                        using (SqlConnection con2 = new SqlConnection(DbCon.connection))
+                        {
+                            if (con2.State==ConnectionState.Closed)
+                            {
+                                con.Open();
+                            }
+                            SqlCommand cmd=con2.CreateCommand();
+                            SqlTransaction transaction=con2.BeginTransaction();
+                            cmd.Transaction = transaction;
+                            try
+                            {
+                                cmd.CommandText = @"update TblPosmaster set Isvoid = 'True' where Posnumber =@posnumber; Insert into 
+                                                    TblVoidMst (PosNumber, UserName,ReceiptBy,ReceiptDateTime,Reason,ReceiptComment)
+                                                    Value (@posnumber, @UserName,@ReceiptBy,@ReceiptDateTime,@Reason,@ReceiptComment)";
+                                cmd.CommandType = CommandType.Text;
+                                cmd.Parameters.AddWithValue("@posnumber", posnumber);
+                                cmd.Parameters.AddWithValue("@UserName", Properties.Settings.Default.USERNAME);
+                                cmd.Parameters.AddWithValue("@ReceiptBy", receipt.Username);
+                                cmd.Parameters.AddWithValue("@ReceiptDateTime", receipt.ReceiptDate);
+                                cmd.Parameters.AddWithValue("@Reason", reason);
+                                cmd.Parameters.AddWithValue("@ReceiptComment", receipt.Comment);
+                                cmd.ExecuteNonQuery();
+                                
+                                foreach (var receiptdetail in receiptDetails)
+                                {
+                                    cmd.Parameters.Clear();
+                                    cmd.CommandText = @"Update TblProd set QtyAvable = Qtyavable + @Qty where prodcd = @prodcd;
+                                                    insert into TblVoidHist (ProdCd,UnitCd,Sp,PosNumber,Qty,Username) Values(@prodcd,@unit,@Sp,@PosNumber,@Qty,@Username";
+                                    cmd.CommandType = CommandType.Text;
+                                    cmd.Parameters.AddWithValue("@prodcd", receiptdetail.ProdCd);
+                                    cmd.Parameters.AddWithValue("@Qty", receiptdetail.Quantity);
+                                    cmd.Parameters.AddWithValue("@unit", receiptdetail.UnitCd);
+                                    cmd.Parameters.AddWithValue("@Sp", receiptdetail.Sp);
+                                    cmd.Parameters.AddWithValue("@PosNumber", receipt.PosNumber);
+                                    cmd.Parameters.AddWithValue("@Username", Properties.Settings.Default.USERNAME);
+                                    cmd.ExecuteNonQuery();
+                                  
+                                }
+                                transaction.Commit();
+                                return true;
+                            }
+                            catch (Exception exe)
+                            {
+                                transaction.Rollback();
+                                Logger.Loggermethod(exe);
+                                return false;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception exe)
+            {
+                Logger.Loggermethod(exe);
+                return false;
+            }
+            
+            
         }
         public PosMaster GetReceipt(int posnumber, out List<PosDetail> details, DateTime fromDate, DateTime toDate)
         {

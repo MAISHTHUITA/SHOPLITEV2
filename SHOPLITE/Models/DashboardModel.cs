@@ -102,7 +102,9 @@ namespace SHOPLITE.Models
                     var revenuetable = new List<KeyValuePair<DateTime, decimal>>();
                     if (isAdmin)
                     {
-                        command.CommandText = "select cast(PosDate as DATE), sum(totalamount) from TblPosMaster WHERE POSDATE BETWEEN @startdate and @enddate group by CAST(POSDATE AS DATE)";
+                        command.CommandText = "select cast(PosDate as DATE), " +
+                            "sum(totalamount) from TblPosMaster WHERE POSDATE BETWEEN @startdate " +
+                            "and @enddate group by CAST(POSDATE AS DATE)";
                         command.Parameters.Add("@startdate", SqlDbType.DateTime).Value = startDate.Date;
                         command.Parameters.Add("@enddate", SqlDbType.DateTime).Value = endDate.Date.AddHours(23).AddMinutes(59).AddSeconds(59).AddMilliseconds(999);
 
@@ -118,7 +120,10 @@ namespace SHOPLITE.Models
                     }
                     else
                     {
-                        command.CommandText = "select cast(PosDate as DATE), sum(totalamount) from TblPosMaster WHERE POSDATE BETWEEN @startdate and @enddate and Username=@usrnm group by CAST(POSDATE AS DATE)";
+                        command.CommandText = "select cast(PosDate as DATE), sum(totalamount) from " +
+                            "TblPosMaster WHERE POSDATE BETWEEN @startdate" +
+                            " and @enddate and Username=@usrnm" +
+                            " group by CAST(POSDATE AS DATE)";
                         command.Parameters.Add("@startdate", SqlDbType.DateTime).Value = startDate.Date;
                         command.Parameters.Add("@enddate", SqlDbType.DateTime).Value = endDate.Date.AddHours(23).AddMinutes(59).AddSeconds(59).AddMilliseconds(999);
                         command.Parameters.AddWithValue("@usrnm", usrnm);

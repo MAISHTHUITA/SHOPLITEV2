@@ -924,6 +924,38 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="publish\.gitignore" />
+    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\CrystalDecisions.CrystalReports.Engine.dll.deploy" />
+    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\CrystalDecisions.ReportAppServer.ClientDoc.dll.deploy" />
+    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\CrystalDecisions.ReportAppServer.CommLayer.dll.deploy" />
+    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\CrystalDecisions.ReportAppServer.CommonControls.dll.deploy" />
+    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\CrystalDecisions.ReportAppServer.CommonObjectModel.dll.deploy" />
+    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\CrystalDecisions.ReportAppServer.Controllers.dll.deploy" />
+    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\CrystalDecisions.ReportAppServer.CubeDefModel.dll.deploy" />
+    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\CrystalDecisions.ReportAppServer.DataDefModel.dll.deploy" />
+    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\CrystalDecisions.ReportAppServer.DataSetConversion.dll.deploy" />
+    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\CrystalDecisions.ReportAppServer.ObjectFactory.dll.deploy" />
+    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\CrystalDecisions.ReportAppServer.Prompting.dll.deploy" />
+    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\CrystalDecisions.ReportAppServer.ReportDefModel.dll.deploy" />
+    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\CrystalDecisions.ReportAppServer.XmlSerialize.dll.deploy" />
+    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\CrystalDecisions.ReportSource.dll.deploy" />
+    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\CrystalDecisions.Shared.dll.deploy" />
+    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\CrystalDecisions.Windows.Forms.dll.deploy" />
+    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\diagram.ico.deploy" />
+    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\Resources\chat.png.deploy" />
+    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\Resources\error.png.deploy" />
+    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\Resources\exclamation.png.deploy" />
+    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\Resources\information.png.deploy" />
+    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\Resources\question.png.deploy" />
+    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\SHOPLITEV2.application" />
+    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\SHOPLITEV2.exe.config.deploy" />
+    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\SHOPLITEV2.exe.deploy" />
+    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\SHOPLITEV2.exe.manifest" />
+    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\stdole.dll.deploy" />
+    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\TICK.ico.deploy" />
+    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\zxing.dll.deploy" />
+    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\zxing.presentation.dll.deploy" />
+    <None Include="publish\SHOPLITEV2.application" />
     <None Include="SHOPLITEV2_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -943,6 +975,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="diagram.ico" />
+    <Content Include="publish\setup.exe" />
     <Content Include="Resources\chat.png" />
     <Content Include="Resources\error.png" />
     <Content Include="Resources\exclamation.png" />
@@ -952,7 +985,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DbScript\" />
-    <Folder Include="publish\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
