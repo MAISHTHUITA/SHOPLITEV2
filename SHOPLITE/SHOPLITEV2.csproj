@@ -25,14 +25,14 @@
     <MapFileExtensions>true</MapFileExtensions>
     <UpdateUrl>http://localhost/SHOPLITEV2/</UpdateUrl>
     <ApplicationRevision>1</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <ApplicationVersion>1.0.0.1</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -41,6 +41,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>x64</PlatformTarget>
@@ -213,6 +214,12 @@
     </Compile>
     <Compile Include="MainForm.designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModalForms\ConfirmVoid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModalForms\ConfirmVoid.Designer.cs">
+      <DependentUpon>ConfirmVoid.cs</DependentUpon>
     </Compile>
     <Compile Include="ModalForms\frmBackUpDb.cs">
       <SubType>Form</SubType>
@@ -454,6 +461,12 @@
     <Compile Include="ModalForms\frmUsers.Designer.cs">
       <DependentUpon>frmUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModalForms\FrmVoid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModalForms\FrmVoid.Designer.cs">
+      <DependentUpon>FrmVoid.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModalForms\frnNewUnit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -684,6 +697,9 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModalForms\ConfirmVoid.resx">
+      <DependentUpon>ConfirmVoid.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModalForms\frmBackUpDb.resx">
       <DependentUpon>frmBackUpDb.cs</DependentUpon>
     </EmbeddedResource>
@@ -804,6 +820,9 @@
     <EmbeddedResource Include="ModalForms\frmUsers.resx">
       <DependentUpon>frmUsers.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModalForms\FrmVoid.resx">
+      <DependentUpon>FrmVoid.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModalForms\frnNewUnit.resx">
       <DependentUpon>frnNewUnit.cs</DependentUpon>
     </EmbeddedResource>
@@ -910,6 +929,11 @@
     <EmbeddedResource Include="SearchFoms\frmSearchUnit.resx">
       <DependentUpon>frmSearchUnit.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include=".vs\SHOPLITEV2\FileContentIndex\17a9ee71-1547-4702-94e5-cbae2519cf9a.vsidx" />
+    <None Include=".vs\SHOPLITEV2\FileContentIndex\b81c879c-41e4-487a-907c-3ac205852dff.vsidx" />
+    <None Include=".vs\SHOPLITEV2\FileContentIndex\bcfd9bf5-dade-4ac7-aa47-2e7daa173976.vsidx" />
+    <None Include=".vs\SHOPLITEV2\FileContentIndex\c2c112fc-eb24-4340-88ba-7b3c9e3453d2.vsidx" />
+    <None Include=".vs\SHOPLITEV2\FileContentIndex\read.lock" />
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\SHOPLITE.Models.Department.datasource" />
@@ -924,38 +948,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="publish\.gitignore" />
-    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\CrystalDecisions.CrystalReports.Engine.dll.deploy" />
-    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\CrystalDecisions.ReportAppServer.ClientDoc.dll.deploy" />
-    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\CrystalDecisions.ReportAppServer.CommLayer.dll.deploy" />
-    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\CrystalDecisions.ReportAppServer.CommonControls.dll.deploy" />
-    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\CrystalDecisions.ReportAppServer.CommonObjectModel.dll.deploy" />
-    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\CrystalDecisions.ReportAppServer.Controllers.dll.deploy" />
-    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\CrystalDecisions.ReportAppServer.CubeDefModel.dll.deploy" />
-    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\CrystalDecisions.ReportAppServer.DataDefModel.dll.deploy" />
-    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\CrystalDecisions.ReportAppServer.DataSetConversion.dll.deploy" />
-    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\CrystalDecisions.ReportAppServer.ObjectFactory.dll.deploy" />
-    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\CrystalDecisions.ReportAppServer.Prompting.dll.deploy" />
-    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\CrystalDecisions.ReportAppServer.ReportDefModel.dll.deploy" />
-    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\CrystalDecisions.ReportAppServer.XmlSerialize.dll.deploy" />
-    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\CrystalDecisions.ReportSource.dll.deploy" />
-    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\CrystalDecisions.Shared.dll.deploy" />
-    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\CrystalDecisions.Windows.Forms.dll.deploy" />
-    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\diagram.ico.deploy" />
-    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\Resources\chat.png.deploy" />
-    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\Resources\error.png.deploy" />
-    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\Resources\exclamation.png.deploy" />
-    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\Resources\information.png.deploy" />
-    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\Resources\question.png.deploy" />
-    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\SHOPLITEV2.application" />
-    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\SHOPLITEV2.exe.config.deploy" />
-    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\SHOPLITEV2.exe.deploy" />
-    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\SHOPLITEV2.exe.manifest" />
-    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\stdole.dll.deploy" />
-    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\TICK.ico.deploy" />
-    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\zxing.dll.deploy" />
-    <None Include="publish\Application Files\SHOPLITEV2_1_0_0_0\zxing.presentation.dll.deploy" />
-    <None Include="publish\SHOPLITEV2.application" />
     <None Include="SHOPLITEV2_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -975,7 +967,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="diagram.ico" />
-    <Content Include="publish\setup.exe" />
     <Content Include="Resources\chat.png" />
     <Content Include="Resources\error.png" />
     <Content Include="Resources\exclamation.png" />
@@ -984,6 +975,8 @@
     <Content Include="TICK.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include=".vs\SHOPLITEV2\FileContentIndex\merges\" />
+    <Folder Include=".vs\SHOPLITEV2\v17\" />
     <Folder Include="DbScript\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

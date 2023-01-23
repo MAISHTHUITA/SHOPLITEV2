@@ -458,6 +458,7 @@ namespace SHOPLITE.Models
             
             
         }
+       
         public PosMaster GetReceipt(int posnumber, out List<PosDetail> details, DateTime fromDate, DateTime toDate)
         {
             List<PosDetail> receiptDetails = new List<PosDetail>();
@@ -767,6 +768,82 @@ namespace SHOPLITE.Models
 
             return number;
         }
+    }
+    public class ReceiptReport
+    {
+        #region
+        public int PosNumber { get; set; }
+        public DateTime Receiptdate { get; set; }
+        public decimal Amount { get; set; }
+        public string Username { get; set; }
+        public string Comment { get; set; }
+        public bool Isvoid { get; set; }
+        #endregion
+
+        #region Methods
+        public IEnumerable<ReceiptReport> getreceipt(DateTime fromdate,DateTime todate)
+        {
+            List<ReceiptReport> receipts = new List<ReceiptReport>();
+            try
+            {
+                using (SqlConnection con = new SqlConnection(DbCon.connection))
+                {
+                    var query = @"SELECT * FROM TBLPOSMASTER WHERE POSDATE BETWEEN @fromdate AND @todate";
+                    SqlCommand cm = new SqlCommand(query, con);
+                    cm.CommandType = CommandType.Text;
+                    cm.Parameters.AddWithValue("@fromdate", fromdate);
+                    cm.Parameters.AddWithValue("@todate", todate);
+                    if (con.State == ConnectionState.Closed)
+                    {
+                        con.Open();
+                    }
+                    SqlDataReader rdr = cm.ExecuteReader();
+                    if (rdr.HasRows)
+                    {
+                        while (rdr.Read())
+                        {
+                            ReceiptReport receipt = new ReceiptReport();
+                            if (rdr["PosNumber"] != DBNull.Value)
+                            {
+                                receipt.PosNumber = Convert.ToInt32(rdr["Posnumber"]);
+                            }
+                            if (rdr["POSDATE"] != DBNull.Value)
+                            {
+                                receipt.Receiptdate = Convert.ToDateTime(rdr["POSDATE"]);
+                            }
+                            if (rdr["TotalAmount"] != DBNull.Value)
+                            {
+                                receipt.Amount = Convert.ToDecimal(rdr["TotalAmount"]);
+                            }
+                            if (rdr["Username"] != DBNull.Value)
+                            {
+                                receipt.Username = rdr["Username"].ToString();
+                            }
+                            if (rdr["Comment"] != DBNull.Value)
+                            {
+                                receipt.Comment = rdr["Comment"].ToString();
+                            }
+                            if (rdr["Isvoid"] != DBNull.Value)
+                            {
+                                receipt.Isvoid =Convert.ToBoolean( rdr["Isvoid"]);
+                            }
+                            receipts.Add(receipt);
+                        }
+                        
+                    }
+                    return receipts;
+
+                }
+            }
+            catch (Exception exe)
+            {
+                Logger.Loggermethod(exe);
+                receipts.Clear();
+                return receipts;
+            }
+           
+        }
+        #endregion
     }
 
 }
