@@ -393,61 +393,62 @@ namespace SHOPLITE.Models
                             receiptDetails.Add(details1);
                         }
                     }
-                    if (receipt != null && receiptDetails.Count > 0)
+                    
+                }
+                if (receipt != null && receiptDetails.Count > 0)
+                {
+                    using (SqlConnection con2 = new SqlConnection(DbCon.connection))
                     {
-                        using (SqlConnection con2 = new SqlConnection(DbCon.connection))
+                        if (con2.State == ConnectionState.Closed)
                         {
-                            if (con2.State==ConnectionState.Closed)
-                            {
-                                con.Open();
-                            }
-                            SqlCommand cmd=con2.CreateCommand();
-                            SqlTransaction transaction=con2.BeginTransaction();
-                            cmd.Transaction = transaction;
-                            try
-                            {
-                                cmd.CommandText = @"update TblPosmaster set Isvoid = 'True' where Posnumber =@posnumber; Insert into 
+                            con2.Open();
+                        }
+                        SqlCommand cmd = con2.CreateCommand();
+                        SqlTransaction transaction = con2.BeginTransaction();
+                        cmd.Transaction = transaction;
+                        try
+                        {
+                            cmd.CommandText = @"update TblPosmaster set Isvoid = 'True' where Posnumber =@posnumber; Insert into 
                                                     TblVoidMst (PosNumber, UserName,ReceiptBy,ReceiptDateTime,Reason,ReceiptComment)
-                                                    Value (@posnumber, @UserName,@ReceiptBy,@ReceiptDateTime,@Reason,@ReceiptComment)";
-                                cmd.CommandType = CommandType.Text;
-                                cmd.Parameters.AddWithValue("@posnumber", posnumber);
-                                cmd.Parameters.AddWithValue("@UserName", Properties.Settings.Default.USERNAME);
-                                cmd.Parameters.AddWithValue("@ReceiptBy", receipt.Username);
-                                cmd.Parameters.AddWithValue("@ReceiptDateTime", receipt.ReceiptDate);
-                                cmd.Parameters.AddWithValue("@Reason", reason);
-                                cmd.Parameters.AddWithValue("@ReceiptComment", receipt.Comment);
-                                cmd.ExecuteNonQuery();
-                                
-                                foreach (var receiptdetail in receiptDetails)
-                                {
-                                    cmd.Parameters.Clear();
-                                    cmd.CommandText = @"Update TblProd set QtyAvable = Qtyavable + @Qty where prodcd = @prodcd;
-                                                    insert into TblVoidHist (ProdCd,UnitCd,Sp,PosNumber,Qty,Username) Values(@prodcd,@unit,@Sp,@PosNumber,@Qty,@Username";
-                                    cmd.CommandType = CommandType.Text;
-                                    cmd.Parameters.AddWithValue("@prodcd", receiptdetail.ProdCd);
-                                    cmd.Parameters.AddWithValue("@Qty", receiptdetail.Quantity);
-                                    cmd.Parameters.AddWithValue("@unit", receiptdetail.UnitCd);
-                                    cmd.Parameters.AddWithValue("@Sp", receiptdetail.Sp);
-                                    cmd.Parameters.AddWithValue("@PosNumber", receipt.PosNumber);
-                                    cmd.Parameters.AddWithValue("@Username", Properties.Settings.Default.USERNAME);
-                                    cmd.ExecuteNonQuery();
-                                  
-                                }
-                                transaction.Commit();
-                                return true;
-                            }
-                            catch (Exception exe)
+                                                    Values (@posnumber, @UserName,@ReceiptBy,@ReceiptDateTime,@Reason,@ReceiptComment)";
+                            cmd.CommandType = CommandType.Text;
+                            cmd.Parameters.AddWithValue("@posnumber", posnumber);
+                            cmd.Parameters.AddWithValue("@UserName", Properties.Settings.Default.USERNAME);
+                            cmd.Parameters.AddWithValue("@ReceiptBy", receipt.Username);
+                            cmd.Parameters.AddWithValue("@ReceiptDateTime", receipt.ReceiptDate);
+                            cmd.Parameters.AddWithValue("@Reason", reason);
+                            cmd.Parameters.AddWithValue("@ReceiptComment", receipt.Comment);
+                            cmd.ExecuteNonQuery();
+
+                            foreach (var receiptdetail in receiptDetails)
                             {
-                                transaction.Rollback();
-                                Logger.Loggermethod(exe);
-                                return false;
+                                cmd.Parameters.Clear();
+                                cmd.CommandText = @"Update TblProd set QtyAvable = Qtyavable + @Qty where prodcd = @prodcd;
+                                                    insert into TblVoidHist (ProdCd,UnitCd,Sp,PosNumber,Qty,Username) Values(@prodcd,@unit,@Sp,@PosNumber,@Qty,@Username)";
+                                cmd.CommandType = CommandType.Text;
+                                cmd.Parameters.AddWithValue("@prodcd", receiptdetail.ProdCd);
+                                cmd.Parameters.AddWithValue("@Qty", receiptdetail.Quantity);
+                                cmd.Parameters.AddWithValue("@unit", receiptdetail.UnitCd);
+                                cmd.Parameters.AddWithValue("@Sp", receiptdetail.Sp);
+                                cmd.Parameters.AddWithValue("@PosNumber", receipt.PosNumber);
+                                cmd.Parameters.AddWithValue("@Username", Properties.Settings.Default.USERNAME);
+                                cmd.ExecuteNonQuery();
+
                             }
+                            transaction.Commit();
+                            return true;
+                        }
+                        catch (Exception exe)
+                        {
+                            transaction.Rollback();
+                            Logger.Loggermethod(exe);
+                            return false;
                         }
                     }
-                    else
-                    {
-                        return false;
-                    }
+                }
+                else
+                {
+                    return false;
                 }
             }
             catch (Exception exe)
@@ -458,6 +459,7 @@ namespace SHOPLITE.Models
             
             
         }
+       
         public PosMaster GetReceipt(int posnumber, out List<PosDetail> details, DateTime fromDate, DateTime toDate)
         {
             List<PosDetail> receiptDetails = new List<PosDetail>();
@@ -767,6 +769,82 @@ namespace SHOPLITE.Models
 
             return number;
         }
+    }
+    public class ReceiptReport
+    {
+        #region
+        public int PosNumber { get; set; }
+        public DateTime Receiptdate { get; set; }
+        public decimal Amount { get; set; }
+        public string Username { get; set; }
+        public string Comment { get; set; }
+        public bool Isvoid { get; set; }
+        #endregion
+
+        #region Methods
+        public IEnumerable<ReceiptReport> getreceipt(DateTime fromdate,DateTime todate)
+        {
+            List<ReceiptReport> receipts = new List<ReceiptReport>();
+            try
+            {
+                using (SqlConnection con = new SqlConnection(DbCon.connection))
+                {
+                    var query = @"SELECT * FROM TBLPOSMASTER WHERE POSDATE BETWEEN @fromdate AND @todate";
+                    SqlCommand cm = new SqlCommand(query, con);
+                    cm.CommandType = CommandType.Text;
+                    cm.Parameters.AddWithValue("@fromdate", fromdate);
+                    cm.Parameters.AddWithValue("@todate", todate);
+                    if (con.State == ConnectionState.Closed)
+                    {
+                        con.Open();
+                    }
+                    SqlDataReader rdr = cm.ExecuteReader();
+                    if (rdr.HasRows)
+                    {
+                        while (rdr.Read())
+                        {
+                            ReceiptReport receipt = new ReceiptReport();
+                            if (rdr["PosNumber"] != DBNull.Value)
+                            {
+                                receipt.PosNumber = Convert.ToInt32(rdr["Posnumber"]);
+                            }
+                            if (rdr["POSDATE"] != DBNull.Value)
+                            {
+                                receipt.Receiptdate = Convert.ToDateTime(rdr["POSDATE"]);
+                            }
+                            if (rdr["TotalAmount"] != DBNull.Value)
+                            {
+                                receipt.Amount = Convert.ToDecimal(rdr["TotalAmount"]);
+                            }
+                            if (rdr["Username"] != DBNull.Value)
+                            {
+                                receipt.Username = rdr["Username"].ToString();
+                            }
+                            if (rdr["Comment"] != DBNull.Value)
+                            {
+                                receipt.Comment = rdr["Comment"].ToString();
+                            }
+                            if (rdr["Isvoid"] != DBNull.Value)
+                            {
+                                receipt.Isvoid =Convert.ToBoolean( rdr["Isvoid"]);
+                            }
+                            receipts.Add(receipt);
+                        }
+                        
+                    }
+                    return receipts;
+
+                }
+            }
+            catch (Exception exe)
+            {
+                Logger.Loggermethod(exe);
+                receipts.Clear();
+                return receipts;
+            }
+           
+        }
+        #endregion
     }
 
 }

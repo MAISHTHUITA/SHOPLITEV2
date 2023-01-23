@@ -121,5 +121,16 @@ namespace SHOPLITE
         {
             setbuttons(btn1);
         }
+
+        private void btnManageReceipts_Click(object sender, EventArgs e)
+        {
+            if (!GroupPolicy.CheckPolicy(Properties.Settings.Default.USERNAME, "MU"))
+            {
+                RJMessageBox.Show("Sorry, your Account Has Insufficient Privelleges To Open This Module", "Check Right", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            setcurrentform(FrmVoid.Instance);
+            setbuttons(sender);
+        }
     }
 }
