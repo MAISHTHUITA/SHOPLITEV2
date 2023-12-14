@@ -106,50 +106,68 @@ namespace SHOPLITE.ModalForms
             // 
             // txtDeptTo
             // 
+            this.txtDeptTo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(222)))), ((int)(((byte)(187)))));
+            this.txtDeptTo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDeptTo.Location = new System.Drawing.Point(248, 129);
             this.txtDeptTo.Name = "txtDeptTo";
             this.txtDeptTo.Size = new System.Drawing.Size(112, 23);
             this.txtDeptTo.TabIndex = 7;
+            this.txtDeptTo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDeptTo_KeyDown);
             this.txtDeptTo.Leave += new System.EventHandler(this.txtDeptTo_Leave);
             // 
             // txtSuppTo
             // 
+            this.txtSuppTo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(222)))), ((int)(((byte)(187)))));
+            this.txtSuppTo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSuppTo.Location = new System.Drawing.Point(248, 98);
             this.txtSuppTo.Name = "txtSuppTo";
             this.txtSuppTo.Size = new System.Drawing.Size(112, 23);
             this.txtSuppTo.TabIndex = 5;
+            this.txtSuppTo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSuppTo_KeyDown);
             this.txtSuppTo.Leave += new System.EventHandler(this.txtSuppTo_Leave);
             // 
             // txtProdTo
             // 
+            this.txtProdTo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(222)))), ((int)(((byte)(187)))));
+            this.txtProdTo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtProdTo.Location = new System.Drawing.Point(248, 69);
             this.txtProdTo.Name = "txtProdTo";
             this.txtProdTo.Size = new System.Drawing.Size(112, 23);
             this.txtProdTo.TabIndex = 3;
+            this.txtProdTo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtProdTo_KeyDown);
             this.txtProdTo.Leave += new System.EventHandler(this.txtProdTo_Leave);
             // 
             // txtDeptFrom
             // 
+            this.txtDeptFrom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(222)))), ((int)(((byte)(187)))));
+            this.txtDeptFrom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDeptFrom.Location = new System.Drawing.Point(95, 129);
             this.txtDeptFrom.Name = "txtDeptFrom";
             this.txtDeptFrom.Size = new System.Drawing.Size(115, 23);
             this.txtDeptFrom.TabIndex = 6;
+            this.txtDeptFrom.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDeptFrom_KeyDown);
             this.txtDeptFrom.Leave += new System.EventHandler(this.txtDeptFrom_Leave);
             // 
             // txtSuppFrom
             // 
+            this.txtSuppFrom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(222)))), ((int)(((byte)(187)))));
+            this.txtSuppFrom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSuppFrom.Location = new System.Drawing.Point(95, 98);
             this.txtSuppFrom.Name = "txtSuppFrom";
             this.txtSuppFrom.Size = new System.Drawing.Size(115, 23);
             this.txtSuppFrom.TabIndex = 4;
+            this.txtSuppFrom.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSuppFrom_KeyDown);
             this.txtSuppFrom.Leave += new System.EventHandler(this.txtSuppFrom_Leave);
             // 
             // txtProdFrom
             // 
+            this.txtProdFrom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(222)))), ((int)(((byte)(187)))));
+            this.txtProdFrom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtProdFrom.Location = new System.Drawing.Point(95, 69);
             this.txtProdFrom.Name = "txtProdFrom";
             this.txtProdFrom.Size = new System.Drawing.Size(115, 23);
             this.txtProdFrom.TabIndex = 2;
+            this.txtProdFrom.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtProdFrom_KeyDown);
             this.txtProdFrom.Leave += new System.EventHandler(this.txtProdFrom_Leave);
             // 
             // label9

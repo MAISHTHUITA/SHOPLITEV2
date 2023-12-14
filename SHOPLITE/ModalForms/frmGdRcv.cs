@@ -85,6 +85,7 @@ namespace SHOPLITE.ModalForms
 
                 }
             }
+            tooltips.Text = "";
         }
 
         private void txtgdsupcd_KeyDown(object sender, KeyEventArgs e)
@@ -106,6 +107,10 @@ namespace SHOPLITE.ModalForms
                         txtgdsupcd.Text = su.supplier.SuppCd;
                     }
                 }
+            }
+            else if (e.KeyCode == Keys.Enter)
+            {
+                HandleEnterKey(sender, e);
             }
         }
 
@@ -129,7 +134,19 @@ namespace SHOPLITE.ModalForms
                     }
                 }
             }
+            else if (e.KeyCode == Keys.Enter)
+            {
+                if (!String.IsNullOrEmpty(txtgdProdNm.Text))
+                {
+                    SendKeys.Send("{TAB}");
+                    e.Handled = true;
+                    e.SuppressKeyPress = true;
+
+                }
+            }
+
         }
+
 
         private void txtgdProdNm_Leave(object sender, EventArgs e)
         {
@@ -155,6 +172,7 @@ namespace SHOPLITE.ModalForms
                     return;
                 }
             }
+            cleartooltip();
         }
 
         private void btngdadd_Click(object sender, EventArgs e)
@@ -217,6 +235,9 @@ namespace SHOPLITE.ModalForms
         private void dgvRcv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             dgvgd.Rows[e.RowIndex].HeaderCell.Value = (e.RowIndex + 1).ToString();
+            var linevat = Convert.ToDecimal(dgvgd.Rows[e.RowIndex].Cells[5].Value.ToString());
+            var lineamount = Convert.ToDecimal(dgvgd.Rows[e.RowIndex].Cells[6].Value.ToString());
+            dgvgd.Rows[e.RowIndex].Cells["Total"].Value = linevat + lineamount;
 
         }
         private void calculateamounts()
@@ -236,6 +257,8 @@ namespace SHOPLITE.ModalForms
         }
         private void dgvRcv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (!pnlgdproduct.Enabled)
+                return;
             int y = e.RowIndex;
             if (y >= 0)
             {
@@ -456,6 +479,7 @@ namespace SHOPLITE.ModalForms
                     throw;
                 }
             }
+            cleartooltip();
         }
 
         private void btngdPrint_Click(object sender, EventArgs e)
@@ -476,17 +500,104 @@ namespace SHOPLITE.ModalForms
 
         private void txtgdQty_KeyPress(object sender, KeyPressEventArgs e)
         {
+            //allow digits
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+                e.Handled = true;
+            // only allow one decimal point
+            else if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+                e.Handled = true;
+            // if enter key is pressed we move to the next control
+            else if (e.KeyChar == (Char)Keys.Enter)
             {
+                SendKeys.Send("{TAB}");
                 e.Handled = true;
             }
 
-            // only allow one decimal point
-            if (e.KeyChar == '.'
-                && (sender as TextBox).Text.IndexOf('.') > -1)
+        }
+
+        private void txtSn_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
             {
+                if (e.KeyChar == (Char)Keys.Enter)
+                    SendKeys.Send("{TAB}");
                 e.Handled = true;
             }
+        }
+
+        // to continue from here/// xd
+        private void panel7_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txtgdsupcd_Enter(object sender, EventArgs e)
+        {
+            Settooltiptext("Press F3 key on keyboard to search for Supplier Code");
+        }
+
+        private void txtInv_Enter(object sender, EventArgs e)
+        {
+            Settooltiptext("Enter Invoice or Receipt No.");
+        }
+
+        private void txtInv_Leave(object sender, EventArgs e)
+        {
+            cleartooltip();
+        }
+        private void cleartooltip()
+        {
+            tooltips.Text = "";
+        }
+        private void Settooltiptext(string tip)
+        {
+            tooltips.Text = "Tip: " + tip;
+        }
+
+        private void txtSn_Enter(object sender, EventArgs e)
+        {
+            Settooltiptext("Enter Good Receiced Note to Reprint/View. NB: Displays already saved Grn.");
+        }
+
+        private void txtgdProdNm_Enter(object sender, EventArgs e)
+        {
+            Settooltiptext("Enter Product code or Press F3 keyboard key to search.");
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtInv_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            if (e.KeyCode == Keys.Enter)
+                HandleEnterKey(sender, e);
+
+        }
+        private void HandleEnterKey(object sender, KeyEventArgs e)
+        {
+            SendKeys.Send("{TAB}");
+            e.Handled = true;
+            e.SuppressKeyPress = true;
+        }
+
+        private void txtSn_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                HandleEnterKey(sender, e);
+        }
+
+        private void txtgdQty_Enter(object sender, EventArgs e)
+        {
+            Settooltiptext("Enter Product Quantity to add to stock.");
+        }
+
+        private void txtgdQty_Leave(object sender, EventArgs e)
+        {
+            cleartooltip();
         }
     }
 }

@@ -43,7 +43,7 @@ namespace SHOPLITE
         }
         private void setcurrentform(object form)
         {
-            mainpnl.Controls.Clear();
+            testpanel.Controls.Clear();
             var frm = (Form)form;
             if (currentchildform != null && currentchildform != frm)
             {
@@ -51,7 +51,8 @@ namespace SHOPLITE
 
             }
             frm.TopLevel = false;
-            mainpnl.Controls.Add(frm);
+            testpanel.Controls.Add(frm);
+            frm.Dock = DockStyle.Fill;
             frm.BringToFront();
             frm.Show();
             currentchildform = frm;
@@ -131,6 +132,11 @@ namespace SHOPLITE
             }
             setcurrentform(FrmVoid.Instance);
             setbuttons(sender);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

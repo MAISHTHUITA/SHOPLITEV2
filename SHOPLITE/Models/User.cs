@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 
 namespace SHOPLITE.Models
@@ -566,6 +567,40 @@ namespace SHOPLITE.Models
                         sqlTransaction.Rollback();
                         return false;
                     }
+                }
+            }
+            catch (Exception exe)
+            {
+                Logger.Loggermethod(exe);
+                return false;
+            }
+        }
+        public bool IsAdmin(string username)
+        {
+            try
+            {
+                //CHECK IF USER IS ADMIN 
+                // CURRENTLY OFF
+                using (SqlConnection con = new SqlConnection(DbCon.connection))
+                {
+                    var query = "SELECT USERNAME FROM TBLUSERS WHERE USERNAME = @username AND GROUPCODE = 'admin'";
+                    SqlCommand cmd = new SqlCommand(query, con)
+                    {
+                        CommandType = CommandType.Text
+                    };
+                    cmd.Parameters.AddWithValue("@username", username);
+                    
+                    if (con.State == ConnectionState.Closed)
+                    {
+                        con.Open();
+                    }
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        return true;
+                    }
+                    else
+                        return false;
                 }
             }
             catch (Exception exe)

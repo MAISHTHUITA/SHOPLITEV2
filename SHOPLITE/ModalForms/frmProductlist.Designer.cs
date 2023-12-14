@@ -86,6 +86,7 @@
             this.LblClose.Size = new System.Drawing.Size(69, 17);
             this.LblClose.TabIndex = 0;
             this.LblClose.Text = "[CLOSE]";
+            this.LblClose.Click += new System.EventHandler(this.LblClose_Click);
             // 
             // label10
             // 
@@ -118,6 +119,7 @@
             this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnPrint
             // 
@@ -361,6 +363,7 @@
             this.txtDeptTo.Name = "txtDeptTo";
             this.txtDeptTo.Size = new System.Drawing.Size(112, 20);
             this.txtDeptTo.TabIndex = 5;
+            this.txtDeptTo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDeptTo_KeyDown);
             this.txtDeptTo.Leave += new System.EventHandler(this.txtDeptTo_Leave);
             // 
             // txtSuppTo
@@ -372,6 +375,7 @@
             this.txtSuppTo.Name = "txtSuppTo";
             this.txtSuppTo.Size = new System.Drawing.Size(112, 20);
             this.txtSuppTo.TabIndex = 3;
+            this.txtSuppTo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSuppTo_KeyDown);
             this.txtSuppTo.Leave += new System.EventHandler(this.txtSuppTo_Leave);
             // 
             // txtfromunit
@@ -405,6 +409,8 @@
             this.txtProdTo.Name = "txtProdTo";
             this.txtProdTo.Size = new System.Drawing.Size(112, 20);
             this.txtProdTo.TabIndex = 1;
+            this.txtProdTo.TextChanged += new System.EventHandler(this.txtProdTo_TextChanged);
+            this.txtProdTo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtProdTo_KeyDown);
             this.txtProdTo.Leave += new System.EventHandler(this.txtProdTo_Leave);
             // 
             // txtDeptFrom
@@ -416,6 +422,7 @@
             this.txtDeptFrom.Name = "txtDeptFrom";
             this.txtDeptFrom.Size = new System.Drawing.Size(115, 20);
             this.txtDeptFrom.TabIndex = 4;
+            this.txtDeptFrom.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDeptFrom_KeyDown);
             this.txtDeptFrom.Leave += new System.EventHandler(this.txtDeptFrom_Leave);
             // 
             // txtSuppFrom
@@ -427,6 +434,7 @@
             this.txtSuppFrom.Name = "txtSuppFrom";
             this.txtSuppFrom.Size = new System.Drawing.Size(115, 20);
             this.txtSuppFrom.TabIndex = 2;
+            this.txtSuppFrom.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSuppFrom_KeyDown);
             this.txtSuppFrom.Leave += new System.EventHandler(this.txtSuppFrom_Leave);
             // 
             // txtProdFrom
@@ -438,6 +446,7 @@
             this.txtProdFrom.Name = "txtProdFrom";
             this.txtProdFrom.Size = new System.Drawing.Size(115, 20);
             this.txtProdFrom.TabIndex = 0;
+            this.txtProdFrom.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtProdFrom_KeyDown);
             this.txtProdFrom.Leave += new System.EventHandler(this.txtProdFrom_Leave);
             // 
             // frmProductlist

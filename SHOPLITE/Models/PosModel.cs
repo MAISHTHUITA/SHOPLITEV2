@@ -423,8 +423,12 @@ namespace SHOPLITE.Models
                             foreach (var receiptdetail in receiptDetails)
                             {
                                 cmd.Parameters.Clear();
-                                cmd.CommandText = @"Update TblProd set QtyAvable = Qtyavable + @Qty where prodcd = @prodcd;
-                                                    insert into TblVoidHist (ProdCd,UnitCd,Sp,PosNumber,Qty,Username) Values(@prodcd,@unit,@Sp,@PosNumber,@Qty,@Username)";
+                                cmd.CommandText = @"Declare @intqty decimal  Declare @Spp decimal set @intqty=(select QtyAvble from 
+                                                    tblProd where ProdCd=@prodcd) set @Spp=(select Cp from TblProd where prodcd=@prodcd)
+                                                     update tblprod set QtyAvble = QtyAvble + @Qty where ProdCd = @prodcd  declare @Newqty decimal set @newqty =(@IntQty + @Qty) 
+                                                    insert into tblProdHist (Prod_Cd,Txn_Type, QTY,Int_QTy,Nw_Qty,Prod_Cp,Prod_Sp,Usr_Nm,DOC_NO) values (@prodcd,'Void',@Qty,
+                                                    @IntQty,@NewQty,@spp,@Sp,@Username,@PosNumber); insert into TblVoidHist (ProdCd,UnitCd,Sp,PosNumber,Qty,Username) Values(@prodcd,@unit,@Sp,@PosNumber,@Qty,@Username)";
+                                
                                 cmd.CommandType = CommandType.Text;
                                 cmd.Parameters.AddWithValue("@prodcd", receiptdetail.ProdCd);
                                 cmd.Parameters.AddWithValue("@Qty", receiptdetail.Quantity);
@@ -735,7 +739,7 @@ namespace SHOPLITE.Models
                     }
                     else
                     {
-                        return null;
+                        return posReceipts;
                     }
                 }
             }
@@ -743,7 +747,7 @@ namespace SHOPLITE.Models
             {
                 posReceipts.Clear();
                 Logger.Loggermethod(exe);
-                return null;
+                return posReceipts;
             }
 
             return posReceipts;

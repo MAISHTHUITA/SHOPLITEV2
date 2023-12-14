@@ -9,6 +9,17 @@ namespace SHOPLITE.ModalForms
 {
     public partial class frmNewProd : Form
     {
+        private static frmNewProd _instance;
+        public static frmNewProd Instance
+        {
+            get
+            {
+                if (_instance == null)
+                    _instance = new frmNewProd();
+                return _instance;
+            }
+            set { _instance = value; }
+        }
         public frmNewProd()
         {
             InitializeComponent();
@@ -248,6 +259,16 @@ namespace SHOPLITE.ModalForms
                 }
             }
 
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = RJMessageBox.Show("Are sure you want to exit?", "Exit", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (dr == DialogResult.OK)
+            {
+                this.Close();
+                _instance = null;
+            }
         }
     }
 }

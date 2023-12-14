@@ -1,6 +1,7 @@
 ﻿using SHOPLITE.Models;
 using SHOPLITE.PrintingForms;
 using SHOPLITE.Reports;
+using SHOPLITE.SearchFoms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -83,21 +84,30 @@ namespace SHOPLITE.ModalForms
         }
         private void txtProdFrom_Leave(object sender, EventArgs e)
         {
-
+            if (String.IsNullOrEmpty(txtProdFrom.Text))
+            {
+                return;
+            }
             ProductRepository product = new ProductRepository();
             if (product.GetProduct(txtProdFrom.Text) == null)
             {
                 txtProdFrom.Focus();
+                txtProdFrom.Text = "";
                 RJMessageBox.Show("Invalid product code.");
             }
         }
 
         private void txtProdTo_Leave(object sender, EventArgs e)
         {
+            if (String.IsNullOrEmpty(txtProdTo.Text))
+            {
+                return;
+            }
             ProductRepository product = new ProductRepository();
             if (product.GetProduct(txtProdTo.Text) == null)
             {
                 txtProdTo.Focus();
+                txtProdTo.Text = "";
                 RJMessageBox.Show("Invalid product code.");
             }
         }
@@ -159,6 +169,138 @@ namespace SHOPLITE.ModalForms
             {
                 this.Close();
                 _instance = null;
+            }
+        }
+
+        private void txtProdFrom_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F3)
+            {
+                ProductRepository repository = new ProductRepository();
+                List<Product> products = repository.GetProducts().ToList();
+                if (products.Count == 0)
+                {
+                    RJMessageBox.Show("No Records to Display.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else
+                {
+                    using (frmSearchProd su = new frmSearchProd(products) { product = new Product() })
+                    {
+                        su.ShowDialog();
+                        txtProdFrom.Text = su.product.ProdCd;
+                    }
+                }
+            }
+        }
+
+        private void txtProdTo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F3)
+            {
+                ProductRepository repository = new ProductRepository();
+                List<Product> products = repository.GetProducts().ToList();
+                if (products.Count == 0)
+                {
+                    RJMessageBox.Show("No Records to Display.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else
+                {
+                    using (frmSearchProd su = new frmSearchProd(products) { product = new Product() })
+                    {
+                        su.ShowDialog();
+                        txtProdTo.Text = su.product.ProdCd;
+                    }
+                }
+            }
+        }
+
+        private void txtSuppFrom_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F3)
+            {
+                SupplierRepository repository = new SupplierRepository();
+                List<Supplier> suppliers = repository.GetSuppliers().ToList();
+                if (suppliers.Count == 0)
+                {
+                    RJMessageBox.Show("No Records to Display.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else
+                {
+                    using (frmSearchSupp su = new frmSearchSupp(suppliers) { supplier = new Supplier() })
+                    {
+                        su.ShowDialog();
+                        txtSuppFrom.Text = su.supplier.SuppCd;
+                    }
+                }
+            }
+        }
+
+        private void txtSuppTo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F3)
+            {
+                SupplierRepository repository = new SupplierRepository();
+                List<Supplier> suppliers = repository.GetSuppliers().ToList();
+                if (suppliers.Count == 0)
+                {
+                    RJMessageBox.Show("No Records to Display.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else
+                {
+                    using (frmSearchSupp su = new frmSearchSupp(suppliers) { supplier = new Supplier() })
+                    {
+                        su.ShowDialog();
+                        txtSuppTo.Text = su.supplier.SuppCd;
+                    }
+                }
+            }
+        }
+
+        private void txtDeptFrom_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F3)
+            {
+                DepartmentRepository repository = new DepartmentRepository();
+                List<Department> units = repository.GetDepartments().ToList();
+                if (units.Count == 0)
+                {
+                    RJMessageBox.Show("No Records to Display.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else
+                {
+                    using (frmSearchDept su = new frmSearchDept(units) { department = new Department() })
+                    {
+                        su.ShowDialog();
+                        txtDeptFrom.Text = su.department.DeptCd;
+                    }
+                }
+            }
+        }
+
+        private void txtDeptTo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F3)
+            {
+                DepartmentRepository repository = new DepartmentRepository();
+                List<Department> units = repository.GetDepartments().ToList();
+                if (units.Count == 0)
+                {
+                    RJMessageBox.Show("No Records to Display.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else
+                {
+                    using (frmSearchDept su = new frmSearchDept(units) { department = new Department() })
+                    {
+                        su.ShowDialog();
+                        txtDeptTo.Text = su.department.DeptCd;
+                    }
+                }
             }
         }
     }

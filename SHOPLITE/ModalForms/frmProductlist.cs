@@ -2,6 +2,7 @@
 using SHOPLITE.Models;
 using SHOPLITE.PrintingForms;
 using SHOPLITE.Reports;
+using SHOPLITE.SearchFoms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -102,28 +103,28 @@ namespace SHOPLITE.ModalForms
             {
                 string query = "select ProdCd,ProdNm,CP,Sp,WholesaleSp,QtyAvble,Deptnm,UnitCd,VatCd from ProductListView where prodcd between '" + txtProdFrom.Text + "' and '" + txtProdTo.Text +
                   "' and SuppCd between '" + txtSuppFrom.Text + "' and '" + txtSuppTo.Text + "' and unitcd between '" + txtfromunit.Text + "' and '" + txttounit.Text + "' and deptcd between '" + txtDeptFrom.Text +
-                  "' and '" + txtDeptTo.Text + "' and vatcd between '" + txtvatfrom.Text + "' and '" + txtvatto.Text + "'";
+                  "' and '" + txtDeptTo.Text + "' and vatcd between '" + txtvatfrom.Text + "' and '" + txtvatto.Text + "' ORDER BY DeptNm ASC ";
                 productListModelList = productListModel.GetAllProducts(query).ToList();
             }
             else if (rdpositive.Checked)
             {
                 string query = "select ProdCd,ProdNm,CP,Sp,WholesaleSp,QtyAvble,Deptnm,UnitCd,Vatcd from ProductListView where qtyavble > 0 and prodcd between '" + txtProdFrom.Text + "' and '" + txtProdTo.Text +
                   "' and SuppCd between '" + txtSuppFrom.Text + "' and '" + txtSuppTo.Text + "' and unitcd between '" + txtfromunit.Text + "' and '" + txttounit.Text + "' and deptcd between '" + txtDeptFrom.Text +
-                  "' and '" + txtDeptTo.Text + "' and vatcd between '" + txtvatfrom.Text + "' and '" + txtvatto.Text + "'";
+                  "' and '" + txtDeptTo.Text + "' and vatcd between '" + txtvatfrom.Text + "' and '" + txtvatto.Text + "' ORDER BY DeptNm ASC ";
                 productListModelList = productListModel.GetAllProducts(query).ToList();
             }
             else if (rdnegative.Checked)
             {
                 string query = "select ProdCd,ProdNm,CP,Sp,WholesaleSp,QtyAvble,Deptnm,UnitCd,Vatcd from ProductListView where qtyavble < 0 and prodcd between '" + txtProdFrom.Text + "' and '" + txtProdTo.Text +
                   "' and SuppCd between '" + txtSuppFrom.Text + "' and '" + txtSuppTo.Text + "' and unitcd between '" + txtfromunit.Text + "' and '" + txttounit.Text + "' and deptcd between '" + txtDeptFrom.Text +
-                  "' and '" + txtDeptTo.Text + "' and vatcd between '" + txtvatfrom.Text + "' and '" + txtvatto.Text + "'";
+                  "' and '" + txtDeptTo.Text + "' and vatcd between '" + txtvatfrom.Text + "' and '" + txtvatto.Text + "' ORDER BY DeptNm ASC ";
                 productListModelList = productListModel.GetAllProducts(query).ToList();
             }
             else
             {
                 string query = "select ProdCd,ProdNm,CP,Sp,WholesaleSp,QtyAvble,Deptnm,UnitCd,vatcd from ProductListView where qtyavble = 0 and prodcd between '" + txtProdFrom.Text + "' and '" + txtProdTo.Text +
                    "' and SuppCd between '" + txtSuppFrom.Text + "' and '" + txtSuppTo.Text + "' and unitcd between '" + txtfromunit.Text + "' and '" + txttounit.Text + "' and deptcd between '" + txtDeptFrom.Text +
-                   "' and '" + txtDeptTo.Text + "' and vatcd between '" + txtvatfrom.Text + "' and '" + txtvatto.Text + "'";
+                   "' and '" + txtDeptTo.Text + "' and vatcd between '" + txtvatfrom.Text + "' and '" + txtvatto.Text + "'ORDER BY DeptNm ASC ";
                 productListModelList = productListModel.GetAllProducts(query).ToList();
             }
             if (productListModelList.Count() <= 0)
@@ -345,6 +346,165 @@ namespace SHOPLITE.ModalForms
                     RJMessageBox.Show("Invalid Vat Code", "Info", MessageBoxButtons.OK);
                     txtvatto.Text = "";
                     txtvatto.Focus();
+                }
+            }
+        }
+
+        private void LblClose_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = RJMessageBox.Show("Are sure you want to exit?", "Exit", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (dr == DialogResult.OK)
+            {
+                this.Close();
+                _instance = null;
+            }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            rdall.Checked = true;
+            populateprod();
+            populatedept();
+            populatessup();
+            populateunit();
+            populatevat();
+            btnPrint.Focus();
+        }
+
+        private void txtProdFrom_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            if (e.KeyCode == Keys.F3)
+            {
+                ProductRepository repository = new ProductRepository();
+                List<Product> products = repository.GetProducts().ToList();
+                if (products.Count == 0)
+                {
+                    RJMessageBox.Show("No Records to Display.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else
+                {
+                    using (frmSearchProd su = new frmSearchProd(products) { product = new Product() })
+                    {
+                        su.ShowDialog();
+                        txtProdFrom.Text = su.product.ProdCd;
+                    }
+                }
+            }
+        }
+
+        private void txtProdTo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtProdTo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F3)
+            {
+                ProductRepository repository = new ProductRepository();
+                List<Product> products = repository.GetProducts().ToList();
+                if (products.Count == 0)
+                {
+                    RJMessageBox.Show("No Records to Display.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else
+                {
+                    using (frmSearchProd su = new frmSearchProd(products) { product = new Product() })
+                    {
+                        su.ShowDialog();
+                        txtProdTo.Text = su.product.ProdCd;
+                    }
+                }
+            }
+        }
+
+        private void txtSuppFrom_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F3)
+            {
+                SupplierRepository repository = new SupplierRepository();
+                List<Supplier> suppliers = repository.GetSuppliers().ToList();
+                if (suppliers.Count == 0)
+                {
+                    RJMessageBox.Show("No Records to Display.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else
+                {
+                    using (frmSearchSupp su = new frmSearchSupp(suppliers) { supplier = new Supplier() })
+                    {
+                        su.ShowDialog();
+                        txtSuppFrom.Text = su.supplier.SuppCd;
+                    }
+                }
+            }
+        }
+
+        private void txtSuppTo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F3)
+            {
+                SupplierRepository repository = new SupplierRepository();
+                List<Supplier> suppliers = repository.GetSuppliers().ToList();
+                if (suppliers.Count == 0)
+                {
+                    RJMessageBox.Show("No Records to Display.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else
+                {
+                    using (frmSearchSupp su = new frmSearchSupp(suppliers) { supplier = new Supplier() })
+                    {
+                        su.ShowDialog();
+                        txtSuppTo.Text = su.supplier.SuppCd;
+                    }
+                }
+            }
+        }
+
+        private void txtDeptFrom_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F3)
+            {
+                DepartmentRepository repository = new DepartmentRepository();
+                List<Department> units = repository.GetDepartments().ToList();
+                if (units.Count == 0)
+                {
+                    RJMessageBox.Show("No Records to Display.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else
+                {
+                    using (frmSearchDept su = new frmSearchDept(units) { department = new Department() })
+                    {
+                        su.ShowDialog();
+                        txtDeptFrom.Text = su.department.DeptCd;
+                    }
+                }
+            }
+        }
+
+        private void txtDeptTo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F3)
+            {
+                DepartmentRepository repository = new DepartmentRepository();
+                List<Department> units = repository.GetDepartments().ToList();
+                if (units.Count == 0)
+                {
+                    RJMessageBox.Show("No Records to Display.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else
+                {
+                    using (frmSearchDept su = new frmSearchDept(units) { department = new Department() })
+                    {
+                        su.ShowDialog();
+                        txtDeptTo.Text = su.department.DeptCd;
+                    }
                 }
             }
         }

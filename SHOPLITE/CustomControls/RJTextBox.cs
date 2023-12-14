@@ -347,6 +347,7 @@ namespace SHOPLITE
             this.OnKeyPress(e);
         }
 
+
         private void textBox1_Enter(object sender, EventArgs e)
         {
             isFocused = true;
@@ -355,11 +356,17 @@ namespace SHOPLITE
         }
         private void textBox1_Leave(object sender, EventArgs e)
         {
+            this.OnLeave(e);
             isFocused = false;
             this.Invalidate();
             SetPlaceholder();
         }
         ///::::+
         #endregion
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            this.OnKeyDown(e);
+        }
     }
 }

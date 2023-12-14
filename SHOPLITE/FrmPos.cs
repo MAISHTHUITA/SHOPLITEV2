@@ -55,13 +55,13 @@ namespace SHOPLITE
                 TxtQty.Text = product.DefaultQuantity.ToString();
                 if (product.Cp >= sellingprice)
                 {
-                    RJMessageBox.Show("Negative sale is not allowed Current Cp is " + product.Cp + "and Sp is " + sellingprice.ToString(), "Negative Sale.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    RJMessageBox.Show("Negative sale is not allowed Current Cp is " + product.Cp + "and Sp is " + sellingprice.ToString(), " Negative Sale.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     ClearTextboxes();
                     TxtProdCd.Clear();
                     TxtProdCd.Focus();
                     return;
                 }
-
+                cleartip();
 
                 //if (product.DefaultQuantity != 0)
                 //{
@@ -172,25 +172,24 @@ namespace SHOPLITE
                     using (frmSearchProd su = new frmSearchProd(products) { product = new Product() })
                     {
                         su.ShowDialog();
+
                         TxtProdCd.Text = su.product.ProdCd;
                     }
                 }
             }
             else if (e.KeyCode == Keys.Enter)
             {
-                TxtProdCd_Leave(sender, e);
+
+                SendKeys.Send("{TAB}");
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+
             }
         }
 
         private void TxtQty_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (!String.IsNullOrEmpty(TxtQty.Text))
-                {
-                    BtnAdd.Focus();
-                }
-            }
+
         }
         #region Saving and Confirmation of receipt
         //END OF DAY 11/09/2021
@@ -265,6 +264,10 @@ namespace SHOPLITE
                 ///dummy value
                 bool tobbe = true;
                 printClass.PrintReceipt(values, "ORIGINAL", out tobbe);
+                if (!tobbe)
+                {
+                    RJMessageBox.Show("Receipt Saved but Error occurred while attempting to print.", "Shoplite Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
                 GvReceipt.Rows.Clear();
                 lblNetamount.Text = lbltotalamount.Text = lblvantamount.Text = "0.00";
                 TxtProdCd.Focus();
@@ -275,9 +278,6 @@ namespace SHOPLITE
         private void btnCancelReceipt_Click(object sender, EventArgs e)
         {
             clearall(sender, e);
-            // dummy code
-            PrintClass print = new PrintClass();
-            // print.PrintReceipt();
 
         }
 
@@ -323,9 +323,14 @@ namespace SHOPLITE
             }
 
             // only allow one decimal point
-            if (e.KeyChar == '.'
+            else if (e.KeyChar == '.'
                 && (sender as TextBox).Text.IndexOf('.') > -1)
             {
+                e.Handled = true;
+            }
+            else if (e.KeyChar == (Char)Keys.Enter)
+            {
+                SendKeys.Send("{TAB}");
                 e.Handled = true;
             }
         }
@@ -338,10 +343,16 @@ namespace SHOPLITE
             }
 
             // only allow one decimal point
-            if (e.KeyChar == '.'
+           else if (e.KeyChar == '.'
                 && (sender as TextBox).Text.IndexOf('.') > -1)
             {
                 e.Handled = true;
+            }
+            else if (e.KeyChar==(Char)Keys.Enter)
+            {
+                SendKeys.Send("{TAB}");
+                e.Handled = true;
+              
             }
         }
         private void clearall(object sender, EventArgs e)
@@ -358,6 +369,38 @@ namespace SHOPLITE
         private void RdWholesale_CheckedChanged(object sender, EventArgs e)
         {
             clearall(sender, e);
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TxtProdCd_Enter(object sender, EventArgs e)
+        {
+            settooltip("Enter/Scan Product Code/Scan or  Press F3 to Search for product");
+        }
+        private void settooltip(string tip)
+        {
+            lbltips.Text = "Tip: " + tip + ".";
+        }
+        private void cleartip(){
+            lbltips.Text = "";
+            }
+
+        private void TxtQty_Enter(object sender, EventArgs e)
+        {
+            settooltip("Enter Quantity to Sell");
+        }
+
+        private void TxtQty_Leave(object sender, EventArgs e)
+        {
+            cleartip();
         }
     }
 }

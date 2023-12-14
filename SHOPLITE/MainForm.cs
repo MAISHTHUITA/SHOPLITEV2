@@ -1,6 +1,8 @@
 ﻿using SHOPLITE.Models;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace SHOPLITE
@@ -32,39 +34,60 @@ namespace SHOPLITE
             var frm = (Form)form;
             if (currentchildform != null && currentchildform != frm)
             {
-                currentchildform.Hide();
-                if (MainPanel.Controls.Contains(frm))
+                List<Form> forms = MainPanel.Controls.OfType<Form>().ToList();
+                foreach (Form formss in forms)
                 {
-                    frm.BringToFront();
-                    frm.Dock = DockStyle.Fill;
-                    frm.Show();
-                    return;
+                    
+                    MainPanel.Controls.Remove(formss);
+                   
                 }
+                //currentchildform.Hide();
+                //if (MainPanel.Controls.Contains(frm))
+                //{
+                //    frm.BringToFront();
+                    
+                //    frm.Show();
+                //    frm.Dock = DockStyle.Fill;
+                //    return;
+                //}
 
+            }
+            if (currentchildform==null)
+            {
+                frm = frmDashboard.Instance;
             }
             frm.TopLevel = false;
             MainPanel.Controls.Add(frm);
             frm.BringToFront();
-            frm.Dock = DockStyle.Fill;
             frm.Show();
+            frm.Dock = DockStyle.Fill;
             currentchildform = frm;
         }
         private void setbuttons(object button)
         {
+            foreach (Button button22 in LeftSidePanel.Controls.OfType<Button>().ToList())
+            {
+                button22.BackColor = Color.Transparent;
+            }
+            if ((Button)button==null)
+            {
+                button = btnDashboard;
+            }
             var btn = (Button)button;
             btn.BackColor = Color.FromArgb(88, 225, 130);
             pnlNav.Height = btn.Height;
             pnlNav.Top = btn.Top;
             pnlNav.Left = btn.Left;
-            if (currentbutton != null && currentbutton != btn)
-            {
-                currentbutton.BackColor = Color.FromArgb(24, 30, 54);
-            }
+            //if (currentbutton != null && currentbutton != btn)
+            //{
+            //    currentbutton.BackColor = Color.FromArgb(24, 30, 54);
+            //}
             currentbutton = btn;
         }
         private void btnDashboard_Click(object sender, EventArgs e)
         {
             setbuttons(sender);
+
             setcurrentform(frmDashboard.Instance);
         }
 
@@ -194,17 +217,38 @@ namespace SHOPLITE
 
         private void MainPanel_ControlRemoved(object sender, ControlEventArgs e)
         {
-            if (e.Control != frmDashboard.Instance)
+            //if (e.Control != frmDashboard.Instance)
+            //{
+            //    setcurrentform(frmDashboard.Instance);
+            //    setbuttons(btnDashboard);
+            //}
+            //else
+            //{
+            //    btnDashboard.BackColor = Color.FromArgb(35, 29, 95);
+            //    pnlNav.Visible = false;
+            //    currentbutton = null;
+            //}
+            if (MainPanel.Controls.OfType<Form>().ToList().Count()<1)
             {
-                setcurrentform(frmDashboard.Instance);
-                setbuttons(btnDashboard);
+                   //setcurrentform(frmDashboard.Instance);
+                   //setbuttons(btnDashboard);
             }
-            else
-            {
-                btnDashboard.BackColor = Color.FromArgb(35, 29, 95);
-                pnlNav.Visible = false;
-                currentbutton = null;
-            }
+        }
+
+        private void MainForm_MaximumSizeChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void MainForm_ClientSizeChanged(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void MainForm_Resize(object sender, EventArgs e)
+        {
+            setcurrentform(currentchildform);
+            setbuttons(currentbutton);
         }
     }
 }
