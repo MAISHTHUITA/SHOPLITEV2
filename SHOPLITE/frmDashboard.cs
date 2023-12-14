@@ -26,7 +26,13 @@ namespace SHOPLITE
 
             loaddata();
         }
+        //private bool IsAdmin()
+        //{
+        //    using (resource)
+        //    {
 
+        //    }
+        //}
         private void loaddata()
         {
             var refreshdata = model.LoadData(startdate.Value, enddate.Value);
@@ -177,6 +183,11 @@ namespace SHOPLITE
         private void enddate_ValueChanged(object sender, EventArgs e)
         {
             lblEndDate.Text = enddate.Value.ToString("dd-MMM-yyyy");
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

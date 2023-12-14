@@ -59,7 +59,7 @@ namespace SHOPLITE.Models
                     numberofCustomers = (int)command.ExecuteScalar();
 
                     //get number of receipts
-                    command.CommandText = "select Count(PosNumber) from TblPosMaster where PosDate between @startdate and @enddate and Username =@usrnm";
+                    command.CommandText = "select Count(PosNumber) from TblPosMaster where IsVoid='false' and PosDate between @startdate and @enddate and Username =@usrnm";
                     command.Parameters.Add("@startdate", SqlDbType.DateTime).Value = startDate.Date;
                     command.Parameters.Add("@enddate", SqlDbType.DateTime).Value = endDate.Date.AddHours(23).AddMinutes(59).AddSeconds(59).AddMilliseconds(999);
                     command.Parameters.AddWithValue("@usrnm", usrnm);
@@ -104,7 +104,7 @@ namespace SHOPLITE.Models
                     {
                         command.CommandText = "select cast(PosDate as DATE), " +
                             "sum(totalamount) from TblPosMaster WHERE POSDATE BETWEEN @startdate " +
-                            "and @enddate group by CAST(POSDATE AS DATE)";
+                            "and @enddate and Isvoid='false' group by CAST(POSDATE AS DATE)";
                         command.Parameters.Add("@startdate", SqlDbType.DateTime).Value = startDate.Date;
                         command.Parameters.Add("@enddate", SqlDbType.DateTime).Value = endDate.Date.AddHours(23).AddMinutes(59).AddSeconds(59).AddMilliseconds(999);
 
@@ -122,17 +122,17 @@ namespace SHOPLITE.Models
                     {
                         command.CommandText = "select cast(PosDate as DATE), sum(totalamount) from " +
                             "TblPosMaster WHERE POSDATE BETWEEN @startdate" +
-                            " and @enddate and Username=@usrnm" +
+                            " and @enddate and Username=@usrnm and Isvoid='false'" +
                             " group by CAST(POSDATE AS DATE)";
                         command.Parameters.Add("@startdate", SqlDbType.DateTime).Value = startDate.Date;
                         command.Parameters.Add("@enddate", SqlDbType.DateTime).Value = endDate.Date.AddHours(23).AddMinutes(59).AddSeconds(59).AddMilliseconds(999);
                         command.Parameters.AddWithValue("@usrnm", usrnm);
                         using (var rdr = command.ExecuteReader())
                         {
-                            while (rdr.Read())
+                            while  (rdr.Read())
                             {
-                                revenuetable.Add(new KeyValuePair<DateTime, decimal>((DateTime)rdr[0], (decimal)rdr[1]));
-                                TotalRevenue += (decimal)rdr[1];
+                                revenuetable.Add(new KeyValuePair<DateTime, decimal>((DateTime)rdr[0], (decimal)0));
+                                TotalRevenue += 0;
                             }
                         }
                     }
@@ -165,7 +165,7 @@ namespace SHOPLITE.Models
                     {
                         bool isyear = numberofDays <= 365 ? true : false;
                         GrossRevenue = (from orderedlist in revenuetable
-                                        group orderedlist by orderedlist.Key.ToString("MMM yyyy")
+                                        group orderedlist by orderedlist.Key.ToString("MMM-yyyy")
                                       into order
                                         select new RevenueByDate()
                                         {

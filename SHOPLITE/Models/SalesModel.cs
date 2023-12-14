@@ -9,6 +9,7 @@ namespace SHOPLITE.Models
     {
         #region properties
         public DateTime TxnDate { get; set; }
+        public decimal  SumCost { get; set; }
         public decimal SumInvoice { get; set; }
         public decimal SumPos { get; set; }
         public decimal LineTotal { get; set; }
@@ -36,6 +37,10 @@ namespace SHOPLITE.Models
                             if (rdr["Txn_Date"] != DBNull.Value)
                             {
                                 sale.TxnDate = (Convert.ToDateTime(rdr["Txn_Date"])).Date;
+                            }
+                            if (rdr["TOTALCOST"] != DBNull.Value)
+                            {
+                                sale.SumCost = Convert.ToDecimal(rdr["TOTALCOST"]);
                             }
                             if (rdr["SUMINVOCE"] != DBNull.Value)
                             {

@@ -46,7 +46,7 @@ namespace SHOPLITE.Models
                 receipt.SetParameterValue("@Narration", posmaster.PaymentNarration);
                 receipt.SetParameterValue("@Username", posmaster.Username);
                 receipt.SetParameterValue("Cname", posmaster.Comment);
-                receipt.SetParameterValue("Comment", "ORIGINAL RECEIPT");
+                receipt.SetParameterValue("Comment", comment);
                 receipt.SetParameterValue("Pin", "PIN: " + company.CompanyTaxpin);
                 receipt.SetParameterValue("Email", "Email: " + company.CompanyEmail);
                 receipt.SetParameterValue("Address", company.CompanyAddress);

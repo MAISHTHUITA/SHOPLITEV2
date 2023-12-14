@@ -63,7 +63,7 @@ namespace SHOPLITE
             // 
             // TopPanel
             // 
-            this.TopPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(83)))), ((int)(((byte)(255)))));
+            this.TopPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(22)))), ((int)(((byte)(107)))));
             this.TopPanel.Controls.Add(this.label6);
             this.TopPanel.Controls.Add(this.AppCloseBtn);
             this.TopPanel.Dock = System.Windows.Forms.DockStyle.Top;
@@ -227,7 +227,7 @@ namespace SHOPLITE
             // 
             // LeftSidePanel
             // 
-            this.LeftSidePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.LeftSidePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(73)))), ((int)(((byte)(131)))));
             this.LeftSidePanel.Controls.Add(this.pnlNav);
             this.LeftSidePanel.Controls.Add(this.btnSetting);
             this.LeftSidePanel.Controls.Add(this.BtnUser);
@@ -307,7 +307,7 @@ namespace SHOPLITE
             this.btnPos.Padding = new System.Windows.Forms.Padding(15, 0, 10, 0);
             this.btnPos.Size = new System.Drawing.Size(215, 46);
             this.btnPos.TabIndex = 0;
-            this.btnPos.Text = "&Point of Sale";
+            this.btnPos.Text = "&POINT OF SALE";
             this.btnPos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPos.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnPos.UseVisualStyleBackColor = false;
@@ -464,14 +464,15 @@ namespace SHOPLITE
             this.Controls.Add(this.BottomPanel);
             this.Controls.Add(this.TopPanel);
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "SHOP LITE VERSION 2";
+            this.MaximumSizeChanged += new System.EventHandler(this.MainForm_MaximumSizeChanged);
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.ClientSizeChanged += new System.EventHandler(this.MainForm_ClientSizeChanged);
+            this.Resize += new System.EventHandler(this.MainForm_Resize);
             this.TopPanel.ResumeLayout(false);
             this.TopPanel.PerformLayout();
             this.BottomPanel.ResumeLayout(false);

@@ -31,6 +31,7 @@ namespace SHOPLITE
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.btn1 = new System.Windows.Forms.Button();
+            this.btnManageReceipts = new System.Windows.Forms.Button();
             this.btnInvoices = new System.Windows.Forms.Button();
             this.btnReceipt = new System.Windows.Forms.Button();
             this.btnMiscIssue = new System.Windows.Forms.Button();
@@ -38,13 +39,15 @@ namespace SHOPLITE
             this.btnGrn = new System.Windows.Forms.Button();
             this.mainpnl = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnManageReceipts = new System.Windows.Forms.Button();
+            this.testpanel = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(148)))), ((int)(((byte)(25)))));
+            this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.btn1);
             this.panel1.Controls.Add(this.btnManageReceipts);
             this.panel1.Controls.Add(this.btnInvoices);
@@ -62,13 +65,28 @@ namespace SHOPLITE
             // 
             this.btn1.FlatAppearance.BorderSize = 0;
             this.btn1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn1.Location = new System.Drawing.Point(583, 22);
+            this.btn1.Location = new System.Drawing.Point(793, 37);
             this.btn1.Name = "btn1";
             this.btn1.Size = new System.Drawing.Size(75, 10);
             this.btn1.TabIndex = 1;
             this.btn1.Text = "1";
             this.btn1.UseVisualStyleBackColor = true;
             this.btn1.Visible = false;
+            // 
+            // btnManageReceipts
+            // 
+            this.btnManageReceipts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(148)))), ((int)(((byte)(25)))));
+            this.btnManageReceipts.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(83)))), ((int)(((byte)(255)))));
+            this.btnManageReceipts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnManageReceipts.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnManageReceipts.ForeColor = System.Drawing.Color.White;
+            this.btnManageReceipts.Location = new System.Drawing.Point(509, 0);
+            this.btnManageReceipts.Name = "btnManageReceipts";
+            this.btnManageReceipts.Size = new System.Drawing.Size(101, 52);
+            this.btnManageReceipts.TabIndex = 0;
+            this.btnManageReceipts.Text = "MANAGE RECEIPTS";
+            this.btnManageReceipts.UseVisualStyleBackColor = false;
+            this.btnManageReceipts.Click += new System.EventHandler(this.btnManageReceipts_Click);
             // 
             // btnInvoices
             // 
@@ -149,9 +167,9 @@ namespace SHOPLITE
             // 
             this.mainpnl.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.mainpnl.BackColor = System.Drawing.Color.White;
-            this.mainpnl.Location = new System.Drawing.Point(19, 79);
+            this.mainpnl.Location = new System.Drawing.Point(46, 69);
             this.mainpnl.Name = "mainpnl";
-            this.mainpnl.Size = new System.Drawing.Size(823, 473);
+            this.mainpnl.Size = new System.Drawing.Size(749, 16);
             this.mainpnl.TabIndex = 1;
             this.mainpnl.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.mainpnl_ControlRemoved);
             // 
@@ -165,20 +183,28 @@ namespace SHOPLITE
             this.panel2.Size = new System.Drawing.Size(880, 10);
             this.panel2.TabIndex = 0;
             // 
-            // btnManageReceipts
+            // testpanel
             // 
-            this.btnManageReceipts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(148)))), ((int)(((byte)(25)))));
-            this.btnManageReceipts.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(83)))), ((int)(((byte)(255)))));
-            this.btnManageReceipts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnManageReceipts.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnManageReceipts.ForeColor = System.Drawing.Color.White;
-            this.btnManageReceipts.Location = new System.Drawing.Point(509, 0);
-            this.btnManageReceipts.Name = "btnManageReceipts";
-            this.btnManageReceipts.Size = new System.Drawing.Size(101, 52);
-            this.btnManageReceipts.TabIndex = 0;
-            this.btnManageReceipts.Text = "MANAGE RECEIPTS";
-            this.btnManageReceipts.UseVisualStyleBackColor = false;
-            this.btnManageReceipts.Click += new System.EventHandler(this.btnManageReceipts_Click);
+            this.testpanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.testpanel.Location = new System.Drawing.Point(0, 58);
+            this.testpanel.Name = "testpanel";
+            this.testpanel.Size = new System.Drawing.Size(880, 519);
+            this.testpanel.TabIndex = 2;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(148)))), ((int)(((byte)(25)))));
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(83)))), ((int)(((byte)(255)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(613, 0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(101, 52);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "DEPOSITS";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // frmInventory
             // 
@@ -186,6 +212,7 @@ namespace SHOPLITE
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(880, 577);
+            this.Controls.Add(this.testpanel);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.mainpnl);
             this.Controls.Add(this.panel1);
@@ -213,5 +240,7 @@ namespace SHOPLITE
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btn1;
         private System.Windows.Forms.Button btnManageReceipts;
+        private System.Windows.Forms.Panel testpanel;
+        private System.Windows.Forms.Button button2;
     }
 }
