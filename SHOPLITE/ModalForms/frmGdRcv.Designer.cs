@@ -133,6 +133,7 @@ namespace SHOPLITE.ModalForms
             this.dgvgd.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvgd.EnableHeadersVisualStyles = false;
             this.dgvgd.Location = new System.Drawing.Point(0, 234);
+            this.dgvgd.MultiSelect = false;
             this.dgvgd.Name = "dgvgd";
             this.dgvgd.ReadOnly = true;
             this.dgvgd.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;

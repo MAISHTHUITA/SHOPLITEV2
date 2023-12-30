@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 
 namespace SHOPLITE.Models
@@ -589,7 +588,7 @@ namespace SHOPLITE.Models
                         CommandType = CommandType.Text
                     };
                     cmd.Parameters.AddWithValue("@username", username);
-                    
+
                     if (con.State == ConnectionState.Closed)
                     {
                         con.Open();

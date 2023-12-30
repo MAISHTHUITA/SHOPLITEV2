@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Diagnostics;
 
 namespace SHOPLITE.Models
 {
@@ -282,7 +281,7 @@ namespace SHOPLITE.Models
             details = receiptDetails;
             return receipt;
         }
-        public bool VoidReceipt(int posnumber,string reason)
+        public bool VoidReceipt(int posnumber, string reason)
         {
             List<PosDetail> receiptDetails = new List<PosDetail>();
             PosMaster receipt = new PosMaster();
@@ -393,7 +392,7 @@ namespace SHOPLITE.Models
                             receiptDetails.Add(details1);
                         }
                     }
-                    
+
                 }
                 if (receipt != null && receiptDetails.Count > 0)
                 {
@@ -428,7 +427,7 @@ namespace SHOPLITE.Models
                                                      update tblprod set QtyAvble = QtyAvble + @Qty where ProdCd = @prodcd  declare @Newqty decimal set @newqty =(@IntQty + @Qty) 
                                                     insert into tblProdHist (Prod_Cd,Txn_Type, QTY,Int_QTy,Nw_Qty,Prod_Cp,Prod_Sp,Usr_Nm,DOC_NO) values (@prodcd,'Void',@Qty,
                                                     @IntQty,@NewQty,@spp,@Sp,@Username,@PosNumber); insert into TblVoidHist (ProdCd,UnitCd,Sp,PosNumber,Qty,Username) Values(@prodcd,@unit,@Sp,@PosNumber,@Qty,@Username)";
-                                
+
                                 cmd.CommandType = CommandType.Text;
                                 cmd.Parameters.AddWithValue("@prodcd", receiptdetail.ProdCd);
                                 cmd.Parameters.AddWithValue("@Qty", receiptdetail.Quantity);
@@ -460,10 +459,10 @@ namespace SHOPLITE.Models
                 Logger.Loggermethod(exe);
                 return false;
             }
-            
-            
+
+
         }
-       
+
         public PosMaster GetReceipt(int posnumber, out List<PosDetail> details, DateTime fromDate, DateTime toDate)
         {
             List<PosDetail> receiptDetails = new List<PosDetail>();
@@ -786,7 +785,7 @@ namespace SHOPLITE.Models
         #endregion
 
         #region Methods
-        public IEnumerable<ReceiptReport> getreceipt(DateTime fromdate,DateTime todate)
+        public IEnumerable<ReceiptReport> getreceipt(DateTime fromdate, DateTime todate)
         {
             List<ReceiptReport> receipts = new List<ReceiptReport>();
             try
@@ -830,11 +829,11 @@ namespace SHOPLITE.Models
                             }
                             if (rdr["Isvoid"] != DBNull.Value)
                             {
-                                receipt.Isvoid =Convert.ToBoolean( rdr["Isvoid"]);
+                                receipt.Isvoid = Convert.ToBoolean(rdr["Isvoid"]);
                             }
                             receipts.Add(receipt);
                         }
-                        
+
                     }
                     return receipts;
 
@@ -846,7 +845,7 @@ namespace SHOPLITE.Models
                 receipts.Clear();
                 return receipts;
             }
-           
+
         }
         #endregion
     }

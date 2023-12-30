@@ -287,6 +287,12 @@
     <Compile Include="ModalForms\frmEditUnit.Designer.cs">
       <DependentUpon>frmEditUnit.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModalForms\frmNewDeposit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModalForms\frmNewDeposit.Designer.cs">
+      <DependentUpon>frmNewDeposit.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModalForms\frmPosPayment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -742,6 +748,9 @@
     <EmbeddedResource Include="ModalForms\frmEditUnit.resx">
       <DependentUpon>frmEditUnit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModalForms\frmNewDeposit.resx">
+      <DependentUpon>frmNewDeposit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModalForms\frmPosPayment.resx">
       <DependentUpon>frmPosPayment.cs</DependentUpon>
     </EmbeddedResource>
@@ -984,6 +993,8 @@
     <Content Include="Resources\exclamation.png" />
     <Content Include="Resources\information.png" />
     <Content Include="Resources\question.png" />
+    <Content Include="Resources\save-file.png" />
+    <None Include="Resources\save-file1.png" />
     <Content Include="TICK.ico" />
   </ItemGroup>
   <ItemGroup>

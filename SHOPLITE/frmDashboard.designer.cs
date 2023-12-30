@@ -633,8 +633,6 @@ namespace SHOPLITE
             // 
             // displaytime
             // 
-            this.displaytime.Enabled = true;
-            this.displaytime.Interval = 1000;
             this.displaytime.Tick += new System.EventHandler(this.displaytime_Tick);
             // 
             // lblStartDate
@@ -702,8 +700,8 @@ namespace SHOPLITE
             this.Name = "frmDashboard";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmDashboard";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmDashboard_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

@@ -42,7 +42,7 @@ namespace SHOPLITE
             {
                 lblPrinter.Text = "No Printer Set";
             }
-           lblReceipttext.Text= settingsModel.Receipttext();
+            lblReceipttext.Text = settingsModel.Receipttext();
             BtnChangePolicy.Checked = settingsModel.showvatonreceipts;
             changepolicy.Checked = settingsModel.ViewInvoiceReports;
 
@@ -98,7 +98,7 @@ namespace SHOPLITE
             {
                 SettingsModel settings = new SettingsModel();
                 settings.SetReceiptText(txtReceipttext.Text);
-                lblReceipttext.Text=txtReceipttext.Text;
+                lblReceipttext.Text = txtReceipttext.Text;
                 MessageBox.Show("Receipt Text Added", "Shoplite Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else

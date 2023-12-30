@@ -129,7 +129,7 @@ namespace SHOPLITE.Models
                         command.Parameters.AddWithValue("@usrnm", usrnm);
                         using (var rdr = command.ExecuteReader())
                         {
-                            while  (rdr.Read())
+                            while (rdr.Read())
                             {
                                 revenuetable.Add(new KeyValuePair<DateTime, decimal>((DateTime)rdr[0], (decimal)0));
                                 TotalRevenue += 0;

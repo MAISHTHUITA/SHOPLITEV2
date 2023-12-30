@@ -28,34 +28,33 @@ namespace SHOPLITE
                 return _instance;
             }
         }
-        private void setcurrentform(object form)
+        private void setcurrentform(Form form)
         {
-
-            var frm = (Form)form;
+            Form frm = form;
             if (currentchildform != null && currentchildform != frm)
             {
                 List<Form> forms = MainPanel.Controls.OfType<Form>().ToList();
                 foreach (Form formss in forms)
                 {
-                    
+
                     MainPanel.Controls.Remove(formss);
-                   
+
                 }
                 //currentchildform.Hide();
                 //if (MainPanel.Controls.Contains(frm))
                 //{
                 //    frm.BringToFront();
-                    
+
                 //    frm.Show();
                 //    frm.Dock = DockStyle.Fill;
                 //    return;
                 //}
 
             }
-            if (currentchildform==null)
-            {
-                frm = frmDashboard.Instance;
-            }
+            //if (currentchildform==null)
+            //{
+            //    frm = frmDashboard.Instance;
+            //}
             frm.TopLevel = false;
             MainPanel.Controls.Add(frm);
             frm.BringToFront();
@@ -69,10 +68,10 @@ namespace SHOPLITE
             {
                 button22.BackColor = Color.Transparent;
             }
-            if ((Button)button==null)
-            {
-                button = btnDashboard;
-            }
+            //if ((Button)button==null)
+            //{
+            //    button = btnDashboard;
+            //}
             var btn = (Button)button;
             btn.BackColor = Color.FromArgb(88, 225, 130);
             pnlNav.Height = btn.Height;
@@ -120,7 +119,7 @@ namespace SHOPLITE
         private void MainForm_Load(object sender, EventArgs e)
         {
             this.Height = Screen.PrimaryScreen.WorkingArea.Height;
-            this.Width = Screen.PrimaryScreen.WorkingArea.Width;
+            this.Height = Screen.PrimaryScreen.WorkingArea.Width;
             this.Location = Screen.PrimaryScreen.WorkingArea.Location;
             lblBranch.Text = Properties.Settings.Default.BRANCHNAME;
             lblCompany.Text = Properties.Settings.Default.COMPANYNAME;
@@ -128,11 +127,6 @@ namespace SHOPLITE
             lblLogindate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
             lblVersion.Text = Application.ProductVersion.ToString();
 
-            setcurrentform(frmDashboard.Instance);
-            pnlNav.Height = btnDashboard.Height;
-            pnlNav.Top = btnDashboard.Top;
-            pnlNav.Left = btnDashboard.Left;
-            setbuttons(btnDashboard);
 
         }
 
@@ -217,38 +211,25 @@ namespace SHOPLITE
 
         private void MainPanel_ControlRemoved(object sender, ControlEventArgs e)
         {
-            //if (e.Control != frmDashboard.Instance)
-            //{
-            //    setcurrentform(frmDashboard.Instance);
-            //    setbuttons(btnDashboard);
-            //}
-            //else
-            //{
-            //    btnDashboard.BackColor = Color.FromArgb(35, 29, 95);
-            //    pnlNav.Visible = false;
-            //    currentbutton = null;
-            //}
-            if (MainPanel.Controls.OfType<Form>().ToList().Count()<1)
-            {
-                   //setcurrentform(frmDashboard.Instance);
-                   //setbuttons(btnDashboard);
-            }
-        }
 
-        private void MainForm_MaximumSizeChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void MainForm_ClientSizeChanged(object sender, EventArgs e)
-        {
-          
         }
 
         private void MainForm_Resize(object sender, EventArgs e)
         {
             setcurrentform(currentchildform);
             setbuttons(currentbutton);
+        }
+
+        private void MainPanel_ControlAdded(object sender, ControlEventArgs e)
+        {
+            setcurrentform(currentchildform);
+            setbuttons(currentbutton);
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

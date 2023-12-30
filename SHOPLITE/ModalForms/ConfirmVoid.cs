@@ -1,31 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SHOPLITE.Models;
+using System;
 using System.Windows.Forms;
-using SHOPLITE.Models;
 
 namespace SHOPLITE.ModalForms
 {
     public partial class ConfirmVoid : Form
     {
-       ReceiptReport receiptReport;
-        public ConfirmVoid(ReceiptReport report )
+        ReceiptReport receiptReport;
+        public ConfirmVoid(ReceiptReport report)
         {
             InitializeComponent();
-            receiptReport=report;
+            receiptReport = report;
         }
 
         private void BtnVoid_Click(object sender, EventArgs e)
         {
-            if (RJMessageBox.Show("Are you sure you want to Void Receipt: " + txtPosNumber.Text, "Shoplite Notification", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)==DialogResult.OK)
+            if (RJMessageBox.Show("Are you sure you want to Void Receipt: " + txtPosNumber.Text, "Shoplite Notification", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
                 PosRepository repository = new PosRepository();
-                if (repository.VoidReceipt(receiptReport.PosNumber,txtreason.Text))
+                if (repository.VoidReceipt(receiptReport.PosNumber, txtreason.Text))
                 {
                     RJMessageBox.Show("Receipt Voided Successfully", "Shoplite Notifications", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     this.Close();
@@ -35,8 +28,8 @@ namespace SHOPLITE.ModalForms
                     RJMessageBox.Show("Receipt Void Unsuccessfully. Please Try again or contact the System Administrator.", "Shoplite Notifications", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            
-            
+
+
         }
 
         private void ConfirmVoid_Load(object sender, EventArgs e)

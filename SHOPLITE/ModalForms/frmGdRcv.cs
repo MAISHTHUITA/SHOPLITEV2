@@ -311,8 +311,8 @@ namespace SHOPLITE.ModalForms
                     using (SqlConnection con = new SqlConnection(DbCon.connection))
                     {
                         int returngrnnumber;
-                        if (con.State==ConnectionState.Closed)
-                        con.Open();
+                        if (con.State == ConnectionState.Closed)
+                            con.Open();
                         SqlCommand command = con.CreateCommand();
                         SqlTransaction sqlTransaction;
                         sqlTransaction = con.BeginTransaction();

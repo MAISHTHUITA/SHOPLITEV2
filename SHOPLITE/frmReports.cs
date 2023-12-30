@@ -59,7 +59,7 @@ namespace SHOPLITE
                 RJMessageBox.Show("Sorry, your Account Has Insufficient Privelleges To Open This Module", "Check Right", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            
+
             setbuttons(sender);
             setcurrentform(frmPriceChange.Instance);
         }
@@ -71,7 +71,7 @@ namespace SHOPLITE
                 RJMessageBox.Show("Sorry, your Account Has Insufficient Privelleges To Open This Module", "Check Right", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            
+
             setbuttons(sender);
             setcurrentform(frmStockCard.Instance);
         }
@@ -82,7 +82,7 @@ namespace SHOPLITE
                 RJMessageBox.Show("Sorry, your Account Has Insufficient Privelleges To Open This Module", "Check Right", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            
+
             setbuttons(sender);
             setcurrentform(frmViewGrn.Instance);
         }
@@ -94,7 +94,7 @@ namespace SHOPLITE
                 RJMessageBox.Show("Sorry, your Account Has Insufficient Privelleges To Open This Module", "Check Right", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            
+
             setbuttons(sender);
             setcurrentform(frmProductlist.Instance);
         }
@@ -105,7 +105,7 @@ namespace SHOPLITE
                 RJMessageBox.Show("Sorry, your Account Has Insufficient Privelleges To Open This Module", "Check Right", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            
+
             setbuttons(sender);
             setcurrentform(frmCatalogue.Instance);
         }

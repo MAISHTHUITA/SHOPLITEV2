@@ -49,7 +49,7 @@ namespace SHOPLITE.ModalForms
                 PrintClass printClass = new PrintClass();
                 ///dummy value
                 bool tobbe = true;
-                printClass.PrintReceipt(i,"REPRINT",out tobbe);
+                printClass.PrintReceipt(i, "REPRINT", out tobbe);
                 if (tobbe)
                 {
                     RJMessageBox.Show("Reprint Success", "Shoplite Notifications", MessageBoxButtons.OK);

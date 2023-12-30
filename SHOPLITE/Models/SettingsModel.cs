@@ -322,7 +322,7 @@ namespace SHOPLITE.Models
             try
             {
                 getmachineserial();
-                
+
                 using (SqlConnection con = new SqlConnection(DbCon.connection))
                 {
                     var query = "select ReceiptText from tblsettings where MachineSerial =  @MachineSerial";
@@ -350,7 +350,7 @@ namespace SHOPLITE.Models
             {
                 Logger.Loggermethod(exe);
             }
-            
+
 
             return Receipttext;
         }
@@ -382,7 +382,7 @@ namespace SHOPLITE.Models
             {
                 Logger.Loggermethod(exe);
             }
-           
+
         }
 
     }

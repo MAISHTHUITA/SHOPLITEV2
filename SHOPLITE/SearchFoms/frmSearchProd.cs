@@ -63,7 +63,7 @@ namespace SHOPLITE.SearchFoms
             {
                 dgvProds.Focus();
             }
-            
+
         }
 
         private void dgvProds_KeyDown(object sender, KeyEventArgs e)
@@ -88,7 +88,7 @@ namespace SHOPLITE.SearchFoms
                     this.Close();
                 }
             }
-           
+
         }
 
         private void frmSearchProd_Load(object sender, EventArgs e)
@@ -108,7 +108,7 @@ namespace SHOPLITE.SearchFoms
                     dgvProds.CurrentCell = dgvProds.Rows[currentrow].Cells[0];
                 }
             }
-          
+
         }
     }
 }

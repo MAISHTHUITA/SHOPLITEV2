@@ -343,16 +343,16 @@ namespace SHOPLITE
             }
 
             // only allow one decimal point
-           else if (e.KeyChar == '.'
-                && (sender as TextBox).Text.IndexOf('.') > -1)
+            else if (e.KeyChar == '.'
+                 && (sender as TextBox).Text.IndexOf('.') > -1)
             {
                 e.Handled = true;
             }
-            else if (e.KeyChar==(Char)Keys.Enter)
+            else if (e.KeyChar == (Char)Keys.Enter)
             {
                 SendKeys.Send("{TAB}");
                 e.Handled = true;
-              
+
             }
         }
         private void clearall(object sender, EventArgs e)
@@ -389,9 +389,10 @@ namespace SHOPLITE
         {
             lbltips.Text = "Tip: " + tip + ".";
         }
-        private void cleartip(){
+        private void cleartip()
+        {
             lbltips.Text = "";
-            }
+        }
 
         private void TxtQty_Enter(object sender, EventArgs e)
         {

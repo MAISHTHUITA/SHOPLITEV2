@@ -30,6 +30,7 @@ namespace SHOPLITE
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnDeposits = new System.Windows.Forms.Button();
             this.btn1 = new System.Windows.Forms.Button();
             this.btnManageReceipts = new System.Windows.Forms.Button();
             this.btnInvoices = new System.Windows.Forms.Button();
@@ -40,14 +41,13 @@ namespace SHOPLITE
             this.mainpnl = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.testpanel = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(148)))), ((int)(((byte)(25)))));
-            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.btnDeposits);
             this.panel1.Controls.Add(this.btn1);
             this.panel1.Controls.Add(this.btnManageReceipts);
             this.panel1.Controls.Add(this.btnInvoices);
@@ -60,6 +60,21 @@ namespace SHOPLITE
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(880, 58);
             this.panel1.TabIndex = 0;
+            // 
+            // btnDeposits
+            // 
+            this.btnDeposits.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(148)))), ((int)(((byte)(25)))));
+            this.btnDeposits.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(83)))), ((int)(((byte)(255)))));
+            this.btnDeposits.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeposits.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeposits.ForeColor = System.Drawing.Color.White;
+            this.btnDeposits.Location = new System.Drawing.Point(613, 0);
+            this.btnDeposits.Name = "btnDeposits";
+            this.btnDeposits.Size = new System.Drawing.Size(101, 52);
+            this.btnDeposits.TabIndex = 1;
+            this.btnDeposits.Text = "DEPOSITS";
+            this.btnDeposits.UseVisualStyleBackColor = false;
+            this.btnDeposits.Click += new System.EventHandler(this.btnDeposits_Click);
             // 
             // btn1
             // 
@@ -191,21 +206,6 @@ namespace SHOPLITE
             this.testpanel.Size = new System.Drawing.Size(880, 519);
             this.testpanel.TabIndex = 2;
             // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(148)))), ((int)(((byte)(25)))));
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(83)))), ((int)(((byte)(255)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(613, 0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(101, 52);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "DEPOSITS";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // frmInventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -241,6 +241,6 @@ namespace SHOPLITE
         private System.Windows.Forms.Button btn1;
         private System.Windows.Forms.Button btnManageReceipts;
         private System.Windows.Forms.Panel testpanel;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnDeposits;
     }
 }

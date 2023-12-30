@@ -9,7 +9,7 @@ namespace SHOPLITE.Models
     {
         #region properties
         public DateTime TxnDate { get; set; }
-        public decimal  SumCost { get; set; }
+        public decimal SumCost { get; set; }
         public decimal SumInvoice { get; set; }
         public decimal SumPos { get; set; }
         public decimal LineTotal { get; set; }
