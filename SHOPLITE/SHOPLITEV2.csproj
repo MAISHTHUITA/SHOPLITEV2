@@ -143,6 +143,12 @@
     <Compile Include="Dbsettings.Designer.cs">
       <DependentUpon>Dbsettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmCyclic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCyclic.Designer.cs">
+      <DependentUpon>FrmCyclic.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -292,6 +298,12 @@
     </Compile>
     <Compile Include="ModalForms\frmNewDeposit.Designer.cs">
       <DependentUpon>frmNewDeposit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModalForms\FrmPaymentPosting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModalForms\FrmPaymentPosting.Designer.cs">
+      <DependentUpon>FrmPaymentPosting.cs</DependentUpon>
     </Compile>
     <Compile Include="ModalForms\frmPosPayment.cs">
       <SubType>Form</SubType>
@@ -499,6 +511,7 @@
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\EncryptKey.cs" />
     <Compile Include="Models\Orders.cs" />
+    <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\PosModel.cs" />
     <Compile Include="Models\Price.cs" />
     <Compile Include="Models\PrintClass.cs" />
@@ -676,6 +689,9 @@
     <EmbeddedResource Include="Dbsettings.resx">
       <DependentUpon>Dbsettings.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmCyclic.resx">
+      <DependentUpon>FrmCyclic.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDashboard.resx">
       <DependentUpon>frmDashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -750,6 +766,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModalForms\frmNewDeposit.resx">
       <DependentUpon>frmNewDeposit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModalForms\FrmPaymentPosting.resx">
+      <DependentUpon>FrmPaymentPosting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModalForms\frmPosPayment.resx">
       <DependentUpon>frmPosPayment.cs</DependentUpon>

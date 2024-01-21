@@ -145,5 +145,17 @@ namespace SHOPLITE
             setcurrentform(FrmDeposits.Instance);
             setbuttons(sender);
         }
+
+        private void Btnpayments_Click(object sender, EventArgs e)
+        {
+            if (!GroupPolicy.CheckPolicy(Properties.Settings.Default.USERNAME, "VP"))
+            {
+                RJMessageBox.Show("Sorry, your Account Has Insufficient Privelleges To Open This Module", "Check Right", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            setcurrentform(FrmPaymentPosting.Instance);
+            setbuttons(sender);
+        }
     }
 }

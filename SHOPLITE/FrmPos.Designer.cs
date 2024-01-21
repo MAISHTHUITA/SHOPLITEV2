@@ -30,40 +30,49 @@ namespace SHOPLITE
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPOS));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.RdWholesale = new System.Windows.Forms.RadioButton();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.lblCustomerName = new System.Windows.Forms.Label();
+            this.txtcustcode = new System.Windows.Forms.TextBox();
+            this.rBExistingCustomer = new System.Windows.Forms.RadioButton();
+            this.rBWalkinCustomer = new System.Windows.Forms.RadioButton();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.RdRetail = new System.Windows.Forms.RadioButton();
-            this.label11 = new System.Windows.Forms.Label();
+            this.RdWholesale = new System.Windows.Forms.RadioButton();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.TxtProdDesc = new System.Windows.Forms.TextBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.TxtProdUnit = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.TxtQty = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.TxtProdSp = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.txtVatPer = new System.Windows.Forms.TextBox();
             this.TxtVat = new System.Windows.Forms.TextBox();
-            this.TxtQty = new System.Windows.Forms.TextBox();
-            this.TxtProdSp = new System.Windows.Forms.TextBox();
-            this.TxtProdCd = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.TxtProdDesc = new System.Windows.Forms.TextBox();
+            this.TxtProdCd = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.BtnAdd = new System.Windows.Forms.Button();
             this.BtnCancel = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.lbltips = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.btnCancelReceipt = new System.Windows.Forms.Button();
-            this.BtnSave = new System.Windows.Forms.Button();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lblNetamount = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.lbltotalamount = new System.Windows.Forms.Label();
             this.lblvantamount = new System.Windows.Forms.Label();
-            this.lblNetamount = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.btnCancelReceipt = new System.Windows.Forms.Button();
+            this.BtnSave = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.GvReceipt = new System.Windows.Forms.DataGridView();
             this.ProdCd = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -75,20 +84,21 @@ namespace SHOPLITE
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LineVat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Remove = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.lbltips = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.label11 = new System.Windows.Forms.Label();
+            this.lblcustlimit = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GvReceipt)).BeginInit();
-            this.panel6.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -99,36 +109,105 @@ namespace SHOPLITE
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(961, 94);
+            this.panel1.Size = new System.Drawing.Size(961, 114);
             this.panel1.TabIndex = 0;
             // 
             // groupBox1
             // 
             this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.groupBox1.Controls.Add(this.RdWholesale);
-            this.groupBox1.Controls.Add(this.RdRetail);
-            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.groupBox5);
+            this.groupBox1.Controls.Add(this.groupBox4);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox1.Location = new System.Drawing.Point(186, 11);
+            this.groupBox1.Location = new System.Drawing.Point(18, 11);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(579, 61);
+            this.groupBox1.Size = new System.Drawing.Size(930, 86);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
-            // RdWholesale
+            // groupBox5
             // 
-            this.RdWholesale.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.RdWholesale.AutoSize = true;
-            this.RdWholesale.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.RdWholesale.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RdWholesale.ForeColor = System.Drawing.Color.White;
-            this.RdWholesale.Location = new System.Drawing.Point(389, 20);
-            this.RdWholesale.Name = "RdWholesale";
-            this.RdWholesale.Size = new System.Drawing.Size(126, 29);
-            this.RdWholesale.TabIndex = 1;
-            this.RdWholesale.Text = "Wholesale";
-            this.RdWholesale.UseVisualStyleBackColor = true;
-            this.RdWholesale.CheckedChanged += new System.EventHandler(this.RdWholesale_CheckedChanged);
+            this.groupBox5.Controls.Add(this.lblcustlimit);
+            this.groupBox5.Controls.Add(this.label11);
+            this.groupBox5.Controls.Add(this.lblCustomerName);
+            this.groupBox5.Controls.Add(this.txtcustcode);
+            this.groupBox5.Controls.Add(this.rBExistingCustomer);
+            this.groupBox5.Controls.Add(this.rBWalkinCustomer);
+            this.groupBox5.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox5.ForeColor = System.Drawing.Color.White;
+            this.groupBox5.Location = new System.Drawing.Point(278, 20);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(646, 60);
+            this.groupBox5.TabIndex = 2;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "CUSTOMER TYPE";
+            // 
+            // lblCustomerName
+            // 
+            this.lblCustomerName.AutoSize = true;
+            this.lblCustomerName.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCustomerName.Location = new System.Drawing.Point(275, 29);
+            this.lblCustomerName.Name = "lblCustomerName";
+            this.lblCustomerName.Size = new System.Drawing.Size(0, 20);
+            this.lblCustomerName.TabIndex = 3;
+            this.lblCustomerName.Visible = false;
+            // 
+            // txtcustcode
+            // 
+            this.txtcustcode.BackColor = System.Drawing.Color.White;
+            this.txtcustcode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtcustcode.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtcustcode.Location = new System.Drawing.Point(167, 26);
+            this.txtcustcode.Name = "txtcustcode";
+            this.txtcustcode.Size = new System.Drawing.Size(91, 26);
+            this.txtcustcode.TabIndex = 2;
+            this.txtcustcode.Visible = false;
+            this.txtcustcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtcustcode_KeyDown);
+            this.txtcustcode.Leave += new System.EventHandler(this.txtcustcode_Leave);
+            // 
+            // rBExistingCustomer
+            // 
+            this.rBExistingCustomer.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rBExistingCustomer.AutoSize = true;
+            this.rBExistingCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rBExistingCustomer.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rBExistingCustomer.ForeColor = System.Drawing.Color.White;
+            this.rBExistingCustomer.Location = new System.Drawing.Point(85, 27);
+            this.rBExistingCustomer.Name = "rBExistingCustomer";
+            this.rBExistingCustomer.Size = new System.Drawing.Size(76, 24);
+            this.rBExistingCustomer.TabIndex = 1;
+            this.rBExistingCustomer.Text = "Existing";
+            this.rBExistingCustomer.UseVisualStyleBackColor = true;
+            this.rBExistingCustomer.CheckedChanged += new System.EventHandler(this.rBExistingCustomer_CheckedChanged);
+            // 
+            // rBWalkinCustomer
+            // 
+            this.rBWalkinCustomer.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rBWalkinCustomer.AutoSize = true;
+            this.rBWalkinCustomer.Checked = true;
+            this.rBWalkinCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rBWalkinCustomer.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rBWalkinCustomer.ForeColor = System.Drawing.Color.White;
+            this.rBWalkinCustomer.Location = new System.Drawing.Point(6, 27);
+            this.rBWalkinCustomer.Name = "rBWalkinCustomer";
+            this.rBWalkinCustomer.Size = new System.Drawing.Size(75, 24);
+            this.rBWalkinCustomer.TabIndex = 1;
+            this.rBWalkinCustomer.TabStop = true;
+            this.rBWalkinCustomer.Text = "Walk In ";
+            this.rBWalkinCustomer.UseVisualStyleBackColor = false;
+            this.rBWalkinCustomer.CheckedChanged += new System.EventHandler(this.rBWalkinCustomer_CheckedChanged);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.RdRetail);
+            this.groupBox4.Controls.Add(this.RdWholesale);
+            this.groupBox4.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.ForeColor = System.Drawing.Color.White;
+            this.groupBox4.Location = new System.Drawing.Point(10, 19);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(262, 60);
+            this.groupBox4.TabIndex = 2;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "CUSTOMER CATEGORY";
             // 
             // RdRetail
             // 
@@ -136,28 +215,31 @@ namespace SHOPLITE
             this.RdRetail.AutoSize = true;
             this.RdRetail.Checked = true;
             this.RdRetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.RdRetail.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RdRetail.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RdRetail.ForeColor = System.Drawing.Color.White;
-            this.RdRetail.Location = new System.Drawing.Point(240, 20);
+            this.RdRetail.Location = new System.Drawing.Point(5, 27);
             this.RdRetail.Name = "RdRetail";
-            this.RdRetail.Size = new System.Drawing.Size(83, 29);
+            this.RdRetail.Size = new System.Drawing.Size(61, 24);
             this.RdRetail.TabIndex = 1;
+            this.RdRetail.TabStop = true;
             this.RdRetail.Text = "Retail";
             this.RdRetail.UseVisualStyleBackColor = false;
             this.RdRetail.CheckedChanged += new System.EventHandler(this.RdRetail_CheckedChanged);
             // 
-            // label11
+            // RdWholesale
             // 
-            this.label11.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label11.AutoSize = true;
-            this.label11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label11.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.OrangeRed;
-            this.label11.Location = new System.Drawing.Point(17, 22);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(197, 25);
-            this.label11.TabIndex = 0;
-            this.label11.Text = "Customer Category:";
+            this.RdWholesale.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.RdWholesale.AutoSize = true;
+            this.RdWholesale.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RdWholesale.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RdWholesale.ForeColor = System.Drawing.Color.White;
+            this.RdWholesale.Location = new System.Drawing.Point(103, 27);
+            this.RdWholesale.Name = "RdWholesale";
+            this.RdWholesale.Size = new System.Drawing.Size(89, 24);
+            this.RdWholesale.TabIndex = 1;
+            this.RdWholesale.Text = "Wholesale";
+            this.RdWholesale.UseVisualStyleBackColor = true;
+            this.RdWholesale.CheckedChanged += new System.EventHandler(this.RdWholesale_CheckedChanged);
             // 
             // panel2
             // 
@@ -172,20 +254,24 @@ namespace SHOPLITE
             this.panel2.Controls.Add(this.BtnAdd);
             this.panel2.Controls.Add(this.BtnCancel);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 94);
+            this.panel2.Location = new System.Drawing.Point(0, 114);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(961, 167);
             this.panel2.TabIndex = 0;
             // 
-            // TxtProdDesc
+            // groupBox3
             // 
-            this.TxtProdDesc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtProdDesc.Enabled = false;
-            this.TxtProdDesc.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtProdDesc.Location = new System.Drawing.Point(381, 7);
-            this.TxtProdDesc.Name = "TxtProdDesc";
-            this.TxtProdDesc.Size = new System.Drawing.Size(567, 31);
-            this.TxtProdDesc.TabIndex = 2;
+            this.groupBox3.Controls.Add(this.TxtProdUnit);
+            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Controls.Add(this.TxtQty);
+            this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox3.Location = new System.Drawing.Point(467, 44);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(219, 117);
+            this.groupBox3.TabIndex = 1;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Classification";
             // 
             // TxtProdUnit
             // 
@@ -196,6 +282,77 @@ namespace SHOPLITE
             this.TxtProdUnit.Name = "TxtProdUnit";
             this.TxtProdUnit.Size = new System.Drawing.Size(91, 23);
             this.TxtProdUnit.TabIndex = 2;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(42, 33);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(44, 16);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "UNIT:";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // TxtQty
+            // 
+            this.TxtQty.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TxtQty.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtQty.Location = new System.Drawing.Point(94, 66);
+            this.TxtQty.Name = "TxtQty";
+            this.TxtQty.Size = new System.Drawing.Size(91, 23);
+            this.TxtQty.TabIndex = 0;
+            this.TxtQty.Enter += new System.EventHandler(this.TxtQty_Enter);
+            this.TxtQty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtQty_KeyPress);
+            this.TxtQty.Leave += new System.EventHandler(this.TxtQty_Leave);
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(5, 68);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(81, 16);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "QUANTITY:";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.TxtProdSp);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.txtVatPer);
+            this.groupBox2.Controls.Add(this.TxtVat);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox2.Location = new System.Drawing.Point(18, 44);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(264, 117);
+            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Pricing";
+            // 
+            // TxtProdSp
+            // 
+            this.TxtProdSp.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TxtProdSp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtProdSp.Enabled = false;
+            this.TxtProdSp.Location = new System.Drawing.Point(97, 30);
+            this.TxtProdSp.Name = "TxtProdSp";
+            this.TxtProdSp.Size = new System.Drawing.Size(123, 23);
+            this.TxtProdSp.TabIndex = 2;
+            this.TxtProdSp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtProdSp_KeyPress);
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(7, 33);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(87, 16);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "SELL PRICE:";
             // 
             // txtVatPer
             // 
@@ -217,28 +374,35 @@ namespace SHOPLITE
             this.TxtVat.Size = new System.Drawing.Size(123, 23);
             this.TxtVat.TabIndex = 2;
             // 
-            // TxtQty
+            // label7
             // 
-            this.TxtQty.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.TxtQty.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtQty.Location = new System.Drawing.Point(94, 66);
-            this.TxtQty.Name = "TxtQty";
-            this.TxtQty.Size = new System.Drawing.Size(91, 23);
-            this.TxtQty.TabIndex = 0;
-            this.TxtQty.Enter += new System.EventHandler(this.TxtQty_Enter);
-            this.TxtQty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtQty_KeyPress);
-            this.TxtQty.Leave += new System.EventHandler(this.TxtQty_Leave);
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(25, 60);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(69, 16);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "VAT (%):";
             // 
-            // TxtProdSp
+            // label6
             // 
-            this.TxtProdSp.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.TxtProdSp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtProdSp.Enabled = false;
-            this.TxtProdSp.Location = new System.Drawing.Point(97, 30);
-            this.TxtProdSp.Name = "TxtProdSp";
-            this.TxtProdSp.Size = new System.Drawing.Size(123, 23);
-            this.TxtProdSp.TabIndex = 2;
-            this.TxtProdSp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtProdSp_KeyPress);
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(56, 86);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(38, 16);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "VAT:";
+            // 
+            // TxtProdDesc
+            // 
+            this.TxtProdDesc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtProdDesc.Enabled = false;
+            this.TxtProdDesc.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtProdDesc.Location = new System.Drawing.Point(381, 7);
+            this.TxtProdDesc.Name = "TxtProdDesc";
+            this.TxtProdDesc.Size = new System.Drawing.Size(567, 31);
+            this.TxtProdDesc.TabIndex = 2;
             // 
             // TxtProdCd
             // 
@@ -262,58 +426,6 @@ namespace SHOPLITE
             this.label2.TabIndex = 1;
             this.label2.Text = "DESCRIPTION:";
             // 
-            // label3
-            // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(42, 33);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(44, 16);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "UNIT:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // label7
-            // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(25, 60);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(69, 16);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "VAT (%):";
-            // 
-            // label6
-            // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(56, 86);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(38, 16);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "VAT:";
-            // 
-            // label5
-            // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(5, 68);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(81, 16);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "QUANTITY:";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
-            // 
-            // label4
-            // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 33);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(87, 16);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "SELL PRICE:";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -328,7 +440,8 @@ namespace SHOPLITE
             // 
             this.BtnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnAdd.BackColor = System.Drawing.Color.SlateBlue;
-            this.BtnAdd.FlatAppearance.BorderSize = 0;
+            this.BtnAdd.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BtnAdd.FlatAppearance.BorderSize = 2;
             this.BtnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnAdd.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnAdd.ForeColor = System.Drawing.Color.White;
@@ -346,7 +459,8 @@ namespace SHOPLITE
             // 
             this.BtnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(56)))), ((int)(((byte)(13)))));
-            this.BtnCancel.FlatAppearance.BorderSize = 0;
+            this.BtnCancel.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BtnCancel.FlatAppearance.BorderSize = 2;
             this.BtnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCancel.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCancel.ForeColor = System.Drawing.Color.White;
@@ -370,6 +484,16 @@ namespace SHOPLITE
             this.panel3.Size = new System.Drawing.Size(961, 35);
             this.panel3.TabIndex = 1;
             // 
+            // lbltips
+            // 
+            this.lbltips.AutoSize = true;
+            this.lbltips.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbltips.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.lbltips.Location = new System.Drawing.Point(115, 9);
+            this.lbltips.Name = "lbltips";
+            this.lbltips.Size = new System.Drawing.Size(0, 17);
+            this.lbltips.TabIndex = 0;
+            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Linen;
@@ -381,6 +505,87 @@ namespace SHOPLITE
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(961, 138);
             this.panel4.TabIndex = 2;
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.MintCream;
+            this.panel6.Controls.Add(this.label8);
+            this.panel6.Controls.Add(this.lblNetamount);
+            this.panel6.Controls.Add(this.label9);
+            this.panel6.Controls.Add(this.lbltotalamount);
+            this.panel6.Controls.Add(this.lblvantamount);
+            this.panel6.Controls.Add(this.label10);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel6.Location = new System.Drawing.Point(0, 0);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(961, 49);
+            this.panel6.TabIndex = 3;
+            // 
+            // label8
+            // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(110, 11);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(123, 26);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Net Amount:";
+            // 
+            // lblNetamount
+            // 
+            this.lblNetamount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblNetamount.AutoSize = true;
+            this.lblNetamount.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNetamount.Location = new System.Drawing.Point(233, 11);
+            this.lblNetamount.Name = "lblNetamount";
+            this.lblNetamount.Size = new System.Drawing.Size(50, 26);
+            this.lblNetamount.TabIndex = 1;
+            this.lblNetamount.Text = "0.00";
+            // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(366, 11);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(120, 26);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Vat Amount:";
+            // 
+            // lbltotalamount
+            // 
+            this.lbltotalamount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbltotalamount.AutoSize = true;
+            this.lbltotalamount.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbltotalamount.Location = new System.Drawing.Point(734, 11);
+            this.lbltotalamount.Name = "lbltotalamount";
+            this.lbltotalamount.Size = new System.Drawing.Size(50, 26);
+            this.lbltotalamount.TabIndex = 1;
+            this.lbltotalamount.Text = "0.00";
+            // 
+            // lblvantamount
+            // 
+            this.lblvantamount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblvantamount.AutoSize = true;
+            this.lblvantamount.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblvantamount.Location = new System.Drawing.Point(483, 11);
+            this.lblvantamount.Name = "lblvantamount";
+            this.lblvantamount.Size = new System.Drawing.Size(50, 26);
+            this.lblvantamount.TabIndex = 1;
+            this.lblvantamount.Text = "0.00";
+            // 
+            // label10
+            // 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(603, 11);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(133, 26);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "Total Amount:";
             // 
             // btnCancelReceipt
             // 
@@ -420,101 +625,35 @@ namespace SHOPLITE
             this.BtnSave.UseVisualStyleBackColor = false;
             this.BtnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
-            // lbltotalamount
-            // 
-            this.lbltotalamount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbltotalamount.AutoSize = true;
-            this.lbltotalamount.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbltotalamount.Location = new System.Drawing.Point(734, 11);
-            this.lbltotalamount.Name = "lbltotalamount";
-            this.lbltotalamount.Size = new System.Drawing.Size(50, 26);
-            this.lbltotalamount.TabIndex = 1;
-            this.lbltotalamount.Text = "0.00";
-            // 
-            // lblvantamount
-            // 
-            this.lblvantamount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblvantamount.AutoSize = true;
-            this.lblvantamount.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblvantamount.Location = new System.Drawing.Point(483, 11);
-            this.lblvantamount.Name = "lblvantamount";
-            this.lblvantamount.Size = new System.Drawing.Size(50, 26);
-            this.lblvantamount.TabIndex = 1;
-            this.lblvantamount.Text = "0.00";
-            // 
-            // lblNetamount
-            // 
-            this.lblNetamount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblNetamount.AutoSize = true;
-            this.lblNetamount.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNetamount.Location = new System.Drawing.Point(233, 11);
-            this.lblNetamount.Name = "lblNetamount";
-            this.lblNetamount.Size = new System.Drawing.Size(50, 26);
-            this.lblNetamount.TabIndex = 1;
-            this.lblNetamount.Text = "0.00";
-            // 
-            // label10
-            // 
-            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(603, 11);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(133, 26);
-            this.label10.TabIndex = 0;
-            this.label10.Text = "Total Amount:";
-            // 
-            // label9
-            // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(366, 11);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(120, 26);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "Vat Amount:";
-            // 
-            // label8
-            // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(110, 11);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(123, 26);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "Net Amount:";
-            // 
             // panel5
             // 
             this.panel5.Controls.Add(this.GvReceipt);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(0, 261);
+            this.panel5.Location = new System.Drawing.Point(0, 281);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(961, 118);
+            this.panel5.Size = new System.Drawing.Size(961, 98);
             this.panel5.TabIndex = 3;
             // 
             // GvReceipt
             // 
             this.GvReceipt.AllowUserToAddRows = false;
             this.GvReceipt.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(3);
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.GvReceipt.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(3);
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.GvReceipt.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.GvReceipt.BackgroundColor = System.Drawing.SystemColors.Control;
             this.GvReceipt.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(233)))), ((int)(((byte)(135)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(6);
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(233)))), ((int)(((byte)(135)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GvReceipt.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(233)))), ((int)(((byte)(135)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(6);
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(233)))), ((int)(((byte)(135)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GvReceipt.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.GvReceipt.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GvReceipt.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ProdCd,
@@ -541,7 +680,7 @@ namespace SHOPLITE
             this.GvReceipt.RowTemplate.Height = 35;
             this.GvReceipt.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.GvReceipt.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.GvReceipt.Size = new System.Drawing.Size(961, 118);
+            this.GvReceipt.Size = new System.Drawing.Size(961, 98);
             this.GvReceipt.TabIndex = 0;
             this.GvReceipt.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GvReceipt_CellDoubleClick);
             // 
@@ -617,60 +756,27 @@ namespace SHOPLITE
             this.Remove.Text = "Edit";
             this.Remove.ToolTipText = "Remove item. Requires a Password.";
             // 
-            // panel6
+            // label11
             // 
-            this.panel6.BackColor = System.Drawing.Color.MintCream;
-            this.panel6.Controls.Add(this.label8);
-            this.panel6.Controls.Add(this.lblNetamount);
-            this.panel6.Controls.Add(this.label9);
-            this.panel6.Controls.Add(this.lbltotalamount);
-            this.panel6.Controls.Add(this.lblvantamount);
-            this.panel6.Controls.Add(this.label10);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel6.Location = new System.Drawing.Point(0, 0);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(961, 49);
-            this.panel6.TabIndex = 3;
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(457, 28);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(109, 20);
+            this.label11.TabIndex = 3;
+            this.label11.Text = "Customer Limit:";
+            this.label11.Visible = false;
             // 
-            // groupBox2
+            // lblcustlimit
             // 
-            this.groupBox2.Controls.Add(this.TxtProdSp);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.txtVatPer);
-            this.groupBox2.Controls.Add(this.TxtVat);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox2.Location = new System.Drawing.Point(18, 44);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(264, 117);
-            this.groupBox2.TabIndex = 3;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Pricing";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.TxtProdUnit);
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.TxtQty);
-            this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox3.Location = new System.Drawing.Point(467, 44);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(219, 117);
-            this.groupBox3.TabIndex = 1;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Classification";
-            // 
-            // lbltips
-            // 
-            this.lbltips.AutoSize = true;
-            this.lbltips.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbltips.ForeColor = System.Drawing.Color.DarkSlateBlue;
-            this.lbltips.Location = new System.Drawing.Point(115, 9);
-            this.lbltips.Name = "lbltips";
-            this.lbltips.Size = new System.Drawing.Size(0, 17);
-            this.lbltips.TabIndex = 0;
+            this.lblcustlimit.AutoSize = true;
+            this.lblcustlimit.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblcustlimit.Location = new System.Drawing.Point(565, 29);
+            this.lblcustlimit.Name = "lblcustlimit";
+            this.lblcustlimit.Size = new System.Drawing.Size(34, 20);
+            this.lblcustlimit.TabIndex = 3;
+            this.lblcustlimit.Text = "0.00";
+            this.lblcustlimit.Visible = false;
             // 
             // frmPOS
             // 
@@ -690,20 +796,23 @@ namespace SHOPLITE
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.GvReceipt)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.GvReceipt)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -752,10 +861,18 @@ namespace SHOPLITE
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton RdWholesale;
         private System.Windows.Forms.RadioButton RdRetail;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label lbltips;
+        private System.Windows.Forms.RadioButton rBExistingCustomer;
+        private System.Windows.Forms.RadioButton rBWalkinCustomer;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Label lblCustomerName;
+        private System.Windows.Forms.TextBox txtcustcode;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Label lblcustlimit;
+        private System.Windows.Forms.Label label11;
     }
 }

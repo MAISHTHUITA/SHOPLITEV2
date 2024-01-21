@@ -10,6 +10,7 @@ namespace SHOPLITE
 {
     public partial class frmPOS : Form
     {
+        private decimal customerlimit;
         private static frmPOS _instance;
         public static frmPOS Instance
         {
@@ -147,6 +148,7 @@ namespace SHOPLITE
                 lblNetamount.Text = vatamount.ToString("0.00");
                 lblvantamount.Text = (Amount - vatamount).ToString("0.00");
                 lbltotalamount.Text = Amount.ToString("0.00");
+                
             }
             else
             {
@@ -211,10 +213,33 @@ namespace SHOPLITE
             posMaster.Username = Properties.Settings.Default.USERNAME;
             posMaster.CmpnyCd = Properties.Settings.Default.COMPANYNAME;
             posMaster.BrnchCd = Properties.Settings.Default.BRANCHNAME;
-
             posMaster.Discount = 0;
             posMaster.DiscountNarration = "no discount";
-            posMaster.CashGiven = 1000;
+            if(rBExistingCustomer.Checked)
+            {
+                if ((customerlimit - posMaster.TotalAmount) < 0)
+                {
+                    RJMessageBox.Show("Cannot save this receipt because it will exceed customer credit limit.", "Shoplite Notifications", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+            }
+            if (rBWalkinCustomer.Checked)
+            {
+                posMaster.CustomerCode = "WIC";
+                posMaster.CustomerName = "Walk in Customer";
+            }
+            if (rBExistingCustomer.Checked)
+            {
+                if (String.IsNullOrEmpty(txtcustcode.Text))
+                {
+                    RJMessageBox.Show("Please enter customer details and the proceed with saving", "Shoplite Notifications", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtcustcode.Focus();
+                    return;
+                }
+                posMaster.CustomerCode = txtcustcode.Text.ToUpper();
+                posMaster.CustomerName = lblCustomerName.Text.ToUpper();
+            }
+
             foreach (DataGridViewRow row in GvReceipt.Rows)
             {
                 PosDetail pos = new PosDetail();
@@ -250,7 +275,7 @@ namespace SHOPLITE
                         posMaster.PaymentNarration = "PAID CASH";
                         posMaster.Cash = posMaster.TotalAmount;
                     }
-
+                    
                     saveresult = repository.SavePos(posMaster, posDetails, out values);
                 }
 
@@ -402,6 +427,73 @@ namespace SHOPLITE
         private void TxtQty_Leave(object sender, EventArgs e)
         {
             cleartip();
+        }
+
+        private void rBWalkinCustomer_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rBWalkinCustomer.Checked)
+            {
+                txtcustcode.Visible = lblCustomerName.Visible = label11.Visible = lblcustlimit.Visible = false;
+            }
+            else txtcustcode.Visible = lblCustomerName.Visible = label11.Visible = lblcustlimit.Visible = true;
+        }
+
+        private void rBExistingCustomer_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rBExistingCustomer.Checked)
+                txtcustcode.Visible = lblCustomerName.Visible=label11.Visible= lblcustlimit.Visible = true;
+            else
+                txtcustcode.Visible = lblCustomerName.Visible = label11.Visible = lblcustlimit.Visible = false;
+        }
+
+        private void txtcustcode_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F3)
+            {
+                Customer repository = new Customer();
+                List<Customer> customers = repository.GetCustomers().ToList();
+                if (customers.Count <= 0)
+                {
+                    RJMessageBox.Show("No Records to Display.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else
+                {
+                    using (frmSearchCust su = new frmSearchCust(customers) { customer = new Customer() })
+                    {
+                        su.ShowDialog();
+                        txtcustcode.Text = su.customer.CustCd;
+                        lblCustomerName.Text = su.customer.CustNm;
+                    }
+                }
+            }
+        }
+
+        private void txtcustcode_Leave(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtcustcode.Text))
+            {
+                Customer repository = new Customer();
+
+                repository = repository.getCustomer(txtcustcode.Text);
+                if (repository == null)
+                {
+                    RJMessageBox.Show("Invalid Customer Code", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtcustcode.Focus();
+                    lblCustomerName.Text = "";
+                    return;
+                }
+                else
+                {
+                    txtcustcode.Text = repository.CustCd;
+                    lblCustomerName.Text = repository.CustNm;
+                    CustomerLimit limit = new CustomerLimit();
+                    Customer customer = new Customer();
+                    limit = customer.GetCustomerLimit(txtcustcode.Text);
+                    customerlimit = repository.CustCreditLimit - (limit.DebitAmount - limit.CreditAmount);
+                    lblcustlimit.Text = customerlimit.ToString("0.00");
+                }
+            }
         }
     }
 }

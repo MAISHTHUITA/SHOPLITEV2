@@ -25,6 +25,8 @@ namespace SHOPLITE.Models
         public decimal Change { get { return CashGiven - Cash; } }
         public string Phone { get; set; }
         public string Comment { get; set; }
+        public string CustomerName { get; set; }
+        public string CustomerCode { get; set; }
 
     }
     public class PosDetail
@@ -68,6 +70,7 @@ namespace SHOPLITE.Models
         public string VatCd { get; set; }
         public decimal LineVat { get; set; }
         public decimal LineAmount { get; set; }
+        public bool IsVoided { get; set; }
 
     }
     public class PosRepository
@@ -111,6 +114,20 @@ namespace SHOPLITE.Models
                         string returned = command.ExecuteScalar().ToString();
                         int values = Convert.ToInt32(returned);
                         ReceiptNumber = values;
+                        command.Parameters.Clear();
+                        command.CommandText = "DECLARE @INITBALANCE DECIMAL (18,2); SET @INITBALANCE = (SELECT TOP 1 BALANCE FROM Cust_Stmt CS WHERE CS.CUSTOMER_CODE =@CUSTCD ORDER BY CS.DATE DESC ) IF (@INITBALANCE IS NULL)\r\nBEGIN\r\nSET @INITBALANCE=0; END SELECT @INITBALANCE;" +
+                            "INSERT INTO CUST_STMT (INV_RET_CN_NO,TYPE, CUSTOMER_CODE, CUSTOMER_NAME, AMOUNT,DATE, CREDIT,DEBIT, CREATEDBY, BALANCE) VALUES " +
+                            "(@posnumber,@type, @custcd, @custnm, @amount, @date,@credit, @debit, @usrnm,@INITBALANCE - @debit + @credit )";
+                        command.Parameters.AddWithValue("@posnumber",ReceiptNumber);
+                        command.Parameters.AddWithValue("@type", "POS");
+                        command.Parameters.AddWithValue("@custcd", pos.CustomerCode);
+                        command.Parameters.AddWithValue("@custnm", pos.CustomerName) ;
+                        command.Parameters.AddWithValue("@date", DateTime.Now);
+                        command.Parameters.AddWithValue("@credit", pos.Cash);
+                        command.Parameters.AddWithValue("@debit", pos.TotalAmount);
+                        command.Parameters.AddWithValue("@amount", pos.TotalAmount);
+                        command.Parameters.AddWithValue("@usrnm", pos.Username);
+                        command.ExecuteNonQuery();
                         command.Parameters.Clear();
                         foreach (PosDetail item in posDetail)
                         {
@@ -614,7 +631,7 @@ namespace SHOPLITE.Models
             {
                 using (SqlConnection con = new SqlConnection(DbCon.connection))
                 {
-                    string query = @"select PM.PosNumber, PM.PosDate,PM.VatAmount,PM.TotalAmount,PM.Username,
+                    string query = @"select PM.PosNumber,PM.ISVOID, PM.PosDate,PM.VatAmount,PM.TotalAmount,PM.Username,
                                     PM.PaymentMethod,PM.PaymentNarration,PM.CMPNYCD,CPY.CMPNYNM,CPY.CMPNYTAXPIN,pm.COMMENT,PM.MACHINENAME,CPY.CMPNYREGNO,PM.BrnchCd,BRNCH.BRNCHNM,BRNCH.BRNCHTELEPHONE,PM.CashGiven,PM.CASH,
                                     PD.ProdCd,PD.ProdNm, PD.UnitCd,PD.Quantity,PD.Sp,PD.Vatcd,PD.LineVat,PD.LineAmount
                                      from
@@ -686,6 +703,10 @@ namespace SHOPLITE.Models
                             if (rdr["PaymentNarration"] != DBNull.Value)
                             {
                                 receipt.PaymentNarration = rdr["PaymentNarration"].ToString();
+                            }
+                            if (rdr["ISVOID"] != DBNull.Value)
+                            {
+                                receipt.IsVoided =Convert.ToBoolean( rdr["ISVOID"]);
                             }
                             //CHANGED IN THE DB TO SYSTEM.INTERO
                             if (rdr["Comment"] != DBNull.Value)

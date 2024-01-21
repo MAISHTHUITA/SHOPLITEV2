@@ -11,6 +11,7 @@ namespace SHOPLITE
     {
         private Button currentbutton;
         private Form currentchildform;
+        
         public MainForm()
         {
             InitializeComponent();
@@ -18,6 +19,14 @@ namespace SHOPLITE
 
         }
         private static MainForm _instance;
+        //dummy method to be discarderd
+        private void GetUsers(string user)
+        {
+            if (user.ToUpper()=="MUSA")
+            {
+                btnProducts.Visible = false;
+            }
+        }
 
         public static MainForm Instance
         {
@@ -118,6 +127,7 @@ namespace SHOPLITE
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            GetUsers(Properties.Settings.Default.USERNAME);
             this.Height = Screen.PrimaryScreen.WorkingArea.Height;
             this.Height = Screen.PrimaryScreen.WorkingArea.Width;
             this.Location = Screen.PrimaryScreen.WorkingArea.Location;
@@ -230,6 +240,17 @@ namespace SHOPLITE
         private void label7_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnSales_Click(object sender, EventArgs e)
+        {
+            if (!GroupPolicy.CheckPolicy(Properties.Settings.Default.USERNAME, "VP"))
+            {
+                RJMessageBox.Show("Sorry, your Account Has Insufficient Privelleges To Open This Module", "Check Right", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            setcurrentform(FrmCyclic.Instance);
+            setbuttons(sender);
         }
     }
 }

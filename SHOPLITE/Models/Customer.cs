@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace SHOPLITE.Models
 {
@@ -235,6 +236,51 @@ namespace SHOPLITE.Models
         {
             return true;
         }
+        public CustomerLimit GetCustomerLimit(string custcode)
+        {
+            CustomerLimit limit = new CustomerLimit();
+            using (SqlConnection con=new SqlConnection(DbCon.connection))
+            {
+                try
+                {
+                    if (con.State==ConnectionState.Closed)
+                        con.Open();
+                   
+                    SqlCommand sql = new SqlCommand();
+                    sql.Connection = con;
+                    sql.CommandText = "SELECT SUM(cs.DEBIT) AS  DEBITAMOUNT, SUM(CS.CREDIT) AS CREDITAMOUNT, SUM(TC.CUSTCREDITLIMIT) AS CREDITLIMIT FROM cust_stmt cs join TblCust tc on cs.CUSTOMER_CODE=tc.CUSTCD WHERE TC.CUSTCD =@custcd";
+                    sql.CommandType = CommandType.Text;
+                    sql.Parameters.AddWithValue("@custcd", custcode);
+                    SqlDataReader rdr = sql.ExecuteReader();
+                    if(rdr.HasRows)
+                    {
+                        while (rdr.Read())
+                        {
+                            if (rdr["DEBITAMOUNT"] != DBNull.Value)
+                            {
+                                limit.DebitAmount = Convert.ToDecimal(rdr["DEBITAMOUNT"]);
+                            }
+                            if (rdr["CREDITAMOUNT"] != DBNull.Value)
+                            {
+                                limit.CreditAmount = Convert.ToDecimal(rdr["CREDITAMOUNT"]);
+                            }
+                        }
+                    }
+
+                }
+                catch (Exception exe )
+                {
+                    Logger.Loggermethod(exe);
+                }
+            }
+            return limit;
+        }
         #endregion
+    }
+    public class CustomerLimit
+    {
+        public decimal CreditAmount { get; set; }
+        public decimal DebitAmount { get; set; }
+       
     }
 }

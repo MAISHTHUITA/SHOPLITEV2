@@ -41,12 +41,14 @@ namespace SHOPLITE
             this.mainpnl = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.testpanel = new System.Windows.Forms.Panel();
+            this.Btnpayments = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(148)))), ((int)(((byte)(25)))));
+            this.panel1.Controls.Add(this.Btnpayments);
             this.panel1.Controls.Add(this.btnDeposits);
             this.panel1.Controls.Add(this.btn1);
             this.panel1.Controls.Add(this.btnManageReceipts);
@@ -206,6 +208,21 @@ namespace SHOPLITE
             this.testpanel.Size = new System.Drawing.Size(880, 519);
             this.testpanel.TabIndex = 2;
             // 
+            // Btnpayments
+            // 
+            this.Btnpayments.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(148)))), ((int)(((byte)(25)))));
+            this.Btnpayments.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(83)))), ((int)(((byte)(255)))));
+            this.Btnpayments.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btnpayments.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btnpayments.ForeColor = System.Drawing.Color.White;
+            this.Btnpayments.Location = new System.Drawing.Point(718, 0);
+            this.Btnpayments.Name = "Btnpayments";
+            this.Btnpayments.Size = new System.Drawing.Size(101, 52);
+            this.Btnpayments.TabIndex = 2;
+            this.Btnpayments.Text = "PAYMENTS";
+            this.Btnpayments.UseVisualStyleBackColor = false;
+            this.Btnpayments.Click += new System.EventHandler(this.Btnpayments_Click);
+            // 
             // frmInventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -242,5 +259,6 @@ namespace SHOPLITE
         private System.Windows.Forms.Button btnManageReceipts;
         private System.Windows.Forms.Panel testpanel;
         private System.Windows.Forms.Button btnDeposits;
+        private System.Windows.Forms.Button Btnpayments;
     }
 }

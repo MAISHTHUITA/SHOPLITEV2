@@ -46,8 +46,13 @@ namespace SHOPLITE
             this.label1 = new System.Windows.Forms.Label();
             this.LeftSidePanel = new System.Windows.Forms.Panel();
             this.pnlNav = new System.Windows.Forms.Panel();
-            this.btnSetting = new System.Windows.Forms.Button();
             this.BtnUser = new System.Windows.Forms.Button();
+            this.MainPanel = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.btnSales = new System.Windows.Forms.Button();
+            this.btnSetting = new System.Windows.Forms.Button();
             this.btnPos = new System.Windows.Forms.Button();
             this.btnProducts = new System.Windows.Forms.Button();
             this.btnReports = new System.Windows.Forms.Button();
@@ -55,10 +60,6 @@ namespace SHOPLITE
             this.btnInventory = new System.Windows.Forms.Button();
             this.btnManagement = new System.Windows.Forms.Button();
             this.btnDashboard = new System.Windows.Forms.Button();
-            this.MainPanel = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.TopPanel.SuspendLayout();
             this.BottomPanel.SuspendLayout();
             this.LeftSidePanel.SuspendLayout();
@@ -72,7 +73,7 @@ namespace SHOPLITE
             this.TopPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.TopPanel.Location = new System.Drawing.Point(0, 0);
             this.TopPanel.Name = "TopPanel";
-            this.TopPanel.Size = new System.Drawing.Size(1130, 69);
+            this.TopPanel.Size = new System.Drawing.Size(1126, 69);
             this.TopPanel.TabIndex = 0;
             // 
             // label6
@@ -81,7 +82,7 @@ namespace SHOPLITE
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Nirmala UI", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Coral;
-            this.label6.Location = new System.Drawing.Point(400, 11);
+            this.label6.Location = new System.Drawing.Point(398, 11);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(337, 41);
             this.label6.TabIndex = 1;
@@ -96,7 +97,7 @@ namespace SHOPLITE
             this.AppCloseBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AppCloseBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AppCloseBtn.ForeColor = System.Drawing.Color.White;
-            this.AppCloseBtn.Location = new System.Drawing.Point(1071, 9);
+            this.AppCloseBtn.Location = new System.Drawing.Point(1067, 9);
             this.AppCloseBtn.Name = "AppCloseBtn";
             this.AppCloseBtn.Size = new System.Drawing.Size(47, 47);
             this.AppCloseBtn.TabIndex = 0;
@@ -118,9 +119,9 @@ namespace SHOPLITE
             this.BottomPanel.Controls.Add(this.label2);
             this.BottomPanel.Controls.Add(this.label1);
             this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BottomPanel.Location = new System.Drawing.Point(0, 681);
+            this.BottomPanel.Location = new System.Drawing.Point(0, 677);
             this.BottomPanel.Name = "BottomPanel";
-            this.BottomPanel.Size = new System.Drawing.Size(1130, 30);
+            this.BottomPanel.Size = new System.Drawing.Size(1126, 30);
             this.BottomPanel.TabIndex = 2;
             // 
             // lblLogindate
@@ -231,6 +232,7 @@ namespace SHOPLITE
             // LeftSidePanel
             // 
             this.LeftSidePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(73)))), ((int)(((byte)(131)))));
+            this.LeftSidePanel.Controls.Add(this.btnSales);
             this.LeftSidePanel.Controls.Add(this.pnlNav);
             this.LeftSidePanel.Controls.Add(this.btnSetting);
             this.LeftSidePanel.Controls.Add(this.BtnUser);
@@ -244,7 +246,7 @@ namespace SHOPLITE
             this.LeftSidePanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.LeftSidePanel.Location = new System.Drawing.Point(0, 69);
             this.LeftSidePanel.Name = "LeftSidePanel";
-            this.LeftSidePanel.Size = new System.Drawing.Size(215, 612);
+            this.LeftSidePanel.Size = new System.Drawing.Size(215, 608);
             this.LeftSidePanel.TabIndex = 3;
             // 
             // pnlNav
@@ -254,6 +256,97 @@ namespace SHOPLITE
             this.pnlNav.Name = "pnlNav";
             this.pnlNav.Size = new System.Drawing.Size(3, 100);
             this.pnlNav.TabIndex = 1;
+            // 
+            // BtnUser
+            // 
+            this.BtnUser.BackColor = System.Drawing.Color.Transparent;
+            this.BtnUser.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.BtnUser.FlatAppearance.BorderSize = 0;
+            this.BtnUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnUser.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(246)))));
+            this.BtnUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnUser.Location = new System.Drawing.Point(0, 562);
+            this.BtnUser.Name = "BtnUser";
+            this.BtnUser.Size = new System.Drawing.Size(215, 46);
+            this.BtnUser.TabIndex = 0;
+            this.BtnUser.Text = "LOG-OUT";
+            this.BtnUser.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.BtnUser.UseVisualStyleBackColor = false;
+            this.BtnUser.Click += new System.EventHandler(this.BtnUser_Click);
+            // 
+            // MainPanel
+            // 
+            this.MainPanel.BackColor = System.Drawing.Color.White;
+            this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MainPanel.Location = new System.Drawing.Point(215, 69);
+            this.MainPanel.Name = "MainPanel";
+            this.MainPanel.Size = new System.Drawing.Size(911, 608);
+            this.MainPanel.TabIndex = 4;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Arial", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.MediumTurquoise;
+            this.label7.Location = new System.Drawing.Point(413, 102);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(486, 111);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "ShopLite ";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
+            // 
+            // label8
+            // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Arial", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.MediumTurquoise;
+            this.label8.Location = new System.Drawing.Point(413, 273);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(476, 111);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "Inventory";
+            this.label8.Click += new System.EventHandler(this.label7_Click);
+            // 
+            // label9
+            // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Arial", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.MediumTurquoise;
+            this.label9.Location = new System.Drawing.Point(413, 471);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(474, 111);
+            this.label9.TabIndex = 5;
+            this.label9.Text = "Version 2";
+            this.label9.Click += new System.EventHandler(this.label7_Click);
+            // 
+            // btnSales
+            // 
+            this.btnSales.BackColor = System.Drawing.Color.Transparent;
+            this.btnSales.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSales.FlatAppearance.BorderSize = 0;
+            this.btnSales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSales.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSales.ForeColor = System.Drawing.Color.White;
+            this.btnSales.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSales.Location = new System.Drawing.Point(0, 276);
+            this.btnSales.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.btnSales.Name = "btnSales";
+            this.btnSales.Padding = new System.Windows.Forms.Padding(15, 0, 10, 0);
+            this.btnSales.Size = new System.Drawing.Size(215, 46);
+            this.btnSales.TabIndex = 2;
+            this.btnSales.Text = "CYCLIC  REPORTS";
+            this.btnSales.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSales.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnSales.UseVisualStyleBackColor = false;
+            this.btnSales.Click += new System.EventHandler(this.btnSales_Click);
             // 
             // btnSetting
             // 
@@ -265,7 +358,7 @@ namespace SHOPLITE
             this.btnSetting.ForeColor = System.Drawing.Color.White;
             this.btnSetting.Image = ((System.Drawing.Image)(resources.GetObject("btnSetting.Image")));
             this.btnSetting.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSetting.Location = new System.Drawing.Point(0, 520);
+            this.btnSetting.Location = new System.Drawing.Point(0, 516);
             this.btnSetting.Name = "btnSetting";
             this.btnSetting.Padding = new System.Windows.Forms.Padding(15, 0, 10, 0);
             this.btnSetting.Size = new System.Drawing.Size(215, 46);
@@ -275,24 +368,6 @@ namespace SHOPLITE
             this.btnSetting.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnSetting.UseVisualStyleBackColor = false;
             this.btnSetting.Click += new System.EventHandler(this.btnSetting_Click);
-            // 
-            // BtnUser
-            // 
-            this.BtnUser.BackColor = System.Drawing.Color.Transparent;
-            this.BtnUser.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BtnUser.FlatAppearance.BorderSize = 0;
-            this.BtnUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnUser.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(246)))));
-            this.BtnUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnUser.Location = new System.Drawing.Point(0, 566);
-            this.BtnUser.Name = "BtnUser";
-            this.BtnUser.Size = new System.Drawing.Size(215, 46);
-            this.BtnUser.TabIndex = 0;
-            this.BtnUser.Text = "LOG-OUT";
-            this.BtnUser.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.BtnUser.UseVisualStyleBackColor = false;
-            this.BtnUser.Click += new System.EventHandler(this.BtnUser_Click);
             // 
             // btnPos
             // 
@@ -414,7 +489,7 @@ namespace SHOPLITE
             this.btnManagement.ForeColor = System.Drawing.Color.White;
             this.btnManagement.Image = ((System.Drawing.Image)(resources.GetObject("btnManagement.Image")));
             this.btnManagement.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnManagement.Location = new System.Drawing.Point(0, 477);
+            this.btnManagement.Location = new System.Drawing.Point(0, 473);
             this.btnManagement.Name = "btnManagement";
             this.btnManagement.Padding = new System.Windows.Forms.Padding(15, 0, 10, 0);
             this.btnManagement.Size = new System.Drawing.Size(212, 46);
@@ -447,63 +522,11 @@ namespace SHOPLITE
             this.btnDashboard.UseVisualStyleBackColor = false;
             this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
             // 
-            // MainPanel
-            // 
-            this.MainPanel.BackColor = System.Drawing.Color.White;
-            this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MainPanel.Location = new System.Drawing.Point(215, 69);
-            this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(915, 612);
-            this.MainPanel.TabIndex = 4;
-            // 
-            // label7
-            // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Arial", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.MediumTurquoise;
-            this.label7.Location = new System.Drawing.Point(413, 102);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(486, 111);
-            this.label7.TabIndex = 5;
-            this.label7.Text = "ShopLite ";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
-            // 
-            // label8
-            // 
-            this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("Arial", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.MediumTurquoise;
-            this.label8.Location = new System.Drawing.Point(413, 273);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(476, 111);
-            this.label8.TabIndex = 5;
-            this.label8.Text = "Inventory";
-            this.label8.Click += new System.EventHandler(this.label7_Click);
-            // 
-            // label9
-            // 
-            this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Arial", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.MediumTurquoise;
-            this.label9.Location = new System.Drawing.Point(413, 471);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(474, 111);
-            this.label9.TabIndex = 5;
-            this.label9.Text = "Version 2";
-            this.label9.Click += new System.EventHandler(this.label7_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1130, 711);
+            this.ClientSize = new System.Drawing.Size(1126, 707);
             this.ControlBox = false;
             this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.label7);
@@ -562,6 +585,7 @@ namespace SHOPLITE
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button btnSales;
     }
 }
 

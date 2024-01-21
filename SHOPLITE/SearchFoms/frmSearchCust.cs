@@ -42,6 +42,7 @@ namespace SHOPLITE.SearchFoms
             else
             {
                 customer.CustCd = dgvCust.SelectedRows[0].Cells[0].Value.ToString();
+                customer.CustNm = dgvCust.SelectedRows[0].Cells[1].Value.ToString();
                 this.Close();
             }
         }
@@ -67,6 +68,7 @@ namespace SHOPLITE.SearchFoms
                 else
                 {
                     customer.CustCd = dgvCust.CurrentRow.Cells[0].Value.ToString();
+                    customer.CustNm = dgvCust.CurrentRow.Cells[1].Value.ToString();
                     this.Close();
                 }
             }
