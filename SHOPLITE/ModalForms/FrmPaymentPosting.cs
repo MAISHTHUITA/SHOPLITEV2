@@ -13,15 +13,18 @@ using System.Windows.Forms;
 
 namespace SHOPLITE.ModalForms
 {
+   
     public partial class FrmPaymentPosting : Form
     {
+        private Button currentbutton;
+        private Form currentchildform;
         //instatiate singletone form
         private static FrmPaymentPosting _instance;
         public static FrmPaymentPosting Instance
         {
             get
             {
-                if (_instance==null)
+                if (_instance == null)
                 {
                     _instance = new FrmPaymentPosting();
                 }
@@ -29,7 +32,7 @@ namespace SHOPLITE.ModalForms
             }
             set
             {
-                _instance=value;
+                _instance = value;
             }
         }
         public FrmPaymentPosting()
@@ -37,132 +40,68 @@ namespace SHOPLITE.ModalForms
             InitializeComponent();
         }
 
-        private void txtPostCustomer_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F3)
-            {
-                Customer repository = new Customer();
-                List<Customer> customers = repository.GetCustomers().ToList();
-                if (customers.Count == 0)
-                {
-                    RJMessageBox.Show("No Records to Display.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-                else
-                {
-                    using (frmSearchCust su = new frmSearchCust(customers) { customer = new Customer() })
-                    {
-                        su.ShowDialog();
-                        txtPostCustomer.Text = su.customer.CustCd;
-                    }
-                }
-            }
-        }
-
-        private void txtPostCustomer_Leave(object sender, EventArgs e)
-        {
-            if (String.IsNullOrEmpty(txtPostCustomer.Text))
-            {
-                initializecusttxts();
-                return;
-            }
-            Customer customer = new Customer(); 
-            customer = customer.getCustomer(txtPostCustomer.Text);
-            if (customer == null) {
-                RJMessageBox.Show("Invalid Customer Code", "Shoplite Notifications",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                initializecusttxts(); 
-                txtPostCustomer.Text = "";
-                BtnSave.Enabled = false;
-                return;
-            }
-            BtnSave.Enabled = true;
-            txtPostCustomer.Text = customer.CustCd;
-            txtPostCustomerName.Text = customer.CustNm;
-            txtPostCustomerLimit.Text = customer.CustCreditLimit.ToString();     
-            txtPostCustomerLimitDays.Text = customer.LimitDays.ToString(); 
-        }
-
-        private void initializecusttxts()
-        {
-            txtAmount.Text = txtPaymentDescription.Text = txtPostCustomer.Text =
-                txtPostCustomerLimit.Text = txtPostCustomerLimitDays.Text = txtPostCustomerName.Text =
-                txtRef.Text = "";
-            txtPostCustomer.Focus();
-            rdbCash.Checked = true;
-            BtnSave.Enabled = false;
-
-        }
-
-        private void BtnSave_Click(object sender, EventArgs e)
-        {
-            // validate input data
-            if (String.IsNullOrEmpty(txtPostCustomer.Text))
-            {
-                RJMessageBox.Show("Select Customer in Order to Continue.", "Shoplite Notifications", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtPostCustomer.Focus();
-                return;
-            }
-            if (String.IsNullOrEmpty(txtAmount.Text))
-            {
-                RJMessageBox.Show("Please enter Amount.", "Shoplite Notifications", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtAmount.Focus();
-                return;
-            }
-            if (String.IsNullOrEmpty(txtRef.Text))
-            {
-                RJMessageBox.Show("Provide Reference of the transaction for future reference", "Shoplite Notifications", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtRef.Focus();
-                return;
-            }
-            if (String.IsNullOrEmpty(txtPaymentDescription.Text))
-            {
-                RJMessageBox.Show("Give a brief description of transaction", "Shoplite Notifications", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtPaymentDescription.Focus();
-                return;
-            }
-            decimal amnt= Convert.ToDecimal(txtAmount.Text);
-            if (amnt <= 0)
-            {
-                RJMessageBox.Show("Please provide a value greater than 0.", "Shoplite Notifications", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtAmount.Focus();
-                return;
-            }
-            Payment payment = new Payment();
-            payment.PartyName = txtPostCustomerName.Text.ToUpper();
-            payment.PaymentDate = DateTime.Now;
-            payment.CreatedBy = Properties.Settings.Default.USERNAME.ToUpper();
-            payment.Amount=amnt;
-            payment.PartyCode = txtPostCustomer.Text.ToUpper();
-            payment.Description = txtPaymentDescription.Text;
-            payment.PaymentRef = txtRef.Text;
-            if (rdbMpesa.Checked)
-                payment.PaymentType = "MPESA";
-            if (rdbCheque.Checked)
-                payment.PaymentType = "CHEQUE";
-            if (rdbCash.Checked)
-                payment.PaymentType = "CASH";
-            if (rdbOther.Checked)
-                payment.PaymentType = "OTHER";
-
-            if (payment.SavePayment(payment))
-            {
-                RJMessageBox.Show("Payment Record Saved Successfully.", "Shoplite Notifications", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                BtnCancel_Click(sender, EventArgs.Empty);
-                txtPostCustomer.Focus();
-            }
-            else
-            {
-                RJMessageBox.Show("Error Occurred while saving. Please Try Again.", "Shoplite Notifications", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
-            }
-            
-        }
-
         private void BtnCancel_Click(object sender, EventArgs e)
         {
-            initializecusttxts();
-            txtPostCustomer.Text="";
-            txtPostCustomer.Focus();
+
+        }
+
+        private void FrmPaymentPosting_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPayments_Click(object sender, EventArgs e)
+        {
+            if (!GroupPolicy.CheckPolicy(Properties.Settings.Default.USERNAME, "VP"))
+            {
+                RJMessageBox.Show("Sorry, your Account Has Insufficient Privelleges To Open This Module", "Check Right", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            setcurrentform(CustPayments.Instance);
+            setbuttons(sender);
+        }
+        private void setbuttons(object button)
+        {
+            var btn = (Button)button;
+            btn.BackColor = Color.FromArgb(0, 120, 215);
+            pnlNav.Visible = true;
+            pnlNav.BackColor = Color.White;
+            pnlNav.Width = btn.Width;
+            pnlNav.Left = btn.Left;
+            pnlNav.Top = btn.Top - 10;
+
+            pnlNav.Width = btn.Width;
+            if (currentbutton != null && currentbutton != btn)
+            {
+                currentbutton.BackColor = Color.FromArgb(123, 104, 238);
+            }
+            currentbutton = btn;
+        }
+        private void setcurrentform(object form)
+        {
+            panelmain.Controls.Clear();
+            var frm = (Form)form;
+            if (currentchildform != null && currentchildform != frm)
+            {
+                currentchildform.Hide();
+            }
+            frm.TopLevel = false;
+            panelmain.Controls.Add(frm);
+            frm.Dock = DockStyle.Fill;
+            frm.BringToFront();
+            frm.Show();
+            currentchildform = frm;
+        }
+
+        private void btnCustStmnt_Click(object sender, EventArgs e)
+        {
+            if (!GroupPolicy.CheckPolicy(Properties.Settings.Default.USERNAME, "VP"))
+            {
+                RJMessageBox.Show("Sorry, your Account Has Insufficient Privelleges To Open This Module", "Check Right", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            setcurrentform(frmManageInvoices.Instance);
+            setbuttons(sender);
         }
     }
 }

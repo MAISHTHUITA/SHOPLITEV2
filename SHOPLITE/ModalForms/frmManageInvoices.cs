@@ -1,4 +1,8 @@
-﻿using System;
+﻿using SHOPLITE.Models;
+using SHOPLITE.SearchFoms;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace SHOPLITE.ModalForms
@@ -40,8 +44,7 @@ namespace SHOPLITE.ModalForms
 
         private void btnViewInvoices_Click(object sender, EventArgs e)
         {
-            frmViewInvoices form = new frmViewInvoices();
-            form.ShowDialog();
+            RJMessageBox.Show("Sorry. The modules is Under Development. ", "Coming Soon", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -51,6 +54,67 @@ namespace SHOPLITE.ModalForms
             {
                 this.Close();
                 _instance = null;
+            }
+        }
+
+        private void txtFromCustCode_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F3)
+            {
+                Customer repository = new Customer();
+                List<Customer> customers = repository.GetCustomers().ToList();
+                if (customers.Count == 0)
+                {
+                    RJMessageBox.Show("No Records to Display.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else
+                {
+                    using (frmSearchCust su = new frmSearchCust(customers) { customer = new Customer() })
+                    {
+                        su.ShowDialog();
+                        txtFromCustCode.Text = su.customer.CustCd;
+                    }
+                }
+            }
+        }
+
+
+        private void txtToCustCd_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F3)
+            {
+                Customer repository = new Customer();
+                List<Customer> customers = repository.GetCustomers().ToList();
+                if (customers.Count == 0)
+                {
+                    RJMessageBox.Show("No Records to Display.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else
+                {
+                    using (frmSearchCust su = new frmSearchCust(customers) { customer = new Customer() })
+                    {
+                        su.ShowDialog();
+                        txtToCustCd.Text = su.customer.CustCd;
+                    }
+                }
+            }
+        }
+
+        private void frmManageInvoices_Load(object sender, EventArgs e)
+        {
+            Customer customer = new Customer();
+            List<Customer> customers = customer.GetCustomers().ToList();
+            if (customers.Count > 0)
+            {
+                txtFromCustCode.Text = customers.First().CustCd;
+                txtToCustCd.Text = customers.Last().CustCd;
+
+            }
+            else
+            {
+                return;
             }
         }
     }

@@ -5,21 +5,16 @@ using System.Data.SqlClient;
 
 namespace SHOPLITE.Models
 {
-    public class Sale
+    public class NewSale
     {
-        #region properties
-        public DateTime TxnDate { get; set; }
-        public decimal SumCost { get; set; }
-        public decimal SumInvoice { get; set; }
-        public decimal SumPos { get; set; }
-        public decimal LineTotal { get; set; }
-
-        #endregion
-
-        #region Methods
-        public IEnumerable<Sale> SaleList(string query)
+        public DateTime TXNDATE { get; set; }
+        public string  TXN_TYPE { get; set; }
+        public decimal COSTPRICE { get; set; }
+        public decimal SALE { get; set; }
+        public decimal PROFIT { get { return SALE - COSTPRICE; } }
+        public IEnumerable<NewSale> SaleList(string query)
         {
-            List<Sale> list = new List<Sale>();
+            List<NewSale> list = new List<NewSale>();
             try
             {
                 using (SqlConnection con = new SqlConnection(DbCon.connection))
@@ -33,27 +28,22 @@ namespace SHOPLITE.Models
                     {
                         while (rdr.Read())
                         {
-                            Sale sale = new Sale();
-                            if (rdr["Txn_Date"] != DBNull.Value)
+                            NewSale sale = new NewSale();
+                            if (rdr["TXN_DT"] != DBNull.Value)
                             {
-                                sale.TxnDate = (Convert.ToDateTime(rdr["Txn_Date"])).Date;
+                                sale.TXNDATE = (Convert.ToDateTime(rdr["TXN_DT"])).Date;
                             }
-                            if (rdr["TOTALCOST"] != DBNull.Value)
+                            if (rdr["TXN_TYPE"] !=DBNull.Value)
                             {
-                                sale.SumCost = Convert.ToDecimal(rdr["TOTALCOST"]);
+                                sale.TXN_TYPE = rdr["TXN_TYPE"].ToString();
                             }
-                            if (rdr["SUMINVOCE"] != DBNull.Value)
+                            if (rdr["COSTPRICE"]!=DBNull.Value)
                             {
-                                sale.SumInvoice = Convert.ToDecimal(rdr["SUMINVOCE"]);
+                                sale.COSTPRICE = Convert.ToDecimal(rdr["COSTPRICE"]);
                             }
-                            if (rdr["SUMPOS"] != DBNull.Value)
+                            if (rdr["SALE"] != DBNull.Value)
                             {
-                                sale.SumPos = Convert.ToDecimal(rdr["SUMPOS"]);
-                            }
-
-                            if (rdr["LineTotal"] != DBNull.Value)
-                            {
-                                sale.LineTotal = Convert.ToDecimal(rdr["LineTotal"]);
+                                sale.SALE = Convert.ToDecimal(rdr["SALE"]);
                             }
                             list.Add(sale);
                         }
@@ -68,7 +58,6 @@ namespace SHOPLITE.Models
             }
             return list;
         }
-        #endregion
     }
 
 }

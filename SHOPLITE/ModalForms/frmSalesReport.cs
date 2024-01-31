@@ -126,33 +126,65 @@ namespace SHOPLITE.ModalForms
                 TxtToUser.Focus();
                 return;
             }
-            Sale daily = new Sale();
-            SettingsModel settings = new SettingsModel();
-            settings.loaddata();
-            string query = "";
-            if (settings.ViewInvoiceReports)
-            {
-                query = "SELECT CAST(TXN_DATE AS DATE) AS TXN_DATE, SUM(PROD_CP*-QTY) AS TOTALCOST, SUM(LINETOTAL) AS LINETOTAL,sum(case when txn_type='INV' THEN LineTotal END) AS SUMINVOCE, sum(case when txn_type='POS' THEN LineTotal END) AS SUMPOS FROM Vw_Sales  Where Prod_Cd between '" + txtProdFrom.Text + "' and '" + txtProdTo.Text + "' and Suppcd between '" + txtSuppFrom.Text + "' and '" + txtSuppTo.Text +
-               "' and DeptCd between '" + txtDeptFrom.Text + "' and '" + txtDeptTo.Text + "' and Unitcd between '" + txtfromunit.Text + "' and '" + txttounit.Text +
-               "' and Vatcd between '" + txtvatfrom.Text + "' and '" + txtvatto.Text + "' and USR_NM between '" + txtFromUser.Text + "' and '" + TxtToUser.Text +
-               "' and Txn_Date between '" + dtFrom.Value.Date.ToString("MM/dd/yyyy") + "' and '" + dtTo.Value.Date.AddHours(23).AddMinutes(59).AddSeconds(59).AddMilliseconds(999).ToString("MM/dd/yyyy H:mm:ss") + "' GROUP BY CAST(TXN_DATE AS DATE) order by TXN_DATE desc";
-            }
-            else
-            {
-                query = "SELECT CAST(TXN_DATE AS DATE) AS TXN_DATE, SUM(PROD_CP*-QTY) AS TOTALCOST, SUM(LINETOTAL) AS LINETOTAL,sum(case when txn_type='INV' THEN LineTotal END) AS SUMINVOCE, sum(case when txn_type='POS' THEN LineTotal END) AS SUMPOS FROM Vw_Sales  Where txn_type='POS' and Prod_Cd between '" + txtProdFrom.Text + "' and '" + txtProdTo.Text + "' and Suppcd between '" + txtSuppFrom.Text + "' and '" + txtSuppTo.Text +
-               "' and DeptCd between '" + txtDeptFrom.Text + "' and '" + txtDeptTo.Text + "' and Unitcd between '" + txtfromunit.Text + "' and '" + txttounit.Text +
-               "' and Vatcd between '" + txtvatfrom.Text + "' and '" + txtvatto.Text + "' and USR_NM between '" + txtFromUser.Text + "' and '" + TxtToUser.Text +
-               "' and Txn_Date between '" + dtFrom.Value.Date.ToString("MM/dd/yyyy") + "' and '" + dtTo.Value.Date.AddHours(23).AddMinutes(59).AddSeconds(59).AddMilliseconds(999).ToString("MM/dd/yyyy H:mm:ss") + "' GROUP BY CAST(TXN_DATE AS DATE) order by TXN_DATE desc";
-            }
+            NewSale daily = new NewSale();
+            //SettingsModel settings = new SettingsModel();
+            //settings.loaddata();
+            string query = "SELECT CAST(TXN_DATE AS DATE) AS TXN_DT," +
+                "TXN_TYPE, SUM(PROD_CP*-QTY) AS COSTPRICE, SUM(PROD_SP*-QTY) AS SALE " +
+                "FROM TblProdHist TPH  " +
+                "JOIN " +
+                "TblProd TP ON TP.PRODCD=TPH.PROD_CD " +
+                "WHERE " +
+              
+             
+                "PROD_CD BETWEEN '"+ txtProdFrom.Text + "' AND '"+ txtProdTo.Text + "' " +
+                "AND " +
+                "TP.DeptCd BETWEEN '"+ txtDeptFrom.Text + "' AND '"+ txtDeptTo.Text + "' " +
+                "AND " +
+                "TP.VatCd BETWEEN '"+ txtvatfrom.Text + "' AND '"+ txtvatto.Text + "' " +
+                "AND " +
+                "TP.SuppCd BETWEEN '"+ txtSuppFrom.Text + "' AND '"+ txtSuppTo.Text + "' " +
+                "AND " +
+                "TP.UnitCd BETWEEN '"+ txtfromunit.Text + "' AND '"+ txttounit.Text + "' " +
+                "AND " +
+                "TPH.USR_NM BETWEEN '"+ txtFromUser.Text + "' AND '"+ TxtToUser.Text + "' " +
+                "AND TPH.TXN_DATE BETWEEN '"+ dtFrom.Value.Date.ToString("MM/dd/yyyy") + "' AND '"+ dtTo.Value.Date.AddHours(23).AddMinutes(59).AddSeconds(59).AddMilliseconds(999).ToString("MM/dd/yyyy H:mm:ss") + "' AND "+
+                " (TXN_TYPE ='INV' OR TXN_TYPE='POS') " +
+                "GROUP BY " +
+                "CAST(TXN_DATE AS DATE),TXN_TYPE ORDER BY TXN_DT " +
+                "ASC";
 
-            List<Sale> dailies = daily.SaleList(query).ToList();
+            //if (settings.ViewInvoiceReports)
+            //{
+
+               // query = "SELECT CAST(TXN_DATE AS DATE) AS TXN_DATE, SUM(PROD_CP*-QTY) AS TOTALCOST, " +
+               // "SUM(LINETOTAL) AS LINETOTAL,sum(case when txn_type='INV' " +
+               // "THEN LineTotal END) AS SUMINVOCE, sum(case when txn_type='POS' THEN LineTotal END) " +
+               // "AS SUMPOS FROM Vw_Sales  Where Prod_Cd between '" + txtProdFrom.Text + "' " +
+               // "and '" + txtProdTo.Text + "' and Suppcd between '" + txtSuppFrom.Text + "' and '" + txtSuppTo.Text +
+               //"' and DeptCd between '" + txtDeptFrom.Text + "' and '" + txtDeptTo.Text + "' and Unitcd " +
+               //"between '" + txtfromunit.Text + "' and '" + txttounit.Text +
+               //"' and Vatcd between '" + txtvatfrom.Text + "' and '" + txtvatto.Text + "' and USR_NM between '" + txtFromUser.Text + "' and '" + TxtToUser.Text +
+               //"' and Txn_Date between '" + dtFrom.Value.Date.ToString("MM/dd/yyyy") + "' and '" + dtTo.Value.Date.AddHours(23).AddMinutes(59).AddSeconds(59).AddMilliseconds(999).ToString("MM/dd/yyyy H:mm:ss") + "' GROUP BY CAST(TXN_DATE AS DATE) order by TXN_DATE desc";
+            //}
+            //else
+            //{
+            //    query = "SELECT CAST(TXN_DATE AS DATE) AS TXN_DATE, SUM(PROD_CP*-QTY) AS TOTALCOST, SUM(LINETOTAL) AS LINETOTAL,sum(case when txn_type='INV' THEN LineTotal END) AS SUMINVOCE, sum(case when txn_type='POS' THEN LineTotal END) AS SUMPOS FROM Vw_Sales  Where txn_type='POS' and Prod_Cd between '" + txtProdFrom.Text + "' and '" + txtProdTo.Text + "' and Suppcd between '" + txtSuppFrom.Text + "' and '" + txtSuppTo.Text +
+            //   "' and DeptCd between '" + txtDeptFrom.Text + "' and '" + txtDeptTo.Text + "' and Unitcd between '" + txtfromunit.Text + "' and '" + txttounit.Text +
+            //   "' and Vatcd between '" + txtvatfrom.Text + "' and '" + txtvatto.Text + "' and USR_NM between '" + txtFromUser.Text + "' and '" + TxtToUser.Text +
+            //   "' and Txn_Date between '" + dtFrom.Value.Date.ToString("MM/dd/yyyy") + "' and '" + dtTo.Value.Date.AddHours(23).AddMinutes(59).AddSeconds(59).AddMilliseconds(999).ToString("MM/dd/yyyy H:mm:ss") + "' GROUP BY CAST(TXN_DATE AS DATE) order by TXN_DATE desc";
+            //}
+
+            List<NewSale> dailies = daily.SaleList(query).ToList();
             if (dailies.Count() > 0)
             {
-                DailySaleReport report = new DailySaleReport();
+                ZReport report = new ZReport();
                 report.SetDataSource(dailies);
                 report.SetParameterValue("@Company", Properties.Settings.Default.COMPANYNAME);
                 report.SetParameterValue("@Branch", Properties.Settings.Default.BRANCHNAME);
                 report.SetParameterValue("@Username", Properties.Settings.Default.USERNAME);
+                report.SetParameterValue("@fromDate", dtFrom.Value.Date.ToString("dd-MMM-yyyy"));
+                report.SetParameterValue("@todate", dtTo.Value.Date.ToString("dd-MMM-yyyy"));
                 PrintingForms.frmPrint frm = new PrintingForms.frmPrint(report);
                 frm.Show();
             }

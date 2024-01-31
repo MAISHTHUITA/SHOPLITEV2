@@ -227,6 +227,12 @@
     <Compile Include="ModalForms\ConfirmVoid.Designer.cs">
       <DependentUpon>ConfirmVoid.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModalForms\CustPayments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModalForms\CustPayments.Designer.cs">
+      <DependentUpon>CustPayments.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModalForms\frmBackUpDb.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -644,6 +650,12 @@
       <DependentUpon>ViewReceipts.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reports\ZReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ZReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="SearchFoms\frmSearchCust.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -730,6 +742,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModalForms\ConfirmVoid.resx">
       <DependentUpon>ConfirmVoid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModalForms\CustPayments.resx">
+      <DependentUpon>CustPayments.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModalForms\frmBackUpDb.resx">
       <DependentUpon>frmBackUpDb.cs</DependentUpon>
@@ -950,6 +965,10 @@
     <EmbeddedResource Include="Reports\ViewReceipts.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ViewReceipts.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ZReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ZReport1.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="SearchFoms\frmSearchCust.resx">
       <DependentUpon>frmSearchCust.cs</DependentUpon>

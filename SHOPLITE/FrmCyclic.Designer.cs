@@ -31,11 +31,12 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.pnlNav = new System.Windows.Forms.Panel();
             this.btnPayments = new SHOPLITE.RJButton();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.mainpanel = new System.Windows.Forms.Panel();
-            this.pnlNav = new System.Windows.Forms.Panel();
+            this.btnCustStmt = new SHOPLITE.RJButton();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,6 +62,7 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.MediumPurple;
             this.panel3.Controls.Add(this.pnlNav);
+            this.panel3.Controls.Add(this.btnCustStmt);
             this.panel3.Controls.Add(this.btnPayments);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 8);
@@ -68,14 +70,13 @@
             this.panel3.Size = new System.Drawing.Size(976, 58);
             this.panel3.TabIndex = 2;
             // 
-            // panel4
+            // pnlNav
             // 
-            this.panel4.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(0, 66);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(976, 4);
-            this.panel4.TabIndex = 3;
+            this.pnlNav.Location = new System.Drawing.Point(11, 3);
+            this.pnlNav.Name = "pnlNav";
+            this.pnlNav.Size = new System.Drawing.Size(126, 10);
+            this.pnlNav.TabIndex = 0;
+            this.pnlNav.Visible = false;
             // 
             // btnPayments
             // 
@@ -96,6 +97,15 @@
             this.btnPayments.UseVisualStyleBackColor = false;
             this.btnPayments.Click += new System.EventHandler(this.btnPayments_Click);
             // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(0, 66);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(976, 4);
+            this.panel4.TabIndex = 3;
+            // 
             // panel5
             // 
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -113,13 +123,24 @@
             this.mainpanel.Size = new System.Drawing.Size(976, 512);
             this.mainpanel.TabIndex = 5;
             // 
-            // pnlNav
+            // btnCustStmt
             // 
-            this.pnlNav.Location = new System.Drawing.Point(11, 3);
-            this.pnlNav.Name = "pnlNav";
-            this.pnlNav.Size = new System.Drawing.Size(126, 10);
-            this.pnlNav.TabIndex = 0;
-            this.pnlNav.Visible = false;
+            this.btnCustStmt.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.btnCustStmt.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.btnCustStmt.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnCustStmt.BorderRadius = 0;
+            this.btnCustStmt.BorderSize = 0;
+            this.btnCustStmt.FlatAppearance.BorderSize = 0;
+            this.btnCustStmt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCustStmt.ForeColor = System.Drawing.Color.White;
+            this.btnCustStmt.Location = new System.Drawing.Point(143, 9);
+            this.btnCustStmt.Name = "btnCustStmt";
+            this.btnCustStmt.Size = new System.Drawing.Size(126, 49);
+            this.btnCustStmt.TabIndex = 0;
+            this.btnCustStmt.Text = "CUSTOMER STATEMENTS";
+            this.btnCustStmt.TextColor = System.Drawing.Color.White;
+            this.btnCustStmt.UseVisualStyleBackColor = false;
+            this.btnCustStmt.Click += new System.EventHandler(this.btnPayments_Click);
             // 
             // FrmCyclic
             // 
@@ -153,5 +174,6 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel mainpanel;
         private System.Windows.Forms.Panel pnlNav;
+        private RJButton btnCustStmt;
     }
 }
